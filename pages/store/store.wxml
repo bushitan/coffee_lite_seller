@@ -31,7 +31,9 @@
 <block wx:if="{{isSeller}}">
 <view style='height:60px;'></view>
     <view>
-        <view></view>
+        <view>
+            <view>模式</view>
+        </view>
     </view>
     <view style='padding:10px 40px;'>   
         <button 
