@@ -9,6 +9,7 @@ class db {
         return new Promise((resolve, reject) => {
             var data = options.data || {}
             data['customer_uuid'] = wx.getStorageSync(API.UUID)
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
             wx.request({
                 url: options.url,
                 method: options.method || "POST",
@@ -35,7 +36,7 @@ class db {
         })
     }
 
-    /****业务详情****/
+    /********/
     //用户登录认证
     async login() {
         var code = await this.getWXCode()
@@ -62,6 +63,21 @@ class db {
         return res.data.data
     }
 
+    /**** 商户端 业务详情****/
+
+    async storeUpdate(storeData) {
+        var data = storeData
+        data['seller_uuid'] = wx.getStorageSync(API.UUID)    
+        var res = await this.base({
+            url: API.STORE_UPDATE_SELLER,
+            data: data
+        })
+        return res.data.data
+    }
+
+
+
+    /**** 客户端 业务详情****/
     // 获取店铺列表
     async storeList(){
         var res = await this.base({
@@ -72,7 +88,6 @@ class db {
     // 店铺自身信息
     async storeInfo(store_uuid) {
         var res = await this.base({
-
             url: API.STORE_INFO,
             data: {
                 store_uuid: store_uuid,

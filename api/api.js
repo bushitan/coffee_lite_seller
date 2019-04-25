@@ -28,6 +28,8 @@ module.exports = {
     STORE_DATA_CUSTOMER: `${URL}store/data/customer/`,
     STORE_DETAIL_CUSTOMER: `${URL}store/detail/customer/`,
     REFRESH_CUSTOMER: `${URL}refresh/customer/`,
+
+    STORE_UPDATE_SELLER: `${URL}store/update/seller/`,
     
 }
 

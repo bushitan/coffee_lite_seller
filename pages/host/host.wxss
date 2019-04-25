@@ -1,0 +1,13 @@
+/* pages/share/share.wxss */
+page{
+    background-color: #F8F8F8;
+}
+.share{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  z-index: 99;
+}
+
+.weui-panel:after{display:none !important;}

@@ -37,5 +37,10 @@ Component({
     _change(newVal, oldVal) {
     },
 
+      clip(){
+          wx.setClipboardData({
+              data: this.data.summary,
+          })
+      },
   }
 })

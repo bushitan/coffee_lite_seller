@@ -34,6 +34,7 @@ Page({
         console.log(userInfo)
         wx.setStorageSync(API.UUID, userInfo.uuid)
         wx.setStorageSync(API.OPEN_ID, userInfo.wx_openid)
+        wx.setStorageSync(API.USER_INFO, userInfo)
         GP.setData({
             options:options
         })
@@ -49,14 +50,17 @@ Page({
 
     nav(){
         var options = GP.data.options
-        if (options.hasOwnProperty('store_uuid'))
-            wx.redirectTo({
-                url: `/pages/store/store?store_uuid=${options.store_uuid}`,
-            })
-        else
-            wx.redirectTo({
-                url: `/pages/list/list`,
-            })
+        wx.redirectTo({
+            url: `/pages/store/store`,
+        })
+        // if (options.hasOwnProperty('store_uuid'))
+        //     wx.redirectTo({
+        //         url: `/pages/store/store?store_uuid=${options.store_uuid}`,
+        //     })
+        // else
+        //     wx.redirectTo({
+        //         url: `/pages/list/list`,
+        //     })
     },
 
 

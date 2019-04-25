@@ -95,6 +95,10 @@ border: 2px solid #fff;
 .discount{
     font-weight: bolder;
     font-size: 11pt;
+    width: 100px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 
 /******集点数*******/

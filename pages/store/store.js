@@ -11,7 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        store:[],
+        store: [],
+        isSeller: false,
+        isHost: false,
     },
 
     /**
@@ -19,67 +21,101 @@ Page({
      */
     onLoad: function (options) {
         GP = this
-        GP.getStoreData(options)
-        GP.interval()
+        GP.getAuth()
+        // GP.getStoreData(options)
+        // GP.interval()
     },
-    interval(){
-        interval = setInterval(function () {
-            db.refresh().then( res =>{
-                console.log(res)
-            })
-        }, 4000)
+
+
+    async getAuth() {
+        var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
+        var storeUUID = userInfo.store_uuid
+        var isSeller = userInfo.store_uuid == '' ? false : true
+        var isHost = userInfo.is_host
+
+        var store = await db.storeInfo(storeUUID)
+
+      
+        GP.setData({
+            store: store,
+            userInfo: userInfo,
+            storeUUID: storeUUID,
+            isSeller: isSeller,
+            isHost: isHost, 
+        })
     },
+
+
+    toHost() {
+        wx.navigateTo({
+            url: `/pages/host/host`
+        })
+    },
+
+    toPhone(){
+        wx.makePhoneCall({ phoneNumber: '13677730361'})
+    },
+
+
+
+    // interval(){
+    //     interval = setInterval(function () {
+    //         db.refresh().then( res =>{
+    //             console.log(res)
+    //         })
+    //     }, 4000)
+    // },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-        console.log("onUnload")
-        clearInterval(interval)
-        console.log(interval)
-    },
+    // onUnload: function () {
+    //     console.log("onUnload")
+    //     clearInterval(interval)
+    //     console.log(interval)
+    // },
 
-    async getStoreData(options){
-        var store_uuid = options.store_uuid
-        store = await db.storeInfo(store_uuid)
-        // console.log(list)
-        data = await db.storeData(store_uuid)
+    // async getStoreData(options){
+    //     var store_uuid = options.store_uuid
+    //     store = await db.storeInfo(store_uuid)
+    //     // console.log(list)
+    //     data = await db.storeData(store_uuid)
 
-        GP.setData({
-            store: store,
-            data: data
-        })
-    },
+    //     GP.setData({
+    //         store: store,
+    //         data: data
+    //     })
+    // },
 
-    toExchange(){
-        wx.navigateTo({
-            url: `/pages/exchange/exchange?store_uuid=${GP.data.store.uuid}`
-        })
-    },
-    toShare() {
-        wx.navigateTo({
-            url: `/pages/share/share?store_uuid=${GP.data.store.uuid}`
-        })
-    },
-    // 去到定位页面
-    toAddress() {
-        wx.openLocation({
-            name: GP.data.store.title,
-            address: GP.data.store.address,
-            latitude: GP.data.store.latitude,
-            longitude: GP.data.store.longitude,
-            scale: 18
-        })
+    // toExchange(){
+    //     wx.navigateTo({
+    //         url: `/pages/exchange/exchange?store_uuid=${GP.data.store.uuid}`
+    //     })
+    // },
+    // toHost() {
+    //     wx.navigateTo({
+    //         url: `/pages/share/share?store_uuid=${GP.data.store.uuid}`
+    //     })
+    // },
+    // // 去到定位页面
+    // toAddress() {
+    //     wx.openLocation({
+    //         name: GP.data.store.title,
+    //         address: GP.data.store.address,
+    //         latitude: GP.data.store.latitude,
+    //         longitude: GP.data.store.longitude,
+    //         scale: 18
+    //     })
 
-    },
+    // },
 
 
-    // 到集点二维码
-    toQR() {
-        wx.navigateTo({
-            url: '/pages/qrcode/qrcode?mode=score',
-        })
-    },
+    // // 到集点二维码
+    // toQR() {
+    //     wx.navigateTo({
+    //         url: '/pages/qrcode/qrcode?mode=score',
+    //     })
+    // },
 
     
     // toExchange() {
@@ -95,15 +131,6 @@ Page({
     //     })
     // },
 
-
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
     /**
      * 生命周期函数--监听页面显示
      */
@@ -111,27 +138,7 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
 
-    },
-
-   
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
 
     /**
      * 用户点击右上角分享

@@ -2,6 +2,7 @@
     "pages": [
         "pages/route/route",
         "pages/list/list",
+        "pages/host/host",
         "pages/store/store",
         "pages/qrcode/qrcode",
         "pages/exchange/exchange",

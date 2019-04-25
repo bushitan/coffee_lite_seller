@@ -23,49 +23,73 @@
 <wave
     score="{{data.score_num>store.exchange_value? store.exchange_value :data.score_num}}"
     logo="{{store.logo}}"
-    summary="{{store.summary}}"
+    summary="{{userInfo.uuid}}"
 ></wave>
-<view wx:if="{{data.score_num < store.exchange_value}}">    
-    <image catchtap='toQR' class='weui-grid__icon icon_qr' src='../../images/icon_qr.png'></image>
-</view>
-<view wx:else style='text-align:center'>
-    <button catchtap='exchangePrize' type='primary' size="mini" style='background-color:#efaf30;'>兑换</button>
-</view>
 
 
 
-<view style='height:10px;'></view>
-<view class="weui-panel weui-panel_access" >
-    <view class="weui-panel__bd">
-        <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toExchange'>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view class="weui-media-box__title">兑换记录</view>
-                <view class="weui-media-box__desc">已兑换{{data.prize_num}}杯</view>
+<block wx:if="{{isSeller}}">
+<view style='height:60px;'></view>
+    <view>
+        <view></view>
+    </view>
+    <view style='padding:10px 40px;'>   
+        <button 
+            catchtap='exchangePrize' 
+            type='primary' 
+            style='background-color:#1d2a6d;'
+        >扫码</button>
+    </view> 
+    <view style='height:10px;'></view>
+    <view class="weui-panel weui-panel_access" >
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toExchange'>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">数据查询</view>
+                    <view class="weui-media-box__desc">综合数据查询</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
+                </view>
             </view>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
-            </view>
-        </view>
-        <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toShare'>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view class="weui-media-box__title">分享福利</view>
-                <view class="weui-media-box__desc">您有{{data.share_num}}张福利券</view>
-            </view>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="../../images/menu_share.png" />
-            </view>
-        </view>
-        <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toAddress'>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view class="weui-media-box__title">店铺地址</view>
-                <view class="weui-media-box__desc">常来店里坐坐</view>
-            </view>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="../../images/menu_address.png" />
+            
+            <view 
+                wx:if="{{isHost}}"
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" catchtap='toHost'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">门店信息修改</view>
+                    <view class="weui-media-box__desc">店主特权</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/menu_share.png" />
+                </view>
             </view>
         </view>
     </view>
+</block>
+
+<block wx:else>
+    <view class="page">
+        <view class="page__hd">
+            <view class="page__title">您还未加入商户</view>
+            <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！</view>
+        </view>
+        <view style='padding:10px 40px;'>        
+            <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
+        </view>
+        <!-- <view style='padding:10px 40px;'>        
+            <button catchtap='exchangePrize' type='primary' style='background-color:#efaf30;'>扫码</button>
+        </view> -->
+    </view>    
+</block>
+
+<view>
+{{store.exchange_value}}
+{{store.mode}}
 </view>
+
 
 <!-- <view class="weui-loadmore weui-loadmore_line" >
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line" style='font-size:8pt;top:-1.2em'>

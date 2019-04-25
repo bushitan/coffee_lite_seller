@@ -10,6 +10,8 @@ Page({
      */
     data: {
         list:[],
+        isSeller:false,
+        isHost : false,
     },
 
     /**
@@ -17,33 +19,37 @@ Page({
      */
     onLoad: function (options) {
         GP = this
-        GP.getStoreList()
+        GP.getAuth()
     },
 
-    async getStoreList(){
-       list = await db.storeList()
-       console.log(list)
-       GP.setData({
-           list: list
-       })
-    },
-
-
-    toStore(e) {
-        var store_uuid = e.currentTarget.dataset.store_uuid
-        wx.navigateTo({
-            url: `/pages/store/store?store_uuid=${store_uuid}`,
+    async getAuth(){
+        var userInfo = wx.setStorageSync(API.USER_INFO, userInfo)
+        var storeUUID = userInfo.store_uuid
+        var isSeller = userInfo.store_uuid == ''? false : true
+        var isHost = userInfo.is_host
+        GP.setData({
+            userInfo: userInfo,
+            storeUUID: storeUUID,
+            isSeller: isSeller,
+            isHost: isHost,S                
         })
+    //    list = await db.storeList()
+    //    console.log(list)
+    //    GP.setData({
+    //        list: list
+    //    })
     },
 
 
+    // toStore(e) {
+    //     var store_uuid = e.currentTarget.dataset.store_uuid
+    //     wx.navigateTo({
+    //         url: `/pages/store/store?store_uuid=${store_uuid}`,
+    //     })
+    // },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
 
-    },
+
 
     /**
      * 生命周期函数--监听页面显示
@@ -52,33 +58,7 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
 
     /**
      * 用户点击右上角分享
