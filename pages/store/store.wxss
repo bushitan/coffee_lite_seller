@@ -1,6 +1,42 @@
 /* pages/user/user.wxss */
 
 
+/*******店铺信息******/
+.store_info{
+    /* display: flex;
+    justify-content: space-around; */
+}
+.store_info .summary{
+    text-align: center;
+    font-size: 13pt;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    
+}
+.store_info .mode{
+    display: flex;
+    justify-content: center;
+}
+.store_info .mode label{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efaf30;
+    color: #fff;
+    border-radius: 50%;
+}
+.store_info  .value {
+    display: flex;
+    justify-content: space-between;    
+    padding: 0 60px;
+}
+
+
+
+
+
 /*********登陆*********/
 .userinfo, .uploader, .tunnel {
   margin-top: 40rpx;
@@ -62,30 +98,6 @@
 .btn{
     text-align: center;
 }
-
-/********点数**********/
-.weui-grid{
-    width: 25% !important;
-    text-align: center;
-}
-
-
-.qr{
-    width: 80px;
-    height: 80px;
-}
-
-
-/*******分享******/
-.share{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  opacity: 0.1;
-  z-index: 99;
-}
-
-
 
 /**菜单栏***/
 /* .weui-panel:before{display:none !important;} */

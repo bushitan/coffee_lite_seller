@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "数据查询",
+    "usingComponents": {
+        "xx-tab": "../../components/xx_tab/xx_tab"
+    }
+}

@@ -64,10 +64,10 @@ class db {
     }
 
     /**** 商户端 业务详情****/
-
+    // 店铺信息更新
     async storeUpdate(storeData) {
         var data = storeData
-        data['seller_uuid'] = wx.getStorageSync(API.UUID)    
+        data['seller_uuid'] = wx.getStorageSync(API.UUID)
         var res = await this.base({
             url: API.STORE_UPDATE_SELLER,
             data: data
@@ -75,6 +75,18 @@ class db {
         return res.data.data
     }
 
+    // 查询核销数据
+    async storeDataSeller(storeData) {
+        var data = storeData
+        data['seller_uuid'] = wx.getStorageSync(API.UUID)
+        var res = await this.base({
+            url: API.STORE_DATA_SELLER,
+            data: data
+        })
+        return res.data.data
+    }
+
+    
 
 
     /**** 客户端 业务详情****/

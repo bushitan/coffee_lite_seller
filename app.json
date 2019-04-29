@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/route/route",
+        "pages/log/log",
         "pages/list/list",
         "pages/host/host",
         "pages/store/store",

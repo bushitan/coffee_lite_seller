@@ -30,6 +30,8 @@ module.exports = {
     REFRESH_CUSTOMER: `${URL}refresh/customer/`,
 
     STORE_UPDATE_SELLER: `${URL}store/update/seller/`,
+    STORE_DATA_SELLER: `${URL}store/data/seller/`,
+    SCAN_SELLER: `${URL}scan/seller/`,
     
 }
 

@@ -46,6 +46,12 @@ Page({
     },
 
 
+    toLog() {
+        wx.navigateTo({
+            url: `/pages/log/log`
+        })
+    },
+
     toHost() {
         wx.navigateTo({
             url: `/pages/host/host`

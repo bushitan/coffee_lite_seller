@@ -1,25 +1,5 @@
 <!--pages/user/user.wxml-->
-<!-- <text>pages/user/user.wxml</text> -->
 
-<!-- 用户 openid -->
-        <!-- style="background-image: url({{avatarUrl}})" -->
-<!-- <view class="userinfo">
-    <button 
-        open-type="getUserInfo" 
-        bindgetuserinfo="onGetUserInfo"
-        class="userinfo-avatar"
-        style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-        <view class='title' catchlongtap='copyID'>买10送1集点卡</view>
-        <view class='date'>有效期：2020-1-1</view>
-    </view>
-    <view class='weui-cell__bd'></view>
-    <image catchtap='toQR' class='weui-grid__icon icon_qr' src='../../images/icon_qr.png'></image>
-</view> -->
-
-
-<!-- <view style='height:10px;'></view> -->
 <wave
     score="{{data.score_num>store.exchange_value? store.exchange_value :data.score_num}}"
     logo="{{store.logo}}"
@@ -27,70 +7,91 @@
 ></wave>
 
 
-
-<block wx:if="{{isSeller}}">
-<view style='height:60px;'></view>
-    <view>
-        <view>
-            <view>模式</view>
-        </view>
-    </view>
-    <view style='padding:10px 40px;'>   
-        <button 
-            catchtap='exchangePrize' 
-            type='primary' 
-            style='background-color:#1d2a6d;'
-        >扫码</button>
-    </view> 
-    <view style='height:10px;'></view>
-    <view class="weui-panel weui-panel_access" >
-        <view class="weui-panel__bd">
-            <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toExchange'>
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                    <view class="weui-media-box__title">数据查询</view>
-                    <view class="weui-media-box__desc">综合数据查询</view>
-                </view>
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
-                </view>
+    <block wx:if="{{isSeller}}">
+    <view style='height:40px;'></view>
+        <view class='store_info'>        
+            <view class='summary'>{{store.summary}}</view>
+            <view class='mode'>
+                <label> {{store.mode == 1 ?"普通模式":"分享模式"}}</label>    
             </view>
-            
-            <view 
-                wx:if="{{isHost}}"
-                class="weui-media-box weui-media-box_appmsg " 
-                hover-class="weui-cell_active" catchtap='toHost'
-            >
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                    <view class="weui-media-box__title">门店信息修改</view>
-                    <view class="weui-media-box__desc">店主特权</view>
-                </view>
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb" src="../../images/menu_share.png" />
-                </view>
+            <view class='value'>
+                <view>核销点数</view>
+                <view>{{store.check_value}}</view>
+            </view>
+            <view class='value'>
+                <view>赠送人点数</view>
+                <view>{{store.share_check_value}}</view>
+            </view>
+            <view class='value'>
+                <view>获赠人点数</view>
+                <view>{{store.share_gift_value}}</view>
+            </view>
+            <view class='value'>
+                <view>领取时间间隔</view>
+                <view>{{store.share_limit_time}}</view>
+            </view>
+            <view class='value'>
+                <view>有效期</view>
+                <view>{{store.share_valid_time}}</view>
             </view>
         </view>
-    </view>
-</block>
 
-<block wx:else>
-    <view class="page">
-        <view class="page__hd">
-            <view class="page__title">您还未加入商户</view>
-            <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！</view>
+        <view style='padding:10px 40px;'>   
+            <button 
+                catchtap='exchangePrize' 
+                type='primary' 
+                style='background-color:#1d2a6d;'
+            >扫码</button>
+        </view> 
+        <view style='height:10px;'></view>
+        <view class="weui-panel weui-panel_access" >
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toLog'>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">数据查询</view>
+                        <view class="weui-media-box__desc">综合数据查询</view>
+                    </view>
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
+                    </view>
+                </view>
+                
+                <view 
+                    wx:if="{{isHost}}"
+                    class="weui-media-box weui-media-box_appmsg " 
+                    hover-class="weui-cell_active" catchtap='toHost'
+                >
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">门店信息修改</view>
+                        <view class="weui-media-box__desc">店主特权</view>
+                    </view>
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../images/menu_share.png" />
+                    </view>
+                </view>
+            </view>
         </view>
-        <view style='padding:10px 40px;'>        
-            <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
-        </view>
-        <!-- <view style='padding:10px 40px;'>        
-            <button catchtap='exchangePrize' type='primary' style='background-color:#efaf30;'>扫码</button>
-        </view> -->
-    </view>    
-</block>
+    </block>
+
+    <block wx:else>
+        <view class="page">
+            <view class="page__hd">
+                <view class="page__title">您还未加入商户</view>
+                <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！</view>
+            </view>
+            <view style='padding:10px 40px;'>        
+                <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
+            </view>
+            <!-- <view style='padding:10px 40px;'>        
+                <button catchtap='exchangePrize' type='primary' style='background-color:#efaf30;'>扫码</button>
+            </view> -->
+        </view>    
+    </block>
 
 <view>
-{{store.exchange_value}}
-{{store.mode}}
 </view>
+
+<view style='height:40px;'></view>
 
 
 <!-- <view class="weui-loadmore weui-loadmore_line" >
