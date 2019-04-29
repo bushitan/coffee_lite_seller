@@ -8,7 +8,7 @@ class db {
     base(options){
         return new Promise((resolve, reject) => {
             var data = options.data || {}
-            data['customer_uuid'] = wx.getStorageSync(API.UUID)
+            // data['customer_uuid'] = wx.getStorageSync(API.UUID)
             data['seller_uuid'] = wx.getStorageSync(API.UUID)
             wx.request({
                 url: options.url,
@@ -81,6 +81,17 @@ class db {
         data['seller_uuid'] = wx.getStorageSync(API.UUID)
         var res = await this.base({
             url: API.STORE_DATA_SELLER,
+            data: data
+        })
+        return res.data.data
+    }
+
+    // 扫码核销
+    async scanSeller(storeData) {
+        var data = storeData
+        data['seller_uuid'] = wx.getStorageSync(API.UUID)
+        var res = await this.base({
+            url: API.SCAN_SELLER,
             data: data
         })
         return res.data.data

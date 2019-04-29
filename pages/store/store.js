@@ -26,7 +26,7 @@ Page({
         // GP.interval()
     },
 
-
+    // 获取权限信息
     async getAuth() {
         var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
         var storeUUID = userInfo.store_uuid
@@ -42,6 +42,28 @@ Page({
             storeUUID: storeUUID,
             isSeller: isSeller,
             isHost: isHost, 
+        })
+        GP.scanEvent("score","564146a2-67f5-11e9-989b-b83312f00bac")
+    },
+
+    // 扫码
+    async scan(){
+
+        wx.scanCode({
+            success(res) {
+                var list = res.result.split(",")
+                var model = list[0]
+                var customer_uuid = list[1]
+                console.log(list)
+                GP.scanEvent(model,customer_uuid)
+            }
+        })
+    },
+
+    async scanEvent(model, customer_uuid) {
+        var result = await db.scanSeller({
+            model: model,
+            customer_uuid: customer_uuid,
         })
     },
 

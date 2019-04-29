@@ -14,23 +14,23 @@
             <view class='mode'>
                 <label> {{store.mode == 1 ?"普通模式":"分享模式"}}</label>    
             </view>
-            <view class='value'>
+            <view class='value' wx:if="{{store.mode == 1 ?true:false}}">
                 <view>核销点数</view>
                 <view>{{store.check_value}}</view>
             </view>
-            <view class='value'>
+            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>赠送人点数</view>
                 <view>{{store.share_check_value}}</view>
             </view>
-            <view class='value'>
+            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>获赠人点数</view>
                 <view>{{store.share_gift_value}}</view>
             </view>
-            <view class='value'>
+            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>领取时间间隔</view>
                 <view>{{store.share_limit_time}}</view>
             </view>
-            <view class='value'>
+            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>有效期</view>
                 <view>{{store.share_valid_time}}</view>
             </view>
@@ -38,7 +38,7 @@
 
         <view style='padding:10px 40px;'>   
             <button 
-                catchtap='exchangePrize' 
+                catchtap='scan' 
                 type='primary' 
                 style='background-color:#1d2a6d;'
             >扫码</button>

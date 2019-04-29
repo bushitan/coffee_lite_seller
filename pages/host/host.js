@@ -72,6 +72,17 @@ Page({
         prevPage.setData({
             store: store
         })
+        wx.showModal({
+            title: '修改成功',
+            showCancel:false,
+            confirmText:"返回",
+            success(){
+                wx.navigateBack({
+                    
+                })
+            },
+
+        })
         // var store = prevPage.data.store
         // console.log(r)
     },
