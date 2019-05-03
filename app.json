@@ -2,12 +2,8 @@
     "pages": [
         "pages/route/route",
         "pages/log/log",
-        "pages/list/list",
         "pages/host/host",
-        "pages/store/store",
-        "pages/qrcode/qrcode",
-        "pages/exchange/exchange",
-        "pages/share/share"
+        "pages/store/store"
     ],
     "window": {
         "backgroundTextStyle": "light",

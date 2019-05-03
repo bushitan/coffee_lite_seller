@@ -27,23 +27,26 @@ Page({
 
     },
 
-    async getUserInfo(){
+    getUserInfo(){
         var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
         var storeUUID = userInfo.store_uuid
-        var storeInfo = await db.storeInfo(storeUUID)
 
-        GP.setData({
-            isLoading: false,
-            userInfo: userInfo,
-            storeInfo: storeInfo,
-            radioItems: [
-                {
-                    name: '普通模式', value: STORE_MODE_NORMAL, 
-                    checked: storeInfo.mode == STORE_MODE_NORMAL ? true:false },
-                {
-                    name: '分享模式', value: STORE_MODE_SHARE, 
-                    checked: storeInfo.mode == STORE_MODE_SHARE ? true : false }
-            ],
+        db.storeInfo(storeUUID).then(storeInfo => {
+            GP.setData({
+                isLoading: false,
+                userInfo: userInfo,
+                storeInfo: storeInfo,
+                radioItems: [
+                    {
+                        name: '普通模式', value: STORE_MODE_NORMAL,
+                        checked: storeInfo.mode == STORE_MODE_NORMAL ? true : false
+                    },
+                    {
+                        name: '分享模式', value: STORE_MODE_SHARE,
+                        checked: storeInfo.mode == STORE_MODE_SHARE ? true : false
+                    }
+                ],
+            })
         })
     },
 
@@ -62,29 +65,28 @@ Page({
     },
 
 
-    async formSubmit(e) {
+    formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
         var data = e.detail.value
         data["store_uuid"] = GP.data.storeInfo.uuid
-        var store = await db.storeUpdate(data)
-        var pages = getCurrentPages()
-        var prevPage = pages[pages.length - 2]
-        prevPage.setData({
-            store: store
-        })
-        wx.showModal({
-            title: '修改成功',
-            showCancel:false,
-            confirmText:"返回",
-            success(){
-                wx.navigateBack({
-                    
-                })
-            },
+        db.storeUpdate(data).then(store => {
+            var pages = getCurrentPages()
+            var prevPage = pages[pages.length - 2]
+            prevPage.setData({
+                store: store
+            })
+            wx.showModal({
+                title: '修改成功',
+                showCancel: false,
+                confirmText: "返回",
+                success() {
+                    wx.navigateBack({
 
+                    })
+                },
+
+            })
         })
-        // var store = prevPage.data.store
-        // console.log(r)
     },
     formReset() {
         console.log('form发生了reset事件')
@@ -93,24 +95,16 @@ Page({
 
 
 
-    async getStoreDetail(options) {
-        var pages = getCurrentPages()
-        var prevPage = pages[pages.length - 2]
-        var userInfo = prevPage.data.userInfo
-        GP.setData({
-            isLoading: false,
-            detailList: detailList,
-            store: store,
-        })
-
-        // // console.log(list)
-        // detail = await db.storeDetail(store_uuid)
-
-        // GP.setData({
-        //     store: store,
-        //     detail: detail
-        // })
-    },
+    // getStoreDetail(options) {
+    //     var pages = getCurrentPages()
+    //     var prevPage = pages[pages.length - 2]
+    //     var userInfo = prevPage.data.userInfo
+    //     GP.setData({
+    //         isLoading: false,
+    //         detailList: detailList,
+    //         store: store,
+    //     })
+    // },
 
 
     /**

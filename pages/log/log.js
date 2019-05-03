@@ -25,15 +25,16 @@ Page({
         GP.getLog("score")
     },
 
-    async getLog(model){
-        var dataList = await db.storeDataSeller({
+    getLog(model){
+        db.storeDataSeller({
             model: model,
             page_num: GP.data.pageNum,
             range: GP.data.range,
-        })
-        GP.setData({
-            isLoading: false,
-            detailList: dataList,
+        }).then(dataList =>{
+            GP.setData({
+                isLoading: false,
+                detailList: dataList,
+            })
         })
     },
     

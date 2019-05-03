@@ -38,123 +38,139 @@ class db {
 
     /********/
     //用户登录认证
-    async login() {
-        var code = await this.getWXCode()
-        var res = await this.base({
-            url: API.ROUTE_USER_LOGIN,
-            data: {
-                code: code,
-                is_customer: IS_CUSTOMER,
-                uuid: wx.getStorageSync(API.UUID),
-            }
+    login() {
+        return new Promise((resolve, reject) => {
+            // API 
+            this.getWXCode().then( code => {
+                //API 
+                this.base({
+                    url: API.ROUTE_USER_LOGIN,
+                    data: {
+                        code: code,
+                        is_customer: IS_CUSTOMER,
+                        uuid: wx.getStorageSync(API.UUID),
+                    }
+                }).then( res => resolve(res.data.data) )
+            })
         })
-        return res.data.data
     }
 
     //用户更新信息
-    async userUpdate(userInfo) {
-        var data = userInfo
-        data['is_customer'] = IS_CUSTOMER
-        data['uuid'] = wx.getStorageSync(API.UUID)       
-        var res = await this.base({
-            url: API.ROUTE_USER_UPDATE,
-            data: data
+    userUpdate(userInfo) {
+        return new Promise((resolve, reject) => {
+            var data = userInfo
+            data['is_customer'] = IS_CUSTOMER
+            data['uuid'] = wx.getStorageSync(API.UUID)       
+            this.base({
+                url: API.ROUTE_USER_UPDATE,
+                data: data
+            }).then(res => resolve(res.data.data))
         })
-        return res.data.data
     }
 
     /**** 商户端 业务详情****/
     // 店铺信息更新
-    async storeUpdate(storeData) {
-        var data = storeData
-        data['seller_uuid'] = wx.getStorageSync(API.UUID)
-        var res = await this.base({
-            url: API.STORE_UPDATE_SELLER,
-            data: data
+    storeUpdate(storeData) {
+        return new Promise((resolve, reject) => {
+            var data = storeData
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            this.base({
+                url: API.STORE_UPDATE_SELLER,
+                data: data
+            }).then(res => resolve(res.data.data))
         })
-        return res.data.data
     }
 
     // 查询核销数据
-    async storeDataSeller(storeData) {
-        var data = storeData
-        data['seller_uuid'] = wx.getStorageSync(API.UUID)
-        var res = await this.base({
-            url: API.STORE_DATA_SELLER,
-            data: data
+    storeDataSeller(storeData) {
+        return new Promise((resolve, reject) => {
+            var data = storeData
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            this.base({
+                url: API.STORE_DATA_SELLER,
+                data: data
+            }).then(res => resolve(res.data.data))         
         })
-        return res.data.data
     }
 
     // 扫码核销
-    async scanSeller(storeData) {
-        var data = storeData
-        data['seller_uuid'] = wx.getStorageSync(API.UUID)
-        var res = await this.base({
-            url: API.SCAN_SELLER,
-            data: data
+    scanSeller(storeData) {
+        return new Promise((resolve, reject) => {
+            var data = storeData
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            // API
+            this.base({
+                url: API.SCAN_SELLER,
+                data: data
+            }).then( res => {
+                return resolve(res.data.data)
+            })
+          
         })
-        return res.data.data
     }
-
-    
 
 
     /**** 客户端 业务详情****/
-    // 获取店铺列表
-    async storeList(){
-        var res = await this.base({
-            url: API.STORE_LIST_CUSTOMER,
-        })
-        return res.data.data
-    }
     // 店铺自身信息
-    async storeInfo(store_uuid) {
-        var res = await this.base({
-            url: API.STORE_INFO,
-            data: {
-                store_uuid: store_uuid,
-            }
+    storeInfo(store_uuid) {
+        return new Promise((resolve, reject) => {
+            // API
+            this.base({
+                url: API.STORE_INFO,
+                data: {
+                    store_uuid: store_uuid,
+                }
+            }).then(res => {
+                return resolve(res.data.data)
+            })
         })
-        return res.data.data
-    }
-
-    // 店铺单项详细数据
-    async storeData(store_uuid) {
-        var res = await this.base({
-            url: API.STORE_DATA_CUSTOMER,
-            data: {
-                // model:model,
-                store_uuid: store_uuid,
-            }
-        })
-        return res.data.data
-    }
-    // 店铺单项详细数据
-    async storeDetail(model,store_uuid) {
-        var res = await this.base({
-            url: API.STORE_DETAIL_CUSTOMER,
-            data: {
-                model:model,
-                store_uuid: store_uuid,
-            }
-        })
-        return res.data.data
     }
 
 
+    // // 获取店铺列表
+    // async storeList(){
+    //     var res = await this.base({
+    //         url: API.STORE_LIST_CUSTOMER,
+    //     })
+    //     return res.data.data
+    // }
 
-    // 获取更新数据
-    async refresh(model,store_uuid) {
-        var res = await this.base({
-            url: API.REFRESH_CUSTOMER,
-            data: {
-                model: model,
-                store_uuid: store_uuid,
-            }
-        })
-        return res.data.data
-    }
+    // // 店铺单项详细数据
+    // async storeData(store_uuid) {
+    //     var res = await this.base({
+    //         url: API.STORE_DATA_CUSTOMER,
+    //         data: {
+    //             // model:model,
+    //             store_uuid: store_uuid,
+    //         }
+    //     })
+    //     return res.data.data
+    // }
+    // // 店铺单项详细数据
+    // async storeDetail(model,store_uuid) {
+    //     var res = await this.base({
+    //         url: API.STORE_DETAIL_CUSTOMER,
+    //         data: {
+    //             model:model,
+    //             store_uuid: store_uuid,
+    //         }
+    //     })
+    //     return res.data.data
+    // }
+
+
+
+    // // 获取更新数据
+    // async refresh(model,store_uuid) {
+    //     var res = await this.base({
+    //         url: API.REFRESH_CUSTOMER,
+    //         data: {
+    //             model: model,
+    //             store_uuid: store_uuid,
+    //         }
+    //     })
+    //     return res.data.data
+    // }
 }
 
 module.exports = db
