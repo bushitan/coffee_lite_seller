@@ -77,7 +77,7 @@ class db {
             this.base({
                 url: API.STORE_UPDATE_SELLER,
                 data: data
-            }).then(res => resolve(res.data.data))
+            }).then(res => resolve(res.data))
         })
     }
 
@@ -103,7 +103,7 @@ class db {
                 url: API.SCAN_SELLER,
                 data: data
             }).then( res => {
-                return resolve(res.data.data)
+                return resolve(res.data)
             })
           
         })

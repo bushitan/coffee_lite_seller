@@ -69,14 +69,17 @@ Page({
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
         var data = e.detail.value
         data["store_uuid"] = GP.data.storeInfo.uuid
-        db.storeUpdate(data).then(store => {
+        db.storeUpdate(data).then(res => {
+            var message = res.message
+            var store = res.data
             var pages = getCurrentPages()
             var prevPage = pages[pages.length - 2]
             prevPage.setData({
                 store: store
             })
             wx.showModal({
-                title: '修改成功',
+                title: message.title,
+                content: message.content,
                 showCancel: false,
                 confirmText: "返回",
                 success() {

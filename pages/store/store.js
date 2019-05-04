@@ -54,20 +54,23 @@ Page({
                 var list = res.result.split(",")
                 var model = list[0]
                 var customer_uuid = list[1]
+                var store_uuid = list[2]
                 console.log(list)
-                GP.scanEvent(model,customer_uuid)
+                GP.scanEvent(model, customer_uuid, store_uuid)
             }
         })
     },
     // 扫码事件
-    scanEvent(model, customer_uuid) {
+    scanEvent(model, customer_uuid, store_uuid) {
         db.scanSeller({
             model: model,
             customer_uuid: customer_uuid,
-        }).then(result => {
-            console.log(result)
+            store_uuid: store_uuid,
+        }).then(res => {
+            var message = res.message
             wx.showModal({
-                title: result.message,
+                title: message.title,
+                content: message.content,
                 showCancel:false,
             })
         })
