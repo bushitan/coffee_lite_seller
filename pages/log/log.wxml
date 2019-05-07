@@ -23,9 +23,9 @@
                     <view class="weui-media-box__desc">来源:{{item.share_id?"分享券":"普通核销"}}</view>    
                     <view class="weui-media-box__desc">集点核销者:{{item.seller_nick_name}}</view>
                 </view>                
-                <view class="weui-cell__ft weui-cell__ft_in-access">
+                <!-- <view class="weui-cell__ft weui-cell__ft_in-access">
                     <button size='mini'>删除</button>
-                </view>
+                </view> -->
             </view>
 
             <view class="weui-media-box weui-media-box_appmsg "  wx:elif="{{showModel==1}}">

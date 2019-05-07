@@ -20,19 +20,23 @@
             </view>
             <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>赠送人点数</view>
-                <view>{{store.share_check_value}}</view>
+                <view>{{store.share_check_value}}（点）</view>
             </view>
             <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>获赠人点数</view>
-                <view>{{store.share_gift_value}}</view>
+                <view>获赠总人数</view>
+                <view>{{store.share_num}}（人）</view>
+            </view>
+            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+                <view>每人点数</view>
+                <view>{{store.share_gift_value}}（点）</view>
             </view>
             <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>领取时间间隔</view>
-                <view>{{store.share_limit_time}}</view>
+                <view>{{store.share_limit_time}}（天）</view>
             </view>
             <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
                 <view>有效期</view>
-                <view>{{store.share_valid_time}}</view>
+                <view>{{store.share_valid_time}}（天）</view>
             </view>
         </view>
 

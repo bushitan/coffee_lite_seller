@@ -88,7 +88,20 @@
                 </view>
                 <view class="weui-cell weui-cell_input">
                     <view class="weui-cell__hd">
-                        <view class="weui-label">获赠人点数</view>
+                        <view class="weui-label">获赠总人数</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input 
+                            class="weui-input"                                                    
+                            name="share_num"
+                            value='{{storeInfo.share_num}}'  
+                            type='number' 
+                            placeholder="获赠总人数"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">每人点数</view>
                     </view>
                     <view class="weui-cell__bd">
                         <input 
