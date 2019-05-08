@@ -42,6 +42,9 @@ Page({
                 isSeller: isSeller,
                 isHost: isHost,
             })
+            wx.setNavigationBarTitle({
+                title: store.title + '商户版',
+            })
             // GP.scanEvent("score", "564146a2-67f5-11e9-989b-b83312f00bac")
         })
 
