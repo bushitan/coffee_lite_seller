@@ -93,6 +93,18 @@ class db {
         })
     }
 
+    // 店主查询数据
+    storeHostDataSeller(storeData) {
+        return new Promise((resolve, reject) => {
+            var data = storeData
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            this.base({
+                url: API.STORE_HOST_DATA_SELLER,
+                data: data
+            }).then(res => resolve(res.data.data))
+        })
+    }
+
     // 扫码核销
     scanSeller(storeData) {
         return new Promise((resolve, reject) => {

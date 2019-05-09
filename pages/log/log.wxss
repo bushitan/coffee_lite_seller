@@ -1,4 +1,11 @@
 /* pages/share/share.wxss */
+page{
+    background-color:#F8F8F8;
+    
+}
+.weui-cells{
+    font-size: 11pt;
+}
 .share{
   position: absolute;
   height: 100%;
@@ -7,4 +14,7 @@
   z-index: 99;
 }
 
+
+.weui-panel{margin: 0;}
 .weui-panel:after{display:none !important;}
+

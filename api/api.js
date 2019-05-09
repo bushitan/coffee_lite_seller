@@ -31,6 +31,7 @@ module.exports = {
 
     STORE_UPDATE_SELLER: `${URL}store/update/seller/`,
     STORE_DATA_SELLER: `${URL}store/data/seller/`,
+    STORE_HOST_DATA_SELLER: `${URL}store/host/data/seller/`,
     SCAN_SELLER: `${URL}scan/seller/`,
     
 }

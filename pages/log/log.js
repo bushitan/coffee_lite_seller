@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        menu: ['积分', '奖品', '兑换券'],
+        menu: ['集点', '福利', '福利分享券'],
         isLoading: true,
         prizeList: [],
         pageNum:1,
@@ -22,7 +22,15 @@ Page({
      */
     onLoad: function (options) {
         GP = this
+
+        var page = getCurrentPages()
+        var prePage = page[page.length - 2]
+        GP.setData({
+            store: prePage.data.store,
+            isHost: prePage.data.isHost,
+        })
         GP.getLog("score")
+        GP.getHostData()
     },
 
     getLog(model){
@@ -37,6 +45,21 @@ Page({
             })
         })
     },
+
+    getHostData() {
+        // var page = getCurrentPages()
+        // var prePage = page[page.length-2]
+        // console.log(prePage.data.store.uuid)
+        db.storeHostDataSeller({
+            store_uuid: GP.data.store.uuid
+        }).then(dataList => {
+            GP.setData({
+                hostData: dataList
+            })
+           console.log(dataList)
+        })
+    },
+
     
 
     click(e){

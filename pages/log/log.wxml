@@ -1,5 +1,25 @@
 <!--pages/share/share.wxml-->
 
+<block wx:if="{{isHost}}">
+<view class="weui-cells__title">数据总数</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">集点发放总数</view>
+        <view class="weui-cell__ft ">{{hostData.score_num}}</view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">福利发放总数</view>
+        <view class="weui-cell__ft ">{{hostData.prize_num}}</view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">福利分享券发放总数</view>
+        <view class="weui-cell__ft ">{{hostData.share_num}}</view>
+        <!-- <view class="weui-cell__ft weui-cell__ft_in-access">5</view> -->
+    </navigator>
+</view>
+</block>
+
+<view class="weui-cells__title">数据详情</view>
 <xx-tab 
     mode="menu"
     list="{{menu}}"
