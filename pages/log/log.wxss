@@ -3,6 +3,21 @@ page{
     background-color:#F8F8F8;
     
 }
+
+/* 单位 */
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+/* .unit{
+    display: inline-block;
+    text-align: right;
+} */
+
+
+
+
+
 .weui-cells{
     font-size: 11pt;
 }

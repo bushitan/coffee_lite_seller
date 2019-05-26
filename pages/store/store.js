@@ -43,13 +43,19 @@ Page({
                 isSeller: isSeller,
                 isHost: isHost,
             })
+            
+            var title = store.title || "分享集点卡"
             wx.setNavigationBarTitle({
-                title: store.title + '商户版',
+                title: title  + '商户版',
             })
+
+            
+
             // GP.scanEvent("score", "564146a2-67f5-11e9-989b-b83312f00bac")
         })
 
     },
+
 
     // 扫码
     scan(){
@@ -100,6 +106,15 @@ Page({
             url: `/pages/host/host`
         })
     },
+
+
+    // 拨打客服号码
+    toRoute() {
+        wx.redirectTo({
+            url: '/pages/route/route',
+        })
+    },
+
 
     // 拨打客服号码
     toPhone(){

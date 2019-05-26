@@ -11,8 +11,10 @@ Page({
     data: {
         menu: ['集点', '福利', '福利分享券'],
         isLoading: true,
-        prizeList: [],
-        pageNum:1,
+        model:"score",
+        newList:[], //新增加的数据
+        detailList: [], //展示的总列表
+        pageNum:0,
         range:10,
         showModel:0,
     },
@@ -29,19 +31,28 @@ Page({
             store: prePage.data.store,
             isHost: prePage.data.isHost,
         })
-        GP.getLog("score")
+        GP.getLog()
         GP.getHostData()
     },
 
-    getLog(model){
+    // 获取更多
+    getMore(){
+        
+    },
+    // 获取详情列表
+    getLog(){
+        GP.setData({ isLoading: true})
         db.storeDataSeller({
-            model: model,
+            model: GP.data.model,
             page_num: GP.data.pageNum,
             range: GP.data.range,
         }).then(dataList =>{
+
             GP.setData({
                 isLoading: false,
-                detailList: dataList,
+                newList: dataList,
+                detailList: GP.data.detailList.concat(dataList),
+                pageNum: dataList < 10 ? GP.data.pageNum : GP.data.pageNum + 1,
             })
         })
     },
@@ -59,7 +70,14 @@ Page({
            console.log(dataList)
         })
     },
-
+    reset(){
+        GP.setData({
+            isLoading: true,
+            detailList: [],
+            pageNum: 0,
+            range: 10,
+        })
+    },
     
 
     click(e){
@@ -71,8 +89,10 @@ Page({
         else model = "share"
         GP.setData({
             showModel:index,
+            model:model
         })
-        GP.getLog(model)
+        GP.reset()
+        GP.getLog()
     },
 
 

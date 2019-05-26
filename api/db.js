@@ -41,12 +41,12 @@ class db {
     login() {
         return new Promise((resolve, reject) => {
             // API 
-            var HOST = "https://www.51zfgx.com/"
-            var HOST = "https://www.51zfgx.com/"
-            var HOST = "https://www.51zfgx.com/dev/"
-            var HOST = "https://www.51zfgx.com/dev/"
-            var HOST = "https://www.51zfgx.com/dev/"
-            var HOST = "https://www.51zfgx.com/dev/"
+            // var HOST = "https://www.51zfgx.com/"
+            // var HOST = "https://www.51zfgx.com/"
+            // var HOST = "https://www.51zfgx.com/dev/"
+            // var HOST = "https://www.51zfgx.com/dev/"
+            // var HOST = "https://www.51zfgx.com/dev/"
+            // var HOST = "https://www.51zfgx.com/dev/"
             this.getWXCode().then( code => {
                 //API 
                 this.base({
