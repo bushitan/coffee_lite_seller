@@ -50,6 +50,22 @@
         <view style='height:10px;'></view>
         <view class="weui-panel weui-panel_access" >
             <view class="weui-panel__bd">
+            
+                <view 
+                    wx:if="{{store.mode == 2 ?true:false}}"
+                    class="weui-media-box weui-media-box_appmsg " 
+                    hover-class="weui-cell_active" 
+                    catchtap='toAutoShare'
+                >
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">自动分享二维码</view>
+                        <view class="weui-media-box__desc">仅在[分享模式]下显示</view>
+                    </view>
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
+                    </view>
+                </view>
+
                 <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toLog'>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <view class="weui-media-box__title">数据查询</view>

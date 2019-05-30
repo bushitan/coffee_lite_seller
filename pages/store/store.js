@@ -5,6 +5,7 @@ var API = require('../../api/api.js')
 var DB = require('../../api/db.js')
 var db = new DB()
 var interval
+
 Page({
 
     /**
@@ -77,6 +78,13 @@ Page({
                 showCancel:false,
             })
         })
+    },
+
+    // 去自动获取二维码的地方
+    toAutoShare(){
+        wx.navigateTo({
+            url: `/pages/auto_share/auto_share`
+        })  
     },
 
     // nav 日志

@@ -1,7 +1,9 @@
 {
-    "pages": [
+    "pages": [     
         "pages/route/route",
         "pages/log/log",
+        "pages/auto_share/auto_share",
+        
         "pages/host/host",
         "pages/store/store"
     ],

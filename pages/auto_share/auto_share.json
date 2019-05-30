@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "自动发放福利分享券",
+    "usingComponents": {
+        "qrcode": "../../components/qrcode/qrcode"
+    }
+}
