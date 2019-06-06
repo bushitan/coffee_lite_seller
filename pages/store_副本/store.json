@@ -1,7 +1,6 @@
 {
    
     "usingComponents": {
-        "board": "../../components/board/board",
         "wave": "../../components/wave/wave"
     }
 }

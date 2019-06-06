@@ -5,6 +5,7 @@ var DB = require('../../api/db.js')
 var db = new DB()
 var STORE_MODE_NORMAL = 1 //普通
 var STORE_MODE_SHARE = 2 //分享
+var STORE_MODE_ALL = 3 //分享
 Page({
 
     /**
@@ -12,9 +13,11 @@ Page({
      */
     data: {
         isLoading: true,
-        userInfo: {},
-        storeInfo: {},
-        radioItems: [],
+        storeInfo: {}, // 店铺信息
+        radioItems: [], //模式选择
+        showNormal: false,
+        showShare: false,
+
     },
 
     /**
@@ -28,9 +31,11 @@ Page({
     },
 
     getUserInfo(){
+        // 获取商户的信息
         var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
         var storeUUID = userInfo.store_uuid
 
+        // 商户请求
         db.storeInfo(storeUUID).then(storeInfo => {
             GP.setData({
                 isLoading: false,
@@ -44,9 +49,15 @@ Page({
                     {
                         name: '分享模式', value: STORE_MODE_SHARE,
                         checked: storeInfo.mode == STORE_MODE_SHARE ? true : false
+                    },
+                    {
+                        name: '普通分享并行模式', value: STORE_MODE_ALL,
+                        checked: storeInfo.mode == STORE_MODE_ALL ? true : false
                     }
+                    
                 ],
             })
+            GP.switchModeShow()
         })
     },
 
@@ -58,12 +69,33 @@ Page({
         for (var i = 0, len = radioItems.length; i < len; ++i) {
             radioItems[i].checked = radioItems[i].value == e.detail.value;
         }
+        // 设置普通、分享表单展示
+        console.log(radioItems) 
 
         this.setData({
-            radioItems: radioItems
+            radioItems: radioItems,
         });
+        GP.switchModeShow()
     },
 
+    // 控制模式表单展示开关
+    switchModeShow(){
+        var showNormal = false
+        var showShare = false
+        var radioItems = this.data.radioItems;
+        if (radioItems[0].checked)
+            showNormal = true
+        else if (radioItems[1].checked)
+            showShare = true
+        else {
+            showNormal = true
+            showShare = true
+        }
+        GP.setData({
+            showNormal: showNormal,
+            showShare: showShare,
+        })
+    },
 
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)

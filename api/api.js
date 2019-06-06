@@ -33,7 +33,10 @@ module.exports = {
     STORE_UPDATE_SELLER: `${URL}store/update/seller/`,
     STORE_DATA_SELLER: `${URL}store/data/seller/`,
     STORE_HOST_DATA_SELLER: `${URL}store/host/data/seller/`,
-    SCAN_SELLER: `${URL}scan/seller/`,
+
+    SCAN_SCORE_SELLER: `${URL}scan/score/seller/`,
+    SCAN_SHARE_SELLER: `${URL}scan/share/seller/`,
+    SCAN_PRIZE_SELLER: `${URL}scan/prize/seller/`,
     
 }
 

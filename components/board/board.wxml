@@ -1,0 +1,100 @@
+  
+  
+<block wx:if="{{mode==MODE_SCORE}}">
+    <view class='box'>
+        <view class="content">
+            <view class='title'>[普通模式]</view>
+            <!-- <view class='table'> -->
+                <view class='node color_light   {{isSpace?"space":""}}  '>
+                <!--  -->
+                    <view>核销点数</view>
+                    <view>{{checkValue}}（点）</view>
+                </view>
+            <!-- </view> -->
+            <view style='padding:15px 0 0;'>   
+                <button 
+                    catchtap='scanScore' 
+                    type='primary' 
+                    style='background-color:#efaf30;'
+                >集点</button>
+            </view> 
+        </view>
+    </view>
+</block>
+
+
+<block wx:else>
+    <view class='box'>
+    
+        <view class="content">
+            <view class='title'>[分享模式]</view>
+            <!-- <view class='table'> -->
+                <view class='node color_light'>
+                    <view>赠送人点数</view>
+                    <view>{{shareCheckValue}}（点）</view>
+                </view>
+                <view class='node color_dark'>
+                    <view>获赠总人数</view>
+                    <view>{{shareNum}}（人）</view>
+                </view>
+                <view class='node color_light'>
+                    <view>每人点数</view>
+                    <view>{{shareGiftValue}}（点）</view>
+                </view>
+                <view class='node color_dark'>
+                    <view>领取间隔</view>
+                    <view>{{shareLimitTime}}（天）</view>
+                </view>
+                <view class='node color_light'>
+                    <view>有效期</view>
+                    <view>{{shareValidTime}}（天）</view>
+                <!-- </view> -->
+            </view>
+
+            <view style='padding:15px 0 0;'>   
+                <button 
+                    catchtap='scanShare' 
+                    type='primary' 
+                    style='background-color:#efaf30;'
+                >发分享券</button>
+            </view> 
+        </view>         
+    </view>
+</block>
+
+
+
+
+
+
+
+    <!-- <view class='mode'>
+        <label>普通模式</label>    
+    </view>
+    <view class='value'>
+        <view>核销点数</view>
+        <view>{{checkValue}}</view>
+    </view> -->
+
+
+
+    <!-- <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+        <view>赠送人点数</view>
+        <view>{{store.share_check_value}}（点）</view>
+    </view>
+    <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+        <view>获赠总人数</view>
+        <view>{{store.share_num}}（人）</view>
+    </view>
+    <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+        <view>每人点数</view>
+        <view>{{store.share_gift_value}}（点）</view>
+    </view>
+    <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+        <view>领取时间间隔</view>
+        <view>{{store.share_limit_time}}（天）</view>
+    </view>
+    <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
+        <view>有效期</view>
+        <view>{{store.share_valid_time}}（天）</view>
+    </view> -->

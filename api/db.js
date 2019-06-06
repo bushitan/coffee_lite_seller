@@ -111,21 +111,51 @@ class db {
         })
     }
 
-    // 扫码核销
-    scanSeller(storeData) {
+    // // 旧版本扫码核销
+    // scanSeller(storeData) {
+    //     return new Promise((resolve, reject) => {
+    //         var data = storeData
+    //         data['seller_uuid'] = wx.getStorageSync(API.UUID)
+    //         // API
+    //         this.base({
+    //             url: API.SCAN_SELLER,
+    //             data: data
+    //         }).then( res => {
+    //             return resolve(res.data)
+    //         })
+          
+    //     })
+    // }
+
+    /**
+     *  扫码核销
+     *  @param
+     *      url
+     *      customer_uuid
+     *      store_uuid 
+     */
+    scanSeller(url, customer_uuid, store_uuid) {
         return new Promise((resolve, reject) => {
-            var data = storeData
-            data['seller_uuid'] = wx.getStorageSync(API.UUID)
-            // API
             this.base({
-                url: API.SCAN_SELLER,
-                data: data
-            }).then( res => {
+                url: url,
+                data: {
+                    customer_uuid:customer_uuid, 
+                    store_uuid: store_uuid,
+                    seller_uuid: wx.getStorageSync(API.UUID)
+                }
+            }).then(res => {
+                var message = res.message
+                wx.showModal({
+                    title: message.title,
+                    content: message.content,
+                    showCancel: false,
+                })
                 return resolve(res.data)
             })
-          
+
         })
     }
+
 
 
     /**** 客户端 业务详情****/

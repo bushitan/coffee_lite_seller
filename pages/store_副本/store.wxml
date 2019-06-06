@@ -6,39 +6,10 @@
     summary="{{userInfo.uuid}}"
 ></wave>
 
-<view style='height:40px;'></view>
-<view class='summary'>{{store.summary}}</view>
-
-<!-- 积分模式 -->
-<view class='board_box' wx:if='{{store.mode == MODE_SCORE}}'> 
-    <board class="full" mode="score" isSpace="{{false}}" catch:score="addScore"></board>
-</view>
-<!-- 分享 -->
-<view class='board_box' wx:elif='{{store.mode == MODE_SHARE}}'>
-    <board class="full" mode="share" catch:share="addShare"></board>
-</view>
-<!-- 积分分享并行模式 -->
-<view class='board_box' wx:else>
-    <board class="half" mode="score" catch:score="addScore"></board>
-    <board class="half" mode="share" catch:share="addShare"></board>
-</view>
-
-
-
-<view style='padding:15px 15px;'>   
-    <button 
-        catchtap='addPrize' 
-        type='primary' 
-        style='background-color:#1d2a6d;'
-    >兑换</button>
-</view>
-
-
-
 
 <block wx:if="{{isSeller}}">
     <view style='height:40px;'></view>
-        <!-- <view class='store_info'>        
+        <view class='store_info'>        
             <view class='summary'>{{store.summary}}</view>
             <view class='mode'>
                 <label> {{store.mode == 1 ?"普通模式":"分享模式"}}</label>    
@@ -76,13 +47,12 @@
                 style='background-color:#1d2a6d;'
             >扫码</button>
         </view> 
-         -->
         <view style='height:10px;'></view>
         <view class="weui-panel weui-panel_access" >
             <view class="weui-panel__bd">
             
                 <view 
-                    wx:if="{{store.is_auto}}"
+                    wx:if="{{store.mode == 2 ?true:false}}"
                     class="weui-media-box weui-media-box_appmsg " 
                     hover-class="weui-cell_active" 
                     catchtap='toAutoShare'

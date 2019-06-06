@@ -99,28 +99,6 @@
     text-align: center;
 }
 
-
-/*******新增版本*****/
-
-.board_box{
-    display: flex;
-    justify-content: center;
-    /* justify-content: space-around; */
-}
-.half{
-    width: 375rpx;
-}
-.full{
-    width: 750rpx;
-}
-.summary{
-    text-align: center;
-    font-size: 15pt;
-    font-weight: bolder;
-    /* margin-bottom: 5px; */
-}
-
-
 /**菜单栏***/
 /* .weui-panel:before{display:none !important;} */
 .weui-media-box__title{
@@ -135,6 +113,3 @@
     line-height:42px;
 }
 .weui-panel:after{display:none !important;}
-
-
-
