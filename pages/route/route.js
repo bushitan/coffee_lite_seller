@@ -22,6 +22,7 @@ Page({
         wx.showLoading({
             title: '加载中...',
         }) 
+        
         GP.login(options)
     },    
 
@@ -37,15 +38,19 @@ Page({
             })
             wx.hideLoading()
             GP.checkHasAuth().then(isHasAuth => {
-                if (isHasAuth)
+                if (isHasAuth){
                     GP.nav()
-                else
-                    GP.setData({ isShowLogin:true})
+                }                    
+                else{
+                    GP.setData({ isShowLogin: true })
+                }
+                    
             })
         })
     },
 
     nav(){
+        // return
         var options = GP.data.options
         wx.redirectTo({
             url: `/pages/store/store`,
@@ -84,10 +89,4 @@ Page({
         }
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

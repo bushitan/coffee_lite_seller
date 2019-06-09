@@ -144,13 +144,13 @@ class db {
                     seller_uuid: wx.getStorageSync(API.UUID)
                 }
             }).then(res => {
-                var message = res.message
+                var message = res.data.message
                 wx.showModal({
                     title: message.title,
                     content: message.content,
                     showCancel: false,
                 })
-                return resolve(res.data)
+                return resolve(res.data.data)
             })
 
         })

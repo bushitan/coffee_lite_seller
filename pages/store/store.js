@@ -4,6 +4,7 @@ var GP
 var API = require('../../api/api.js')
 var DB = require('../../api/db.js')
 var db = new DB()
+var app = getApp()
 var interval
 
 Page({
@@ -87,7 +88,10 @@ Page({
     // 集点
     addScore() {
         GP.scanResult().then(scan => {
-            if (scan.model != "score") GP.scanErrorDialog("集点码")     
+            if (scan.model != "score"){ 
+                GP.scanErrorDialog("集点码")   
+                return
+            }   
             console.log('in addScore',scan.model, scan.customer_uuid, scan.store_uuid)
             db.scanSeller(API.SCAN_SCORE_SELLER,scan.customer_uuid,scan.store_uuid)
         })
@@ -97,7 +101,10 @@ Page({
     //TODO 判断是否扫码到分享券
     addShare() {
         GP.scanResult().then(scan => {
-            if (scan.model != "score") GP.scanErrorDialog("集点码")                
+            if (scan.model != "score") {
+                GP.scanErrorDialog("集点码")    
+                return
+            }            
             console.log('in addShare',scan.model, scan.customer_uuid, scan.store_uuid)
             db.scanSeller(API.SCAN_SHARE_SELLER,scan.customer_uuid,scan.store_uuid)
         })
@@ -106,7 +113,10 @@ Page({
     // 兑换礼物
     addPrize() {
         GP.scanResult().then(scan => {
-            if (scan.model != "prize") GP.scanErrorDialog("福利兑换码")   
+            if (scan.model != "prize") {
+                GP.scanErrorDialog("福利兑换码")
+                return
+            }  
             console.log('in addPrize',scan.model, scan.customer_uuid, scan.store_uuid)
             db.scanSeller(API.SCAN_PRIZE_SELLER,scan.customer_uuid,scan.store_uuid)
         })
@@ -199,6 +209,6 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return app.onShareAppMessage(res)
     }
 })
