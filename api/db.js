@@ -156,6 +156,20 @@ class db {
         })
     }
 
+    
+    storeAutoShareQR(){
+        
+        return new Promise((resolve, reject) => {
+            var data = {}
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            this.base({
+                url: API.STORE_AUTO_SHARE_QR_SELLER,
+                data: data
+            }).then(res => resolve(res.data.data))
+        })
+    }
+
+
 
 
     /**** 客户端 业务详情****/

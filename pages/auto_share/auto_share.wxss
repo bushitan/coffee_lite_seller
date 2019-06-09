@@ -10,4 +10,15 @@ page{
   z-index: 99;
 }
 
+.qr{
+    background-color: #ffffff;
+    padding: 0 30px;
+}
+.qr image{
+    width: 100%;
+}
+
+
+
 .weui-panel:after{display:none !important;}
+

@@ -14,6 +14,7 @@ var HOST = "https://www.51zfgx.com/dev/"
 var URL = HOST + "lite/"
 
 module.exports = {
+    URL_WXA_CODE_UNLIMIT: "https://www.51zfgx.com/wxacodeunlimit/",
     UUID: "uuid",
     USER_ID: "user_id",
     USER_INFO: "user_info",
@@ -33,6 +34,7 @@ module.exports = {
     STORE_UPDATE_SELLER: `${URL}store/update/seller/`,
     STORE_DATA_SELLER: `${URL}store/data/seller/`,
     STORE_HOST_DATA_SELLER: `${URL}store/host/data/seller/`,
+    STORE_AUTO_SHARE_QR_SELLER: `${URL}store/auto_share/qr/seller/`,
 
     SCAN_SCORE_SELLER: `${URL}scan/score/seller/`,
     SCAN_SHARE_SELLER: `${URL}scan/share/seller/`,

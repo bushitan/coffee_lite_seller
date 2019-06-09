@@ -3,8 +3,13 @@
 
 <view class="weui-cells__title">领券二维码（30秒自动更新）</view>
 <!-- <view>{{qrBase64}}</view> -->
+<view class='qr'>
+    <view>
+        <image src="{{qrContent}}"  mode='widthFix'></image>
+    </view>
+</view>
 
-<qrcode placeholder="{{qrBase64}}"></qrcode>
+<!-- <qrcode placeholder="{{qrBase64}}"></qrcode> -->
 
 
 
