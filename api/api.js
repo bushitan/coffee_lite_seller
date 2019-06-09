@@ -35,7 +35,9 @@ module.exports = {
     STORE_DATA_SELLER: `${URL}store/data/seller/`,
     STORE_HOST_DATA_SELLER: `${URL}store/host/data/seller/`,
     STORE_AUTO_SHARE_QR_SELLER: `${URL}store/auto_share/qr/seller/`,
-
+    SHARE_DELETE_SELLER: `${URL}share/delete/seller/`,
+    
+    SCAN_SELLER: `${URL}scan/seller/`,
     SCAN_SCORE_SELLER: `${URL}scan/score/seller/`,
     SCAN_SHARE_SELLER: `${URL}scan/share/seller/`,
     SCAN_PRIZE_SELLER: `${URL}scan/prize/seller/`,

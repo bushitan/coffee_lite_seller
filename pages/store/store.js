@@ -123,34 +123,34 @@ Page({
 
 
     // /*******旧版本扫码 */
-    // // 扫码
-    // scan(){
-    //     wx.scanCode({
-    //         success(res) {
-    //             var list = res.result.split(",")
-    //             var model = list[0]
-    //             var customer_uuid = list[1]
-    //             var store_uuid = list[2]
-    //             console.log(list)
-    //             GP.scanEvent(model, customer_uuid, store_uuid)
-    //         }
-    //     })
-    // },
-    // // 扫码事件
-    // scanEvent(model, customer_uuid, store_uuid) {
-    //     db.scanSeller({
-    //         model: model,
-    //         customer_uuid: customer_uuid,
-    //         store_uuid: store_uuid,
-    //     }).then(res => {
-    //         var message = res.message
-    //         wx.showModal({
-    //             title: message.title,
-    //             content: message.content,
-    //             showCancel:false,
-    //         })
-    //     })
-    // },
+    // 扫码
+    scan(){
+        wx.scanCode({
+            success(res) {
+                var list = res.result.split(",")
+                var model = list[0]
+                var customer_uuid = list[1]
+                var store_uuid = list[2]
+                console.log(list)
+                GP.scanEvent(model, customer_uuid, store_uuid)
+            }
+        })
+    },
+    // 扫码事件
+    scanEvent(model, customer_uuid, store_uuid) {
+        db.scanSellerOld({
+            model: model,
+            customer_uuid: customer_uuid,
+            store_uuid: store_uuid,
+        }).then(res => {
+            var message = res.message
+            wx.showModal({
+                title: message.title,
+                content: message.content,
+                showCancel:false,
+            })
+        })
+    },
 
 
     /***********路由************/

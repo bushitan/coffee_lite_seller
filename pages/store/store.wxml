@@ -69,14 +69,14 @@
             </view>
         </view>
 
-        <view style='padding:10px 40px;'>   
+        
+         --><view style='padding:10px 40px;'>   
             <button 
                 catchtap='scan' 
                 type='primary' 
                 style='background-color:#1d2a6d;'
             >扫码</button>
         </view> 
-         -->
         <view style='height:10px;'></view>
         <view class="weui-panel weui-panel_access" >
             <view class="weui-panel__bd">

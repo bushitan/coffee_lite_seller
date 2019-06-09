@@ -95,6 +95,19 @@ Page({
         GP.getLog()
     },
 
+    //  删除分享券
+    deleteShare(e) {
+        var share_uuid = e.currentTarget.dataset.share_uuid
+        db.shareDelete(share_uuid).then(dataList => {
+            wx.showModal({
+                title: res.message.title,
+                content: res.message.content,
+                showCancel: false,         
+            })
+        })
+    },
+
+
 
     /**
      * 用户点击右上角分享

@@ -112,20 +112,20 @@ class db {
     }
 
     // // 旧版本扫码核销
-    // scanSeller(storeData) {
-    //     return new Promise((resolve, reject) => {
-    //         var data = storeData
-    //         data['seller_uuid'] = wx.getStorageSync(API.UUID)
-    //         // API
-    //         this.base({
-    //             url: API.SCAN_SELLER,
-    //             data: data
-    //         }).then( res => {
-    //             return resolve(res.data)
-    //         })
+    scanSellerOld(storeData) {
+        return new Promise((resolve, reject) => {
+            var data = storeData
+            data['seller_uuid'] = wx.getStorageSync(API.UUID)
+            // API
+            this.base({
+                url: API.SCAN_SELLER,
+                data: data
+            }).then( res => {
+                return resolve(res.data)
+            })
           
-    //     })
-    // }
+        })
+    }
 
     /**
      *  扫码核销
@@ -188,6 +188,20 @@ class db {
         })
     }
 
+    // 删除分享券
+    shareDelete(share_uuid) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: API.SHARE_DELETE_SELLER,
+                data: {
+                    share_uuid: share_uuid,
+                }
+            }).then(res => {
+                return resolve(res.data.data)
+            })
+        })
+        
+    }
 
     // // 获取店铺列表
     // async storeList(){
