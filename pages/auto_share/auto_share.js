@@ -106,12 +106,13 @@ Page({
     //  删除分享券
     deleteShare(e) {
         var share_uuid = e.currentTarget.dataset.share_uuid
-        db.shareDelete(share_uuid).then(dataList => {
+        db.shareDelete(share_uuid).then(res => {
             wx.showModal({
                 title: res.message.title,
                 content: res.message.content,
                 showCancel: false,
             })
+            GP.getLog("share")
         })
     },
 

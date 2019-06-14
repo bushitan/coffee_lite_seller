@@ -92,7 +92,7 @@
                         <view class="weui-media-box__desc">仅在[分享模式]下显示</view>
                     </view>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
+                        <image class="weui-media-box__thumb" src="../../images/meun_auto.png" />
                     </view>
                 </view>
 
@@ -116,7 +116,7 @@
                         <view class="weui-media-box__desc">店主特权</view>
                     </view>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/menu_share.png" />
+                        <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
                     </view>
                 </view>
             </view>

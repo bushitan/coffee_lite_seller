@@ -39,12 +39,13 @@ App({
   
     // 基础的分享页面功能
     onShareAppMessage(res) {
+        res = res || {}
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log(res.target)
         }
         return {
-            title: res.title || '分享集点卡邀您集福利',
+            title: res.title || '欢迎进入分享集点卡商户端',
             path: res.path || '/pages/route/route',
             imageUrl: res.imageUrl || "../../images/icon_share_base_cup.png",
 

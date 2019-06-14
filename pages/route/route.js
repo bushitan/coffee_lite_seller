@@ -44,7 +44,6 @@ Page({
                 else{
                     GP.setData({ isShowLogin: true })
                 }
-                    
             })
         })
     },

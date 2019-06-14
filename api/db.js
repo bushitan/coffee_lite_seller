@@ -197,7 +197,7 @@ class db {
                     share_uuid: share_uuid,
                 }
             }).then(res => {
-                return resolve(res.data.data)
+                return resolve(res.data)
             })
         })
         
