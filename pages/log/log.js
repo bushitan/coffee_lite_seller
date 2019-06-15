@@ -104,10 +104,20 @@ Page({
                 content: res.message.content,
                 showCancel: false,         
             })
-            
+            GP.setDeleteStatus(share_uuid)
         })
     },
 
+    setDeleteStatus(share_uuid){
+        var detailList = GP.data.detailList
+        for (var i = 0; i < detailList.length;i++)
+            if (share_uuid == detailList[i].uuid)
+                detailList[i].is_delete = true
+            
+        GP.setData({
+            detailList: detailList
+        })
+    },
 
 
 })
