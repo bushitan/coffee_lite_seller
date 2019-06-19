@@ -6,127 +6,87 @@
     summary="{{userInfo.uuid}}"
 ></wave>
 
-<view style='height:40px;'></view>
-<view class='summary'>{{store.summary}}</view>
-
-<!-- 积分模式 -->
-<view class='board_box' wx:if='{{store.mode == MODE_SCORE}}'> 
-    <board class="full" mode="score" isSpace="{{false}}" catch:score="addScore"></board>
-</view>
-<!-- 分享 -->
-<view class='board_box' wx:elif='{{store.mode == MODE_SHARE}}'>
-    <board class="full" mode="share" catch:share="addShare"></board>
-</view>
-<!-- 积分分享并行模式 -->
-<view class='board_box' wx:else>
-    <board class="half" mode="score" catch:score="addScore"></board>
-    <board class="half" mode="share" catch:share="addShare"></board>
-</view>
-
-
-
-<view style='padding:15px 15px;'>   
-    <button 
-        catchtap='addPrize' 
-        type='primary' 
-        style='background-color:#1d2a6d;'
-    >兑换</button>
-</view>
+<!-- <view style='height:40px;'></view> -->
 
 
 
 
 <block wx:if="{{isSeller}}">
     <view style='height:40px;'></view>
-        <!-- <view class='store_info'>        
-            <view class='summary'>{{store.summary}}</view>
-            <view class='mode'>
-                <label> {{store.mode == 1 ?"普通模式":"分享模式"}}</label>    
-            </view>
-            <view class='value' wx:if="{{store.mode == 1 ?true:false}}">
-                <view>核销点数</view>
-                <view>{{store.check_value}}</view>
-            </view>
-            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>赠送人点数</view>
-                <view>{{store.share_check_value}}（点）</view>
-            </view>
-            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>获赠总人数</view>
-                <view>{{store.share_num}}（人）</view>
-            </view>
-            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>每人点数</view>
-                <view>{{store.share_gift_value}}（点）</view>
-            </view>
-            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>领取时间间隔</view>
-                <view>{{store.share_limit_time}}（天）</view>
-            </view>
-            <view class='value' wx:if="{{store.mode == 2 ?true:false}}">
-                <view>有效期</view>
-                <view>{{store.share_valid_time}}（天）</view>
-            </view>
-        </view>
-        <view style='padding:10px 40px;'>   
-            <button 
-                catchtap='scan' 
-                type='primary' 
-                style='background-color:#1d2a6d;'
-            >扫码</button>
-        
-        </view> 
-         -->
-        <view style='height:10px;'></view>
-        <view class="weui-panel weui-panel_access" >
-            <view class="weui-panel__bd">
-            
-                <view 
-                    wx:if="{{store.is_auto}}"
-                    class="weui-media-box weui-media-box_appmsg " 
-                    hover-class="weui-cell_active" 
-                    catchtap='toAutoShare'
-                >
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">自动分享二维码</view>
-                        <view class="weui-media-box__desc">仅在[分享模式]下显示</view>
-                    </view>
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/meun_auto.png" />
-                    </view>
-                </view>
+    <view class='summary'>{{store.summary}}</view>
 
-                <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toLog'>
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">数据查询</view>
-                        <view class="weui-media-box__desc">综合数据查询</view>
-                    </view>
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
-                    </view>
+    <!-- 积分模式 -->
+    <view class='board_box' wx:if='{{store.mode == MODE_SCORE}}'> 
+        <board class="full" mode="score" isSpace="{{false}}" catch:score="addScore"></board>
+    </view>
+    <!-- 分享 -->
+    <view class='board_box' wx:elif='{{store.mode == MODE_SHARE}}'>
+        <board class="full" mode="share" catch:share="addShare"></board>
+    </view>
+    <!-- 积分分享并行模式 -->
+    <view class='board_box' wx:else>
+        <board class="half" mode="score" catch:score="addScore"></board>
+        <board class="half" mode="share" catch:share="addShare"></board>
+    </view>
+    兑换按钮
+    <view style='padding:15px 15px;'>   
+        <button 
+            catchtap='addPrize' 
+            type='primary' 
+            style='background-color:#1d2a6d;'
+        >兑换</button>
+    </view>
+
+    <view style='height:10px;'></view>
+    <view class="weui-panel weui-panel_access" >
+        <view class="weui-panel__bd">
+        
+            <view 
+                wx:if="{{store.is_auto}}"
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" 
+                catchtap='toAutoShare'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">自动分享二维码</view>
+                    <view class="weui-media-box__desc">仅在[分享模式]下显示</view>
                 </view>
-                
-                <view 
-                    wx:if="{{isHost}}"
-                    class="weui-media-box weui-media-box_appmsg " 
-                    hover-class="weui-cell_active" catchtap='toHost'
-                >
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">门店信息修改</view>
-                        <view class="weui-media-box__desc">店主特权</view>
-                    </view>
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
-                    </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/meun_auto.png" />
+                </view>
+            </view>
+
+            <view class="weui-media-box weui-media-box_appmsg " hover-class="weui-cell_active" catchtap='toLog'>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">数据查询</view>
+                    <view class="weui-media-box__desc">综合数据查询</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/icon_cup.png" />
+                </view>
+            </view>
+            
+            <view 
+                wx:if="{{isHost}}"
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" catchtap='toHost'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">门店信息修改</view>
+                    <view class="weui-media-box__desc">店主特权</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
                 </view>
             </view>
         </view>
-        <view class="weui-loadmore weui-loadmore_line" >
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line" style='font-size:8pt;top:-1.2em'>
-                索骏科技提供服务
-            </view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" >
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line" style='font-size:8pt;top:-1.2em'>
+            索骏科技提供服务
         </view>
-    </block>
+    </view>
+</block>
 
     <block wx:else>
         <view class="page">
@@ -140,7 +100,7 @@
                 <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
             </view>
             <view style='height:20px;'></view>
-            <image src='../../images/cover.jpg' mode='widthFix'></image>
+            <image src='../../images/cover.jpg' mode='widthFix' style='width:750rpx;'></image>
         </view>    
     </block>
 
