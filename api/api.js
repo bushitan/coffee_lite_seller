@@ -22,6 +22,9 @@ module.exports = {
     OPEN_ID: "open_id",
     APP_ID: "app_id",
     UNION_ID: "union_id",
+    
+    ERROR_TEST: `${URL}error/test/`,
+
     ROUTE_USER_LOGIN: `${URL}route/user/login/`,
     ROUTE_USER_UPDATE: `${URL}route/user/update/`,
 

@@ -13,3 +13,7 @@
     <image src='../../images/icon_share_base_cup.png' mode='widthFix'></image>
     <view>欢迎登陆分享集点卡商户端</view>
 </view>
+
+
+
+  <!-- <button size='mini' type='primary'  open-type="getUserInfo" bindgetuserinfo="testGetUserInfo">登录测试</button> -->

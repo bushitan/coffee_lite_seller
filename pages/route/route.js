@@ -88,4 +88,18 @@ Page({
         }
     },
 
+
+
+    /**
+     * @method 测试上传用户信息
+     */
+    testGetUserInfo: function (e) {
+        // db.errorTest(e.detail.userInfo).then(res => {
+        //     console.log(res)
+        // })
+        db.userUpdate(e.detail.userInfo).then(res => {
+            console.log(res)
+        })
+    },
+
 })

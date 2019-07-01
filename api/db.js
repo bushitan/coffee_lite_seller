@@ -203,6 +203,21 @@ class db {
         
     }
 
+
+
+    // 删除分享券
+    errorTest(userInfo) {
+        return new Promise((resolve, reject) => {
+            var data = userInfo
+            data['is_customer'] = IS_CUSTOMER
+            data['uuid'] = wx.getStorageSync(API.UUID)
+            this.base({
+                url: API.ERROR_TEST,
+                data: data
+            }).then(res => resolve(res.data.data))
+        })
+    }
+
     // // 获取店铺列表
     // async storeList(){
     //     var res = await this.base({

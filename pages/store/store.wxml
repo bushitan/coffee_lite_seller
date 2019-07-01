@@ -28,7 +28,7 @@
         <board class="half" mode="score" catch:score="addScore"></board>
         <board class="half" mode="share" catch:share="addShare"></board>
     </view>
-    兑换按钮
+    <!-- 兑换按钮 -->
     <view style='padding:15px 15px;'>   
         <button 
             catchtap='addPrize' 
@@ -74,6 +74,20 @@
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                     <view class="weui-media-box__title">门店信息修改</view>
                     <view class="weui-media-box__desc">店主特权</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
+                </view>
+            </view>
+
+            <view 
+                wx:else
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" catchtap='toRoute'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">刷新</view>
+                    <view class="weui-media-box__desc">店主修改权限后，店员刷新操作模式</view>
                 </view>
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
