@@ -5,7 +5,6 @@ var API = require('../../api/api.js')
 var DB = require('../../api/db.js')
 var db = new DB()
 var app = getApp()
-var interval
 
 Page({
 
@@ -26,9 +25,8 @@ Page({
      */
     onLoad: function (options) {
         GP = this
-        GP.getAuth()
-        // GP.getStoreData(options)
-        // GP.interval()
+
+        // GP.getAuth()  // 暂时取消
     },
 
     // 获取权限信息
@@ -37,6 +35,14 @@ Page({
         var storeUUID = userInfo.store_uuid
         var isSeller = userInfo.store_uuid == '' ? false : true
         var isHost = userInfo.is_host
+        
+        // 不是销售
+        // if (isSeller == false){
+        //     wx.showModal({
+        //         title: '温馨提示',
+        //         content: '您还未成为授权商户，为保障数据安全，请联系管理员开通。',
+        //     })
+        // }
 
         db.storeInfo(storeUUID).then( store => {
             console.log(store)
@@ -52,6 +58,8 @@ Page({
             wx.setNavigationBarTitle({
                 title: title  + '商户版',
             })
+
+         
 
             
 
@@ -187,10 +195,19 @@ Page({
     },
 
     // 拨打客服号码
-    toRoute() {
-        wx.redirectTo({
-            url: '/pages/route/route',
-        })
+    toRoute(e) {
+
+        if (!this.logged && e.detail.userInfo) {
+            wx.showLoading({title: '检测中'})
+            db.userUpdate(e.detail.userInfo).then(res => {
+                // GP.nav()
+                wx.hideLoading()
+                wx.redirectTo({
+                    url: '/pages/route/route',
+                })
+            })
+        }
+
     },
 
     // 拨打客服号码

@@ -106,11 +106,17 @@
         <view class="page">
             <view class="page__hd">
                 <view class="page__title">您还未加入商户</view>
-                <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！</view>
+                <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！ </view> 
+                <view class="page__desc">若想更深入了解分享集点卡的<label class='mark'>外卖营销定制功能</label>，请下拉页面</view>
             </view>
-            <view style='padding:10px 40px;'>        
-                <button catchtap='toRoute' type='primary' style='background-color:#1d2a6d;'>重新认证</button>
-                <view style='height:20px;'></view>
+            <view style='' class='btn_area'>        
+                <button
+                    type='primary' 
+                    style='background-color:#1d2a6d;'
+                    open-type="getUserInfo" 
+                    bindgetuserinfo="toRoute"
+                >登陆认证</button>
+                <!-- <view style='height:20px;'></view> -->
                 <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
             </view>
             <view style='height:20px;'></view>

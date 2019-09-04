@@ -120,6 +120,19 @@
     /* margin-bottom: 5px; */
 }
 
+/**********按钮**********/
+.mark{
+    font-size: 14pt;
+    font-weight: bold;
+    color: #efaf30;
+}
+.btn_area{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px 10px;
+}
+
+
 
 /**菜单栏***/
 /* .weui-panel:before{display:none !important;} */

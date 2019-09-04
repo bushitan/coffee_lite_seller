@@ -37,14 +37,19 @@ Page({
                 options:options
             })
             wx.hideLoading()
-            GP.checkHasAuth().then(isHasAuth => {
-                if (isHasAuth){
-                    GP.nav()
-                }                    
-                else{
-                    GP.setData({ isShowLogin: true })
-                }
-            })
+
+            // 直接跳转store
+            GP.nav()
+            
+            // 取消登陆 
+            // GP.checkHasAuth().then(isHasAuth => {
+            //     if (isHasAuth){
+            //         GP.nav()
+            //     }                    
+            //     else{
+            //         GP.setData({ isShowLogin: true })
+            //     }
+            // })
         })
     },
 
