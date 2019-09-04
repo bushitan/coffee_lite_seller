@@ -26,7 +26,7 @@ Page({
     onLoad: function (options) {
         GP = this
 
-        // GP.getAuth()  // 暂时取消
+        GP.getAuth()  // 暂时取消
     },
 
     // 获取权限信息
