@@ -115,7 +115,7 @@
                     style='background-color:#1d2a6d;'
                     open-type="getUserInfo" 
                     bindgetuserinfo="toRoute"
-                >登陆认证</button>
+                >登录认证</button>
                 <!-- <view style='height:20px;'></view> -->
                 <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
             </view>
