@@ -34,19 +34,23 @@
 <!-- <view class="weui-cells__title">我的集点分享券</view> -->
 <view class="weui-panel weui-panel_access">
     <view class="weui-panel__bd">
-        <block wx:for="{{detailList}}">
+        <block wx:for="{{detailList}}" wx:key="index">
 
             <!-- 积分 -->
             <view class="weui-media-box weui-media-box_appmsg "  wx:if="{{showModel==0}}">
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="{{item.customer_avatar_url}}" />
-                </view>
+                </view> -->
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" >
-                    <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view>
+                    <!-- <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view>
                     <view class="weui-media-box__desc">是否使用：{{item.is_used=="true"?"是":"否"}}</view>
                     <view class="weui-media-box__desc">核销时间：{{item.create_time}}</view>
                     <view class="weui-media-box__desc">来源:{{item.share_id?"分享券":"普通核销"}}</view>    
-                    <view class="weui-media-box__desc">集点核销者:{{item.seller_nick_name}}</view>
+                    <view class="weui-media-box__desc">集点核销者:{{item.seller_nick_name}}</view> -->
+                    
+                    <view class="weui-media-box__title">{{index+1}}、用户SN:10{{item.customer_id}}</view>
+                    <view class="weui-media-box__desc">集点时间：{{item.create_time}}</view>   
+                    <!-- <view class="weui-media-box__desc">集点核销者:{{item.seller_nick_name}}</view> -->
                 </view>                
                 <!-- <view class="weui-cell__ft weui-cell__ft_in-access">
                     <button size='mini'>删除</button>
@@ -55,35 +59,37 @@
 
             <!-- 福利 -->
             <view class="weui-media-box weui-media-box_appmsg "  wx:elif="{{showModel==1}}">
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="{{item.customer_avatar_url}}" />
-                </view>
+                </view> -->
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" >
-                    <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view>
-                    <!-- <view class="weui-media-box__desc">是否使用：{{item.is_used=="true"?"是":"否"}}</view> -->
+                    <!-- <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view>  -->
+                    <view class="weui-media-box__title">{{index+1}}、用户SN:10{{item.customer_id}}</view>
                     <view class="weui-media-box__desc">兑换时间：{{item.create_time}}</view>
-                    <!-- <view class="weui-media-box__desc">来源:{{item.share_id?"分享券":"普通核销"}}</view>     -->
-                    <view class="weui-media-box__desc">兑换核销者:{{item.seller_nick_name}}</view>
+                    <view class="weui-media-box__desc">兑换核销者:{{item.seller_nick_name}}（SN:10{{item.seller_id}}）</view>
+                    <!-- <view class="weui-media-box__desc">兑换核销者</view> -->
+                    
                 </view>      
             </view>
 
             <!-- 分享券 -->
             <view class="weui-media-box weui-media-box_appmsg "  wx:else>
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="{{item.customer_avatar_url}}" />
-                </view>
+                </view> -->
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" >
-                    <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view>
-                    <view class="weui-media-box__desc">是否分享：{{item.receive_customer_id==null?"否":"是"}}</view>
-                    <view class="weui-media-box__desc" hidden="{{item.receive_customer_id==null}}">接受者名字:{{item.receive_customer_nick_name}}</view>  
+                    <!-- <view class="weui-media-box__title">{{item.customer_nick_name || "无名氏"}}</view> -->
+                    <view class="weui-media-box__title">{{index+1}}、用户SN:10{{item.customer_id}}</view>
+                    <view class="weui-media-box__desc">是否已经分享：{{item.receive_customer_id==null?"否":"是"}}</view>
+                    <view class="weui-media-box__desc" hidden="{{item.receive_customer_id==null}}">获赠者SN:10{{item.receive_customer_id}}</view>  
                     <view class="weui-media-box__desc">发放时间：{{item.create_time}}</view>  
                     <view class="weui-media-box__desc">分享核销者:{{item.seller_nick_name}}</view>
                 </view>                
-                <view class="weui-cell__ft weui-cell__ft_in-access">
+                <!-- <view class="weui-cell__ft weui-cell__ft_in-access">
                     <label wx:if="{{item.is_delete}}" style="color: red;" >已删除</label>
                     <button size='mini'  wx:else
                         catchtap='deleteShare' data-share_uuid="{{item.uuid}}">删除</button>
-                </view>
+                </view> -->
             </view>
 
         </block>

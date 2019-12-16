@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        menu: ['集点', '福利', '福利分享券'],
+        menu: ['集点', '兑换', '分享券'],
         isLoading: true,
         model:"score",
         newList:[], //新增加的数据
