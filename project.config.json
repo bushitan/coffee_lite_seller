@@ -38,6 +38,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 3,
 			"list": [
@@ -67,6 +71,12 @@
 					"name": "auto_share",
 					"pathName": "pages/auto_share/auto_share",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test_unit/test_unit",
+					"pathName": "pages/test_unit/test_unit",
 					"scene": null
 				}
 			]
