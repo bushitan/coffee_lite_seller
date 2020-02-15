@@ -41,15 +41,6 @@ Page({
             // 直接跳转store
             GP.nav()
             
-            // 取消登陆 
-            // GP.checkHasAuth().then(isHasAuth => {
-            //     if (isHasAuth){
-            //         GP.nav()
-            //     }                    
-            //     else{
-            //         GP.setData({ isShowLogin: true })
-            //     }
-            // })
         })
     },
 
@@ -59,14 +50,6 @@ Page({
         wx.redirectTo({
             url: `/pages/store/store`,
         })
-        // if (options.hasOwnProperty('store_uuid'))
-        //     wx.redirectTo({
-        //         url: `/pages/store/store?store_uuid=${options.store_uuid}`,
-        //     })
-        // else
-        //     wx.redirectTo({
-        //         url: `/pages/list/list`,
-        //     })
     },
 
 

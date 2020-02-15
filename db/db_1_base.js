@@ -1,9 +1,9 @@
 class dbBase {
 
-    APP_ID =  1 //"wxeb9623bdc85a64f4" //客户端
-    // APP_ID = "wx3e0f68d227f05241"  //商户端
+    // APP_ID =  2 //"wxeb9623bdc85a64f4" 客户端
+    APP_ID = 1  // "wx3e0f68d227f05241"
 
-    
+
 
     KEY_SESSION = "session"
     KEY_SN = "sn"
@@ -24,7 +24,7 @@ class dbBase {
     base(options) {
         return new Promise((resolve, reject) => {
             var data = options.data || {}
-            data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
+            // data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
 
 
             data['session'] =  wx.getStorageSync(this.KEY_SESSION)  
@@ -59,7 +59,7 @@ class dbBase {
     test(data){
         return new Promise((resolve, reject) => {
             this.base({
-                url: this.HOST_URL + "ajdm/MyGetInfo/",
+                url: this.HOST_URL + "/",
                 data:data,
                 method: "POST",
             }).then(res => {

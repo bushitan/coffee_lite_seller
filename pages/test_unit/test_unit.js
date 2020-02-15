@@ -31,13 +31,18 @@ Page({
     },
 
     async sys() {
-        app.db.sysLogin()
-        app.db.sysMyGetInfo()
-        app.db.sysMyUpdateInfo({
-            name: "name",
-            logo: "logo",
-            city: "city",
-        })
+        // app.db.sysLogin()
+        // app.db.sysMyGetInfo()
+        // app.db.sysMyUpdateInfo({
+        //     name: "nameSeller",
+        //     logo: "logoSeller",
+        //     city: "citySeller",
+        // })
+        // app.db.sysSellerCheckStoreOwner()
+        app.db.storeSellerGetData()
+        // app.db.storeSellerGetAllScoreList({ page: 1, limit:10})
+        // app.db.storeSellerGetAllScoreList({ page: 1, limit:10})
+        
     },
 
 

@@ -1,0 +1,72 @@
+<!--components/notic/notic.wxml-->
+
+<!-- <view class="self_name margin-top">{{name}}{{name}}{{name}}{{name}}</view>-->
+<!-- <view class="pg-space-10"></view> -->
+<view class="box">
+    <view class="zr">
+        <view class="water">
+            <view class="water-c">
+                <view class="water-1"> </view>
+                <view class="water-2"> </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="store_box margin-top">
+          
+    <view class="cu-card ">
+        <view class="cu-item   ">
+            <view class="border  " style="padding:0 0 20rpx;    ">
+                <view class="cu-bar   ">
+                    <view class="action">
+                    </view>
+                    <view class="action">
+                        <text class="cuIcon-qr_code  text-black text-xl "></text>
+                    </view>
+                </view>
+
+                <view class=" flex text-center text-grey  " >
+                    <view class="flex flex-sub flex-direction solid-right">
+                        <view class="text-xxl page-font-yellow">
+                            {{userInfo.allScoreNum}}
+                        </view>
+                        <view class="margin-top-sm page-flex-center text-sm">
+                            <image class="page-icon-lite" src="../../images/icon/score.png"></image>今日集点
+                        </view>
+                    </view>
+                    <view class="flex flex-sub flex-direction solid-right">
+                        <view class="text-xxl page-font-blue">{{userInfo.allPrizeNum}}</view>
+                        <view class="margin-top-sm page-flex-center  text-sm">            
+                            <image class="page-icon-normal " src="../../images/icon/prize_shou.png"></image>今日兑换
+                        </view>
+                    </view>
+                    <!-- <view class="flex flex-sub flex-direction">
+                        <view class="text-xxl text-grey">{{userInfo.allStoreNum}}</view>
+                        <view class="margin-top-sm page-flex-center text-sm">        
+                        <image class="page-icon-lite " src="../../images/icon/visitor.png"></image>
+                        展示店铺</view>
+                    </view> -->
+                </view>            
+            </view>
+           
+        </view>
+    </view>
+    <view></view>
+
+    <view class="user_box">
+        <view class="logo_box">
+            <!-- <image class="logo_image" src="{{logo}}"  mode="aspectFit"></image> -->
+            <open-data class="open-data logo_image"  type="userAvatarUrl" mode="aspectFit"></open-data>
+        </view> 
+        <view class=" user_name" style="height:74rpx" >
+            <view class="text-bold text-black text-xl">
+                {{userInfo.name}} 
+            </view>
+            <view class="text-grey text-xs">
+                (SN:{{sn}}) 
+            </view>
+        </view>
+    </view>
+</view>
+

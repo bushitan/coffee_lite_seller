@@ -1,0 +1,38 @@
+<!--components2/notice/notice.wxml-->
+
+<view class="cu-card padding">
+    <view class=" pg-radius bg-white shadow shadow-warp">
+        <view class="cu-bar bg-orange solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>
+                <text class="text-white">通知公告</text>
+            </view>
+            <view class="action">
+                <!-- <text class="cuIcon-title page-font-blue ">修改</text> -->
+                <button class="cu-btn bg-white text-orange  round" catchtap="toNoticeEdt" >编辑</button>
+            </view>
+        </view>
+        <view class="">
+            <view class="cu-list menu ">
+                <view class="cu-item ">
+                    <view class="content">
+                        <text class="text-orange text-bold text-df">通知内容</text>
+                    </view>
+                    <view class="action basis-xl">
+                        <text class=" text-grey text-df">硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局</text>
+                    </view>
+                </view>
+            </view>
+            <view class="cu-list menu ">
+                <view class="cu-item ">
+                    <view class="action">
+                        <text class="text-orange text-bold text-df">图片内容</text>
+                    </view>
+                    <view class="action">
+                        <text class=" text-grey text-df">3张</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

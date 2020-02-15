@@ -1,0 +1,5 @@
+/* pages2/self/self.wxss */
+
+page{
+    background-color: var(--white)
+}

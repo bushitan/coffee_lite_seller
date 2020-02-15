@@ -1,0 +1,5 @@
+/* pages2/stats_edt/stats_edt.wxss */
+
+page{
+    background-color: var(--ghostWhite)
+}

@@ -1,0 +1,68 @@
+<!--pages2/self/self.wxml-->
+
+
+<header sn="{{sn}}" userInfo="{{userInfo}}" ></header>
+
+    
+<view class="cu-card padding">
+    <view class=" pg-radius  shadow shadow-warp">
+        <view class="cu-bar bg-yellow solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>                
+                <text class="text-white">集点规则（普通模式）</text>
+            </view>
+            <view class="action">
+                <!-- <text class="cuIcon-title page-font-blue ">修改</text> -->
+                <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >修改</button>
+            </view>
+        </view>
+        <view class="">
+            <view class="cu-list menu ">
+                <view class="cu-item ">
+                    <view class="action">
+                        <text class="text-yellow text-bold text-df">活动标题</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-blue  text-bold text-df">外卖到店兑换,[卖8赠1]</text>
+                    </view>
+                </view>
+                <view class="cu-item ">
+                    <view class="action">
+                        <text class="text-yellow text-bold text-df">集点数</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-blue text-bold text-df">每次1点</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='flex align-center justify-around padding bg-white'>        
+            <button class="cu-btn round page-gb-yellow page-font-white" catchtap='toScoreQR' >
+            发放集点</button>
+
+            <button class="cu-btn round page-gb-blue page-font-white" catchtap='toExchangeQR'>
+              扫码兑换
+            </button>
+        </view>
+    </view>
+</view>
+
+
+<stats></stats>
+<notice></notice>
+<shop></shop>
+<employee></employee>
+
+
+<view class=" padding-xs flex align-center margin-top">
+    <view class="flex-sub text-center">
+        <view class=" text-df ">
+            <text class="text-grey">Copyright © 2019 索骏科技提供技术支持</text>
+        </view>           
+    </view>
+</view>
+<view class=" page-flex-center ">
+    <button class=" cu-btn round bg-darkGray text-grey "  type="" open-type="contact">小杯子客服</button>
+</view>
+
+<view class='page-bg-white page-space-60'></view>

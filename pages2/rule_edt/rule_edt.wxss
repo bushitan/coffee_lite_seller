@@ -1,0 +1,5 @@
+/* pages2/rule_edt/rule_edt.wxss */
+
+page{
+    background-color: var(--ghostWhite)
+}

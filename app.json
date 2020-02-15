@@ -1,11 +1,17 @@
 {
     "pages": [
+        "pages2/self/self",
+        "pages2/stats_edt/stats_edt",
+        "pages2/rule_edt/rule_edt",
+        "pages2/notice_edt/notice_edt",
+
+
         "pages/route/route",
         "pages/log/log",
         "pages/auto_share/auto_share",
         "pages/host/host",
         "pages/store/store",
-        "pages2/test_unit/test_unit"
+        "pages/test_unit/test_unit"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -13,6 +19,14 @@
         "navigationBarBackgroundColor": "#efaf30",
         "navigationBarTitleText": "分享集点卡商户版",
         "navigationBarTextStyle": "white"
+    },
+    "usingComponents": {
+        "cu-custom": "/components2/cu-custom/cu-custom",
+        "employee": "components2/employee/employee",
+        "header": "components2/header/header",
+        "notice": "components2/notice/notice",
+        "shop": "components2/shop/shop",
+        "stats": "components2/stats/stats"
     },
     "permission": {
         "scope.userLocation": {

@@ -1,0 +1,20 @@
+<!--pages2/rule_edt/rule_edt.wxml-->
+
+<cu-custom bgColor="yellow" isBack="{{true}}" bind:back="back">
+  <!-- <view slot="backText">返回</view> -->
+  <!-- <image slot="backText" class='page-icon-lite' src='../../images/icon/my.png'></image> -->
+  <view slot="content">规则编辑</view>
+</cu-custom>
+
+<view class="cu-form-group margin-top">
+    <view class="title">1、活动简介</view>
+    <input placeholder="请输入店铺名字" name="name" value="{{store.name}}" ></input>
+</view>
+<view class="cu-form-group margin-top">
+    <view class="title">2、兑换点数</view>
+    <input placeholder="请输入店铺名字" name="name" value="{{store.name}}" mode="digit" ></input>
+</view>
+
+<view class="margin-top padding-lg">
+    <button class="cu-btn block round bg-blue lg " catchtap="confirm">确认</button>
+</view>

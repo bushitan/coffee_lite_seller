@@ -1,0 +1,5 @@
+/* pages2/notice_edt/notice_edt.wxss */
+
+page{
+    background-color: var(--ghostWhite)
+}

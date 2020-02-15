@@ -74,7 +74,7 @@ class dbSystem extends dbFather {
     sysMyUpdateInfo(data) {
         return new Promise((resolve, reject) => {
             this.base({
-                url: this.HOST_URL + " /",
+                url: this.HOST_URL + "ajdm/MyUpdateInfo/",
                 data: data,
                 method: "POST",
             }).then(res => {
@@ -96,7 +96,7 @@ class dbSystem extends dbFather {
      *      isSeller:true,  //是否这个点的人员
             isHost:true,    //是否店主
      */
-    sysMyUpdateInfo(data) {
+    sysSellerCheckStoreOwner(data) {
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "ajdm/SellerCheckStoreOwner/",

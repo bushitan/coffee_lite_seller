@@ -1,0 +1,28 @@
+<!--components2/stats/stats.wxml-->
+
+
+<view class="cu-card padding">
+    <view class=" pg-radius bg-white shadow shadow-warp">
+        <view class="cu-bar bg-cyan solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>数据详情
+            </view>
+            <view class="action">
+                <button class="cu-btn bg-white text-cyan  round margin-right-sm" >店铺位置</button>
+                <button class="cu-btn bg-white text-cyan  round" catchtap="toStatsEdt">查询</button>
+            </view>
+        </view>
+        <view class="cu-bar bg-white ">
+            <map id="map" style="width: 100%; height: 400rpx;"
+                longitude="{{longitude}}" 
+                latitude="{{latitude}}" 
+                scale="12" 
+                markers="{{mapMarkers}}"  
+                circles="{{circles}}"
+                show-location="true"
+                >
+            </map>
+        </view>
+    </view>
+</view>
+
