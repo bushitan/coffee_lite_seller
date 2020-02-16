@@ -1,0 +1,96 @@
+<!--pages2/rule_edt/rule_edt.wxml-->
+
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+
+
+<view class="  margin-top text-bold text-yellow text-center">
+    海报模板
+</view>
+<view class="flex justify-center padding">
+     <image src="/images/2013/swiper.jpg" class="cover" mode="widthFix"></image>
+</view>
+
+<view class="cu-card padding" wx:for="{{list}}">
+    <view class=" pg-radius bg-white shadow shadow-warp">
+        <view class="cu-bar bg-yellow solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>
+                <text class="text-white">有效期至：{{item.endTime}}</text>
+            </view>
+            <view class="action">
+                <!-- <text class="cuIcon-title page-font-blue ">修改</text> -->
+                <button class="cu-btn bg-white text-yellow  round" catchtap="getCover" data-qr_url="{{item.qrUrl}}" >获取海报</button>
+            </view>
+        </view>
+        <view class="">
+            <view class="cu-list menu ">
+                <view class="cu-item ">
+                    <view class="action">
+                        <text class="text-yellow text-bold text-df">剩余点数</text>
+                    </view>
+                    <view class="action">
+                        <text class=" text-grey text-df">{{item.personNum}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class=" padding-xs flex align-center ">
+    <view class="flex-sub text-center">
+        <view class=" text-df ">
+            <text class="text-grey" wx:if="{{list.length == 0}}">暂无更多数据</text>
+            <text class="text-grey" wx:elif="{{isMore}}">加载中...</text>
+            <text class="text-grey" wx:else>暂无更多数据</text>
+        </view>           
+    </view>
+</view>
+<view class="page-space-60"></view>
+
+<view class='flex align-center justify-around padding bg-white page-bottom '>       
+
+    <button class="cu-btn round line-blue text-blue" catchtap='back'>
+        返回
+    </button> 
+    <button class="cu-btn round bg-yellow text-white" catchtap='switchDialog' >
+    添加海报</button>
+
+</view>
+
+<form bindsubmit="add">
+    <view class="cu-modal {{showDialog?'show':''}} ">
+        <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end">
+            <view class="content">填写海报内容</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+            </view>
+            <view class="padding-xl">                        
+                <view class="cu-form-group">
+                    <view class="title">发放人数</view>
+                    <input placeholder="请输入人数"   name="personNum"  mode="digit" class="text-right" ></input>
+                    <text class="text-df">人</text>
+                </view>                 
+                <view class="cu-form-group">
+                    <view class="title">每人领取（默认）</view>
+                    <input   value="1"  disabled="true" class="text-right"></input>
+                    <text class="text-df">点</text>
+                </view>          
+                <view class="cu-form-group">
+                    <view class="title">有效期（默认）</view>
+                    <input   value="24"  disabled="true" class="text-right"></input>
+                    <text class="text-df">小时</text>
+                </view>
+            </view>
+            <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn line-blue round  text-blue" catchtap="switchDialog">取消</button>
+                <button class="cu-btn bg-yellow round  text-white margin-left" form-type="submit">确定</button>
+
+            </view>
+            </view>
+        </view>
+    </view>
+</form>

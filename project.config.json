@@ -113,6 +113,19 @@
 					"pathName": "pages2/notice_edt/notice_edt",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages2/self/self",
+					"pathName": "pages2/self/self",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages2/cover_edt/cover_edt",
+					"pathName": "pages2/cover_edt/cover_edt",
+					"scene": null
 				}
 			]
 		}

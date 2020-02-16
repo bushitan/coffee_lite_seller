@@ -28,14 +28,13 @@ class dbSystem extends dbFather {
                         },
                         method: "POST",
                     }).then(res => {
-                        wx.setStorageSync(that.KEY_SESSION, res.data.data.session) //session
-                        wx.setStorageSync(that.KEY_SN, "10"+res.data.data.sn)  //序列号
-                        resolve(res)
+                        wx.setStorageSync(that.KEY_SESSION, res.data.session) //session
+                        wx.setStorageSync(that.KEY_SN, "10" + res.data.sn)  //序列号
+                        resolve(true)
                     })
-                    .catch(res => reject(res))
+                    .catch(res => reject(false))
                 },
             })
-            
         })
     }
 
@@ -57,7 +56,7 @@ class dbSystem extends dbFather {
                 method: "POST",
             }).then(res => {
                 console.log(res)
-                resolve(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
@@ -82,7 +81,7 @@ class dbSystem extends dbFather {
                     title: res.data.msg,
                 })
                 console.log(res)
-                resolve(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
@@ -96,14 +95,14 @@ class dbSystem extends dbFather {
      *      isSeller:true,  //是否这个点的人员
             isHost:true,    //是否店主
      */
-    sysSellerCheckStoreOwner(data) {
+    sysSellerCheckStoreOwner() {
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "ajdm/SellerCheckStoreOwner/",
                 method: "POST",
             }).then(res => {
-                console.log(res)
-                resolve(res)
+                // console.log(res.data)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }

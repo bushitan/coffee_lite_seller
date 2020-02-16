@@ -30,7 +30,15 @@
     width: 750rpx;
     height: 600rpx;
 }
-
+.page-bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.page-icon-sm { width:23px; height: 23px}
+.page-icon-df { width:32px; height: 32px}
+.page-icon-lg { width:48px; height: 48px}
 
 
 

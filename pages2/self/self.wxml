@@ -1,7 +1,7 @@
 <!--pages2/self/self.wxml-->
 
 
-<header sn="{{sn}}" userInfo="{{userInfo}}" ></header>
+<header score="{{daystats.totalScore}}"  prize="{{daystats.totalPrize}}"  userInfo="{{userInfo}}" ></header>
 
     
 <view class="cu-card padding">
@@ -9,12 +9,13 @@
         <view class="cu-bar bg-yellow solid-bottom ">
             <view class="action">
                 <text class="cuIcon-title text-white "></text>                
-                <text class="text-white">集点规则（普通模式）</text>
+                <text class="text-white">集点规则</text>         
+                <text class="text-white text-sm">（{{store.startTime}}至{{store.endTime}}）</text>
+               
             </view>
-            <view class="action">
-                <!-- <text class="cuIcon-title page-font-blue ">修改</text> -->
-                <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >修改</button>
-            </view>
+            <!-- <view class="action">
+                <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >查看</button>
+            </view> -->
         </view>
         <view class="">
             <view class="cu-list menu ">
@@ -23,15 +24,15 @@
                         <text class="text-yellow text-bold text-df">活动标题</text>
                     </view>
                     <view class="action">
-                        <text class="text-blue  text-bold text-df">外卖到店兑换,[卖8赠1]</text>
+                        <text class="text-blue  text-bold text-df">{{store.storeSummary}}</text>
                     </view>
                 </view>
                 <view class="cu-item ">
                     <view class="action">
-                        <text class="text-yellow text-bold text-df">集点数</text>
+                        <text class="text-yellow text-bold text-df">兑换点数</text>
                     </view>
                     <view class="action">
-                        <text class="text-blue text-bold text-df">每次1点</text>
+                        <text class="text-blue text-bold text-df">{{store.storeMinScore}} {{store.storeMaxScore == store.storeMinScore ? "":" - " + store.storeMaxScore }}</text>
                     </view>
                 </view>
             </view>
@@ -47,8 +48,11 @@
     </view>
 </view>
 
+<print></print>
 
+<cover></cover>
 <stats></stats>
+
 <notice></notice>
 <shop></shop>
 <employee></employee>

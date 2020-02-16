@@ -1,0 +1,9 @@
+/* pages2/rule_edt/rule_edt.wxss */
+
+page{
+    background-color: var(--ghostWhite)
+}
+
+.cover{
+    width:400rpx; height: 400rpx
+}

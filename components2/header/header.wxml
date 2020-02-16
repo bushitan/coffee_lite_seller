@@ -22,21 +22,21 @@
                     <view class="action">
                     </view>
                     <view class="action">
-                        <text class="cuIcon-qr_code  text-black text-xl "></text>
+                        <text class="cuIcon-qr_code  text-black text-xl " catchtap="toSelfQR"></text>
                     </view>
                 </view>
 
                 <view class=" flex text-center text-grey  " >
                     <view class="flex flex-sub flex-direction solid-right">
                         <view class="text-xxl page-font-yellow">
-                            {{userInfo.allScoreNum}}
+                            {{score}}
                         </view>
                         <view class="margin-top-sm page-flex-center text-sm">
                             <image class="page-icon-lite" src="../../images/icon/score.png"></image>今日集点
                         </view>
                     </view>
                     <view class="flex flex-sub flex-direction solid-right">
-                        <view class="text-xxl page-font-blue">{{userInfo.allPrizeNum}}</view>
+                        <view class="text-xxl page-font-blue">{{prize}}</view>
                         <view class="margin-top-sm page-flex-center  text-sm">            
                             <image class="page-icon-normal " src="../../images/icon/prize_shou.png"></image>今日兑换
                         </view>
@@ -60,11 +60,8 @@
             <open-data class="open-data logo_image"  type="userAvatarUrl" mode="aspectFit"></open-data>
         </view> 
         <view class=" user_name" style="height:74rpx" >
-            <view class="text-bold text-black text-xl">
-                {{userInfo.name}} 
-            </view>
-            <view class="text-grey text-xs">
-                (SN:{{sn}}) 
+            <view class="text-bold text-black text-xl margin-top-sm">
+                <open-data type="userNickName" ></open-data>                
             </view>
         </view>
     </view>

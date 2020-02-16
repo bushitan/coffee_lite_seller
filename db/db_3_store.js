@@ -9,47 +9,72 @@ class dbStore extends dbFather {
 
     }
     
+
+
     /**
-     * @method 1 用户登录
+     * @method 1 获取店铺数据
      * @param
      *      
      * @return 
      * 
      */
-    test(data) {
-        return new Promise((resolve, reject) => {
-            this.base({
-                url: this.HOST_URL + "api/lite/store/MyGetStoreInfo/",
-                data: data,
-                method: "POST",
-            }).then(res => {
-                console.log(res)
-                resolve(res)
-            }).catch(res => reject(res))
-        })
-    }
-
-
-    /**
-     * @method 1 用户登录
-     * @param
-     *      
-     * @return 
-     * 
-     */
-    storeSellerGetData(data) {
+    storeSellerGetData() {
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "api/lite/store/SellerGetData/",
-                data: data,
+                // data: data,
                 method: "POST",
             }).then(res => {
-                console.log(res)
-                resolve(res)
+                // console.log(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
 
+    /**
+     * @method 2 更新店铺信息
+     * @param
+     *      noticImageList
+            storeUUID
+            storeName
+            storeLogo
+            storeLoadImage
+            storeDes
+            storeShopUrl
+            startTime
+            endTime
+            longitude
+            latitude
+            coverLimitTime
+            coverLiveTime
+            coverLimitTimes
+            coverDefaultBgUrl
+            storeMaxScore
+            storeMinScore
+            session
+     * @return 
+     *      {}
+     * 
+     */
+    storeUpdateStoreInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/lite/store/SellerUpdateStore/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                if(res.code == 0 ){
+                    resolve(res.msg)
+                } else {
+                    wx.showModal({
+                        title: res.msg,
+                        showCancel:false,
+                    })
+                    resolve(false)
+                }
+                }).catch(res => reject(false))
+        })
+    }
 
 
     /**
@@ -68,7 +93,7 @@ class dbStore extends dbFather {
                 method: "POST",
             }).then(res => {
                 console.log(res)
-                resolve(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
@@ -91,7 +116,7 @@ class dbStore extends dbFather {
                 method: "POST",
             }).then(res => {
                 console.log(res)
-                resolve(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
@@ -125,11 +150,22 @@ class dbStore extends dbFather {
                 method: "POST",
             }).then(res => {
                 console.log(res)
-                resolve(res)
+                resolve(res.data)
             }).catch(res => reject(res))
         })
     }
 
+    storeDaystat(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/lite/store/daystat/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                resolve(res.data)
+            }).catch(res => reject(res))
+        })
+    }
 
     
 

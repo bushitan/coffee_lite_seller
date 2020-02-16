@@ -1,20 +1,47 @@
 <!--pages2/rule_edt/rule_edt.wxml-->
 
-<cu-custom bgColor="yellow" isBack="{{true}}" bind:back="back">
-  <!-- <view slot="backText">返回</view> -->
-  <!-- <image slot="backText" class='page-icon-lite' src='../../images/icon/my.png'></image> -->
+<!-- <cu-custom bgColor="yellow" isBack="{{true}}" bind:back="back">
   <view slot="content">规则编辑</view>
-</cu-custom>
+</cu-custom> -->
 
-<view class="cu-form-group margin-top">
-    <view class="title">1、活动简介</view>
-    <input placeholder="请输入店铺名字" name="name" value="{{store.name}}" ></input>
-</view>
-<view class="cu-form-group margin-top">
-    <view class="title">2、兑换点数</view>
-    <input placeholder="请输入店铺名字" name="name" value="{{store.name}}" mode="digit" ></input>
-</view>
+<!-- coverCollectScore: 0
+coverLimitTime: 0
+coverLiveTime: null
+defaultCoverBgImgUrl: null
+endTime: "2020-05-14 10:14:00"
+latitude: 22.84466
+longitude: 108.3094
+noticImageList: []
+noticeText: ""
+startTime: "2019-05-13 23:26:00"
+storeDes: ""
+storeID: 1
+storeLoadImage: null
+storeLogo: "../../images/icon_cup.png"
+storeMaxScore: 0
+storeMinScore: 6
+storeName: "丰丰的咖啡店"
+storeShopUrl: null
+storeSummary: "外卖到店兑换，[买6送1]" 
+storeUUID: "68e54718-7156-11e9-b456-e95aa2c51b5d" -->
 
-<view class="margin-top padding-lg">
-    <button class="cu-btn block round bg-blue lg " catchtap="confirm">确认</button>
-</view>
+<form bindsubmit="confirm"> 
+    <view class="text-center text-xl padding-sm text-bold margin-top">{{store.storeName}}</view>
+    <view class="text-center text-sm   ">（{{store.startTime}} 至 {{store.endTime}}）</view>
+
+    <view class="cu-form-group margin-top">
+        <view class="title">1、集点规则</view>
+        <view class="desc">{{store.storeSummary}}</view>
+        <!-- <input placeholder="请输入店铺名字" name="storeSummary" value="{{store.storeSummary}}" ></input> -->
+    </view>
+    <view class="cu-form-group ">
+        <view class="title">2、兑换条件</view>
+        <view class="desc">{{store.storeMinScore}}</view>
+        <!-- <input placeholder="输入兑换饮品所需点数（数字）" name="name" value="{{store.storeMinScore}}" mode="digit"  disabled="false"></input> -->
+    </view>
+    <view class="margin-top padding-lg">
+        <button class="cu-btn block round bg-blue lg " form-type="submit">确认</button>
+        <button class="cu-btn block round bg-grey lg margin-top" catchtap="back"> 返回</button>
+    </view>
+
+</form>

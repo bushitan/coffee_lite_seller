@@ -4,9 +4,13 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        sn: { // 属性名
-            type: String,
-            value: ''
+        score: { // 属性名
+            type: [Number, String],
+            value: 0
+        },
+        prize: { // 属性名
+            type: [Number, String],
+            value: 0
         },
         userInfo: { // 属性名
             type: Object,
@@ -59,6 +63,15 @@ Component({
                 urls: this.data.imgList,
                 current:e.currentTarget.dataset.url
             })
-        }
+        },
+
+        /**
+         * 路由 -- 打开二维码
+         */
+        toSelfQR(){
+            wx.navigateTo({
+                url: '/pages2/self_qr/self_qr',
+            })
+        },
     }
 })

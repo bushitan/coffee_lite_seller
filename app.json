@@ -1,12 +1,16 @@
 {
     "pages": [
+        
+        "pages/route/route",
         "pages2/self/self",
+        "pages2/self_qr/self_qr",     
         "pages2/stats_edt/stats_edt",
         "pages2/rule_edt/rule_edt",
         "pages2/notice_edt/notice_edt",
+        "pages2/cover_edt/cover_edt",
+        "pages2/cover_add/cover_add",
 
 
-        "pages/route/route",
         "pages/log/log",
         "pages/auto_share/auto_share",
         "pages/host/host",
@@ -21,10 +25,14 @@
         "navigationBarTextStyle": "white"
     },
     "usingComponents": {
-        "cu-custom": "/components2/cu-custom/cu-custom",
+        "cu-custom": "components2/cu-custom/cu-custom",
+        "cover": "components2/cover/cover",
         "employee": "components2/employee/employee",
         "header": "components2/header/header",
         "notice": "components2/notice/notice",
+        "qrcode": "components2/qrcode/qrcode",
+        "poster": "components2/poster/index",
+        "print": "components2/print/print",
         "shop": "components2/shop/shop",
         "stats": "components2/stats/stats"
     },

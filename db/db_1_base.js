@@ -1,7 +1,7 @@
 class dbBase {
 
-    // APP_ID =  2 //"wxeb9623bdc85a64f4" 客户端
-    APP_ID = 1  // "wx3e0f68d227f05241"
+    // APP_ID =  1 //"wxeb9623bdc85a64f4" 客户端
+    APP_ID = 2  // "wx3e0f68d227f05241" 商户端
 
 
 
@@ -14,7 +14,7 @@ class dbBase {
     KEY_APP_ID= "app_id"
     KEY_UNION_ID="union_id"
 
-    HOST_URL = "http://jdkapi.qskjad.top/" // 主机地址
+    HOST_URL = "https://jdkapi.qskjad.top/" // 主机地址
 
     constructor() {
 
@@ -36,7 +36,7 @@ class dbBase {
                 },
                 data: data,
                 success(res) {
-                    resolve(res)
+                    resolve(res.data)
                 },
                 fail(res) {
                     console.log("请求错误：" + options.url,res)

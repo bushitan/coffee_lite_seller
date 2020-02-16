@@ -1,0 +1,16 @@
+<!--components2/cover/cover.wxml-->
+
+
+<view class="cu-card padding">
+    <view class=" pg-radius bg-white shadow shadow-warp">
+        <view class="cu-bar bg-red solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>海报模式
+            </view>
+            <view class="action">
+                <button class="cu-btn bg-white text-red  round" catchtap="toCoverEdt">获取</button>
+            </view>
+        </view>
+     
+    </view>
+</view>
