@@ -1,4 +1,6 @@
 // pages2/notice_edt/notice_edt.js
+var app = getApp()
+var pre
 Page({
 
     /**
@@ -15,11 +17,65 @@ Page({
      */
     onLoad: function (options) {
 
+        this.onInit()
     },
 
+    
+    async onInit() {
+        pre = app.getPrePage()
+        this.setData({ store: pre.data.store })
+    },
+
+    async confirm(e){
+
+        var form = e.detail.value
+
+        var noticeImageList = []
+        for (var i = 0; i < this.data.imgList.length; i++) {
+            var filePath = this.data.imgList[i]
+            var isLocal = /^https:\/\/content.qskjad.top/.test(filePath)
+            if (isLocal) {
+                noticeImageList.push(filePath)
+            } else {
+                var url = await this.uploadImage(filePath)
+                noticeImageList.push(url)
+            }
+        }
+
+        console.log(noticeImageList)
+
+        // 
+
+        var data = {
+            noticeText: form.noticeText,
+            noticeImageList: noticeImageList.join(","),
+            storeUUID : pre.data.store.storeUUID
+        }
+        
+        var msg = await app.db.storeUpdateStoreInfo(data)
+        if (msg) {
+            wx.showModal({
+                title: msg,
+                showCancel: false,
+                success() {
+                    pre.onInit()
+                    wx.navigateBack({})
+                },
+            })
+        }
+    },
+
+    async uploadImage(filePath) {
+        var token = await app.db.baseQiniuToken()        
+        var key = "coffee/notice/" + pre.data.store.storeUUID + "_" + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
+        var url = await app.db.baseUploadQIniu(filePath,key,token)
+        return url
+    },
+
+
     back() {
-        wx.redirectTo({
-            url: '/pages2/self/self',
+        wx.navigateBack({
+            
         })
     },
 

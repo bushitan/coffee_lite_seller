@@ -1,3 +1,5 @@
+
+const qiniuUploader = require("../utils/qiniuUploader");
 class dbBase {
 
     // APP_ID =  1 //"wxeb9623bdc85a64f4" 客户端
@@ -68,6 +70,63 @@ class dbBase {
             }).catch(res => reject(res))
         })
     }
+
+
+    /**
+     * @method 2 获取token上传图片
+     * @param
+     *      
+     * @return 
+     * 
+     */
+    baseQiniuToken() {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/qiniu/token/",
+                // data: data,
+                method: "POST",
+            }).then(res => {
+                console.log(res)
+                resolve(res.token)
+            }).catch(res => reject(res))
+        })
+    }
+
+    baseUploadQIniu(filePath,key,token){
+        return new Promise((resolve,reject) => {
+            qiniuUploader.upload(filePath, (res) => {
+                console.log(res)
+                resolve(res.imageURL)
+                // that.setData({
+                //     'imageURL': res.imageURL,
+                // });
+                // console.log('file url is: ' + res.fileUrl);
+            }, (error) => {
+                console.log('error: ' + error);
+            }, {
+                    region: 'SCN',
+                    domain: 'https://content.qskjad.top', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
+                    key: key, // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+                    // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
+                    uptoken: token, // 由其他程序生成七牛 uptoken
+                },
+                // (res) => {
+
+                //     console.log(res)
+                //     resolve(res.imageURL)
+                // },
+                //  () => {
+                //     // 取消上传
+                // }, () => {
+                //     // `before` 上传前执行的操作
+                // }, (err) => {
+                //     // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+                // }
+                );
+        })
+    }
+
+
 
     // baseHost(options) {
     //     return new Promise((resolve, reject) => {

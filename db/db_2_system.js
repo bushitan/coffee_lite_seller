@@ -86,9 +86,6 @@ class dbSystem extends dbFather {
         })
     }
 
-
-
-
     /**
      * @method 商户端使用 验证所拥有的店铺
      * @return
@@ -106,6 +103,42 @@ class dbSystem extends dbFather {
             }).catch(res => reject(res))
         })
     }
+
+
+    /**
+     * @method 绑定员工
+     * @return
+     *      empSession:true,  //员工session
+     */
+    sysSellerBindEmployee(data){
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "ajdm/bindemp/",
+                data:data,
+                method: "POST",
+            }).then(res => {
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
+    /**
+     * @method 解除绑定员工
+     * @return
+     *      empUUID:true,  //员工uuid
+     */
+    sysSellerUnBindEmployee(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "ajdm/unbindemp/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
 }
 
 

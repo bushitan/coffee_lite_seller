@@ -19,7 +19,7 @@
                         <text class="text-orange text-bold text-df">通知内容</text>
                     </view>
                     <view class="action basis-xl">
-                        <text class=" text-grey text-df">硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局硅胶管就等死偶发及董事局</text>
+                        <text class=" text-grey text-df">{{text}}</text>
                     </view>
                 </view>
             </view>
@@ -29,7 +29,7 @@
                         <text class="text-orange text-bold text-df">图片内容</text>
                     </view>
                     <view class="action">
-                        <text class=" text-grey text-df">3张</text>
+                        <text class=" text-grey text-df">{{imageNum}}张</text>
                     </view>
                 </view>
             </view>

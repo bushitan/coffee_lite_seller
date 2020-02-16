@@ -3,8 +3,8 @@
 <view class="cu-card padding">
     <view class=" pg-radius bg-white shadow shadow-warp">
         <view class="cu-bar bg-brown solid-bottom ">
-            <view class="action">
-                <text class="cuIcon-title text-white "></text>员工管理（操作提示）
+            <view class="action" catchtap="onHelp">
+                <text class="cuIcon-title text-white " ></text>员工管理（操作提示）
             </view>
             <view class="action">
                 <button class="cu-btn bg-white text-brown  round" catchtap="addEmployee">新增</button>
@@ -14,16 +14,22 @@
             <view class="cu-list menu ">
                 <view class="cu-item " wx:for="{{list}}" wx:key="index">
                     <view class="action">
-                        <image src='{{item.logo}}' 
+                        <image src='{{item.avatar_url}}' 
                             class="cu-avatar radius bg-gray margin-right-xs"></image>
                         <text class="text-brown text-bold text-df">{{item.name}}</text>
                     </view>
                     <view class="action">
                         <!-- <text class=" text-grey text-df">3个</text> -->
-                        <button class="cu-btn round text-red" catchtap="deleteEmployee" data-uuid="{{item.employeeUUID}}"> 删除</button>
+                        <button class="cu-btn round text-red text-bold" catchtap="deleteEmployee" data-uuid="{{item.uuid}}"> 删除</button>
                     </view>
                 </view>
             </view>
         </view>
     </view>
 </view>
+
+<!-- avatar_url: "logoSeller"
+id: 1
+is_host: true
+name: "nameSeller"
+uuid: "1bb68822-7156-11e9-902f-e95aa2c51b5d" -->

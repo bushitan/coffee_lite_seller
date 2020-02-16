@@ -1,10 +1,5 @@
 <!--pages2/stats_edt/stats_edt.wxml-->
 
-<cu-custom bgColor="yellow" isBack="{{true}}" bind:back="back">
-  <!-- <view slot="backText">返回</view> -->
-  <!-- <image slot="backText" class='page-icon-lite' src='../../images/icon/my.png'></image> -->
-  <view slot="content">数据统计</view>
-</cu-custom>
 
 
 <scroll-view scroll-x class="bg-white nav">
@@ -77,80 +72,83 @@
     <view class="cu-bar bg-white search " >
         <view class="search-form round">
             <text class="cuIcon-search"></text>
-            <input type="text" placeholder="请输入顾客SN" confirm-type="search" bindinput="searchIcon"></input>
+            <input type="text" placeholder="请输入顾客SN" confirm-type="search" bindinput="inputSearchText" mode="digit"></input>
+            <text class="margin-right-lg" catchtap="search">搜索</text>
         </view>
     </view>
     
-    <view class="cu-list menu-avatar ">
-        <view class="cu-item bg-white">
-            <image src='{{userInfo.logo}}' class="cu-avatar radius bg-gray lg"></image>
-            <view class="content">
-                <view class="text-grey">
-                    <text class="text-cut">{{userInfo.name}} (SN:2005)</text>
-                </view>
-            </view>
-            <view class="action">
-                <text class="text-grey text-df"></text>
-            </view>
-        </view>
-    </view>
-        
-    <view class="cu-card padding">
-        <view class=" pg-radius bg-white shadow shadow-warp">
-            <view class="cu-bar bg-yellow solid-bottom ">
-                <view class="action">
-                    <text class="cuIcon-title text-white text-lg"></text>
-                    <text class="text-white text-lg">未使用集点</text>
-                </view>
-                <view class="action">
-                    <text class="text-white text-df">共计{{userScoreList.length}}点未使用</text>
-                </view>
-            </view>
-            <view class="">
-                <view class="cu-list menu ">
-                    <view class="cu-item " wx:for="{{userScoreList}}" wx:key="index">
-                        <view class="action">
-                            <text class="  text-df">{{item.name}}</text>
-                        </view>
-                        <view class="action">
-                            <text class="  text-df">{{item.createTime}}</text>                        
-                        </view>
+    <view wx:if="{{showCunstomer}}">
+        <view class="cu-list menu-avatar ">
+            <view class="cu-item bg-white">
+                <image src='{{userInfo.logo}}' class="cu-avatar radius bg-gray lg"></image>
+                <view class="content">
+                    <view class="text-grey">
+                        <text class="text-cut">{{userInfo.name}} (SN:2005)</text>
                     </view>
-                </view>
-            </view>
-        </view>
-    </view>
-    <view class="cu-card padding">
-        <view class=" pg-radius bg-white shadow shadow-warp">
-            <view class="cu-bar bg-blue solid-bottom ">
-                <view class="action">
-                    <text class="cuIcon-title text-white text-lg"></text>
-                    <text class="text-white text-lg">已兑换列表</text>
                 </view>
                 <view class="action">
                     <text class="text-grey text-df"></text>
                 </view>
             </view>
-            <view class="">
-                <view class="cu-list menu ">
-                    <view class="cu-item " wx:for="{{userPrizeList}}" wx:key="index">
-                        <view class="action">
-                            <text class="  text-df">{{item.name}}</text>
-                        </view>
-                        <view class="action">
-                            <text class="  text-df">{{item.createTime}}</text>                        
+        </view>
+            
+        <view class="cu-card padding">
+            <view class=" pg-radius bg-white shadow shadow-warp">
+                <view class="cu-bar bg-yellow solid-bottom ">
+                    <view class="action">
+                        <text class="cuIcon-title text-white text-lg"></text>
+                        <text class="text-white text-lg">未使用集点</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-white text-df">共计{{userScoreList.length}}点未使用</text>
+                    </view>
+                </view>
+                <view class="">
+                    <view class="cu-list menu ">
+                        <view class="cu-item " wx:for="{{userScoreList}}" wx:key="index">
+                            <view class="action">
+                                <text class="  text-df">{{item.name}}</text>
+                            </view>
+                            <view class="action">
+                                <text class="  text-df">{{item.createTime}}</text>                        
+                            </view>
                         </view>
                     </view>
                 </view>
             </view>
-        </view>                
-        <view class=" flex align-center margin-top">
+        </view>
+        <view class="cu-card padding">
+            <view class=" pg-radius bg-white shadow shadow-warp">
+                <view class="cu-bar bg-blue solid-bottom ">
+                    <view class="action">
+                        <text class="cuIcon-title text-white text-lg"></text>
+                        <text class="text-white text-lg">已兑换列表</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-df"></text>
+                    </view>
+                </view>
+                <view class="">
+                    <view class="cu-list menu ">
+                        <view class="cu-item " wx:for="{{userPrizeList}}" wx:key="index">
+                            <view class="action">
+                                <text class="  text-df">{{item.name}}</text>
+                            </view>
+                            <view class="action">
+                                <text class="  text-df">{{item.createTime}}</text>                        
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>    
+        </view>            
+        <!-- <view class=" flex align-center margin-top">
             <view class="flex-sub text-center">
                 <view class=" text-df ">
                     <text class="text-blue">{{ userPrizeList.length < userPrizeCount ? "加载更多":"数据加载完毕"}}</text>
                 </view>           
             </view>
-        </view>
+        </view> -->
     </view>
 
 </view>

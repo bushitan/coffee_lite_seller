@@ -6,23 +6,23 @@
     <view class=" pg-radius bg-white shadow shadow-warp">
         <view class="cu-bar bg-olive solid-bottom ">
             <view class="action">
-                <text class="cuIcon-title text-white "></text>门店
+                <text class="cuIcon-title text-white "></text>门店数据（3个）
             </view>
-            <!-- <view class="action">
-                <button class="cu-btn bg-white text-olive  round" >新增</button>
-            </view> -->
-        </view>
-        <view class="">
-            <view class="cu-list menu ">
-                <view class="cu-item ">
-                    <view class="action">
-                        <text class="text-olive text-bold text-df">展示数量</text>
-                    </view>
-                    <view class="action">
-                        <text class=" text-grey text-df">3个</text>
-                    </view>
-                </view>
+            <view class="action">
+                <button class="cu-btn text-olive  bg-white round " >店铺位置</button>
+                <!-- <button class="cu-btn bg-white text-olive  round" >3个门店</button> -->
             </view>
+        </view>  
+        <view class="cu-bar bg-white ">
+            <map id="map" style="width: 100%; height: 400rpx;"
+                longitude="{{longitude}}" 
+                latitude="{{latitude}}" 
+                scale="12" 
+                markers="{{mapMarkers}}"  
+                circles="{{circles}}"
+                show-location="true"
+                >
+            </map>
         </view>
     </view>
 </view>

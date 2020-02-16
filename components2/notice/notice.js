@@ -4,7 +4,14 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+        text:{
+            type:String,
+            value:"",
+        },
+        imageNum: {
+            type: Number,
+            value: 0,
+        }
     },
 
     options: {
@@ -24,7 +31,7 @@ Component({
 
         toNoticeEdt() {
 
-            wx.redirectTo({
+            wx.navigateTo({
                 url: '/pages2/notice_edt/notice_edt',
             })
         },

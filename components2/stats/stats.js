@@ -25,7 +25,7 @@ Component({
     methods: {
         toStatsEdt(){
 
-            wx.redirectTo({
+            wx.navigateTo({
                 url: '/pages2/stats_edt/stats_edt',
             })
         },

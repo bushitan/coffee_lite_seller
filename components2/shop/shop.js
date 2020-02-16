@@ -14,6 +14,8 @@ Component({
      */
     data: {
 
+        longitude: 108.32754,
+        latitude: 22.81521,
     },
 
     /**

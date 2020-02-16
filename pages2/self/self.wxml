@@ -13,9 +13,9 @@
                 <text class="text-white text-sm">（{{store.startTime}}至{{store.endTime}}）</text>
                
             </view>
-            <!-- <view class="action">
+            <view class="action">
                 <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >查看</button>
-            </view> -->
+            </view>
         </view>
         <view class="">
             <view class="cu-list menu ">
@@ -50,11 +50,11 @@
 
 <print></print>
 
-<cover></cover>
+<cover ></cover>
 <stats></stats>
+<shop address="{{store.addressList}}"></shop>
 
-<notice></notice>
-<shop></shop>
+<notice text="{{store.noticeText}}" imageNum="{{store.noticeImageList.length}}"></notice>
 <employee></employee>
 
 

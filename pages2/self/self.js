@@ -1,4 +1,4 @@
-// pages2/self/self.js
+ // pages2/self/self.js
 var app = getApp()
 Page({
 

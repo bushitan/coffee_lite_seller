@@ -155,10 +155,19 @@ class dbStore extends dbFather {
         })
     }
 
+    /**
+     * @method 每日统计
+      * @param
+            storeUUID:""
+     * @return
+     *      totalPrize: 0
+            totalScore: 0  
+            scoreList:[{ longitude:23, latitude:108, createTime:"" }]
+     */
     storeDaystat(data) {
         return new Promise((resolve, reject) => {
             this.base({
-                url: this.HOST_URL + "api/lite/store/daystat/",
+                url: this.HOST_URL + "api/lite/store/sellerdaystat/",
                 data: data,
                 method: "POST",
             }).then(res => {
@@ -167,7 +176,76 @@ class dbStore extends dbFather {
         })
     }
 
-    
+    // /**
+    //   * @method 集点统计
+    //   * @param
+    //         storeUUID:""
+    //   * @return
+    //         "totalScore": 0,
+    //         "totalPrize": 0,
+    //         "totalMonthScore": 0,
+    //         "totalMonthPrize": 0,
+    //         "totalYearScore": 0,
+    //         "totalYearPrize": 0
+    //   */
+    // storeStat(data) {
+    //     return new Promise((resolve, reject) => {
+    //         this.base({
+    //             url: this.HOST_URL + "api/lite/store/stat/",
+    //             data: data,
+    //             method: "POST",
+    //         }).then(res => {
+    //             resolve(res.data)
+    //         }).catch(res => reject(res))
+    //     })
+    // }
+
+    /**
+  * @method 兑换统计
+  * @param
+        storeUUID:""
+  * @return
+  *     "totalDateWmScore": 0,
+        "totalDateShareScore": 0,
+        "totalDateCoverScore": 0,
+        "totalDateFaceScore": 0,
+        "totalMonthWmScore": 0,
+        "totalMonthShareScore": 0,
+        "totalMonthCoverScore": 0,
+        "totalMonthFaceScore": 0,
+        "totalPrize": 0,
+        "totalMonthPrize": 0,
+        "totalYearPrize": 0
+  */
+    storeStatcate(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/lite/store/sellerstatcate/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                resolve(res.data)
+            }).catch(res => reject(res))
+        })
+    }
+
+
+    /**
+     * @method 兑换统计
+    * @param
+    * @return
+    */
+    storeQueryStoreSeller(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/lite/store/queryStoreSeller/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                resolve(res.data)
+            }).catch(res => reject(res))
+        })
+    }
 
 }
 
