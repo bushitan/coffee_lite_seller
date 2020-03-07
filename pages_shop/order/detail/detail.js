@@ -1,4 +1,5 @@
 // pages_shop/order/order.js
+var app = getApp()
 Page({
 
     /**
@@ -19,55 +20,24 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            orderID: options.orderID || ""
+        })
+        this.onInit()
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    async onInit() {
+        // var order = await this.db.orderGen()
+        var res = await app.db.orderGetDetail({
+            OrderId: this.data.orderID
+        })
+        this.setData({
+            order: res.data
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    // 取消订单
+    clickCancle(){
+        console.log("取消订单")
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

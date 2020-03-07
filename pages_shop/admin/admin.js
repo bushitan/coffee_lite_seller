@@ -15,16 +15,16 @@ Page({
         TabCur: 0,
         SortMenu: [
             { id: 0, name: "未接单", status: app.db.ORDER_STATUS_PENDING },
-            { id: 1, name: "今日处理中", status: app.db.ORDER_STATUS_PENDING },
-            { id: 2, name: "今日已完成", status: app.db.ORDER_STATUS_PENDING }, 
+            { id: 1, name: "今日处理中", status: app.db.ORDER_STATUS_PROCESSING },
+            { id: 2, name: "今日已完成", status: app.db.ORDER_STATUS_COMPLETE }, 
             // { id: 2, name: "退款" }, 
             // { id: 3, name: "全部订单" },
             // { id: 4, name: "自助下单" },
         ],
-        STATUS_PENDINGL:0,
-        STATUS_ACCESS:1,
-        STATUS_REFUND: 2,
-        STATUS_ALL: 3,
+        // STATUS_PENDINGL:0,
+        // STATUS_ACCESS:1,
+        // STATUS_REFUND: 2,
+        // STATUS_ALL: 3,
 
         status: app.db.ORDER_STATUS_PENDING,
 
@@ -73,8 +73,6 @@ Page({
         })
     },
 
-
-
     // 检测是否有权限
     async checkPower(){
         var isPwoer = true
@@ -83,33 +81,6 @@ Page({
         })
         return isPwoer
     },
-
-    // // 获取待处理订单
-    // async getPendingOrderList(status){
-    //     var res = await app.db.orderGetList({
-    //         Page: this.data.page,
-    //         Limit: this.data.limit,
-    //         Status: app.db.ORDER_STATUS_PENDING,
-    //     })
-    //     this.setData({
-    //         list: res.data,
-    //         preList:res.data
-    //     })
-
-    //     wx.setStorageSync('list', res.data)
-    // },  
-    // // 获取已经订单
-    // async getDoneOrderList(status) {
-    //     var res = await app.db.orderGetList({
-    //         Page: this.data.page,
-    //         Limit: this.data.limit,
-    //         Status: app.db.ORDER_STATUS_PENDING,
-    //     })
-    //     this.setData({
-    //         doneList:res.data
-    //     })
-    // },
-
     
     /**
      * @method 点击选项卡
@@ -148,9 +119,10 @@ Page({
         })
     },
     // 查看订单详情
-    toOrderDetail() {
+    toOrderDetail(e) {
+        var orderID = e.currentTarget.dataset.order_id
         wx.navigateTo({
-            url: '/pages_shop/order/detail/detail',
+            url: '/pages_shop/order/detail/detail?orderID=' + orderID,
         })
     },
     // 查询订单

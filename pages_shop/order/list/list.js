@@ -10,17 +10,13 @@ Page({
 
         TabCur: 0,
         SortMenu: [
-            { id: 0, name: "未接单" }, 
-            { id: 1, name: "已接单" }, 
-            { id: 2, name: "退款" }, 
-            { id: 3, name: "全部订单" },
+            { id: 0, name: "未接单", status: app.db.ORDER_STATUS_PENDING}, 
+            { id: 1, name: "已接单", status: app.db.ORDER_STATUS_PROCESSING },
+            { id: 2, name: "已完成", status: app.db.ORDER_STATUS_COMPLETE },
+            { id: 3, name: "已取消", status: app.db.ORDER_STATUS_CANCEL }, 
+            { id: 4, name: "全部订单", status: ""},
             // { id: 4, name: "自助下单" },
         ],
-        STATUS_PENDINGL:0,
-        STATUS_ACCESS:1,
-        STATUS_REFUND: 2,
-        STATUS_ALL: 3,
-
         status: app.db.ORDER_STATUS_PENDING,
 
         page: 1,
@@ -42,8 +38,6 @@ Page({
         // debugger
         if( this.checkPower() == false )
             return
-
-
         app.db.listInit(this)
         this.getOrderList(app.db.PAYMENT_STATUS_REFUND ) // 初始化订单列表
     },
@@ -76,7 +70,10 @@ Page({
         var id = e.currentTarget.dataset.tab_id
         this.setData({
             TabCur: id,
+            status: this.data.SortMenu[id].status
         })
+
+        app.db.listInit(this)
         this.getOrderList() // 重新请求				
     },
 
@@ -101,5 +98,10 @@ Page({
             url: '/pages_shop/order/detail/detail',
         })
 
+    },
+
+    onReachBottom(){
+        console.log(11)
+        this.getOrderList()
     },
 })

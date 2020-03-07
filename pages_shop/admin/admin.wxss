@@ -4,5 +4,3 @@ page{
     background-color: #f1f1f1;
     position: relative
 }
-
-.cu-item:after{border: none !important;}

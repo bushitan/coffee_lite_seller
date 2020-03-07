@@ -197,3 +197,8 @@ input {
     line-height:42px;
 }
 .weui-panel:after{display:none !important;}
+
+
+
+
+.cu-item:after{border: none !important;}

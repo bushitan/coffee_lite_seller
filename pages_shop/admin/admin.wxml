@@ -35,8 +35,8 @@
                     <text class="text-white text-sm">ID:{{order.id}}（{{order.pick_up_in_store?"到店自取":"外卖"}}）</text>       
                 </view>
                 <view class="action">
-                    <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="catchOrder" wx:if="{{TabCur==STATUS_PENDINGL}}" >一键接单</button> 
-                    <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" >详情</button>
+                    <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="catchOrder" wx:if="{{TabCur==0}}" >一键接单</button> 
+                    <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button>
                 </view>
             </view>
             <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom">

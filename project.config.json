@@ -157,9 +157,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 14,
 					"name": "pages_shop/order/detail/detail 订单详情",
 					"pathName": "pages_shop/order/detail/detail",
+					"query": "orderID=34",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/order/list/list 订单列表",
+					"pathName": "pages_shop/order/list/list",
+					"query": "",
 					"scene": null
 				}
 			]

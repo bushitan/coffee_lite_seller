@@ -1,18 +1,43 @@
 <!--pages_shop/order/order.wxml-->
 <view class="">	
 		<!--状态栏区域-->			
-		<view class="text-xl text-bold flex flex-start align-center padding">			
-			<text>{{order.order_status}} | </text>
-			<text>{{order.shipping_status}} | </text>
-			<text>{{order.payment_status}}</text>
-			<view class="pg-arrow"></view>
+		<view class="text-xl text-bold flex justify-between align-center padding">
+            <view>
+                <text>订单ID：{{order.id}}</text>
+            </view>				
+            <button class="cu-btn round line-yellow" catchtap="clickCancle">取消订单</button>
 		</view>
 		
+		
+		<view class="cu-card padding-lr ">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+                <view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">订单状态</text>      
+					</view>
+					<view class="action">                    
+                        <!-- <button class="cu-btn round line-yellow">取消订单</button> -->
+                        {{order.order_status}} 
+					</view>
+				</view>
+                <view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">支付状态</text>      
+					</view>
+					<view class="action">     
+                        <view class=" text-sm">{{order.payment_status}}</view>
+					</view>
+				</view>
+            </view>
+        </view>
+            
 <!-- 		<view class="cu-card padding-lr ">
 			<view class=" bg-white pg-radius  shadow shadow-warp">
 				<view class="cu-bar  solid-bottom ">
 					<view class="action">
-						<text class="cuIcon-title text-red "></text>                
+						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">配送地图</text>      
 					</view>
 					<view class="action">
@@ -32,7 +57,7 @@
 			<view class=" bg-white pg-radius  shadow shadow-warp">
 				<view class="cu-bar  solid-bottom ">
 					<view class="action">
-						<text class="cuIcon-title text-red "></text>                
+						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">{{order.pickup_address}}</text>      
 					</view>
 					<view class="action">
@@ -41,9 +66,9 @@
 					</view>
 				</view>
 				<view class="cu-list menu ">
-					<view class="cu-item margin-tb-sm" v-for="(item,key) in order.order_items">
+					<view class="cu-item margin-tb-sm" wx:for="{{ order.order_items}}">
 						<view class="action">
-							<image :src='item.product.images[0]' 
+							<image src='{{item.product.images[0]}}' 
 								class="cu-avatar radius lg  bg-gray margin-right-sm " 
 								style="width:60px;height:60px"
 								></image>
@@ -51,7 +76,14 @@
 						<view class="content">
 							<view class="text-black   text">{{item.product.name}}</view>
 							<view class="text-gray   text-sm">{{item.attr_desc}}</view>
-							<view class="text-gray   text-sm">x{{item.quantity}}</view>
+							<view class="text-gray   text-sm">数量：{{item.quantity}} </view>
+							<view class="text-gray   text-sm">
+                                单价：<text class="text-price"></text>{{item.product.price}}  
+                            </view>
+							<view class="text-gray  text-sm">
+                                包装费：<text class="text-price"></text>{{item.product.price}} 
+                            </view>
+
 						</view>
 						<view class="action">
 							<text class="text-price"></text>{{item.product.price}}
@@ -77,12 +109,12 @@
 				</view>
 				
 				<view class="cu-list menu ">
-					<view class="cu-item ">
+					<!-- <view class="cu-item ">
 						<view class="action">包装费</view>
 						<view class="action">
 							<text class="text-price"></text>4
 						</view>
-					</view>
+					</view> -->
 					<view class="cu-item ">
 						<view class="action">配送费</view>
 						<view class="action">
@@ -94,8 +126,8 @@
 					<view class="action"></view>
 					<view class="action">						
 						<text class="text-gray  text-sm ">已优惠</text>						
-						<text class="text-price text-sm text-red "></text>
-						<text class="  text-sm text-red margin-right">{{order.order_discount}}</text>
+						<text class="text-price text-sm text-yellow "></text>
+						<text class="  text-sm text-yellow margin-right">{{order.order_discount}}</text>
 						
 						<text class="text-gray  text-sm margin-right-xs">合计</text>						
 						<text class=" text-xl text-black text-bold text-price"></text>
@@ -110,7 +142,7 @@
 			<view class=" bg-white pg-radius  shadow shadow-warp">
 				<view class="cu-bar  solid-bottom ">
 					<view class="action">
-						<text class="cuIcon-title text-red "></text>                
+						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">配送信息</text>      
 					</view>
 					<view class="action">
@@ -119,7 +151,7 @@
 					</view>
 				</view>
 				
-				<view class="cu-list menu " v-if="order.pick_up_in_store">
+				<view class="cu-list menu " v-if="{{order.pick_up_in_store}}">
 					<view class="cu-item ">
 						<view class="content">
 							<text class="text-gray text-sm">堂食</text>
@@ -180,7 +212,7 @@
 			<view class=" bg-white pg-radius  shadow shadow-warp">
 				<view class="cu-bar  solid-bottom ">
 					<view class="action">
-						<text class="cuIcon-title text-red "></text>                
+						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">订单信息</text>      
 					</view>
 				</view>
@@ -211,10 +243,10 @@
 					</view>
 					<view class="cu-item ">
 						<view class="content">
-							<text class="text-gray text-sm">用餐人数</text>
+							<text class="text-gray text-sm">备注信息</text>
 						</view>
 						<view class="action ">
-							<view class="text-black text-sm">2人</view>
+							<view class="text-black text-sm">{{order.checkout_attribute_description}}</view>
 						</view>
 					</view>
 				</view>				
@@ -223,7 +255,7 @@
 		
 		
 		<view class=" padding-xs flex  align-center margin-top justify-center">
-			<text class="text-center  text-gray">{{order?"信息加载完毕":"信息加载中"}}</text>		
+			<text class="text-center  text-gray text-sm">{{order?"信息加载完毕":"信息加载中"}}</text>		
 		</view>
 		<view class="pg-space-xxl"></view>		
 		

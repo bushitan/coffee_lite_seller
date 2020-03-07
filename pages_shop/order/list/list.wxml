@@ -12,18 +12,18 @@
             wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect"     >
                     <view style="  position: relative" >
                         {{item.name}}
-                        <view class="cu-tag badge" style="top:2px; right:-10px" hidden="{{index == SortMenu.length-1}}">99+</view>
+                        <!-- <view class="cu-tag badge" style="top:2px; right:-10px" hidden="{{index == SortMenu.length-1}}">99+</view> -->
                     </view>
             </view>
         </view>
     </scroll-view>
 
-    <view class=" padding-xs flex  align-center  justify-center">
+    <view class=" margin-top flex  align-center  justify-center">
         <text class="text-center text-sm  text-gray">默认顺丰专送</text>		
     </view>
 
 
-    <view class="cu-card padding-lr margin-top " wx:for="{{list}}">
+    <!-- <view class="cu-card padding-lr margin-top " wx:for="{{list}}">
         <view class="text-blue  text-sm"><text class="cuIcon-title "></text>(2019-2-2 12:45:10)</view>
         <view class=" pg-radius  shadow shadow-warp ">
             <view class="cu-bar bg-blue solid-bottom ">
@@ -31,10 +31,8 @@
                     <text class="text-white text-sm">ID:104（到店自取）</text>       
                 </view>
                 <view class="action">
-                    <!-- <text class="text-sm "></text> -->
                     <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="catchOrder" wx:if="{{TabCur==STATUS_PENDINGL}}" >一键接单</button> 
                     <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" >详情</button>
-                    <!-- <view class="pg-arrow-sm"></view> -->
                 </view>
             </view>
             <view class="padding-tb-xs padding-lr bg-white solid-bottom">
@@ -44,6 +42,67 @@
                 <view class="text-black  text-sm">韦丰（15577889971）</view>
                 <view class="text-black  text-sm">南宁市友爱北路26号</view>
             </view>
+        </view>
+    </view> -->
+    
+    <view class="cu-card padding-lr margin-top " wx:for="{{list}}" wx:for-item="order" wx:for-index="orderIndex">
+        <view class="text-blue  text-sm"><text class="cuIcon-title "></text>{{order.created_on_utc}}</view>
+        <view class=" pg-radius  shadow shadow-warp ">
+            <view class="cu-bar bg-blue solid-bottom ">
+                <view class="action">                                
+                    <text class="text-white text-sm">ID:{{order.id}}（{{order.pick_up_in_store?"到店自取":"外卖"}}）</text>       
+                </view>
+                <view class="action">
+                    <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="catchOrder" wx:if="{{TabCur==STATUS_PENDINGL}}" >一键接单</button> 
+                    <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button>
+                </view>
+            </view>
+            <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom">
+                <view class=" ">
+                    <text class="text-bold text-yellow" wx:if="{{!order.pick_up_in_store}}">到店自取</text>
+                    <text class="text-bold text-red" wx:else>外卖</text>
+                </view>
+                <view class="text-black  text-sm text-right">
+                    <view>韦丰（15577889971）</view>
+                    <view wx:if="{{order.pick_up_in_store==false}}">{{order.pickup_address}}</view>                    
+                </view>
+            </view>
+            <!-- <view class="padding-tb-xs padding-lr bg-white solid-bottom">            
+            </view> -->
+
+            <view class="cu-list menu bg-white solid-bottom">
+                <view class="cu-item margin-tb-sm" 
+                    wx:for="{{order.order_items}}" wx:for-item="item"  wx:for-index="itemIndex">
+                    <view class="action">
+                        <image src='{{item.product.images[0]}}' 
+                            class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                            style="width:42px;height:42px"
+                            mode="aspectFill"
+                            ></image>
+                    </view>
+                    <view class="content ">
+                        <view class="text-black text-left text-sm">{{item.product.name}}</view>
+                        <view class="text-gray  text-left text-sm ">{{item.attr_desc}}</view>
+                        <view class="flex justify-between">
+                            <view class="text-gray "></view>
+                            <view class="text-gray  flex justify-between align-center">			
+                                <text class="padding-lr-xs text-sm">数量：{{item.quantity}}</text>		
+                            </view>
+                        </view>
+                    </view>
+                </view>					
+            </view>
+
+            <view class="cu-bar   bg-white ">
+                <view class="action"></view>
+                <view class="action">						                    
+                    <text class="text-gray  text-sm margin-right-xs">订单支付</text>						
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">{{order.order_total}}</text>
+                </view>
+            </view>	
+        
+
         </view>
     </view>
 

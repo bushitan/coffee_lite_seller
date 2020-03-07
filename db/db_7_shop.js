@@ -126,9 +126,9 @@ class dbStats extends dbFather {
 			AppId
 			Session
 	 */
-    orderItemGet(data) {
+    orderGetDetail(data) {
         return new Promise((resolve, reject) => {
-            this.orderRequest({ url: this.WM_URL + "api/orders/getitems/", data: data, method: "GET" }).then(res => { resolve(rea) }).catch(res => reject(res))
+            this.orderRequest({ url: this.WM_URL + "api/orders/getdetail/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
 	/**
