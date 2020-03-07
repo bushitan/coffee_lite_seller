@@ -32,8 +32,8 @@ Page({
         //    app.db.storeDaystat({storeUUID:this.data.store.storeUUID}).then(daystats =>{
         //        this.setData({daystats: daystats})
         //    })
-        // }
-
+        // }    
+        console.log(getCurrentPages())
     },
 
     // 初始化
@@ -59,6 +59,22 @@ Page({
         console.log(res)
     },
 
+    /**
+     * 扫码 -- 发放集点
+     */
+    async scanScore() {
+        app.db.sellerScanScore({
+            customerUUID : "",
+            storeId : "",
+            timestamp : "",
+        })
+     },
+    /**
+     * 扫码 -- 兑换
+     */
+    scanScore() {
+
+     },
 
     /*****路由*****/
     toRule(){

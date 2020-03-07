@@ -1,0 +1,230 @@
+<!--pages_shop/order/order.wxml-->
+<view class="">	
+		<!--状态栏区域-->			
+		<view class="text-xl text-bold flex flex-start align-center padding">			
+			<text>{{order.order_status}} | </text>
+			<text>{{order.shipping_status}} | </text>
+			<text>{{order.payment_status}}</text>
+			<view class="pg-arrow"></view>
+		</view>
+		
+<!-- 		<view class="cu-card padding-lr ">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-red "></text>                
+						<text class="text-black text-sm">配送地图</text>      
+					</view>
+					<view class="action">
+						<text class="text-gray  text-sm">预计还有30分钟到达</text>
+					</view>
+				</view>				
+				<view>
+					<map
+						style="width: 100%; height:400rpx">
+						
+					</map>
+				</view>
+			</view>
+		</view> -->
+		
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-red "></text>                
+						<text class="text-black text-sm">{{order.pickup_address}}</text>      
+					</view>
+					<view class="action">
+						<text class="text-gray  text-sm">{{order.pick_up_in_store?"堂食":"外卖"}}</text>
+						<!-- <view class="pg-arrow-sm"></view> -->
+					</view>
+				</view>
+				<view class="cu-list menu ">
+					<view class="cu-item margin-tb-sm" v-for="(item,key) in order.order_items">
+						<view class="action">
+							<image :src='item.product.images[0]' 
+								class="cu-avatar radius lg  bg-gray margin-right-sm " 
+								style="width:60px;height:60px"
+								></image>
+						</view>
+						<view class="content">
+							<view class="text-black   text">{{item.product.name}}</view>
+							<view class="text-gray   text-sm">{{item.attr_desc}}</view>
+							<view class="text-gray   text-sm">x{{item.quantity}}</view>
+						</view>
+						<view class="action">
+							<text class="text-price"></text>{{item.product.price}}
+						</view>
+					</view>
+				
+				<!-- 	<view class="cu-item margin-tb-sm">
+						<view class="action">
+							<image src='/static/images/strong/swiper.jpg' 
+								class="cu-avatar radius lg  bg-gray margin-right-sm " 
+								style="width:60px;height:60px"
+								></image>
+						</view>
+						<view class="content">
+							<view class="text-black   text">挂耳包</view>
+							<view class="text-gray   text-sm"> </view>
+							<view class="text-gray   text-sm">x1</view>
+						</view>
+						<view class="action">
+							<text class="text-price"></text>4
+						</view>
+					</view> -->
+				</view>
+				
+				<view class="cu-list menu ">
+					<view class="cu-item ">
+						<view class="action">包装费</view>
+						<view class="action">
+							<text class="text-price"></text>4
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="action">配送费</view>
+						<view class="action">
+							<text class="text-price"></text>0
+						</view>
+					</view>
+				</view>
+				<view class="cu-bar  solid-bottom ">
+					<view class="action"></view>
+					<view class="action">						
+						<text class="text-gray  text-sm ">已优惠</text>						
+						<text class="text-price text-sm text-red "></text>
+						<text class="  text-sm text-red margin-right">{{order.order_discount}}</text>
+						
+						<text class="text-gray  text-sm margin-right-xs">合计</text>						
+						<text class=" text-xl text-black text-bold text-price"></text>
+						<text class=" text-xl text-black text-bold">{{order.order_total}}</text>
+					</view>
+				</view>					
+			</view>
+		</view>
+		
+		
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-red "></text>                
+						<text class="text-black text-sm">配送信息</text>      
+					</view>
+					<view class="action">
+						<!-- <text class="text-gray  text-sm">全部</text>
+						<view class="pg-arrow-sm"></view> -->
+					</view>
+				</view>
+				
+				<view class="cu-list menu " v-if="order.pick_up_in_store">
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">堂食</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">自取</view>
+						</view>
+					</view>
+				</view>
+				<view class="cu-list menu " v-else>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">配送服务</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">顺风专送</view>
+						</view>
+					</view>
+					<!-- <view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">配送骑手</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">风风风</view>
+						</view>
+					</view> -->
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">配送地址</text>
+						</view>
+						<view class="action text-right basis-lg">
+							<view class="text-black text-sm">{{order.ship_address.addr_detail}}</view>
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">联系人</text>
+						</view>
+						<view class="action text-right basis-lg">
+							<view class="text-black text-sm ">
+								{{order.ship_address.name }}
+								{{order.ship_address.PhoneNumber}}
+							</view>
+						</view>
+					</view>
+					<view class="cu-item solid-top">
+						<view class="content text-center text-bold text-black text-lg" >
+							<text class="cuIcon-phone "></text>
+							<text class="">致电骑手</text>
+						</view>
+					</view>
+				</view>				
+			</view>
+		</view>
+		
+		
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-red "></text>                
+						<text class="text-black text-sm">订单信息</text>      
+					</view>
+				</view>
+				<view class="cu-list menu ">
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">订单号码</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">{{order.id}}</view>
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">下单时间</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">{{order.created_on_utc}}</view>
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">支付方式</text>
+						</view>
+						<view class="action ">
+							<view class="text-black text-sm">{{order.payment_method_systemName}}</view>
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">用餐人数</text>
+						</view>
+						<view class="action ">
+							<view class="text-black text-sm">2人</view>
+						</view>
+					</view>
+				</view>				
+			</view>
+		</view>
+		
+		
+		<view class=" padding-xs flex  align-center margin-top justify-center">
+			<text class="text-center  text-gray">{{order?"信息加载完毕":"信息加载中"}}</text>		
+		</view>
+		<view class="pg-space-xxl"></view>		
+		
+	</view>

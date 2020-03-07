@@ -74,11 +74,10 @@ class dbSeller extends dbFather {
      *      customerUUID :""
      *      storeId :""
      *      timestamp :""
-     *      customerUUID :""
      * @return 
      *      []
      */
-    customerScanQrCode(data) {
+    sellerScanScore(data) {
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "api/QrCode/SellerScanScore/",
@@ -102,7 +101,7 @@ class dbSeller extends dbFather {
      * @return 
      *      []
      */
-    customerScanQrCode(data) {
+    sellerScanPrize(data) {
         return new Promise((resolve, reject) => {
             this.base({
                 url: this.HOST_URL + "api/QrCode/SellerScanPrize/",

@@ -27,8 +27,6 @@ class dbBase {
         return new Promise((resolve, reject) => {
             var data = options.data || {}
             // data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
-
-
             data['session'] =  wx.getStorageSync(this.KEY_SESSION)  
             wx.request({
                 url: options.url,
@@ -125,6 +123,50 @@ class dbBase {
                 );
         })
     }
+
+
+
+    /********瀑布流模块*********/
+    checkIsMore(page, limit, count) {
+        // 版本2
+        if (count < limit)
+            return false
+        else
+            return true
+    }
+	/**
+	 * @method 初始化瀑布流
+	 */
+    listInit(self) {
+        self.setData({
+            page: 1,
+            limit: 20,
+            lock: false,
+            isMore: true,
+            list: [],
+        })
+    }
+	/**
+	 * @method 更新
+	 */
+    listUpdate(self, res) {
+        // debugger
+        var page = self.data.page
+        var limit = self.data.limit
+        // var count = res.count || res.data.length
+        var count = res.data.length
+        var oldList = self.data.list
+        var newList = res.data
+
+        var isMore = this.checkIsMore(page, limit, count)
+        self.setData({
+            page: self.data.page + 1,
+            lock: false,
+            list: oldList.concat(newList),
+            isMore: isMore,
+        })
+    }
+
 
 
 

@@ -38,10 +38,10 @@
             </view>
         </view>
         <view class='flex align-center justify-around padding bg-white'>        
-            <button class="cu-btn round page-gb-yellow page-font-white" catchtap='toScoreQR' >
+            <button class="cu-btn round page-gb-yellow page-font-white" catchtap='scanScore' >
             发放集点</button>
 
-            <button class="cu-btn round page-gb-blue page-font-white" catchtap='toExchangeQR'>
+            <button class="cu-btn round page-gb-blue page-font-white" catchtap='scanPrize'>
               扫码兑换
             </button>
         </view>

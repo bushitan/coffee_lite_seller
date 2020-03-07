@@ -125,6 +125,41 @@
 					"id": -1,
 					"name": "pages2/cover_edt/cover_edt",
 					"pathName": "pages2/cover_edt/cover_edt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/admin/admin 商城后台",
+					"pathName": "pages_shop/admin/admin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages_shop/order_add/order_add 自助下单 ",
+					"pathName": "pages_shop/order/add/add",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/local/local 自助下单",
+					"pathName": "pages_shop/local/local",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/order/address/address 填写地址",
+					"pathName": "pages_shop/order/address/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/order/detail/detail 订单详情",
+					"pathName": "pages_shop/order/detail/detail",
 					"scene": null
 				}
 			]

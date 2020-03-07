@@ -33,7 +33,7 @@ Page({
         // var form = e.detail.value
         var form = {}
         form.storeMinScore = 7
-        form.storeManScore = 6
+        form.storeMaxScore = 6
         form.storeUUID = this.data.store.storeUUID
         var msg = await app.db.storeUpdateStoreInfo(form)
         if (msg){

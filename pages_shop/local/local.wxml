@@ -1,0 +1,40 @@
+<!--pages_shop/admin/admin.wxml-->
+
+<view class="cu-bar  justify-end">
+    <view class="content text-bold">快递自助下单</view>
+    <!-- <view class="action" catchtap="close">
+        <text class="cuIcon-close text-red"></text>
+    </view> -->
+</view>
+
+
+<view class="cu-card padding-lr margin-bottom " wx:for="{{list}}">
+    <view class="text-blue  text-sm"><text class="cuIcon-title "></text>(2019-2-2 12:45:10)</view>
+    <view class=" pg-radius  shadow shadow-warp ">
+        <view class="cu-bar bg-blue solid-bottom ">
+            <view class="action">                                
+                <text class="text-white text-sm">ID:104（顺风专送）</text>       
+            </view>
+            <view class="action">
+                 <button class="cu-btn bg-white text-blue round text-sm" catchtap="toRule" >详情</button>
+            </view>
+        </view>
+        <view class="padding-tb-xs padding-lr bg-white solid-bottom">
+            <text class="text-black  text-sm">美式*5，拿铁*3</text>
+        </view>
+        <view class="padding-tb-xs padding-lr bg-white flex justify-between">
+            <view class="text-black  text-sm">韦丰（15577889971）</view>
+            <view class="text-black  text-sm">南宁市友爱北路26号</view>
+        </view>
+    </view>
+</view>
+
+<view class=" padding-xs flex  align-center margin-top justify-center">
+    <text class="text-center text-sm  text-gray">{{ isMore?"加载中..":"暂无更多订单"}}</text>		
+</view>
+
+<view class="padding bg-white" style="position:fixed; bottom:0;left:0;right:0;"  >
+    <button class="cu-btn text-white bg-yellow round  block" catchtap="orderAdd" >自助下单</button>
+</view>
+
+<view class="pg-space-xxl"></view>

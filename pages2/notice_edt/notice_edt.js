@@ -23,7 +23,10 @@ Page({
     
     async onInit() {
         pre = app.getPrePage()
-        this.setData({ store: pre.data.store })
+        this.setData({ 
+            store: pre.data.store,
+            imgList:pre.data.store.noticeImageList
+        })
     },
 
     async confirm(e){

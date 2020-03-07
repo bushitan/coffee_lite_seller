@@ -8,7 +8,7 @@ Page({
      */
     data: {
 
-        TabCur: 1,
+        TabCur: 0,
         scrollLeft: 0,
         tabber:["数据统计","顾客查询"],
 

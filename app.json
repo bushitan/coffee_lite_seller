@@ -1,20 +1,25 @@
 {
     "pages": [
-        
         "pages/route/route",
         "pages2/self/self",
-        "pages2/self_qr/self_qr",     
+        "pages2/self_qr/self_qr",
         "pages2/stats_edt/stats_edt",
         "pages2/rule_edt/rule_edt",
         "pages2/notice_edt/notice_edt",
         "pages2/cover_edt/cover_edt",
-
-
         "pages/log/log",
         "pages/auto_share/auto_share",
         "pages/host/host",
         "pages/store/store",
-        "pages/test_unit/test_unit"
+        "pages/test_unit/test_unit",
+        
+        "pages_shop/admin/admin",
+        "pages_shop/local/local",
+        "pages_shop/order/detail/detail",
+        "pages_shop/order/add/add",
+        "pages_shop/order/address/address",
+        "pages_shop/order/list/list",
+        "pages_shop/stats/stats"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -22,6 +27,26 @@
         "navigationBarBackgroundColor": "#efaf30",
         "navigationBarTitleText": "分享集点卡商户版",
         "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "color": "#bfbfbf",
+        "selectedColor": "#efaf30",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages2/self/self",
+                "iconPath": "/images/icon/prize_un.png",
+                "selectedIconPath": "/images/icon/prize.png",
+                "text": "集点卡"
+            },
+            {
+                "pagePath": "pages_shop/admin/admin",
+                "iconPath": "/images/icon/score_un.png",
+                "selectedIconPath": "/images/icon/score.png",
+                "text": "点单管理"
+            }
+        ]
     },
     "usingComponents": {
         "cu-custom": "components2/cu-custom/cu-custom",

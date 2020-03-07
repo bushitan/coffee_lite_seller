@@ -1,0 +1,5 @@
+/* pages_shop/order/adress/adress.wxss */
+page{
+    background-color: #f1f1f1;
+    position: relative
+}

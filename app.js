@@ -49,3 +49,11 @@ App({
         }
     },
 })
+
+    // ,
+    // {
+    //     "pagePath": "pages_shop/local/local",
+    //     "iconPath": "/images/icon/score_un.png",
+    //     "selectedIconPath": "/images/icon/score.png",
+    //     "text": "自助下单"
+    // }

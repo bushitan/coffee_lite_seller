@@ -38,9 +38,12 @@ Page({
         * @method 登陆验证
         */
     success(options) {
-        wx.redirectTo({
+        wx.switchTab({
             url: `/pages2/self/self`,
         })
+        // ({
+        //     url: `/pages2/self/self`,
+        // })
     },
  
 
