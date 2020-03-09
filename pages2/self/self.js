@@ -19,6 +19,11 @@ Page({
             allStoreNum: 1,
         },
 
+        // 默认经纬度
+        longitude: 108.32754,
+        latitude: 22.81521,
+        mapMarkers:[],
+
     },
 
     /**
@@ -59,30 +64,75 @@ Page({
         console.log(res)
     },
 
+
+    /***************二维码扫描**************/
     /**
-     * 扫码 -- 发放集点
+     * 扫码 -- 1 发放集点
      */
-    async scanScore() {
-        app.db.sellerScanScore({
-            customerUUID : "",
-            storeId : "",
-            timestamp : "",
+    scanScore(e) {
+        var that = this
+        wx.scanCode({
+            success(res) {
+                var list = res.result.split(",")
+                var model = list[0] || ""
+                var customerUUID = list[1] || ""
+                var storeID = list[2] || ""
+                var timestamp = list[3] || ""
+                if (model != "score") {  // 验证是否积分码
+                    wx.showModal({title: '您扫的不是集点码',showCancel: false,}); return; 
+                }                
+                if (storeID != that.data.store.storeID) {  // 验证store_uuid是否当前店铺
+                    wx.showModal({ title: '您扫的不是本店铺的二维码', showCancel: false, }); return                 
+                }
+                app.db.sellerScanScore({
+                    customerUUID: customerUUID,
+                    storeId: storeID,
+                    timestamp: timestamp,
+                })
+            }
         })
      },
-    /**
-     * 扫码 -- 兑换
-     */
-    scanScore() {
 
-     },
+    /**
+     * 扫码 -- 2 兑换
+     */
+    scanPrize() {
+        var that = this
+        wx.scanCode({
+            success(res) {
+                var list = res.result.split(",")
+                var model = list[0] || ""
+                var customerUUID = list[1] || ""
+                var storeID = list[2] || ""
+                var timestamp = list[3] || ""
+                if (model != "prize") {  // 验证是否积分码
+                    wx.showModal({ title: '您扫的不是兑换码', showCancel: false, }); return;
+                }
+                if (storeID != that.data.store.storeID) {  // 验证store_uuid是否当前店铺
+                    wx.showModal({ title: '您扫的不是本店铺的二维码', showCancel: false, }); return;
+                }
+                app.db.sellerScanPrize({
+                    customerUUID: customerUUID,
+                    storeId: storeID,
+                    timestamp: timestamp,
+                })
+            }
+        })
+    },
 
     /*****路由*****/
+    // 到规则详情
     toRule(){
         wx.navigateTo({
             url: '/pages2/rule_edt/rule_edt',
         })
     },
-
+    // 到数据统计详情
+    toStatsEdt() {
+        wx.navigateTo({
+            url: '/pages2/stats_edt/stats_edt',
+        })
+    },
     /**
      * 用户点击右上角分享
      */

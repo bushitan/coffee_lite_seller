@@ -17,23 +17,21 @@
                 <button class="cu-btn bg-white text-yellow round" catchtap="toRule" >查看</button>
             </view>
         </view>
-        <view class="">
-            <view class="cu-list menu ">
-                <view class="cu-item ">
-                    <view class="action">
-                        <text class="text-yellow text-bold text-df">活动标题</text>
-                    </view>
-                    <view class="action">
-                        <text class="text-blue  text-bold text-df">{{store.storeSummary}}</text>
-                    </view>
+        <view class="cu-list menu ">
+            <view class="cu-item ">
+                <view class="action">
+                    <text class="text-yellow text-bold text-df">活动标题</text>
                 </view>
-                <view class="cu-item ">
-                    <view class="action">
-                        <text class="text-yellow text-bold text-df">兑换点数</text>
-                    </view>
-                    <view class="action">
-                        <text class="text-blue text-bold text-df">{{store.storeMinScore}} {{store.storeMaxScore == store.storeMinScore ? "":" - " + store.storeMaxScore }}</text>
-                    </view>
+                <view class="action">
+                    <text class="text-blue  text-bold text-df">{{store.storeSummary}}</text>
+                </view>
+            </view>
+            <view class="cu-item ">
+                <view class="action">
+                    <text class="text-yellow text-bold text-df">兑换点数</text>
+                </view>
+                <view class="action">
+                    <text class="text-blue text-bold text-df">{{store.storeMinScore}} {{store.storeMaxScore == store.storeMinScore ? "":" - " + store.storeMaxScore }}</text>
                 </view>
             </view>
         </view>
@@ -41,7 +39,7 @@
             <button class="cu-btn round page-gb-yellow page-font-white" catchtap='scanScore' >
             发放集点</button>
 
-            <button class="cu-btn round page-gb-blue page-font-white" catchtap='scanPrize'>
+            <button class="cu-btn round page-gb-blue page-font-white" catchtap='scanPrize' >
               扫码兑换
             </button>
         </view>
@@ -49,10 +47,36 @@
 </view>
 
 <!-- <print></print> -->
-
-<cover ></cover>
+<!-- <cover ></cover> -->
 <stats></stats>
-<shop address="{{store.addressList}}"></shop>
+
+
+<!-- 
+<view class="cu-card padding">
+    <view class=" pg-radius bg-white shadow shadow-warp">
+        <view class="cu-bar bg-cyan solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-white "></text>数据详情
+            </view>
+            <view class="action">
+                <button class="cu-btn bg-white text-cyan  round" catchtap="toStatsEdt">查询</button>
+            </view>
+        </view>
+        <view class="cu-bar bg-white ">
+            <map id="map" style="width: 100%; height: 400rpx;"
+                longitude="{{longitude}}" 
+                latitude="{{latitude}}" 
+                scale="12" 
+                markers="{{mapMarkers}}"  
+                circles="{{circles}}"
+                show-location="true"
+                >
+            </map>
+        </view>
+    </view>
+</view> -->
+
+<!-- <shop address="{{store.addressList}}"></shop> -->
 
 <notice text="{{store.noticeText}}" imageNum="{{store.noticeImageList.length}}"></notice>
 <employee></employee>

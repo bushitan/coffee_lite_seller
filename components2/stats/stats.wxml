@@ -11,7 +11,7 @@
                 <button class="cu-btn bg-white text-cyan  round" catchtap="toStatsEdt">查询</button>
             </view>
         </view>
-        <!-- <view class="cu-bar bg-white ">
+        <view class="cu-bar bg-white ">
             <map id="map" style="width: 100%; height: 400rpx;"
                 longitude="{{longitude}}" 
                 latitude="{{latitude}}" 
@@ -21,7 +21,7 @@
                 show-location="true"
                 >
             </map>
-        </view> -->
+        </view>
     </view>
 </view>
 

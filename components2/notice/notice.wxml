@@ -18,12 +18,10 @@
                     <view class="content">
                         <text class="text-orange text-bold text-df">通知内容</text>
                     </view>
-                    <view class="action basis-xl">
+                    <view class="action basis-xl text-right">
                         <text class=" text-grey text-df">{{text}}</text>
                     </view>
                 </view>
-            </view>
-            <view class="cu-list menu ">
                 <view class="cu-item ">
                     <view class="action">
                         <text class="text-orange text-bold text-df">图片内容</text>

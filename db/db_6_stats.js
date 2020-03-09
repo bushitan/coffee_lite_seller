@@ -1,7 +1,7 @@
 
 
 // import dbFather from '../db/db_customer.js'
-var dbFather = require('db_4_cover.js')
+var dbFather = require('db_5_seller.js')
 class dbStats extends dbFather {
 
 
