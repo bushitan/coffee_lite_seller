@@ -5,6 +5,8 @@
             <view>
                 <text>订单ID：{{order.id}}</text>
             </view>				
+            <button class="cu-btn round line-yellow" catchtap="clickCancle">自配送</button>
+            <button class="cu-btn round line-yellow" catchtap="clickCancle">顺丰</button>
             <button class="cu-btn round line-yellow" catchtap="clickCancle">取消订单</button>
 		</view>
 		

@@ -14,8 +14,8 @@ Page({
 
         TabCur: 0,
         SortMenu: [
-            { id: 0, name: "未接单", status: app.db.ORDER_STATUS_PENDING },
-            { id: 1, name: "今日处理中", status: app.db.ORDER_STATUS_PROCESSING },
+            { id: 0, name: "待处理", status: app.db.ORDER_STATUS_PENDING },
+            { id: 1, name: "处理中", status: app.db.ORDER_STATUS_PROCESSING },
             { id: 2, name: "今日已完成", status: app.db.ORDER_STATUS_COMPLETE }, 
             // { id: 2, name: "退款" }, 
             // { id: 3, name: "全部订单" },

@@ -76,9 +76,13 @@
             </view>
 
             <view class="cu-bar   bg-white ">
-                <view class="action"></view>
-                <view class="action">						                    
-                    <text class="text-gray  text-sm margin-right-xs">订单支付</text>						
+                <view class="action">                
+                    <text class="text-gray  text-sm margin-right-xs">待支付配送费</text>						
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">12</text>
+                </view>
+                <view class="action">		                   
+                    <text class="text-gray  text-sm margin-right-xs">用户已支付金额</text>						
                     <text class=" text-xl text-red text-bold text-price"></text>
                     <text class=" text-xl text-red text-bold">{{order.order_total}}</text>
                 </view>

@@ -6,6 +6,22 @@
      <button open-type="contact" class="cu-btn bg-blue round margin-top" >小杯子客服</button>
 </view>
 <view wx:else>
+    <view class="cu-form-group">
+		<view class="title">选择开始日期</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
+			<view class="picker">
+				{{CreatedAtMin}}
+			</view>
+		</picker>
+	</view>
+    <view class="cu-form-group solid-bottom">
+		<view class="title">选择结束日期</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMaxChange">
+			<view class="picker">
+				{{CreatedAtMax}}
+			</view>
+		</picker>
+	</view>
     <scroll-view scroll-x class="bg-white nav ">
         <view class='flex text-center  '>
             <view class="cu-item {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
