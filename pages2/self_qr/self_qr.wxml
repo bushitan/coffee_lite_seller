@@ -13,4 +13,7 @@
             <qrcode placeholder="{{userSession}}"></qrcode>
         </view>
     </view>
+    <view class="flex justify-center">
+        <button class="cu-btn round bg-blue text-white" catchtap="reLogin">绑定成功后，点击重新认证</button>
+    </view>
 </view>

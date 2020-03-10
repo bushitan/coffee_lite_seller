@@ -224,7 +224,7 @@ class dbStore extends dbFather {
                 data: data,
                 method: "POST",
             }).then(res => {
-                resolve(res.data)
+                resolve(res)
             }).catch(res => reject(res))
         })
     }

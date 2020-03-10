@@ -87,7 +87,7 @@ Component({
                 title: res.msg,
                 showCancel: false,
             })
-            if (res == 0) {
+            if (res.code == 0) {
                 this.getEmployeeList()                  
             }
 
