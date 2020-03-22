@@ -10,10 +10,18 @@ Page({
         // CustomBar: this.CustomBar,
         // TabbarBot: this.TabbarBot,
 
+        STORE_TAKE_TYPE_WM: app.db.STORE_TAKE_TYPE_WM, // 外卖
+        STORE_TAKE_TYPE_ZQ: app.db.STORE_TAKE_TYPE_ZQ, // 到店自取
+        STORE_TAKE_TYPE_TS: app.db.STORE_TAKE_TYPE_TS, // 堂食
+        
         orderId: "",
         order: {
             ship_address: {},
         }, // 订单信息
+        riderInfo:{
+            rider_name:'',
+            rider_phone:'',
+        },
     },
 
     /**
@@ -31,30 +39,53 @@ Page({
         var res = await app.db.orderGetDetail({
             OrderID: this.data.orderId
         })
+        var order = res.data
         this.setData({
-            order: res.data
+            order: order 
         })
+
+        // console.log(res.data.shipping_status_code)
+        if (order.shipping_status_code == app.db.SHIP_STATUS_ING) {
+            // var res = await app.db.orderRiderInfo({ order_id: order.id })
+            // this.setData({ riderInfo:res.data })
+            // console.log(res.data)
+            var res = await app.db.orderRiderPosition({ order_id: order.id })
+            this.setData({ riderInfo: res.data })
+            // console.log(res.data)
+            // var res = await app.db.orderRiderH5({ order_id: order.id })
+            // console.log(res.data)
+        }
     },
 
 
 
     // 发顺丰
     async clickShipSF() {
-        var orderId = this.data.orderId
         var res = await app.db.orderShippingSF({
-            OrderID: orderId,
+            orderId: this.data.orderId,
         })
     },
     //　堂食
     async clickShipStore() {
-        var orderId = this.data.orderId
         var res = await app.db.orderShippingStore({
-            OrderID: orderId, 
+            orderId: this.data.orderId, 
         })
     },
 
     // 取消订单
     async clickCancle(){
-        console.log("取消订单")
+        console.log("退款")
+
+        var res = await app.db.orderConfirmrefund({
+            orderId: this.data.orderId,
+        })
+        wx.showModal({ title: res.msg, showCancel:false})
+
+    },
+
+    takeRiderPhone(){
+        wx.makePhoneCall({
+            phoneNumber: this.data.riderInfo.rider_phone,
+        })
     },
 })

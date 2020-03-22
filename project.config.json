@@ -171,10 +171,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "pages_shop/order/detail/detail",
 					"pathName": "pages_shop/order/detail/detail",
-					"query": "orderID=84",
+					"query": "orderId=88",
 					"scene": null
 				}
 			]

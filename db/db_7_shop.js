@@ -27,10 +27,10 @@ class dbStats extends dbFather {
     ORDER_STATUS_COMPLETE = 30 // 订单已完成
     ORDER_STATUS_CANCEL = 40 // 订单已取消
 
-    SELLER_PENDING = 1 // 商家未处理
+    SELLER_PENDING = 1 // 商家未处理  使用
     SELLER_PROCESSING = 2 // 商家处理中
-    SELLER_COMLETE = 4 // 商家已完成
-    SELLER_RIDING = 8 // 配送中
+    SELLER_COMLETE = 4 // 商家已完成   使用
+    SELLER_RIDING = 8 // 配送中   使用
     SELLER_REFUND = 16 // 商家已退款
     SELLER_CANCEL = 32 // 商家已取消
 
@@ -231,6 +231,37 @@ class dbStats extends dbFather {
     }
 
 
+    /**
+     * @method 8.1 订单信息
+     * @param 
+         orderId
+    */
+    orderRiderInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/ship/getcallbackinfo/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
+    /**
+   * @method 8.2 骑手位置
+   * @param 
+       orderId
+  */
+    orderRiderPosition(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/ship/riderlatestposition/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+    /**
+     * @method 8.3 骑手 H5
+     * @param 
+         orderId
+    */
+    orderRiderH5(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/ship/riderviewv2/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
 
 }
 

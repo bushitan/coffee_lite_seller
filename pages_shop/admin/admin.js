@@ -37,6 +37,13 @@ Page({
         // STATUS_ACCESS:1,
         // STATUS_REFUND: 2,
         // STATUS_ALL: 3,
+        STORE_TAKE_TYPE_WM : app.db.STORE_TAKE_TYPE_WM, // 外卖
+        STORE_TAKE_TYPE_ZQ : app.db.STORE_TAKE_TYPE_ZQ, // 到店自取
+        STORE_TAKE_TYPE_TS : app.db.STORE_TAKE_TYPE_TS, // 堂食
+
+        SELLER_PENDING: app.db.SELLER_PENDING, // 商家待处理状态
+
+        
 
         status: app.db.ORDER_STATUS_PENDING,
 
@@ -106,6 +113,7 @@ Page({
         var id = e.currentTarget.dataset.tab_id
         this.setData({
             TabCur: id,
+            list: [],
         })
         switch (id) {
             case 0: var res = await app.db.orderGetList({
@@ -136,8 +144,10 @@ Page({
 // 
     },
 
-    //  点击接单
-    async orderShip(e) {
+    /**
+     * @method 顺风接单
+     */
+    async orderShipSF(e) {
         var orderID = e.currentTarget.dataset.order_id
         // var res = await app.db.orderShippingStore({
         //     orderId: orderID, 
@@ -145,23 +155,39 @@ Page({
         var res = await app.db.orderShippingSF({
             orderId: orderID,
         })
-
-        // debugger
         wx.showToast({
             title: res.msg,
         })
         if(res.code == 0 ){
-            var res = await app.db.orderShipping({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
+            var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
             this.setData({ 
                 TabCur: TAB_PROCESSING,
                 list: res.data
             })
         }
-        
-
-        // TODO 修改订单状态，刷新订单
-        
     },
+
+    /**
+    * @method 到店自取 | 堂食接单
+    */
+    async orderShipStore(e) {
+        var orderID = e.currentTarget.dataset.order_id
+        var res = await app.db.orderShippingStore({
+            orderId: orderID, 
+        })
+        wx.showToast({
+            title: res.msg,
+        })
+        if (res.code == 0) {
+            var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
+            this.setData({
+                TabCur: TAB_PROCESSING,
+                list: res.data
+            })
+        }
+    },
+
+
 
     /***********路由************/
     // 增加订单
@@ -188,6 +214,14 @@ Page({
     // 手动刷新
     refresh(){
         this.onInit()
+    },
+
+
+    // 拨打用户号码
+    takePhone(e){
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.phonenumber,
+        })
     },
 
     onShareAppMessage(){},
