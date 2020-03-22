@@ -7,16 +7,17 @@
 </view>
 <view wx:else>
     <scroll-view scroll-x class="bg-white nav ">
-        <view class='flex text-center  '>
-            <view class="cu-item {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
-            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect"     >
+        <view class='flex  text-center  '>
+            <view class="cu-item flex-sub {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
+            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect">
                     <view style="  position: relative" >
-                        {{item.name}}
-                        <view class="cu-tag badge" style="top:2px; right:-10px" >
+                        <text class="">{{item.name}}</text>
+                        
+                        <!-- <view class="cu-tag badge" style="top:2px; right:-10px" >
                             {{index==0?pendingList.length : ""}}
                             {{index==1?processingList.length : ""}}
                             {{index==2?completeList.length : ""}}
-                        </view>
+                        </view> -->
                     </view>
             </view>
         </view>
@@ -35,7 +36,7 @@
                     <text class="text-white text-sm">ID:{{order.id}}（{{order.pick_up_in_store?"到店自取":"外卖"}}）</text>       
                 </view>
                 <view class="action">
-                    <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="catchOrder" wx:if="{{TabCur==0}}" >一键接单</button> 
+                    <button class="cu-btn bg-white text-blue round text-sm margin-right-sm" catchtap="orderShip" data-order_id="{{order.id}}" wx:if="{{TabCur==0}}" >一键接单</button> 
                     <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button>
                 </view>
             </view>
@@ -45,8 +46,8 @@
                     <text class="text-bold text-red" wx:else>外卖</text>
                 </view>
                 <view class="text-black  text-sm text-right">
-                    <view>韦丰（15577889971）</view>
-                    <view wx:if="{{order.pick_up_in_store==false}}">{{order.pickup_address}}</view>                    
+                    <view>{{order.ship_address.name}}（{{order.ship_address.phonenumber}}）</view>
+                    <view wx:if="{{order.pick_up_in_store==false}}">{{order.ship_address.addr_detail}}</view>                    
                 </view>
             </view>
             <!-- <view class="padding-tb-xs padding-lr bg-white solid-bottom">            
@@ -79,7 +80,7 @@
                 <view class="action">                
                     <text class="text-gray  text-sm margin-right-xs">待支付配送费</text>						
                     <text class=" text-xl text-red text-bold text-price"></text>
-                    <text class=" text-xl text-red text-bold">12</text>
+                    <text class=" text-xl text-red text-bold">{{order.store_take_ship_fee}}</text>
                 </view>
                 <view class="action">		                   
                     <text class="text-gray  text-sm margin-right-xs">用户已支付金额</text>						
@@ -98,7 +99,7 @@
 
     <view class="padding bg-white flex justify-around" style="position:fixed; bottom:0;left:0;right:0;"  >
         <button class="cu-btn text-white bg-yellow round  " catchtap="onInit" >手动刷新</button>
-        <button class="cu-btn text-white bg-blue round  " catchtap="toOrderList" >查询订单</button>
+        <button class="cu-btn text-white bg-blue round  " catchtap="toOrderList" >历史订单</button>
     </view>
 
     <view class="pg-space-xxl"></view>

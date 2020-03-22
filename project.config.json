@@ -169,6 +169,13 @@
 					"pathName": "pages_shop/order/list/list",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/order/detail/detail",
+					"pathName": "pages_shop/order/detail/detail",
+					"query": "orderID=84",
+					"scene": null
 				}
 			]
 		}

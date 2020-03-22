@@ -10,7 +10,7 @@ Page({
         // CustomBar: this.CustomBar,
         // TabbarBot: this.TabbarBot,
 
-        orderID: "",
+        orderId: "",
         order: {
             ship_address: {},
         }, // 订单信息
@@ -21,7 +21,7 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            orderID: options.orderID || ""
+            orderId: options.orderId || ""
         })
         this.onInit()
     },
@@ -29,15 +29,32 @@ Page({
     async onInit() {
         // var order = await this.db.orderGen()
         var res = await app.db.orderGetDetail({
-            OrderId: this.data.orderID
+            OrderID: this.data.orderId
         })
         this.setData({
             order: res.data
         })
     },
 
+
+
+    // 发顺丰
+    async clickShipSF() {
+        var orderId = this.data.orderId
+        var res = await app.db.orderShippingSF({
+            OrderID: orderId,
+        })
+    },
+    //　堂食
+    async clickShipStore() {
+        var orderId = this.data.orderId
+        var res = await app.db.orderShippingStore({
+            OrderID: orderId, 
+        })
+    },
+
     // 取消订单
-    clickCancle(){
+    async clickCancle(){
         console.log("取消订单")
     },
 })

@@ -28,6 +28,8 @@ class dbBase {
             var data = options.data || {}
             // data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
             data['session'] =  wx.getStorageSync(this.KEY_SESSION)  
+
+            var startTime = new Date().getTime();
             wx.request({
                 url: options.url,
                 method: options.method || "POST",
@@ -36,6 +38,9 @@ class dbBase {
                 },
                 data: data,
                 success(res) {
+
+                    var completeTime = new Date().getTime();
+                    console.log(options.url , ":", completeTime - startTime)
                     resolve(res.data)
                 },
                 fail(res) {

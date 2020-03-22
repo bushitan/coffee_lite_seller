@@ -5,8 +5,9 @@
             <view>
                 <text>订单ID：{{order.id}}</text>
             </view>				
-            <button class="cu-btn round line-yellow" catchtap="clickCancle">自配送</button>
-            <button class="cu-btn round line-yellow" catchtap="clickCancle">顺丰</button>
+            <!-- <button class="cu-btn round line-yellow" catchtap="clickCancle">自配送</button> -->
+            <button class="cu-btn round line-yellow" catchtap="clickShipSF">顺丰</button>
+            <button class="cu-btn round line-yellow" catchtap="clickShipStore">自取</button>
             <button class="cu-btn round line-yellow" catchtap="clickCancle">取消订单</button>
 		</view>
 		
@@ -19,8 +20,7 @@
 						<text class="text-black text-sm">订单状态</text>      
 					</view>
 					<view class="action">                    
-                        <!-- <button class="cu-btn round line-yellow">取消订单</button> -->
-                        {{order.order_status}} 
+                        <view class=" text-sm">{{order.order_status}} </view>
 					</view>
 				</view>
                 <view class="cu-bar  solid-bottom ">
@@ -30,6 +30,15 @@
 					</view>
 					<view class="action">     
                         <view class=" text-sm">{{order.payment_status}}</view>
+					</view>
+				</view>
+                 <view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">配送状态</text>      
+					</view>
+					<view class="action">     
+                        <view class=" text-sm">{{order.shipping_status}}</view>
 					</view>
 				</view>
             </view>
@@ -145,6 +154,30 @@
 				<view class="cu-bar  solid-bottom ">
 					<view class="action">
 						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">备注信息</text>      
+					</view>
+					<!-- <view class="action">
+						<text class="text-gray  text-sm">{{order.checkout_attribute_description}}</text>
+					</view> -->
+				</view>                
+				<view class="cu-list menu " wx:for="{{order.order_notes}}" wx:key="index">
+                    <view class="cu-item ">
+                        <view class="content">
+                            <text class="text-gray text-sm">{{index}}、{{item.Note}}</text>
+                        </view>
+                        <!-- <view class="action ">
+                            <view class="text-black text-sm">{{order.checkout_attribute_description}}</view>
+                        </view> -->
+                    </view>
+                </view>
+            </view>
+        </view>
+
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">配送信息</text>      
 					</view>
 					<view class="action">
@@ -243,14 +276,14 @@
 							<view class="text-black text-sm">{{order.payment_method_systemName}}</view>
 						</view>
 					</view>
-					<view class="cu-item ">
+					<!-- <view class="cu-item ">
 						<view class="content">
 							<text class="text-gray text-sm">备注信息</text>
 						</view>
 						<view class="action ">
 							<view class="text-black text-sm">{{order.checkout_attribute_description}}</view>
 						</view>
-					</view>
+					</view> -->
 				</view>				
 			</view>
 		</view>
