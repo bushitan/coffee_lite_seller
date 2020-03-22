@@ -13,6 +13,8 @@ Page({
         STORE_TAKE_TYPE_WM: app.db.STORE_TAKE_TYPE_WM, // 外卖
         STORE_TAKE_TYPE_ZQ: app.db.STORE_TAKE_TYPE_ZQ, // 到店自取
         STORE_TAKE_TYPE_TS: app.db.STORE_TAKE_TYPE_TS, // 堂食
+
+        PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
         orderId: "",
         order: {
@@ -81,6 +83,15 @@ Page({
         })
         wx.showModal({ title: res.msg, showCancel:false})
 
+    },
+
+    // 拒单
+    async clickReject(){
+
+        var res = await app.db.orderSellerReject({
+            orderId: this.data.orderId,
+        })
+        wx.showModal({ title: res.msg, showCancel: false })
     },
 
     takeRiderPhone(){

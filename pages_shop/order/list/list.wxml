@@ -1,11 +1,20 @@
 <!--pages_shop/admin/admin.wxml-->
 
-<view wx:if="{{isPower}}" class="flex flex-direction justify-center align-center" style="height:100vh">
+<!-- <view wx:if="{{isPower}}" class="flex flex-direction justify-center align-center" style="height:100vh">
     <text class="text-gray text-sm" >您还未开通点单功能，请联系小杯子客服</text>
     
      <button open-type="contact" class="cu-btn bg-blue round margin-top" >小杯子客服</button>
-</view>
-<view wx:else>
+</view> -->
+
+<scroll-view scroll-x class="bg-blue nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==MenuTabCur?' text-white cur ':' text-gray'}}" wx:for="{{tabber}}" wx:key bindtap="menuTabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
+<view wx:if="{{MenuTabCur==0}}">
     <view class="cu-form-group">
 		<view class="title">选择开始日期</view>
 		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
@@ -25,7 +34,7 @@
     <scroll-view scroll-x class="bg-white nav ">
         <view class='flex text-center  '>
             <view class="cu-item {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
-            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect"     >
+            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="orderTabSelect"     >
                     <view style="  position: relative" >
                         {{item.name}}
                         <!-- <view class="cu-tag badge" style="top:2px; right:-10px" hidden="{{index == SortMenu.length-1}}">99+</view> -->
@@ -132,4 +141,13 @@
 
     <view class="pg-space-xxl"></view>
     <view class="pg-space-xxl"></view>
+</view>
+<view wx:else>
+    <view class="cu-bar bg-white search " >
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="请输入订单ID" confirm-type="search" bindinput="inputSearchText" mode="digit"></input>
+            <text class="margin-right-lg" catchtap="search">搜索</text>
+        </view>
+    </view>
 </view>

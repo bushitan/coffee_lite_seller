@@ -20,7 +20,7 @@ class dbStats extends dbFather {
     PAYMENT_STATUS_PAID = 30 // 已经支付
     PAYMENT_STATUS_REFUND = 40 // 退款
     PAYMENT_STATUS_CANCEL = 50 // 取消支付
-    PAYMENT_STATUS_CANCEL = 60 // 申请退款
+    PAYMENT_STATUS_REFUND_APPLY = 60 // 申请退款
 
     ORDER_STATUS_PENDING = 10 // 订单待处理
     ORDER_STATUS_PROCESSING = 20 // 订单处理中
@@ -220,13 +220,24 @@ class dbStats extends dbFather {
 
 
     /**
-   * @method 7 确认退款
-   * @param 
-       orderId
-  */
+     * @method 7.1 确认退款
+     * @param 
+         orderId
+    */
     orderConfirmrefund(data) {
         return new Promise((resolve, reject) => {
             this.orderRequest({ url: this.WM_URL + "api/orders/confirmrefund/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
+    /**
+     * @method 7.2 拒单 【商户专用】
+     * @param 
+         orderId
+    */
+    orderSellerReject(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/seller/rejectorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
 

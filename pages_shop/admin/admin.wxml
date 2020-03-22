@@ -105,7 +105,11 @@
                         <text class=" text-xl text-red text-bold">{{order.store_take_ship_fee}}</text>
                     </view>   
                 </view>
-                <view class="action">		  
+                <view class="action">		 
+                
+                    <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
+                        class="cu-btn round bg-red margin-right-sm text-sm" catchtap="clickCancle" data-order_id="{{order.id}}">申请退款</button> 
+
                     <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}" 
                         catchtap="orderShipSF" data-order_id="{{order.id}}">顺风接单</button>
                     <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}"

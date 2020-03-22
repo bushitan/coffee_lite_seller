@@ -4,8 +4,10 @@ var app = getApp()
 var date = new Date()  
 const year = date.getFullYear()
 const month = date.getMonth() + 1
-const day = date.getDate()
-var today = [year, month, day].join('-')
+const d = date.getDate()
+const t = date.getDate() + 1
+var today = [year, month, d].join('-')
+var tomorrow = [year, month, t].join('-') 
 console.log(today)
 Page({
 
@@ -13,10 +15,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isPower:false,
+        MenuTabCur: 0,
+        scrollLeft: 0,
+        tabber: ["订单列表", "订单查询"],
 
         CreatedAtMin: today,
-        CreatedAtMax: today,
+        CreatedAtMax: tomorrow,
 
         TabCur: 0,
         SortMenu: [
@@ -24,11 +28,11 @@ Page({
             // { id: 1, name: "已接单", status: app.db.ORDER_STATUS_PROCESSING },
             { id: 0, name: "已完成", status: app.db.ORDER_STATUS_COMPLETE },
             { id: 1, name: "已取消", status: app.db.ORDER_STATUS_CANCEL },
-            { id: 3, name: "已退款", status: app.db.ORDER_STATUS_COMPLETE },
-            { id: 2, name: "全部订单", status: ""}, 
+            // { id: 3, name: "已退款", status: app.db.ORDER_STATUS_COMPLETE },
+            // { id: 2, name: "全部订单", status: ""}, 
             // { id: 4, name: "自助下单" },
         ],
-        status: app.db.ORDER_STATUS_PENDING,
+        status: app.db.ORDER_STATUS_COMPLETE,
 
         page: 1,
         limit: 10,
@@ -36,6 +40,8 @@ Page({
         isMore: true,
         list: [1,2],
         
+
+        inputKey:'', //  查询使用
     },
 
     /**
@@ -50,7 +56,7 @@ Page({
         if( this.checkPower() == false )
             return
         app.db.listInit(this)
-        this.getOrderList(app.db.PAYMENT_STATUS_REFUND ) // 初始化订单列表
+        this.getOrderList( ) // 初始化订单列表
     },
 
     // 检测是否有权限
@@ -63,12 +69,11 @@ Page({
     },
 
     // 初始化订单列表
-    async getOrderList(status){
+    async getOrderList(){
         var res = await app.db.orderGetList({
             Page: this.data.page,
             Limit: this.data.limit,
             Status: this.data.status,
-
             CreatedAtMin: this.data.CreatedAtMin,
             CreatedAtMax: this.data.CreatedAtMax,
         })
@@ -79,7 +84,7 @@ Page({
     /**
      * @method 点击选项卡
      */
-    tabSelect(e) {
+    orderTabSelect(e) {
         console.log(e)
         var id = e.currentTarget.dataset.tab_id
         this.setData({
@@ -125,6 +130,43 @@ Page({
         })
 
     },
+
+
+    // 订单查询
+    menuTabSelect(e) {
+        this.setData({
+            MenuTabCur: e.currentTarget.dataset.id,
+            scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+        })
+    },
+
+    // 输入搜索内容
+    inputSearchText(e) {
+        let key = e.detail.value.toLowerCase();
+        this.setData({ inputKey: key })
+    },
+    // 搜索
+    async search() {
+        // 请求搜索结果
+        var res = await app.db.orderGetDetail({
+            orderId:this.data.inputKey
+        })
+        if(res.code == 0)
+            wx.navigateTo({
+                url: '/pages_shop/order/detail/detail?orderId=' + res.data.id,
+            })
+        else{
+            wx.showModal({
+                title: '该订单不存在',
+            })
+        }
+        console.log(res.data)
+        // 搜索成功
+        // this.setData({
+        //     showCunstomer: true,
+        // })
+    },
+
 
     onReachBottom(){
         console.log(11)

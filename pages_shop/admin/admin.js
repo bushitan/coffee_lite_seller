@@ -42,7 +42,7 @@ Page({
         STORE_TAKE_TYPE_TS : app.db.STORE_TAKE_TYPE_TS, // 堂食
 
         SELLER_PENDING: app.db.SELLER_PENDING, // 商家待处理状态
-
+        PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
 
         status: app.db.ORDER_STATUS_PENDING,
@@ -187,6 +187,17 @@ Page({
         }
     },
 
+    /**
+    * @method 退款，取消订单
+    */
+    async clickCancle(e) {
+        var orderID = e.currentTarget.dataset.order_id
+        var res = await app.db.orderConfirmrefund({
+            orderId: orderID,
+        })
+        wx.showModal({ title: res.msg, showCancel: false })
+
+    },
 
 
     /***********路由************/

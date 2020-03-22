@@ -12,7 +12,10 @@
             <!-- <button class="cu-btn round line-yellow" catchtap="clickShipSF">顺丰</button>
             <button class="cu-btn round line-yellow" catchtap="clickShipStore">自取</button>-->
 
-            <button class="cu-btn round bg-red" catchtap="clickCancle">取消订单退款</button> 
+            <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
+                class="cu-btn round bg-red" catchtap="clickCancle" >退款，取消订单</button> 
+            <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_PAID && order.order_status_code == ORDER_STATUS_PROCESSING  }}"
+                class="cu-btn round bg-red" catchtap="clickReject" >拒单，取消订单</button> 
 		</view>
 		
 		

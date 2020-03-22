@@ -160,7 +160,7 @@
 					"id": 14,
 					"name": "pages_shop/order/detail/detail 订单详情",
 					"pathName": "pages_shop/order/detail/detail",
-					"query": "orderID=34",
+					"query": "orderId=89",
 					"scene": null
 				},
 				{
