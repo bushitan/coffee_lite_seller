@@ -1,5 +1,8 @@
 <!--pages_shop/order/order.wxml-->
 <view class="">	
+-订单状态{{order.order_status_code}}
+-支付状态{{order.payment_status_code}}
+-配送状态{{order.shipping_status_code}}
 		<!--状态栏区域-->			
 		<view class="text-xl text-bold flex justify-between align-center padding">
             <view>
@@ -8,18 +11,84 @@
                 <text  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">（到店自取）</text>
                 <text  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">（堂食）</text>
             </view>				
-            <!-- <button class="cu-btn round line-yellow" catchtap="clickCancle">自配送</button> -->
-            <!-- <button class="cu-btn round line-yellow" catchtap="clickShipSF">顺丰</button>
-            <button class="cu-btn round line-yellow" catchtap="clickShipStore">自取</button>-->
-
-            <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
-                class="cu-btn round bg-red" catchtap="clickCancle" >退款，取消订单</button> 
-            <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_PAID && order.order_status_code == ORDER_STATUS_PROCESSING  }}"
-                class="cu-btn round bg-red" catchtap="clickReject" >拒单，取消订单</button> 
+            
+            <!-- 外卖拒单 -->
+            <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET }}"
+                class="cu-btn round line-red" catchtap="clickReject" >拒单</button> 
+            <!-- 到店自取 堂食 拒单 -->
+            <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_REQUIRED }}"
+                class="cu-btn round line-red" catchtap="clickReject" >拒单</button>     
+            <!-- 顺风配送取消 拒单 -->
+            <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL  }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickReject" >拒单</button> 
+                
+            <!-- 申请退款 -->
+            <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_NOT_YET }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickConfirmrefund" >用户申请退款，确认退款</button>    
+            <!-- 申请退款 在配送中，先取消配送-->    
+            <button wx:if="{{  order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickSFCanceld" >用户申请退款，取消配送</button> 
+            <button wx:if="{{  order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
+                class="cu-btn round line-yellow " catchtap="clickSFCanceld" >商户取消配送</button> 
 		</view>
+        <view class="flex btn padding-lr ">
+
+            <!-- 普通接单 -->
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING  && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipSF" >顺风同城</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >自配送</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ && order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >到店自取接单</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS && order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >堂食接单</button> 
+                
+
+
+            <!-- 重新下单 -->
+            <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL   }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipSF" >重新下单，顺风同城</button> 
+            <!-- <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL   }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >重新下单，自配送</button>  -->
+<!-- 
+order_status_code ORDER_STATUS_PROCESSING
+payment_status_code
+shipping_status_code 
+
+
+STORE_TAKE_TYPE_WM = 1 // 外卖
+STORE_TAKE_TYPE_ZQ = 2 // 到店自取
+STORE_TAKE_TYPE_TS = 4 // 堂食
+
+PAYMENT_STATUS_PENDING = 10 // 待支付
+PAYMENT_STATUS_AUTHORIZED = 20 // 待支付
+PAYMENT_STATUS_PAID = 30 // 已经支付
+PAYMENT_STATUS_REFUND = 40 // 退款
+PAYMENT_STATUS_CANCEL = 50 // 取消支付
+PAYMENT_STATUS_REFUND_APPLY = 60 // 申请退款
+
+ORDER_STATUS_PENDING = 10 // 订单待处理
+ORDER_STATUS_PROCESSING = 20 // 订单处理中
+ORDER_STATUS_COMPLETE = 30 // 订单已完成
+ORDER_STATUS_CANCEL = 40 // 订单已取消
+
+SELLER_PENDING = 1 // 商家未处理  使用
+SELLER_PROCESSING = 2 // 商家处理中
+SELLER_COMLETE = 4 // 商家已完成   使用
+SELLER_RIDING = 8 // 配送中   使用
+SELLER_REFUND = 16 // 商家已退款
+SELLER_CANCEL = 32 // 商家已取消
+
+SHIP_STATUS_NOT_REQUIRED = 10 //不需要配送
+SHIP_STATUS_NOT_YET = 20 //未配送
+SHIP_STATUS_PARTIALLY = 25 //部分已配送
+SHIP_STATUS_ING = 30 //配送中
+SHIP_STATUS_DELIVER = 40 //已送达
+SHIP_STATUS_CANCEL = 50 //已取消 -->
+        </view>
 		
 		
-		<view class="cu-card padding-lr ">
+		<view class="cu-card padding-lr margin-top ">
 			<view class=" bg-white pg-radius  shadow shadow-warp">
                 <view class="cu-bar  solid-bottom ">
 					<view class="action">
@@ -345,7 +414,14 @@
 				</view>				
 			</view>
 		</view>
-		
+		<view class="flex justify-center padding">
+            <!-- 重新下单 -->
+            <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-red text-white margin-right" catchtap="clickVoide" >强制完成订单</button> 
+            <!-- 重新下单 -->
+            <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-red text-white" catchtap="clickOver" >作废订单</button> 
+        </view>
 		
 		<view class=" padding-xs flex  align-center margin-top justify-center">
 			<text class="text-center  text-gray text-sm">{{order?"信息加载完毕":"信息加载中"}}</text>		

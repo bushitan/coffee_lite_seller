@@ -274,6 +274,38 @@ class dbStats extends dbFather {
         })
     }
 
+    /**
+      * @method 9.1 取消顺风订单
+      * @param 
+          orderId
+     */
+    orderSFCancel(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/ship/cancelorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
+    /**
+      * @method 9.2 订单作废
+      * @param 
+          orderId
+     */
+    orderVoide(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "/api/orders/voidedorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+    /**
+      * @method 9.3 强制完成订单
+      * @param 
+          orderId
+     */
+    orderOver(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "/api//api/orders/overorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
 }
 
 
