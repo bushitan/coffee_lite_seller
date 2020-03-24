@@ -20,6 +20,7 @@ class dbSystem extends dbFather {
             var that = this 
             wx.login({
                 success(e) {
+                    console.log(e)
                     that.base({
                         url: that.HOST_URL + "ajdm/syslogin/",
                         data: {
@@ -34,6 +35,10 @@ class dbSystem extends dbFather {
                     })
                     .catch(res => reject(false))
                 },
+                fail(e) {
+                    console.log(e)
+
+                }
             })
         })
     }
