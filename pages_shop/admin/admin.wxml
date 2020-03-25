@@ -43,7 +43,7 @@
                 </view>
             </view>
             <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
-                <view class=" ">
+                <view class=" basis-xs">
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">外卖</text>
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">到店自取</text>
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">堂食</text>

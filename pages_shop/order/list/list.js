@@ -124,9 +124,10 @@ Page({
         })
     },
     // 查看订单详情
-    toOrderDetail() {
+    toOrderDetail(e) {
+        var orderId = e.currentTarget.dataset.order_id
         wx.navigateTo({
-            url: '/pages_shop/order/detail/detail',
+            url: '/pages_shop/order/detail/detail?orderId=' + orderId,
         })
 
     },

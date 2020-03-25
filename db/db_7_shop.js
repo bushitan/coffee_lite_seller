@@ -26,6 +26,7 @@ class dbStats extends dbFather {
     ORDER_STATUS_PROCESSING = 20 // 订单处理中
     ORDER_STATUS_COMPLETE = 30 // 订单已完成
     ORDER_STATUS_CANCEL = 40 // 订单已取消
+    ORDER_STATUS_CANCEL = 50 // 商户据单
 
     SELLER_PENDING = 1 // 商家未处理  使用
     SELLER_PROCESSING = 2 // 商家处理中
