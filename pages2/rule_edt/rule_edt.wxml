@@ -41,7 +41,7 @@ storeUUID: "68e54718-7156-11e9-b456-e95aa2c51b5d" -->
     </view>
     <view class="margin-top padding-lg">
         <button class="cu-btn block round bg-blue lg " form-type="submit">确认</button>
-        <button class="cu-btn block round bg-grey lg margin-top" catchtap="back"> 返回</button>
+        <button class="cu-btn block round line-blue lg margin-top" catchtap="back"> 返回</button>
     </view>
 
 </form>
