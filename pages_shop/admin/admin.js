@@ -44,8 +44,7 @@ Page({
         SELLER_PENDING: app.db.SELLER_PENDING, // 商家待处理状态
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
-        SHIP_STATUS_EXCEPTION: app.db.SHIP_STATUS_EXCEPTION,
-        
+
         status: app.db.ORDER_STATUS_PENDING,
 
         list:[],

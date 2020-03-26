@@ -26,7 +26,6 @@ class dbStats extends dbFather {
     ORDER_STATUS_PROCESSING = 20 // 订单处理中
     ORDER_STATUS_COMPLETE = 30 // 订单已完成
     ORDER_STATUS_CANCEL = 40 // 订单已取消
-    ORDER_STATUS_CANCEL = 50 // 订单拒单
 
     SELLER_PENDING = 1 // 商家未处理  使用
     SELLER_PROCESSING = 2 // 商家处理中
@@ -41,7 +40,6 @@ class dbStats extends dbFather {
     SHIP_STATUS_ING = 30 //配送中
     SHIP_STATUS_DELIVER = 40 //已送达
     SHIP_STATUS_CANCEL = 50 //已取消
-    SHIP_STATUS_EXCEPTION = 60 //顺丰报错
 
 
     // 封装基础的请求
@@ -288,33 +286,23 @@ class dbStats extends dbFather {
     }
 
     /**
-      * @method 9.2 强制退款
-      * @param 
-          orderId
-     */
-    orderForcerFund(data) {
-        return new Promise((resolve, reject) => {
-            this.orderRequest({ url: this.WM_URL + "api/orders/forcerefund/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
-        })
-    }
-    /**
-      * @method 9.3 强制订单作废
+      * @method 9.2 订单作废
       * @param 
           orderId
      */
     orderVoide(data) {
         return new Promise((resolve, reject) => {
-            this.orderRequest({ url: this.WM_URL + "api/orders/voidedorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+            this.orderRequest({ url: this.WM_URL + "/api/orders/voidedorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
     /**
-      * @method 9.4 强制完成订单
+      * @method 9.3 强制完成订单
       * @param 
           orderId
      */
     orderOver(data) {
         return new Promise((resolve, reject) => {
-            this.orderRequest({ url: this.WM_URL + "api//api/orders/overorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+            this.orderRequest({ url: this.WM_URL + "/api//api/orders/overorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
 

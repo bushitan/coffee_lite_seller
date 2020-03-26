@@ -98,30 +98,24 @@
             </view>	
 
             <view class="cu-bar   bg-white " wx:if="{{TabCur==0}}">
-            
-                <view class="action" wx:if="{{order.shipping_status_code == SHIP_STATUS_EXCEPTION}}" >        
-                    <!-- <text class="text-red   margin-right-xs">提醒：用户申请退款（点击详情处理）</text> -->
-                    <text class="text-red   margin-right-xs">提醒：顺丰取消订单（点击详情处理）</text>			
+                <view class="action" > 
+                    <view wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">            
+                        <text class="text-gray  text-sm margin-right-xs">待支付配送费</text>						
+                        <text class=" text-xl text-red text-bold text-price"></text>
+                        <text class=" text-xl text-red text-bold">{{order.store_take_ship_fee}}</text>
+                    </view>   
                 </view>
-                <view wx:else>
-                    <view class="action" > 
-                        <view wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">            
-                            <text class="text-gray  text-sm margin-right-xs">待支付配送费</text>						
-                            <text class=" text-xl text-red text-bold text-price"></text>
-                            <text class=" text-xl text-red text-bold">{{order.store_take_ship_fee}}</text>
-                        </view>   
-                    </view>
-                    <view class="action">
-                        <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
-                            class="cu-btn round bg-red margin-right-sm text-sm" catchtap="clickCancle" data-order_id="{{order.id}}">退款</button> 
+                <view class="action">		 
+                
+                    <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
+                        class="cu-btn round bg-red margin-right-sm text-sm" catchtap="clickCancle" data-order_id="{{order.id}}">申请退款</button> 
 
-                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}" 
-                            catchtap="orderShipSF" data-order_id="{{order.id}}">顺风接单</button>
-                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}"
-                            catchtap="orderShipStore" data-order_id="{{order.id}}">到店自取接单</button>  
-                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}"
-                            catchtap="orderShipStore" data-order_id="{{order.id}}">堂食接单</button>       
-                    </view>
+                    <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}" 
+                        catchtap="orderShipSF" data-order_id="{{order.id}}">顺风接单</button>
+                    <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}"
+                        catchtap="orderShipStore" data-order_id="{{order.id}}">到店自取接单</button>  
+                    <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}"
+                        catchtap="orderShipStore" data-order_id="{{order.id}}">堂食接单</button>       
                 </view>
             </view>	
         

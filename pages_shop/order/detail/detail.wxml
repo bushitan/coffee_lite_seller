@@ -23,7 +23,7 @@
                 class="cu-btn round bg-yellow text-white" catchtap="clickReject" >拒单</button> 
                 
             <!-- 申请退款 -->
-            <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_CANCEL }}"
+            <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_NOT_YET }}"
                 class="cu-btn round bg-yellow text-white" catchtap="clickConfirmrefund" >用户申请退款，确认退款</button>    
             <!-- 申请退款 在配送中，先取消配送-->    
             <button wx:if="{{  order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
@@ -415,13 +415,10 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 			</view>
 		</view>
 		<view class="flex justify-center padding">
-            <!-- 强制退款 -->
-            <button wx:if="{{true}}"
-                class="cu-btn round bg-red text-white margin-right" catchtap="clickForcerFund" >强制退款</button> 
-            <!-- 强制完成订单 -->
+            <!-- 重新下单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
                 class="cu-btn round bg-red text-white margin-right" catchtap="clickVoide" >强制完成订单</button> 
-            <!-- 作废订单 -->
+            <!-- 重新下单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
                 class="cu-btn round bg-red text-white" catchtap="clickOver" >作废订单</button> 
         </view>
