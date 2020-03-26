@@ -23,6 +23,7 @@ Page({
         SHIP_STATUS_NOT_REQUIRED : 10, //不需要配送
         SHIP_STATUS_NOT_YET : 20, //未配送
         SHIP_STATUS_ING: 30, //配送中
+        SHIP_STATUS_CANCEL: app.db.SHIP_STATUS_CANCEL,
 
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
@@ -78,7 +79,7 @@ Page({
             orderId: this.data.orderId,
         })
     },
-    // 接单　到店自取 | 堂食
+    // 接单　自配送 | 到店自取 | 堂食
     async clickShipStore() {
         var res = await app.db.orderShippingStore({
             orderId: this.data.orderId, 
@@ -102,12 +103,26 @@ Page({
 
     // 取消配送
     async clickSFCanceld() {
+
         var res = await app.db.orderSFCancel({
+            reason:"测试取消",
             OrderId: this.data.orderId,
         })
         wx.showModal({ title: res.msg, showCancel: false })
     },   
 
+
+
+
+    /***************强制动作*************/
+
+    // 强制退款
+    async clickForcerFund() {
+        var res = await app.db.orderForcerFund({
+            OrderId: this.data.orderId,
+        })
+        wx.showModal({ title: res.msg, showCancel: false })
+    },   
 
     // 订单作废
     async clickVoide() {

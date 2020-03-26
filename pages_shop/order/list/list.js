@@ -9,6 +9,13 @@ const t = date.getDate() + 1
 var today = [year, month, d].join('-')
 var tomorrow = [year, month, t].join('-') 
 console.log(today)
+
+
+/**
+ * 1、已退款， 查询支付状态 PAYMENT_STATUS_REFUND
+ * 
+ * 
+ */
 Page({
 
     /**
