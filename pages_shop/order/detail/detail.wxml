@@ -20,14 +20,14 @@
                 class="cu-btn round line-red" catchtap="clickForcerFund" >拒单退款</button>     
             <!-- 顺风配送取消 拒单 -->
             <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL  }}"
-                class="cu-btn round line-red text-white" catchtap="clickForcerFund" >配送取消，退款</button> 
+                class="cu-btn round line-red " catchtap="clickForcerFund" >配送取消，退款</button> 
                 
             <!-- 申请退款 -->
             <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_CANCEL }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickConfirmrefund" >用户申请退款，确认退款</button>    
+                class="cu-btn round line-red " catchtap="clickConfirmrefund" >用户申请退款，确认退款</button>    
             <!-- 申请退款 在配送中，先取消配送-->    
-            <button wx:if="{{  order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickSFCanceld" >取消配送</button> 
+            <button wx:if="{{   order.shipping_status_code == SHIP_STATUS_ING  }}"
+                class="cu-btn round line-red " catchtap="clickSFCanceld" >取消配送</button> 
 
 		</view>
         <view class="flex btn padding-lr ">
@@ -417,10 +417,10 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
                 class="cu-btn round bg-red text-white margin-right" catchtap="clickForcerFund" >强制退款</button> 
             <!-- 强制完成订单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
-                class="cu-btn round bg-red text-white margin-right" catchtap="clickVoide" >强制完成订单</button> 
+                class="cu-btn round bg-red text-white margin-right" catchtap="clickOver" >强制完成订单</button> 
             <!-- 作废订单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
-                class="cu-btn round bg-red text-white" catchtap="clickOver" >作废订单</button> 
+                class="cu-btn round bg-red text-white" catchtap="clickVoide" >作废订单</button> 
         </view>
 		
 		<view class=" padding-xs flex  align-center margin-top justify-center">
