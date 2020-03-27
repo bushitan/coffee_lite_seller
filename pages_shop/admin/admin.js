@@ -42,7 +42,10 @@ Page({
         STORE_TAKE_TYPE_TS : app.db.STORE_TAKE_TYPE_TS, // 堂食
 
         SELLER_PENDING: app.db.SELLER_PENDING, // 商家待处理状态
+
+        SHIP_STATUS_CANCEL: app.db.SHIP_STATUS_CANCEL,
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
+        
         
         SHIP_STATUS_EXCEPTION: app.db.SHIP_STATUS_EXCEPTION,
         

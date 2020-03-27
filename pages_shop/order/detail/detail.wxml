@@ -14,22 +14,21 @@
             
             <!-- 外卖拒单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET }}"
-                class="cu-btn round line-red" catchtap="clickReject" >拒单</button> 
+                class="cu-btn round line-red" catchtap="clickForcerFund" >拒单退款</button> 
             <!-- 到店自取 堂食 拒单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_REQUIRED }}"
-                class="cu-btn round line-red" catchtap="clickReject" >拒单</button>     
+                class="cu-btn round line-red" catchtap="clickForcerFund" >拒单退款</button>     
             <!-- 顺风配送取消 拒单 -->
             <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL  }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickReject" >拒单</button> 
+                class="cu-btn round line-red text-white" catchtap="clickForcerFund" >配送取消，退款</button> 
                 
             <!-- 申请退款 -->
             <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_CANCEL }}"
                 class="cu-btn round bg-yellow text-white" catchtap="clickConfirmrefund" >用户申请退款，确认退款</button>    
             <!-- 申请退款 在配送中，先取消配送-->    
             <button wx:if="{{  order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickSFCanceld" >用户申请退款，取消配送</button> 
-            <button wx:if="{{  order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY && order.shipping_status_code == SHIP_STATUS_ING  }}"
-                class="cu-btn round line-yellow " catchtap="clickSFCanceld" >商户取消配送</button> 
+                class="cu-btn round bg-yellow text-white" catchtap="clickSFCanceld" >取消配送</button> 
+
 		</view>
         <view class="flex btn padding-lr ">
 
@@ -237,11 +236,9 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 						<text class="text-black text-sm">备注信息</text>      
 					</view>
 				</view>                
-				<view class="cu-list menu " wx:for="{{order.order_notes}}" wx:key="index">
-                    <view class="cu-item ">
-                        <view class="content">
-                            <text class="text-gray text-sm">{{index+1}}、{{item.Note}}</text>
-                        </view>
+				<view class="cu-list menu padding-lr padding-bottom" >
+                    <view class="  " wx:for="{{order.order_notes}}" wx:key="index">
+                        <text class="text-gray text-sm">{{index+1}}、{{item.Note}}</text>
                     </view>
                 </view>
             </view>

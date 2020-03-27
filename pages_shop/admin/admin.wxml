@@ -54,12 +54,12 @@
                     <view>配送时间:{{order.wish_datetime}}</view>     
                 </view>
                 <view class="text-black  text-sm text-right" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">
-                    <view>{{order.ship_address.name}}（{{order.ship_address.phonenumber}}）</view>     
+                    <view>{{order.ship_address.phonenumber}}</view>     
                     <view>自取时间:{{order.wish_datetime}}</view>     
                 </view>
 
                 <view class="text-black  text-sm text-right" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">
-                    <view>{{order.ship_address.name}}（{{order.ship_address.phonenumber}}）</view>     
+                    <view>{{order.store_name}}</view>     
                 </view>
             </view>
             <!-- <view class="padding-tb-xs padding-lr bg-white solid-bottom">            
@@ -97,13 +97,16 @@
                 </view>
             </view>	
 
-            <view class="cu-bar   bg-white " wx:if="{{TabCur==0}}">
-            
-                <view class="action" wx:if="{{order.shipping_status_code == SHIP_STATUS_EXCEPTION}}" >        
-                    <!-- <text class="text-red   margin-right-xs">提醒：用户申请退款（点击详情处理）</text> -->
-                    <text class="text-red   margin-right-xs">提醒：顺丰取消订单（点击详情处理）</text>			
+            <view class="   bg-white " wx:if="{{TabCur==0}}">
+
+                <view class="padding" wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}" >  
+                    <text class="text-red   margin-right-xs">提醒：{{order.payment_status}}（请在详情中操作）</text>			
                 </view>
-                <view wx:else>
+                <view class="padding" wx:elif="{{order.shipping_status_code == SHIP_STATUS_CANCEL || order.shipping_status_code == SHIP_STATUS_EXCEPTION}}" >   
+                    <text class="text-red   margin-right-xs">提醒：{{order.shipping_status}}（请在详情中操作）</text>			
+                </view>
+                <view class="cu-bar" wx:else>
+
                     <view class="action" > 
                         <view wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">            
                             <text class="text-gray  text-sm margin-right-xs">待支付配送费</text>						

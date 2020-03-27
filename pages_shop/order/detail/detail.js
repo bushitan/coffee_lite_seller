@@ -23,6 +23,7 @@ Page({
         SHIP_STATUS_NOT_REQUIRED : 10, //不需要配送
         SHIP_STATUS_NOT_YET : 20, //未配送
         SHIP_STATUS_ING: 30, //配送中
+        
         SHIP_STATUS_CANCEL: app.db.SHIP_STATUS_CANCEL,
 
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
@@ -86,6 +87,8 @@ Page({
         })
     },
 
+
+    /***********退款**************/
     // 拒单
     async clickReject(){
         var res = await app.db.orderSellerReject({
