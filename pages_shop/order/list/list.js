@@ -33,15 +33,21 @@ Page({
         SortMenu: [
             // { id: 0, name: "未接单", status: app.db.ORDER_STATUS_PENDING}, 
             // { id: 1, name: "已接单", status: app.db.ORDER_STATUS_PROCESSING },
-            { id: 0, name: "已完成", status: app.db.SELLER_COMLETE },
-            { id: 1, name: "已退款", status: app.db.SELLER_REFUND },
-            { id: 2, name: "已取消", status: app.db.SELLER_CANCEL },
+            { id: 0, name: "待处理", status: app.db.SELLER_PENDING },
+            { id: 1, name: "配送中", status: app.db.SELLER_RIDING },
+            { id: 2, name: "已处理", status: app.db.SELLER_COMLETE },
+            // { id: 3, name: "已完成", status: app.db.SELLER_COMLETE },
+            { id: 3, name: "已退款", status: app.db.SELLER_REFUND },
+            // { id: 4, name: "已取消", status: app.db.SELLER_CANCEL },
             // { id: 3, name: "已退款", status: app.db.ORDER_STATUS_COMPLETE },
             // { id: 2, name: "全部订单", status: ""}, 
             // { id: 4, name: "自助下单" },
         ],
 
-        status:  app.db.SELLER_COMLETE,
+        STORE_TAKE_TYPE_WM: app.db.STORE_TAKE_TYPE_WM, // 外卖
+        STORE_TAKE_TYPE_ZQ: app.db.STORE_TAKE_TYPE_ZQ, // 到店自取
+        STORE_TAKE_TYPE_TS: app.db.STORE_TAKE_TYPE_TS, // 堂食
+        status: app.db.SELLER_PENDING,
         
 
         page: 1,

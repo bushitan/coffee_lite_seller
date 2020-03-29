@@ -15,10 +15,10 @@ Page({
         STORE_TAKE_TYPE_TS: app.db.STORE_TAKE_TYPE_TS, // 堂食
 
 
-        ORDER_STATUS_PENDING : 10, // 订单待处理
-        ORDER_STATUS_PROCESSING : 20, // 订单处理中
-        ORDER_STATUS_COMPLETE : 30, // 订单已完成
-        ORDER_STATUS_CANCEL : 40 ,// 订单已取消
+        ORDER_STATUS_PENDING: app.db.ORDER_STATUS_PENDING, // 订单待处理
+        ORDER_STATUS_PROCESSING: app.db.ORDER_STATUS_PROCESSING, // 订单处理中
+        ORDER_STATUS_COMPLETE: app.db.ORDER_STATUS_COMPLETE, // 订单已完成
+        ORDER_STATUS_CANCEL: app.db.ORDER_STATUS_CANCEL ,// 订单已取消
 
         SHIP_STATUS_NOT_REQUIRED : 10, //不需要配送
         SHIP_STATUS_NOT_YET : 20, //未配送
@@ -37,6 +37,11 @@ Page({
             rider_name:'',
             rider_phone:'',
         },
+
+        showReason:false,
+
+
+
     },
 
     /**
@@ -72,83 +77,148 @@ Page({
         }
     },
 
+    // 提示了才返回
+    backConfirm(res){
+        var that = this
+        wx.showModal({
+            title: res.msg,
+            showCancel:false,
+            success() {
+                if (res.code == 0){
+                    that.back()
+                }
+            },
+        })
+    },
+
+    // 直接返回
+    back(){
+        var page = getCurrentPages()
+        var prePage = page[page.length -2 ]
+        prePage.onInit()   // 刷新
+        wx.navigateBack({}) //后退
+    },
 
     /*********逻辑*************/
 
     // 接单 发顺丰
-    async clickShipSF() {
+    async clickShipSF(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return 
+
         var res = await app.db.orderShippingSF({
             orderId: this.data.orderId,
         })
+        this.backConfirm(res)
     },
     // 接单　自配送 | 到店自取 | 堂食
-    async clickShipStore() {
+    async clickShipStore(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return 
+
         var res = await app.db.orderShippingStore({
             orderId: this.data.orderId, 
         })
+        this.backConfirm(res)
     },
 
 
     /***********退款**************/
     // 拒单
-    async clickReject(){
+    async clickReject(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return 
+
         var res = await app.db.orderSellerReject({
             orderId: this.data.orderId,
         })
-        wx.showModal({ title: res.msg, showCancel: false })
+        this.backConfirm(res)
     },
     // 确认退款
     async clickConfirmrefund() {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return 
+
         var res = await app.db.orderConfirmrefund({
             orderId: this.data.orderId,
         })
-        wx.showModal({ title: res.msg, showCancel: false })
+        this.backConfirm(res)
     },   
 
-    // 取消配送
-    async clickSFCanceld() {
 
+
+    /***********顺风取消**************/
+    // 取消配送
+    async clickSFCanceld(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return
+
+        this.setData({ showReason: true })
+    },   
+    // 确定取消
+    async formConfirm(e) {
+        var that = this
+        var formData = e.detail.value
+        console.log(formData)
+        var reason = formData.reason || ""
+        if (reason == "") {
+            wx.showToast({
+                title: '请输入原因',
+                icon: "loading",
+                duration: 1000,
+
+            })
+            return
+        }
         var res = await app.db.orderSFCancel({
-            reason:"测试取消",
+            reason: reason,
             OrderId: this.data.orderId,
         })
         wx.showModal({ title: res.msg, showCancel: false })
-    },   
-
-
+        this.formCancel()
+        this.backConfirm(res)
+        // wx.navigateBack({})
+    },
+    // 关闭reason的dialog
+    formCancel() {
+        this.setData({
+            showReason: false
+        })
+    },
 
 
     /***************强制动作*************/
 
     // 强制退款
-    async clickForcerFund() {
+    async clickForcerFund(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return
+
         var res = await app.db.orderForcerFund({
             OrderId: this.data.orderId,
         })
-        wx.showModal({ title: res.msg, showCancel: false })
+        this.backConfirm(res)
     },   
 
     // 订单作废
-    async clickVoide() {
+    async clickVoide(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return
+
         var res = await app.db.orderVoide({
             OrderId: this.data.orderId,
         })
-        wx.showModal({ title: res.msg, showCancel: false })
+        this.backConfirm(res)
     },   
 
-    // 强制完成订单
-    async clickOver() {
+    // 强制完成订单 | 顺风点单自配送
+    async clickOver(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return
+
         var res = await app.db.orderOver({
             OrderId: this.data.orderId,
         })
-        wx.showModal({ title: res.msg, showCancel: false })
+        this.backConfirm(res)
     },   
 
-
-
+    // 拨打用户电话
     takeRiderPhone(){
         wx.makePhoneCall({
             phoneNumber: this.data.riderInfo.rider_phone,
         })
     },
+
 })

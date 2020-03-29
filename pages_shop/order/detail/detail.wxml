@@ -1,8 +1,8 @@
 <!--pages_shop/order/order.wxml-->
 <view class="">	
--订单状态{{order.order_status_code}}
+<!-- -订单状态{{order.order_status_code}}
 -支付状态{{order.payment_status_code}}
--配送状态{{order.shipping_status_code}}
+-配送状态{{order.shipping_status_code}} -->
 		<!--状态栏区域-->			
 		<view class="text-xl text-bold flex justify-between align-center padding">
             <view>
@@ -10,85 +10,48 @@
                 <text  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">（外卖）</text>
                 <text  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">（到店自取）</text>
                 <text  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">（堂食）</text>
-            </view>				
-            
+            </view>		
+		</view>
 
+        <view class="flex btn padding-lr " wx:if="{{ order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY }}">
+
+            <!-- 普通接单 -->
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING  && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipSF" data-name="顺丰接单">顺丰同城</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickOver" data-name="自配送">自配送</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ && order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore"  data-name="到店自取接单">到店自取接单</button> 
+            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS && order.order_status_code == ORDER_STATUS_PROCESSING }}"
+                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore"  data-name="堂食接单">堂食接单</button> 
+
+            <!-- 商户取消顺丰 -->
+            <view  wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL && order.payment_status_code != PAYMENT_STATUS_REFUND }}">
+                <button class="cu-btn round bg-yellow text-white" catchtap="clickShipSF"   data-name="重新下单，顺丰同城">重新下单，顺丰同城</button> 
+            </view>        
+        </view>
+        
+        <view class="flex  padding"> 
             <view  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">
                 <!-- 外卖拒单 -->
                 <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET }}"
-                    class="cu-btn round line-red" catchtap="clickForcerFund" >外卖退款</button> 
-                <!-- 顺风配送取消 拒单 -->
-                <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL  }}"
-                    class="cu-btn round line-red " catchtap="clickForcerFund" >配送取消，退款</button> 
+                    class="cu-btn round line-red" catchtap="clickForcerFund"   data-name="外卖退款">外卖退款</button> 
+                <!-- 顺丰配送取消 拒单 -->
+                <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL && order.payment_status_code != PAYMENT_STATUS_REFUND   }}"
+                    class="cu-btn round line-red " catchtap="clickForcerFund"   data-name="配送已取消，退款">配送已取消，退款</button> 
                 <!-- 申请退款 在配送中，先取消配送-->    
                 <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_ING  }}"
-                    class="cu-btn round line-red " catchtap="clickSFCanceld" >取消配送</button> 
+                    class="cu-btn round line-red " catchtap="clickSFCanceld"   data-name="取消配送">取消配送</button> 
             </view>
 
             <view  wx:else>   
                 <!-- 到店自取 堂食 拒单 -->
                 <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING &&  order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY}}"
-                    class="cu-btn round line-red" catchtap="clickForcerFund" >自取 | 堂食退款</button>    
+                    class="cu-btn round line-red" catchtap="clickForcerFund"   data-name="自取 | 堂食退款">自取 | 堂食退款</button>    
                 <!-- 申请退款 -->
                 <button wx:if="{{ order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY  }}"
-                    class="cu-btn round line-red " catchtap="clickConfirmrefund" >确认退款</button>    
-            </view>
-            
-		</view>
-        <view class="flex btn padding-lr " wx:if="{{ order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY }}">
-
-            <!-- 普通接单 -->
-            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING  && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickShipSF" >顺风同城</button> 
-            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM && order.order_status_code == ORDER_STATUS_PROCESSING && order.shipping_status_code == SHIP_STATUS_NOT_YET}}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >自配送</button> 
-            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ && order.order_status_code == ORDER_STATUS_PROCESSING }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >到店自取接单</button> 
-            <button wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS && order.order_status_code == ORDER_STATUS_PROCESSING }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >堂食接单</button> 
-
-            <!-- 商户取消顺丰 -->
-            <view  wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL   }}">
-                <button class="cu-btn round bg-yellow text-white" catchtap="clickShipSF" >重新下单，顺风同城</button> 
-            </view>
-            
-            <!-- <button wx:if="{{ order.shipping_status_code == SHIP_STATUS_CANCEL   }}"
-                class="cu-btn round bg-yellow text-white" catchtap="clickShipStore" >重新下单，自配送</button>  -->
-<!-- 
-order_status_code ORDER_STATUS_PROCESSING
-payment_status_code
-shipping_status_code 
-
-
-STORE_TAKE_TYPE_WM = 1 // 外卖
-STORE_TAKE_TYPE_ZQ = 2 // 到店自取
-STORE_TAKE_TYPE_TS = 4 // 堂食
-
-PAYMENT_STATUS_PENDING = 10 // 待支付
-PAYMENT_STATUS_AUTHORIZED = 20 // 待支付
-PAYMENT_STATUS_PAID = 30 // 已经支付
-PAYMENT_STATUS_REFUND = 40 // 退款
-PAYMENT_STATUS_CANCEL = 50 // 取消支付
-PAYMENT_STATUS_REFUND_APPLY = 60 // 申请退款
-
-ORDER_STATUS_PENDING = 10 // 订单待处理
-ORDER_STATUS_PROCESSING = 20 // 订单处理中
-ORDER_STATUS_COMPLETE = 30 // 订单已完成
-ORDER_STATUS_CANCEL = 40 // 订单已取消
-
-SELLER_PENDING = 1 // 商家未处理  使用
-SELLER_PROCESSING = 2 // 商家处理中
-SELLER_COMLETE = 4 // 商家已完成   使用
-SELLER_RIDING = 8 // 配送中   使用
-SELLER_REFUND = 16 // 商家已退款
-SELLER_CANCEL = 32 // 商家已取消
-
-SHIP_STATUS_NOT_REQUIRED = 10 //不需要配送
-SHIP_STATUS_NOT_YET = 20 //未配送
-SHIP_STATUS_PARTIALLY = 25 //部分已配送
-SHIP_STATUS_ING = 30 //配送中
-SHIP_STATUS_DELIVER = 40 //已送达
-SHIP_STATUS_CANCEL = 50 //已取消 -->
+                    class="cu-btn round line-red " catchtap="clickConfirmrefund"   data-name="确认退款">确认退款</button>    
+            </view>        
         </view>
 		
 		
@@ -241,7 +204,7 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 						<text class="text-black text-sm">备注信息</text>      
 					</view>
 				</view>                
-				<view class="cu-list menu padding-lr padding-bottom" >
+				<view class="cu-list menu padding-lr padding-tb" >
                     <view class="  " wx:for="{{order.order_notes}}" wx:key="index">
                         <text class="text-gray text-sm">{{index+1}}、{{item.Note}}</text>
                     </view>
@@ -383,7 +346,7 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 				<view class="cu-list menu ">
 					<view class="cu-item ">
 						<view class="content">
-							<text class="text-gray text-sm">订单号码</text>
+							<text class="text-gray text-sm">取单码</text>
 						</view>
 						<view class="action">
 							<view class="text-black text-sm">{{order.id}}</view>
@@ -416,13 +379,14 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 				</view>				
 			</view>
 		</view>
+
 		<view class="flex justify-center padding">
             <!-- 强制退款 -->
             <button wx:if="{{ order.payment_status_code != PAYMENT_STATUS_REFUND }}"
-                class="cu-btn round bg-red text-white margin-right" catchtap="clickForcerFund" >强制退款</button> 
+                class="cu-btn round bg-red text-white margin-right" catchtap="clickForcerFund" data-name="强制退款">强制退款</button> 
             <!-- 强制完成订单 -->
             <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
-                class="cu-btn round bg-red text-white margin-right" catchtap="clickOver" >强制完成订单</button> 
+                class="cu-btn round bg-red text-white margin-right" catchtap="clickOver" data-name="强制完成订单">强制完成订单</button> 
             <!-- 作废订单 -->
             <!-- <button wx:if="{{ order.order_status_code == ORDER_STATUS_PROCESSING }}"
                 class="cu-btn round bg-red text-white" catchtap="clickVoide" >作废订单</button>  -->
@@ -434,3 +398,31 @@ SHIP_STATUS_CANCEL = 50 //已取消 -->
 		<view class="pg-space-xxl"></view>		
 		
 	</view>
+
+
+
+		
+		<view class="cu-modal padding-tb-xl {{ showReason? 'show':''}} " >
+            <form bindsubmit="formConfirm">
+			    <view class="cu-dialog" style=" position: relative;">
+                    <view class="cu-bar bg-white justify-end">
+                        <view class="content text-bold">请输入取消配送原因</view>
+                        <view class="action" catchtap="formCancel">
+                            <text class="cuIcon-close text-red"></text>
+                        </view>
+                    </view>
+                    <view class="cu-form-group  text-left">
+                        <view class="title">取消原因：</view>
+                        <input placeholder="请输入原因" name="reason"></input>
+                    </view>
+                
+                            
+                    <view class="cu-bar bg-white justify-end">
+                        <view class="action">
+                            <button class="cu-btn line-yellow round "  catchtap="formCancel">取消</button>
+                            <button class="cu-btn bg-yellow text-white round margin-left" form-type="submit" >确定</button>
+                        </view>
+                    </view>
+                </view>
+            </form>
+		</view>

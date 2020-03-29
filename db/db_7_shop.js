@@ -26,7 +26,7 @@ class dbStats extends dbFather {
     ORDER_STATUS_PROCESSING = 20 // 订单处理中
     ORDER_STATUS_COMPLETE = 30 // 订单已完成
     ORDER_STATUS_CANCEL = 40 // 订单已取消
-    ORDER_STATUS_CANCEL = 50 // 订单拒单
+    // ORDER_STATUS_CANCEL = 50 // 订单拒单
 
     SELLER_PENDING = 1 // 商家未处理  使用
     SELLER_PROCESSING = 2 // 商家处理中
@@ -55,6 +55,8 @@ class dbStats extends dbFather {
 
             var startTime = new Date().getTime();
             // console.log('startTime', startTime)
+
+            wx.showLoading({ title: "" ,mask:true})
             wx.request({
                 url: options.url,
                 method: options.method || "POST",
@@ -63,12 +65,13 @@ class dbStats extends dbFather {
                 },
                 data: data,
                 success(res) {
-
+                    wx.hideLoading()
                     var completeTime = new Date().getTime();
                     console.log(options.url, ":", completeTime - startTime)
                     resolve(res.data)
                 },
                 fail(res) {
+                    wx.hideLoading()
                     console.log("请求错误：" + options.url, res)
                     reject(res)
                 },
@@ -134,14 +137,14 @@ class dbStats extends dbFather {
 	 */
     orderGetList(data) {
         return new Promise((resolve, reject) => {
-            wx.showLoading({ title: "加载中" })
+            // wx.showLoading({ title: "加载中" })
             this.orderRequest({ url: this.WM_URL + "api/seller/getorderslist/", data: data, })
                 .then(res => {
-                    wx.hideLoading()
+                    // wx.hideLoading()
                     resolve(res)
                 })
                 .catch(res => {
-                    wx.hideLoading()
+                    // wx.hideLoading()
                     reject(res)
                 })
         })

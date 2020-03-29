@@ -14,6 +14,7 @@ const month = date.getMonth() + 1
 const day = date.getDate() 
 console.log()
 var today = [year, month, day].join('-') 
+var interval 
 Page({
 
     /**
@@ -24,10 +25,9 @@ Page({
 
         TabCur: TAB_PENDING,
         SortMenu: [
-            { id: 0, name: "待处理", status: app.db.ORDER_STATUS_PENDING },
-            // { id: 1, name: "处理中", status: app.db.ORDER_STATUS_PROCESSING },
-            { id: 1, name: "配送中", status: app.db.ORDER_STATUS_PROCESSING },
-            { id: 2, name: "已处理", status: app.db.ORDER_STATUS_COMPLETE },
+            { id: 0, name: "待处理", },
+            { id: 1, name: "配送中",},
+            { id: 2, name: "已处理",},
            
             // { id: 2, name: "退款" }, 
             // { id: 3, name: "全部订单" },
@@ -62,46 +62,27 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.onInit()
 
-        // this.setData({
-        //     preList: wx.getStorageSync('list')
-        // })
-        
+        // 设置ID
+        app.db.shopLogin().then(res=>{
+            wx.setNavigationBarTitle({
+                title: '点单管理后台（商户ID:' + res.data.sn + "）",
+            })
+        })
+      
+        this.onInit() // 初始化
+
+        var that = this
+        interval = setInterval(function(){
+            that.onInit()
+        },60000)
     },
 
     onShow(){
     },
     // 刷新
     async onInit(){
-        // 登录
-        var res = await app.db.shopLogin()
-    
-        wx.setNavigationBarTitle({
-            title: '点单管理后台（商户ID:' + res.data.sn + "）",
-        })
-        this.tabSelect()
-        // debugger
-        // if( this.checkPower() == false )
-        //     return
-        // debugger
-       
-        // var pending = await app.db.orderGetList({
-        //     Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING,       CreatedAtMin: today})
-
-        // var pendingList = pending.data
-        // // var processing = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
-        // // var complete = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_COMPLETE, CreatedAtMin: today})
-        // // var pendingList = pending.data
-        // // var processingList = processing.data
-        // // var completeList = complete.data
-        // this.setData({
-        //     TabCur: 0,
-        //     list: pendingList,
-        //     pendingList : pending.data,
-        //     // processingList : processing.data,
-        //     // completeList : complete.data,
-        // })
+        this.tabSelect() //默认点击tab
     },
 
     // 检测是否有权限
@@ -126,32 +107,26 @@ Page({
         switch (id) {
             case 0: var res = await app.db.orderGetList({
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING, CreatedAtMin: today
-            });
-                break;
+            });break;
             case 1: var res = await app.db.orderGetList({
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_RIDING, CreatedAtMin: today
-            });
-                break;
+            }); break;
             case 2: var res = await app.db.orderGetList({
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE, CreatedAtMin: today
-            });
-                break;
+            });break;
         }
-
         this.setData({
             list: res.data
         })
-// 
     },
 
     /**
      * @method 顺风接单
      */
     async orderShipSF(e) {
+        if (await app.showModal(e.currentTarget.dataset.name) == false ) return 
+
         var orderID = e.currentTarget.dataset.order_id
-        // var res = await app.db.orderShippingStore({
-        //     orderId: orderID, 
-        // })
         var res = await app.db.orderShippingSF({
             orderId: orderID,
         })
@@ -159,11 +134,13 @@ Page({
             title: res.msg,
         })
         if(res.code == 0 ){
-            var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
-            this.setData({ 
-                TabCur: TAB_PROCESSING,
-                list: res.data
-            })
+            this.setData({ TabCur : 1 })
+            this.tabSelect() 
+            // var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
+            // this.setData({ 
+            //     TabCur: TAB_PROCESSING,
+            //     list: res.data
+            // })
         }
     },
 
@@ -171,6 +148,9 @@ Page({
     * @method 到店自取 | 堂食接单
     */
     async orderShipStore(e) {
+
+        if (await app.showModal(e.currentTarget.dataset.name) == false) return 
+
         var orderID = e.currentTarget.dataset.order_id
         var res = await app.db.orderShippingStore({
             orderId: orderID, 
@@ -179,24 +159,15 @@ Page({
             title: res.msg,
         })
         if (res.code == 0) {
-            var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
-            this.setData({
-                TabCur: TAB_PROCESSING,
-                list: res.data
-            })
+
+            this.setData({ TabCur: 2 })
+            this.tabSelect() 
+            // var res = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
+            // this.setData({
+            //     TabCur: TAB_PROCESSING,
+            //     list: res.data
+            // })
         }
-    },
-
-    /**
-    * @method 退款，取消订单
-    */
-    async clickCancle(e) {
-        var orderID = e.currentTarget.dataset.order_id
-        var res = await app.db.orderConfirmrefund({
-            orderId: orderID,
-        })
-        wx.showModal({ title: res.msg, showCancel: false })
-
     },
 
 
@@ -242,3 +213,16 @@ Page({
 
     onShareAppMessage(){},
 })
+
+
+// /**
+//  * @method 退款，取消订单
+//  */
+// async clickCancle(e) {
+//     var orderID = e.currentTarget.dataset.order_id
+//     var res = await app.db.orderConfirmrefund({
+//         orderId: orderID,
+//     })
+//     wx.showModal({ title: res.msg, showCancel: false })
+
+// },

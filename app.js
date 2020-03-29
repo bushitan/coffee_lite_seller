@@ -24,6 +24,26 @@ App({
         })
     },
 
+    // 判断用户选择
+    showModal(msg, showCancel=true){
+        return new Promise((resolve, reject) => {
+            wx.showModal({
+                title: msg,
+                showCancel: showCancel ,
+                success(res){
+                    if(res.confirm) 
+                        resolve(true)
+                    else{
+                        resolve(false)
+                    }
+                },
+                fail(){
+                    reject(false)
+                },                
+            })
+        })
+    },
+
     // 获取上一页面
     getPrePage() {
         var pre = getCurrentPages()[getCurrentPages().length - 2]

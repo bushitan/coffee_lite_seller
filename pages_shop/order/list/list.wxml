@@ -82,7 +82,7 @@
                     <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button>
                 </view>
             </view>
-            <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom">
+            <!-- <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom">
                 <view class=" ">
                     <text class="text-bold text-yellow" wx:if="{{!order.pick_up_in_store}}">到店自取</text>
                     <text class="text-bold text-red" wx:else>外卖</text>
@@ -91,9 +91,54 @@
                     <view>韦丰（15577889971）</view>
                     <view wx:if="{{order.pick_up_in_store==false}}">{{order.pickup_address}}</view>                    
                 </view>
-            </view>
+            </view> -->
             <!-- <view class="padding-tb-xs padding-lr bg-white solid-bottom">            
             </view> -->
+             <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">订单方式</view>
+                <view class=" text-right" >
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">外卖</text>
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">到店自取</text>
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">堂食</text>
+                </view>
+            </view>
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">
+                    下单门店
+                </view>
+                <view class="text-black  text-sm text-right" >
+                    <view>{{order.store_name}}</view>     
+                </view>
+            </view>
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" 
+            catchtap="takePhone" 
+            data-phonenumber="{{order.ship_address.phonenumber}}"
+            wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">
+                <view class="basis-xs">
+                    <text class="text-gray text-sm"  >配送地址</text>
+                </view>
+                <view class="text-black  text-sm text-right">
+                    <view>{{order.ship_address.addr_detail}}</view>   
+                    <view>{{order.ship_address.name}} {{order.ship_address.phonenumber}}</view>     
+                    <view>配送时间:{{order.wish_datetime}}</view>     
+                </view>               
+            </view>
+
+            <view class="padding-tb- padding-lr bg-white flex justify-between align-center solid-bottom" 
+                catchtap="takePhone" 
+                data-phonenumber="{{order.ship_address.phonenumber}}"
+                wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">
+                <view class="basis-sm">                   
+                    <text class="text-gray text-sm">自取联系</text>
+                </view>              
+                <view class="text-black  text-sm text-right">
+                    <view>联系电话：{{order.ship_address.phonenumber}}</view>     
+                    <view>自取时间：{{order.wish_datetime}}</view>     
+                </view>
+            </view>
+
 
             <view class="cu-list menu bg-white solid-bottom">
                 <view class="cu-item margin-tb-sm" 
@@ -121,7 +166,7 @@
             <view class="cu-bar   bg-white ">
                 <view class="action"></view>
                 <view class="action">						                    
-                    <text class="text-gray  text-sm margin-right-xs">订单支付</text>						
+                    <text class="text-gray  text-sm margin-right-xs">用户已支付金额</text>						
                     <text class=" text-xl text-red text-bold text-price"></text>
                     <text class=" text-xl text-red text-bold">{{order.order_total}}</text>
                 </view>
