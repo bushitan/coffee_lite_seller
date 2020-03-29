@@ -1,0 +1,24 @@
+<!--pages_shop/config/store.wxml-->
+
+
+<view class="cu-card padding-lr margin-top " wx:for="{{list}}"  wx:for-index="orderIndex">
+    <!-- <view class="text-blue  text-sm">
+        {{order.name}}
+    </view> -->
+    <view class=" pg-radius  shadow shadow-warp ">
+        <view class="cu-bar bg-blue solid-bottom ">
+           <view class="action">             
+                <text class="text-white text-sm">{{item.Name}}</text>       
+           </view>   
+            <view class="action">
+                <button 
+                    class="cu-btn bg-white text-blue round text-sm " 
+                    catchtap="setClose" 
+                    data-shop_id="{{item.Id}}">
+                    {{item.IsClose?"已打烊":"营业中" }}（修改）
+                </button>
+            </view>
+        </view>               
+    </view>      
+</view>
+

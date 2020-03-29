@@ -87,11 +87,11 @@ class dbStats extends dbFather {
                 success(res){
                     console.log(res.code)
                     that.orderRequest({
-                        url: that.WM_URL + "/api/gettoken/",
+                        url: that.WM_URL + "api/gettoken/",
                         data: { Code:res.code},
                         method: "POST",
                     }).then(res => {
-                        console.log(res.data.session)
+                        console.log("shopLogin:",res.data)
                         // resolve(res)
                         if(res.code == 0 ){
                             wx.setStorageSync(that.KEY_SHOP_SESSION,res.data.session)
@@ -314,10 +314,37 @@ class dbStats extends dbFather {
      */
     orderOver(data) {
         return new Promise((resolve, reject) => {
-            this.orderRequest({ url: this.WM_URL + "api//api/orders/overorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+            this.orderRequest({ url: this.WM_URL + "api/orders/overorder/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
         })
     }
 
+    /************门店配置、产品配置*************/
+    /**
+      * @method 10.1  查询店铺
+     */
+    shopConfigStore(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/stores/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+    /**
+     * @method 10.2  修改营业状态
+    */
+    shopUpdate(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/store/update/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+    /**
+      * @method 10.3  查询店铺的产品
+     */
+    shopGetProduct(data) {
+        return new Promise((resolve, reject) => {
+            this.orderRequest({ url: this.WM_URL + "api/category/products/", data: data, }).then(res => { resolve(res) }).catch(res => reject(res))
+        })
+    }
+
+    
 }
 
 

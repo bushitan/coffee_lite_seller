@@ -1,0 +1,56 @@
+<!--pages_shop/config/product.wxml-->
+
+
+<view class="cu-card padding-lr margin-top " wx:for="{{list}}" wx:for-item="item"  wx:for-index="productIndex">
+    <!-- <view class="text-blue  text-sm">
+        {{order.name}}
+    </view> -->
+    <view class=" pg-radius  shadow shadow-warp ">
+        <view class="cu-bar bg-blue solid-bottom ">
+           <view class="action">             
+                <text class="text-white text-sm">{{item.category.cate_name}}</text>       
+           </view>   
+            <view class="action">
+                <!-- <button 
+                    class="cu-btn bg-white text-blue round text-sm margin-right-sm" 
+                    catchtap="setClose" 
+                    data-shop_id="{{item.id}}">
+                    {{item.IsClose?"已打烊":"营业中" }}
+                </button>
+
+                <button 
+                    class="cu-btn bg-white text-blue round text-sm"
+                    catchtap="setProduct" 
+                    data-shop_id="{{item.id}}">
+                    修改产品
+                </button> -->
+            </view>
+        </view>
+
+
+            <view class="cu-list menu bg-white ">
+                <view class="cu-item margin-tb-sm" style="align-items:flex-start" 
+                    wx:for="{{item.products}}" wx:for-item="product"  wx:for-index="productIndex">
+                    <view class="action">
+                        <image src='{{product.imgs[0].src}}' 
+                            class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                            style="width:60px;height:60px"
+                            mode="aspectFill"
+                            ></image>
+                    </view>
+                    <view class="content ">
+                        <view class="text-black text-left text-sm">{{product.name}}</view>
+                        <view class="text-gray  text-left text-sm ">{{product.shortDescription}}</view>
+                        <view class="flex justify-between">
+                            <view class="text-gray "></view>
+                            <view class="text-gray  flex justify-between align-center">			
+                                <!-- <button class="cu-btn bg-yellow">以上jia</button> -->
+                            </view>
+                        </view>
+                    </view>
+                </view>					
+            </view>    
+
+    </view>      
+</view>
+

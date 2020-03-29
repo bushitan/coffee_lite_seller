@@ -160,7 +160,7 @@
 					"id": 14,
 					"name": "pages_shop/order/detail/detail 订单详情",
 					"pathName": "pages_shop/order/detail/detail",
-					"query": "orderId=89",
+					"query": "orderId=140",
 					"scene": null
 				},
 				{
@@ -175,6 +175,20 @@
 					"name": "pages_shop/order/detail/detail",
 					"pathName": "pages_shop/order/detail/detail",
 					"query": "orderId=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/config/store",
+					"pathName": "pages_shop/config/store",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_shop/config/product",
+					"pathName": "pages_shop/config/product",
+					"query": "shopId=3",
 					"scene": null
 				}
 			]

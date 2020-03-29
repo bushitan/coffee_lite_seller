@@ -24,7 +24,7 @@
     </scroll-view>
 
     <view class=" margin-top flex  align-center  justify-center">
-        <text class="text-center text-sm  text-gray">当前栏目订单：{{list.length || ""}}</text>		
+        <text class="text-center text-sm  text-gray">当前栏目订单：{{list.length }}</text>		
     </view>
 
 
@@ -42,28 +42,51 @@
                     <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button>
                 </view>
             </view>
-            <view class="padding-tb-xs padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
-                <view class=" ">
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">订单方式</view>
+                <view class=" text-right" >
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">外卖</text>
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">到店自取</text>
                     <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">堂食</text>
                 </view>
-                <view class="text-black  text-sm text-right" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">
-                    <view>{{order.ship_address.addr_detail}}</view>   
-                    <view>{{order.ship_address.name}} {{order.ship_address.phonenumber}}</view>     
-                    <view>配送时间:{{order.wish_datetime}}</view>     
-                </view>
-                <view class="text-black  text-sm text-right" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">
-                    <view>{{order.ship_address.phonenumber}}</view>     
-                    <view>自取时间:{{order.wish_datetime}}</view>     
-                </view>
+            </view>
 
-                <view class="text-black  text-sm text-right" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">
+                    下单门店
+                </view>
+                <view class="text-black  text-sm text-right" >
                     <view>{{order.store_name}}</view>     
                 </view>
             </view>
-            <!-- <view class="padding-tb-xs padding-lr bg-white solid-bottom">            
-            </view> -->
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" 
+            catchtap="takePhone" 
+            data-phonenumber="{{order.ship_address.phonenumber}}"
+            wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">
+                <view class="basis-xs">
+                    <text class="text-gray text-sm"  >配送地址</text>
+                </view>
+                <view class="text-black  text-sm text-right">
+                    <view>{{order.ship_address.addr_detail}}</view>   
+                    <view>{{order.ship_address.name}} {{order.ship_address.phonenumber}}</view>     
+                    <view>配送时间:{{order.wish_datetime}}</view>     
+                </view>               
+            </view>
+
+            <view class="padding-tb- padding-lr bg-white flex justify-between align-center solid-bottom" 
+                catchtap="takePhone" 
+                data-phonenumber="{{order.ship_address.phonenumber}}"
+                wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">
+                <view class="basis-sm">                   
+                    <text class="text-gray text-sm">自取联系</text>
+                </view>              
+                <view class="text-black  text-sm text-right">
+                    <view>联系电话：{{order.ship_address.phonenumber}}</view>     
+                    <view>自取时间：{{order.wish_datetime}}</view>     
+                </view>
+            </view>
 
             <view class="cu-list menu bg-white ">
                 <view class="cu-item margin-tb-sm" style="align-items:flex-start" 
@@ -97,7 +120,12 @@
                 </view>
             </view>	
 
-            <view class="   bg-white " wx:if="{{TabCur==0}}">
+            <view class="bg-white ">
+                <view class="padding text-red"  wx:if="{{order.shipping_status_code == SHIP_STATUS_ING }}">配送状态：{{order.shipping_status}}</view>
+            </view>
+
+            <view class="bg-white " wx:if="{{TabCur==0}}">
+            
 
                 <view class="padding" wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}" >  
                     <text class="text-red   margin-right-xs">提醒：{{order.payment_status}}（请在详情中操作）</text>			
@@ -137,7 +165,8 @@
     </view>
 
     <view class="padding bg-white flex justify-around solid-top" style="position:fixed; bottom:0;left:0;right:0;"  >
-        <button class="cu-btn text-white bg-yellow round  " catchtap="onInit" >手动刷新</button>
+        <button class="cu-btn  line-yellow round  " catchtap="onInit" >手动刷新</button>
+        <button class="cu-btn  line-yellow round  " catchtap="setStore" >店铺设置</button>
         <button class="cu-btn text-white bg-blue round  " catchtap="toOrderList" >历史订单</button>
     </view>
 

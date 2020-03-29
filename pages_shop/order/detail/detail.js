@@ -26,6 +26,7 @@ Page({
         
         SHIP_STATUS_CANCEL: app.db.SHIP_STATUS_CANCEL,
 
+        PAYMENT_STATUS_REFUND : app.db.PAYMENT_STATUS_REFUND,
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
         orderId: "",

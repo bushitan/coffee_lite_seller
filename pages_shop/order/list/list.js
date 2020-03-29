@@ -33,13 +33,16 @@ Page({
         SortMenu: [
             // { id: 0, name: "未接单", status: app.db.ORDER_STATUS_PENDING}, 
             // { id: 1, name: "已接单", status: app.db.ORDER_STATUS_PROCESSING },
-            { id: 0, name: "已完成", status: app.db.ORDER_STATUS_COMPLETE },
-            { id: 1, name: "已取消", status: app.db.ORDER_STATUS_CANCEL },
+            { id: 0, name: "已完成", status: app.db.SELLER_COMLETE },
+            { id: 1, name: "已退款", status: app.db.SELLER_REFUND },
+            { id: 2, name: "已取消", status: app.db.SELLER_CANCEL },
             // { id: 3, name: "已退款", status: app.db.ORDER_STATUS_COMPLETE },
             // { id: 2, name: "全部订单", status: ""}, 
             // { id: 4, name: "自助下单" },
         ],
-        status: app.db.ORDER_STATUS_COMPLETE,
+
+        status:  app.db.SELLER_COMLETE,
+        
 
         page: 1,
         limit: 10,
@@ -80,7 +83,7 @@ Page({
         var res = await app.db.orderGetList({
             Page: this.data.page,
             Limit: this.data.limit,
-            Status: this.data.status,
+            FilterStatus: this.data.status,
             CreatedAtMin: this.data.CreatedAtMin,
             CreatedAtMax: this.data.CreatedAtMax,
         })
@@ -131,9 +134,9 @@ Page({
         })
     },
     // 查看订单详情
-    toOrderDetail() {
+    toOrderDetail(e) {
         wx.navigateTo({
-            url: '/pages_shop/order/detail/detail',
+            url: '/pages_shop/order/detail/detail?orderId=' + e.currentTarget.dataset.order_id,
         })
 
     },
@@ -167,11 +170,6 @@ Page({
                 title: '该订单不存在',
             })
         }
-        console.log(res.data)
-        // 搜索成功
-        // this.setData({
-        //     showCunstomer: true,
-        // })
     },
 
 

@@ -11,7 +11,7 @@ var TAB_COMPLETE = 2
 var date = new Date()
 const year = date.getFullYear()
 const month = date.getMonth() + 1
-const day = date.getDate() - 6
+const day = date.getDate() 
 console.log()
 var today = [year, month, day].join('-') 
 Page({
@@ -46,7 +46,8 @@ Page({
         SHIP_STATUS_CANCEL: app.db.SHIP_STATUS_CANCEL,
         PAYMENT_STATUS_REFUND_APPLY: app.db.PAYMENT_STATUS_REFUND_APPLY,
         
-        
+
+        SHIP_STATUS_ING: app.db.SHIP_STATUS_ING,
         SHIP_STATUS_EXCEPTION: app.db.SHIP_STATUS_EXCEPTION,
         
         status: app.db.ORDER_STATUS_PENDING,
@@ -68,6 +69,9 @@ Page({
         // })
         
     },
+
+    onShow(){
+    },
     // 刷新
     async onInit(){
         // 登录
@@ -76,28 +80,28 @@ Page({
         wx.setNavigationBarTitle({
             title: '点单管理后台（商户ID:' + res.data.sn + "）",
         })
-
+        this.tabSelect()
         // debugger
         // if( this.checkPower() == false )
         //     return
         // debugger
        
-        var pending = await app.db.orderGetList({
-            Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING,       CreatedAtMin: today})
+        // var pending = await app.db.orderGetList({
+        //     Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING,       CreatedAtMin: today})
 
-        var pendingList = pending.data
-        // var processing = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
-        // var complete = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_COMPLETE, CreatedAtMin: today})
         // var pendingList = pending.data
-        // var processingList = processing.data
-        // var completeList = complete.data
-        this.setData({
-            TabCur: 0,
-            list: pendingList,
-            pendingList : pending.data,
-            // processingList : processing.data,
-            // completeList : complete.data,
-        })
+        // // var processing = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_PROCESSING, CreatedAtMin: today })
+        // // var complete = await app.db.orderGetList({ Page: 1, Limit: 100, Status: app.db.ORDER_STATUS_COMPLETE, CreatedAtMin: today})
+        // // var pendingList = pending.data
+        // // var processingList = processing.data
+        // // var completeList = complete.data
+        // this.setData({
+        //     TabCur: 0,
+        //     list: pendingList,
+        //     pendingList : pending.data,
+        //     // processingList : processing.data,
+        //     // completeList : complete.data,
+        // })
     },
 
     // 检测是否有权限
@@ -114,7 +118,7 @@ Page({
      */
     async tabSelect(e) {
         console.log(e)
-        var id = e.currentTarget.dataset.tab_id
+        var id = e ? e.currentTarget.dataset.tab_id  : this.data.TabCur
         this.setData({
             TabCur: id,
             list: [],
@@ -132,19 +136,11 @@ Page({
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE, CreatedAtMin: today
             });
                 break;
-
         }
 
-        // debugger
         this.setData({
             list: res.data
         })
-        // if(id == 0)
-        //     this.setData({ list: this.data.pendingList })		
-        // else if(id == 1)
-        //     this.setData({ list: this.data.processingList })
-        // else
-        //     this.setData({ list: this.data.completeList })
 // 
     },
 
@@ -230,7 +226,12 @@ Page({
     refresh(){
         this.onInit()
     },
-
+    //　配置店铺信息
+    setStore(){
+        wx.navigateTo({
+            url: '/pages_shop/config/store',
+        })
+    },
 
     // 拨打用户号码
     takePhone(e){

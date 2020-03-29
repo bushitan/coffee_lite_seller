@@ -14,6 +14,8 @@
         "pages/test_unit/test_unit",
         
         "pages_shop/admin/admin",
+        "pages_shop/config/store",
+        "pages_shop/config/product",
         "pages_shop/local/local",
         "pages_shop/order/detail/detail",
         "pages_shop/order/add/add",
