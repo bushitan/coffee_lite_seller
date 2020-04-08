@@ -1,6 +1,20 @@
 <!--pages_shop/config/store.wxml-->
 
 
+<view class="cu-list menu padding-tb ">
+    <view class="cu-item " style="background-color: transparent;">
+        <view class="action">
+            <image src='{{userInfo.WxAvatarUrl}}' 
+                class="cu-avatar round  bg-gray margin-right" 
+                style="width: 72px;height: 72px;"></image>     
+            <button class="cu-btn round text-white bg-yellow text-bold text-df" open-type="getUserInfo" bindgetuserinfo="getuserinfo" >
+                {{userInfo.WxNickName ? userInfo.WxNickName :'登陆'}}
+            </button>
+        </view>
+    </view>
+</view>
+
+
 <view class="cu-card padding-lr margin-top " wx:for="{{list}}"  wx:for-index="orderIndex">
     <!-- <view class="text-blue  text-sm">
         {{order.name}}

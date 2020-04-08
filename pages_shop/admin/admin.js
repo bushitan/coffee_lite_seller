@@ -66,7 +66,7 @@ Page({
         // 设置ID
         app.db.shopLogin().then(res=>{
             wx.setNavigationBarTitle({
-                title: '点单管理后台（商户ID:' + res.data.sn + "）",
+                title: '商户ID:' + res.data.sn  ,
             })
         })
       

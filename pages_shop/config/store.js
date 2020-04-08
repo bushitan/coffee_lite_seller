@@ -7,6 +7,8 @@ Page({
      */
     data: {
         list:[],
+        userInfo: {},
+        session:{},
     },
 
     /**
@@ -22,6 +24,31 @@ Page({
         console.log(res)
         this.setData({
             list:res.data
+            // session:s
+        })
+    },
+
+    //登录
+    async getuserinfo(e) {
+        console.log(e.detail.userInfo)
+        // var res = await this.db.customerUpdate()
+        var userInfo = e.detail.userInfo
+        var wxUserInfo = {
+            WxAvatarUrl: userInfo.avatarUrl,
+            WxCity: userInfo.city,
+            WxCountry: userInfo.country,
+            WxGender: userInfo.gender,
+            WxLanguage: userInfo.language,
+            WxNickName: userInfo.nickName,
+            WxProvince: userInfo.province,
+        }
+        this.setData({
+            userInfo: wxUserInfo
+        })
+        await this.db.customerSetInfo(wxUserInfo)
+
+        uni.showToast({
+            title: "更新成功"
         })
     },
 

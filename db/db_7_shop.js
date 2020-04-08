@@ -347,6 +347,16 @@ class dbStats extends dbFather {
         })
     }
 
+
+    /**
+     * @method 2.2 上传客户信息
+     * @param 
+     */
+    customerSetInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.base({ url: this.HOST_URL + "api/customer/updatewxinfo/", data: data, }).then(res => { resolve(res.data) }).catch(res => reject(res))
+        })
+    }
     
 }
 
