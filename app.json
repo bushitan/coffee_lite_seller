@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages_shop/admin/admin",
         "pages/route/route",
         "pages2/self/self",
         "pages2/self_qr/self_qr",
@@ -13,7 +14,6 @@
         "pages/store/store",
         "pages/test_unit/test_unit",
         
-        "pages_shop/admin/admin",
         "pages_shop/config/store",
         "pages_shop/config/product",
         "pages_shop/local/local",
