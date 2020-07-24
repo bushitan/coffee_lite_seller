@@ -1,16 +1,17 @@
 <!--pages3/menu/menu.wxml-->
 
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{4}}" wx:key>
+  <swiper-item wx:for="{{4}}" wx:for-index='index'>
     <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
   </swiper-item>
 </swiper>
+
 <view class="VerticalBox">
 
     <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{verticalNavTop}}" 
     style=" height:calc(100vh - 375rpx - {{ SpaceBottom }}px)">
         <view class="cu-item {{index==tabCur?'text-yellow text-bold  bg-white cur flex align-center ':''}}" 
-        wx:for="{{list}}" wx:for-item="category" wx:key="index"   catchtap="TabSelect" data-id="{{index}}"
+        wx:for="{{list}}" wx:for-item="category" wx:for-index="index"   catchtap="TabSelect" data-id="{{index}}"
         style="white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;">
             {{category.category.cate_name}}
         </view>
@@ -21,16 +22,16 @@
 
     <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 375rpx - 0px)"
         scroll-into-view="main-{{mainCur}}" bindscroll="VerticalMain">
-        <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-item="category" wx:key="index" id="main-{{index}}">
+        <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-item="category" wx:for-index='index' id="main-{{categoryindex}}">
             <view class="cu-bar  bg-white">
                 <view class="action">
                     <text class="cuIcon-title text-blue"></text>{{category.category.cate_name}}</view>
-            </view>
-            
+            </view>       
             <view class="cu-list menu ">
                 <view class="cu-item " style=" align-items: flex-start"  wx:for="{{category.products}}" 
-                wx:for-item="item" wx:key="itemIndex" catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}" >
+                wx:for-item="item" wx:for-index="itemIndex" catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}" >
                     <!-- openDetail修改 -->
+                    
                     <view class="">
                         <image src='{{item.imgs? item.imgs[0] ? item.imgs[0].src : "" :"" }}'
                             class="cu-avatar radius lg  bg-gray margin-right-sm " 
@@ -43,7 +44,7 @@
                             <text class=" text-black text-bold text-df">{{item.name}}</text>
                         </view>
                         <view class="margin-top-xs">
-                            <text class="bg-gray radius  text-xs margin-right-sm "  wx:for="{{item.tags}}" wx:for-item="tag" wx:key="tagIndex"
+                            <text class="bg-gray radius  text-xs margin-right-sm "  wx:for="{{item.tags}}" wx:for-item="tag" wx:for-index="tagIndex"
                             style="padding:2px 3px;margin-top: 20px;">{{tag}}</text>				
                         </view>
                         <!-- <view class="text-gray text-xs margin-top-xs">
@@ -52,9 +53,9 @@
                         <!-- <view class="flex flex-start margin-top-sm">
                             <text class="text-gray radius  text-sm  text-left" >{{item.shortDescription}}</text>					
                         </view> -->
-                        <view class="margin-top-xs" wx:if="{{item.shortDescription? true :false}} " >
-                            <text class="bg-gray radius  text-xs margin-right-sm " style="padding:2px 3px;">{{item.shortDescription}}</text>				
-                        </view>
+                        <!-- <view class="margin-top-xs" wx:if="{{item.shortDescription? true :false}} " >
+                            <text class="bg-gray radius  text-xs margin-right-sm " style="padding:2px 3px;">{{item.shortDescription}}</text>
+                        </view> -->
                         
                         <view class="margin-top-xs flex justify-between align-center">
                             <view class="text-red text-lg">
@@ -74,12 +75,23 @@
         <view class="pg-space-xxl"></view>
     </scroll-view>
 </view>
-
 <!--  -->
-<view class="bg-white cu-list menu-avatar" style="position: fixed; bottom:{{SpaceBottom}}px; left: 0; right: 0;"
-wx:if="{{Object.keys(order).length>0}}" >
+<!-- wx:if="{{Object.keys(order).length>0}}"" 大于 -->
+<!-- <wxs module="foo">
+
+function check(order){
+   return  Object.keys(order).length > 0
+}
+
+module.exports = {
+  check : check,
+}
+</wxs> -->
+<!-- wx:if="{{Object.keys(order).length >= 0}}" wx:if="{{ foo.check(order) }}"  -->
+<view class="bg-white cu-list menu-avatar" style="position: fixed; bottom:{{SpaceBottom}}px; left: 0; right: 0;" 
+>
     <view class="cu-item" >
-        <view class="cu-avatar round lg " catchtap="openBill"> 
+        <view class="cu-avatar round lg " catchtap="openBill" > 
             <view  style="position:relative">
                 <image  src='/images/icon_cup.png'
                     class="cu-avatar  lg round " 
@@ -138,12 +150,12 @@ wx:if="{{Object.keys(order).length>0}}" >
             scroll-y scroll-with-animation 
             style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)">
             <view class="" >
-                <image src='{{currentItem? currentItem.imgs[0].src :""}}' class="block " style="width: 100%;"  mode="widthFix"></image>
+                <image src='{{currentItem? currentItem.imgs[0].src :""}}' class="block " style="width:100%; height:150px"  mode="aspectFill"></image>
             </view>
             <view class="padding-lr margin-top">
                 <view class="flex flex-start">
                     <text class="bg-gray radius  text-xs margin-right-sm padding-xs"
-                        wx:for="{{currentItem.tags}}" wx:for-item="tag" wx:key="tagIndex">{{tag}}</text>						
+                        wx:for="{{currentItem.tags}}" wx:for-item="tag" wx:for-index="tagIndex">{{tag}}</text>						
                 </view>
                 <view class="flex flex-start margin-top-sm">
                     <text class="text-gray radius  text-sm  text-left" >{{currentItem.shortDescription || ""}}</text>					
@@ -152,7 +164,7 @@ wx:if="{{Object.keys(order).length>0}}" >
                     <text class="text-gray radius  text-sm  text-left" >{{currentItem.fullDescription || ""}}</text>					
                 </view> -->
             </view>
-            <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}" wx:for-item="att"  wx:key="attIndex">
+            <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}" wx:for-item="att"  wx:for-index="attIndex">
                 <view class="flex flex-start margin-top-sm">
                     <text class="text-gray radius  text-sm  text-left" >{{att.productAttributeName}} </text>					
                 </view>
@@ -161,9 +173,14 @@ wx:if="{{Object.keys(order).length>0}}" >
                                         
                                         {{currentItem}} -->
                         <!-- class="cu-btn radius text-sm text-center margin-right-sm margin-bottom-sm"  -->
-                    <button class="cu-btn radius text-sm text-center margin-right-sm margin-bottom-sm {{value.isSelect?'bg-yellow text-white' :'line-gray'}}" 
-                    wx:for="{{ att.attributeValues }}" wx:for-key="value" wx:key="valueIndex"
-                    catchtap="clickAtt(attIndex,valueIndex)">{{value.name}}</button>						
+                    <view wx:for="{{ att.attributeValues }}" wx:for-item="value" wx:for-index="valueIndex">
+ <button class="cu-btn radius text-sm text-center margin-right-sm margin-bottom-sm {{att.attributeValues[valueIndex].isSelect?'bg-yellow text-white' :'line-gray'}}" 
+                    
+                    catchtap="clickAtt"
+                    data-attindex="{{attIndex}}"
+                    data-valueindex="{{valueIndex}}"
+                    >{{value.name}}</button>		
+                    </view>
                 </view>
             </view>
             <view class="pg-space-xxl"></view>
@@ -187,7 +204,11 @@ wx:if="{{Object.keys(order).length>0}}" >
                         </button> -->
                         
                         <image src="/static/images/icon/cut.png"  class="pg-icon" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></image>								
-                        <text class="padding-lr-sm">{{order[key]? order[key].Quantity : 0 }}</text>								
+                        <text class="padding-lr-sm">{{ order[key].Quantity  ? order[key].Quantity : 0 }}</text>				
+            			<!-- {{order[key]}} -->
+
+                        <!-- <view wx:for="{{order}}">{{item}}</view> -->
+
                         <image src="/static/images/icon/add.png"  class="pg-icon" catchtap="addItem"></image>
                         <!-- <button class="cu-btn text-bold round bg-yellow text-white text-lg pg-btn-icon"  @click="addItem()">
                             +
@@ -205,7 +226,11 @@ wx:if="{{Object.keys(order).length>0}}" >
 
 <view class="cu-modal padding-tb-xl {{ showOrder?'show':''}}" >
     <view class="cu-dialog" style=" position: relative;">
-        <view class="cu-bar bg-white justify-end">
+        <view class="cu-bar bg-white justify-between">
+            <view class="action">
+                <button class="cu-btn bg-red round " catchtap="clearOrder">清空</button>
+                <!-- <button class="cu-btn bg-yellow text-white round margin-left" catchtap="closeShow">确定</button> -->
+            </view>
             <view class="content text-bold">当前订单</view>
             <view class="action" catchtap="closeShow">
                 <text class="cuIcon-close text-red"></text>
@@ -217,7 +242,7 @@ wx:if="{{Object.keys(order).length>0}}" >
             <text class="line-red text-bold">{{shopDiscount}}</text>
         </view>
         <view class="cu-list menu bg-white">
-            <view class="cu-item margin-tb-sm" wx:for="{{order}}" wx:for-item="item" wx:key="key">
+            <view class="cu-item margin-tb-sm" wx:for="{{order}}" wx:for-item="item" wx:for-index="key">
                 <view class="action">
                     <image src='{{item?item.cover:""}}' 
                         class="cu-avatar radius lg  bg-gray margin-right-sm " 
@@ -235,11 +260,23 @@ wx:if="{{Object.keys(order).length>0}}" >
                         </view>
                         <view class="text-gray  flex justify-between align-center">									
                             <!-- <button class="cu-btn  round  bg-gray sm" @click="cutOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">-</button> -->
-                            <image src="/static/images/icon/cut.png"  class="pg-icon" catchtap="cutOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)"></image>
+                            <image src="/static/images/icon/cut.png"  class="pg-icon" 
+                                catchtap="cutOrder"
+                                data-categoryindex="{{item.categoryIndex}}"
+                                data-itemindex="{{item.itemIndex}}"
+                                data-attindex="{{item.attIndex}}"
+                                data-valueindex="{{item.valueIndex}}"
+                            ></image>
                             <!-- {{item.Quantity}}	 -->
                             <text class="padding-lr-xs ">{{order[key]? order[key].Quantity : 0 }}</text>								
                             <!-- <button class="cu-btn  round bg-yellow text-white sm" @click="addOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">+</button>								 -->
-                            <image src="/static/images/icon/add.png"  class="pg-icon" catchtap="addOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)"></image>
+                            <image src="/static/images/icon/add.png"  class="pg-icon" 
+                                catchtap="addOrder"
+                                data-categoryindex="{{item.categoryIndex}}"
+                                data-itemindex="{{item.itemIndex}}"
+                                data-attindex="{{item.attIndex}}"
+                                data-valueindex="{{item.valueIndex}}"
+                            ></image>
                         
                         </view>
                     </view>
@@ -248,8 +285,9 @@ wx:if="{{Object.keys(order).length>0}}" >
         </view>
                 
         <view class="cu-bar bg-white justify-end">
+            
             <view class="action">
-                <button class="cu-btn line-yellow round " catchtap="closeShow">取消</button>
+                <!-- <button class="cu-btn line-yellow round " catchtap="closeShow">取消</button> -->
                 <button class="cu-btn bg-yellow text-white round margin-left" catchtap="closeShow">确定</button>
             </view>
         </view>

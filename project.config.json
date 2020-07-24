@@ -202,6 +202,14 @@
 					"id": -1,
 					"name": "pages3/menu/menu 收银菜单",
 					"pathName": "pages3/menu/menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/order/order 详细订单",
+					"pathName": "pages3/order/order",
+					"query": "",
 					"scene": null
 				}
 			]

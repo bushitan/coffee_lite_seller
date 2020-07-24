@@ -20,17 +20,17 @@ Page({
         showOrder: false, // 展示账单
         // 当前选择的蟾皮								
         currentItem: {
-            imgs: [
-                { src: "" },
-            ],
-            tags: [],
-            attributes: [
-                {
-                    isSelect: false,
-                    productAttributeName: "",
-                    attributeValues: [],
-                },
-            ],
+            // imgs: [
+            //     { src: "" },
+            // ],
+            // tags: [],
+            // attributes: [
+            //     {
+            //         isSelect: false,
+            //         productAttributeName: "",
+            //         attributeValues: [],
+            //     },
+            // ],
         },
 
         categoryIndex: 0,  // 当前选择的目录
@@ -38,7 +38,7 @@ Page({
         attIndex: 0, //属性标志位
         valueIndex: 0,// 值标志位
 
-        key: "", //订单对应的 标签序列号
+        key: "123", //订单对应的 标签序列号
         order: {
             // '0_0_0_0':{Quantity:0}
         }, //订单数据
@@ -57,7 +57,7 @@ Page({
 
 
         var res = await app.db3.productMenu({
-            shopId:14
+            shopId:4
         })
         if (res.code == 0) {
             var temp = res.data
@@ -120,14 +120,13 @@ Page({
         
         var categoryIndex = e.currentTarget.dataset.categoryindex
         var itemIndex = e.currentTarget.dataset.itemindex
-        // var currentItem = this.data.list[categoryIndex].products[itemIndex] 
-        // console.log(currentItem)
-        // 初始化订单数据							
+        
+        // 初始化订单数据		
+        // debugger					
         this.setData({
             showChoice: true,
             categoryIndex: categoryIndex,
             itemIndex: itemIndex,
-            // currentItem:currentItem
         })
 
         this.updateCurrentItem()
@@ -142,9 +141,44 @@ Page({
     openBill() { this.setData({ showOrder: true, }) },
     // 关闭模态框
     closeShow() { this.setData({ showChoice: false, showOrder: false, }) },
+    // 清空收货栏
+    clearOrder(){
+        wx.showModal({
+            title: '是否清空已点菜单',
+            success:(res)=>{
+                if(res.confirm){
+                    // 消除选规格的数字
+                    var list = this.data.list
+                    console.log(list)
+                    for (var i = 0; i < list.length - 1; i++)
+                        for (var j = 0; j < list[i].products.length - 1; j++) {
+                            console.log(list[i].products[j], i, j)
+                            list[i].products[j].num = 0
+                        }
+
+                    console.log(list)
+
+                    this.setData({
+                        order: {},
+                        list: list,
+                        totalPrice: 0,
+                        totalQuantity: 0,
+                    })
+                    wx.setStorageSync("order", {})
+                    this.closeShow()
+                }
+               
+            }
+        })       
+       
+    },
 
     // 切换SKU
-    clickAtt(attIndex, valueIndex) {
+    clickAtt(e) {
+
+        var attIndex = e.currentTarget.dataset.attindex
+        var valueIndex = e.currentTarget.dataset.valueindex
+
         var categoryIndex = this.data.categoryIndex
         var itemIndex = this.data.itemIndex
         var currentItem = this.data.currentItem
@@ -152,10 +186,15 @@ Page({
             currentItem.attributes[attIndex].attributeValues[i].isSelect = false
         }
         currentItem.attributes[attIndex].attributeValues[valueIndex].isSelect = true // 选择SKU
-        this.data.currentItem = {}
-        this.data.currentItem = currentItem // 更新当前SKU信息
-        this.data.attIndex = attIndex		// 更新属性位置	
-        this.data.valueIndex = valueIndex	// 更新值位置			
+        // this.data.currentItem = {}
+        // this.data.currentItem = currentItem // 更新当前SKU信息
+        // this.data.attIndex = attIndex		// 更新属性位置	
+        // this.data.valueIndex = valueIndex	// 更新值位置	
+        this.setData({
+            currentItem: currentItem,
+            attIndex: attIndex,
+            valueIndex: valueIndex,
+        })
         this.updateKey() //设置当前key为SKU的序列号
     },
     // 增加数量
@@ -182,7 +221,13 @@ Page({
     },
 
     // 订单内的增删
-    addOrder(categoryIndex, itemIndex, attIndex, valueIndex) {
+    addOrder(e) {
+
+        var categoryIndex = e.currentTarget.dataset.categoryindex
+        var itemIndex = e.currentTarget.dataset.itemindex
+        var attIndex = e.currentTarget.dataset.attindex
+        var valueIndex = e.currentTarget.dataset.valueindex
+
         this.setData({
             categoryIndex: categoryIndex,  // 当前选择的目录
             itemIndex: itemIndex, // 当前选择产品标志位
@@ -192,7 +237,14 @@ Page({
         this.addItem()
 
     },
-    cutOrder(categoryIndex, itemIndex, attIndex, valueIndex) {
+    cutOrder(e) {
+        if (Object.keys(this.data.order).length == 0) // 防止出现负数
+            return 
+
+        var categoryIndex = e.currentTarget.dataset.categoryindex
+        var itemIndex = e.currentTarget.dataset.itemindex
+        var attIndex = e.currentTarget.dataset.attindex
+        var valueIndex = e.currentTarget.dataset.valueindex
         this.setData({
             categoryIndex: categoryIndex,  // 当前选择的目录
             itemIndex: itemIndex, // 当前选择产品标志位
@@ -221,7 +273,10 @@ Page({
     },
     // 设置当前订单
     updateCurrentItem() {
-        this.setData({ currentItem: this.data.list[this.data.categoryIndex].products[this.data.itemIndex], })
+        console.log(this.data.categoryIndex, this.data.itemIndex, this.data.list[this.data.categoryIndex].products[this.data.itemIndex])
+
+        this.setData({ currentItem: {} })
+        this.setData({ currentItem: this.data.list[this.data.categoryIndex].products[this.data.itemIndex]})
     },
     // 设置key
     updateKey() {
@@ -234,7 +289,10 @@ Page({
                 }
             }
         }
-        this.data.key = key
+        // this.data.key = key
+        this.setData({
+            key: key
+        })
     },
 
     // 更新已选择订单order
@@ -289,8 +347,12 @@ Page({
         // 删除key下的数据
         if (order[key].Quantity <= 0)
             delete order[key]
-        this.data.order = []
-        this.data.order = order
+        // this.data.order = []
+        // this.data.order = order
+
+        this.setData({
+            order: order
+        })
 
 
         // console.log(key,Attributes,attDes)
@@ -313,8 +375,11 @@ Page({
             list[this.data.categoryIndex].products[this.data.itemIndex].num < 0 ? 0 : list[this.data.categoryIndex].products[this.data.itemIndex].num
         }
 
-        this.data.list = []
-        this.data.list = list
+        // this.data.list = []
+        // this.data.list = list
+        this.setData({
+            list: list
+        })
     },
 
     updateTotal() {
@@ -338,7 +403,7 @@ Page({
     /******路由******/
     toPay() {
         wx.navigateTo({
-            url: "/pages/order/pay"
+            url: "/pages3/order/order"
         })
     },
 
