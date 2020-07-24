@@ -1,0 +1,66 @@
+/* pages3/menu/menu.wxss */
+.screen-swiper , .screen-swiper swiper-item,.screen-swiper image{
+		
+	}
+	.swiper-height{
+		height: 250rpx;
+	}
+	
+	.fixed {
+		position: fixed;
+		z-index: 99;
+	}
+
+	.VerticalNav.nav {
+		width: 200rpx;
+		white-space: initial;
+	}
+
+	.VerticalNav.nav .cu-item {
+		width: 100%;
+		text-align: center;
+		/* background-color: #fff; */
+		margin: 0;
+		border: none;
+		height: 50px;
+		position: relative;
+	}
+
+	.VerticalNav.nav .cu-item.cur {
+		/* background-color: #f1f1f1; */
+		background-color: #ffffff;
+	}
+
+	.VerticalNav.nav .cu-item.cur::after {
+		content: "";
+		width: 8rpx;
+		height: 30rpx;
+		border-radius: 10rpx 0 0 10rpx;
+		position: absolute;
+		background-color: currentColor;
+		top: 0;
+		right: 0rpx;
+		bottom: 0;
+		margin: auto;
+	}
+
+	.VerticalBox {
+		display: flex;
+	}
+
+	.VerticalMain {
+		/* background-color: #f1f1f1; */
+		background-color: --var(ghostWhite);
+		flex: 1;
+	}
+	
+	.cu-item:after{border: none !important;}
+	
+	.swiper_image{
+		position: relative;
+	}
+	.swiper_mask{
+		position: absolute;
+		bottom:0;
+	}
+	

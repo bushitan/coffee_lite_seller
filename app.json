@@ -13,6 +13,10 @@
         "pages/host/host",
         "pages/store/store",
         "pages/test_unit/test_unit",
+
+        "pages3/menu/menu",
+        "pages3/order/order",
+        "pages3/total/total",
         
         "pages_shop/config/store",
         "pages_shop/config/product",
@@ -47,6 +51,12 @@
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
                 "text": "点单管理"
+            },
+            {
+                "pagePath": "pages3/menu/menu",
+                "iconPath": "/images/icon/score_un.png",
+                "selectedIconPath": "/images/icon/score.png",
+                "text": "收银"
             }
         ]
     },

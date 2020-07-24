@@ -1,7 +1,9 @@
 //app.js
 var db = require('db/db.js')
+var db3 = require('db3/db.js')
 App({
     db: db,
+    db3: db3,
     onLaunch: function (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
         this.globalData.scene = options.scene

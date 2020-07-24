@@ -41,6 +41,10 @@
 .page-icon-lg { width:48px; height: 48px}
 
 
+.pg-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
 
 .pg-space { height: 10px; }
 .pg-space-lg { height: 20px; }
