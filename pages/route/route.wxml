@@ -19,7 +19,7 @@
     <image src='../../images/icon_share_base_cup.png' mode='widthFix'></image>
   
     
-    <view  style="font-weight:bolder">欢迎登陆分享集点卡商户端</view>
+    <view  style="font-weight:bolder">欢迎，小杯子集点卡商户端</view>
     <button 
         wx:if="{{isReload}}" 
         size='mini' 

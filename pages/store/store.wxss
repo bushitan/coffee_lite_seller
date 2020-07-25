@@ -1,6 +1,8 @@
 /* pages/user/user.wxss */
 
-
+page{
+    background-color: #ffffff;
+}
 /*******店铺信息******/
 .store_info{
     /* display: flex;

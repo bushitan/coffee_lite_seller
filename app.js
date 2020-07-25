@@ -79,3 +79,31 @@ App({
     //     "selectedIconPath": "/images/icon/score.png",
     //     "text": "自助下单"
     // }
+
+
+    //     "tabBar": {
+    //     "color": "#bfbfbf",
+    //     "selectedColor": "#efaf30",
+    //     "borderStyle": "black",
+    //     "backgroundColor": "#ffffff",
+    //     "list": [
+    //         {
+    //             "pagePath": "pages2/self/self",
+    //             "iconPath": "/images/icon/prize_un.png",
+    //             "selectedIconPath": "/images/icon/prize.png",
+    //             "text": "集点卡"
+    //         },
+    //         {
+    //             "pagePath": "pages_shop/admin/admin",
+    //             "iconPath": "/images/icon/score_un.png",
+    //             "selectedIconPath": "/images/icon/score.png",
+    //             "text": "点单管理"
+    //         },
+    //         {
+    //             "pagePath": "pages3/menu/menu",
+    //             "iconPath": "/images/icon/score_un.png",
+    //             "selectedIconPath": "/images/icon/score.png",
+    //             "text": "收银"
+    //         }
+    //     ]
+    // },

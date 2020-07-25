@@ -40,7 +40,7 @@
         </view>
         <view class="weui-cells__title">集点模式</view>
         <view class="weui-cells weui-cells_after-title">
-            <radio-group bindchange="radioChange" name="mode">
+            <radio-group bindchange="radioChange" name="mode" style="width:100%;">
                 <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
                     <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
 
@@ -65,7 +65,6 @@
                             name="check_value"
                             value='{{storeInfo.check_value}}' 
                             type='number'  
-                            disabled='true'
                             placeholder="核销发放奖励数"/>
                     </view>
                 </view>

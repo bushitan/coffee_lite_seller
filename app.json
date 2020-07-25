@@ -1,6 +1,5 @@
 {
     "pages": [
-        "pages_shop/admin/admin",
         "pages/route/route",
         "pages2/self/self",
         "pages2/self_qr/self_qr",
@@ -18,6 +17,7 @@
         "pages3/order/order",
         "pages3/total/total",
         
+        "pages_shop/admin/admin",
         "pages_shop/config/store",
         "pages_shop/config/product",
         "pages_shop/local/local",
@@ -41,7 +41,7 @@
         "backgroundColor": "#ffffff",
         "list": [
             {
-                "pagePath": "pages2/self/self",
+                "pagePath": "pages/store/store",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
                 "text": "集点卡"
@@ -50,13 +50,7 @@
                 "pagePath": "pages_shop/admin/admin",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "点单管理"
-            },
-            {
-                "pagePath": "pages3/menu/menu",
-                "iconPath": "/images/icon/score_un.png",
-                "selectedIconPath": "/images/icon/score.png",
-                "text": "收银"
+                "text": "小程序点单"
             }
         ]
     },
