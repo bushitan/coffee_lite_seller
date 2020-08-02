@@ -10,6 +10,9 @@ Page({
         CustomBar: app.globalData.CustomBar,
         showReLoad: false,
 
+        // swiperHeight: '375rpx',
+        swiperHeight: '0rpx',
+
         list: [],
         tabCur: 0,
         mainCur: 0,

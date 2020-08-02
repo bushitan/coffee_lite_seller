@@ -212,6 +212,13 @@
 					"pathName": "pages3/order/order",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages4/share/total",
+					"pathName": "pages4/share/total",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
