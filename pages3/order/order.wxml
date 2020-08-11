@@ -2,7 +2,7 @@
 
 
 <view class="flex justify-center">
-    <image src="/images/qr/wm_qr.png" mode="widthFix"></image>
+    <image src="/images/qr/meni_pay.png" mode="widthFix"></image>
 </view>
 <view class="flex justify-center text-bold text-xl">
     扫码支付
@@ -54,7 +54,7 @@
             <view class="cu-item " >
                 <view class="action">商品费用</view>
                 <view class="action text-red ">							
-                    <template v-if="preOrder.order_discount > 0">
+                    <template wx:if="{{preOrder.order_discount > 0}}">
                         <text class="text-gray  text-sm ">已优惠</text>						
                         <text class="text-price text-sm text-red "></text>
                         <text class="  text-sm text-red margin-right">{{preOrder.order_discount}}</text>
@@ -63,7 +63,7 @@
                     <text class="text-red">{{preOrder.order_with_discount || ""}}</text>	
                 </view>
             </view>
-            <view class="cu-item " v-if="ShopTakeValue != SHOP_TAKE_TS">
+            <view class="cu-item " wx:if="{{ShopTakeValue != SHOP_TAKE_TS}}">
                 <view class="action">包装费</view>
                 <view class="action text-red ">
                     <text class="text-price"></text>

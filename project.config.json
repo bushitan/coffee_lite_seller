@@ -214,9 +214,23 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 22,
 					"name": "pages4/share/total",
-					"pathName": "pages4/share/total",
+					"pathName": "pages4/share/total/total",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages4/share/total/total",
+					"pathName": "pages4/share/total/total",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages4/share/store/store",
+					"pathName": "pages4/share/store/store",
 					"query": "",
 					"scene": null
 				}

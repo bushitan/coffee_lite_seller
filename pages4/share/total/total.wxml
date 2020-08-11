@@ -1,0 +1,97 @@
+<!--pages4/share/total.wxml-->
+
+<!-- <view class="flex justify-around">
+    <view>已经领卡（正在使用）</view>
+    <view>领卡未消费</view>
+</view>
+<view class="flex justify-around">
+    <view>（已经使用）</view>
+    <view>领卡并产生了消费</view>
+</view>
+
+<view class="flex justify-around">
+    <view>领卡未完成</view>
+    <view>已经领卡，但是未产生任何一笔消费，结束</view>
+</view>
+<view class="flex justify-around">
+    <view>中途退出（未完成数量）</view>
+    <view>领卡产生消费后，退出</view>
+</view>
+<view class="flex justify-around">
+    <view>已完成（已完成数）</view>
+    <view>完成整个先享卡</view>
+</view> -->
+
+
+<view class="cu-card padding-lr margin-top">
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">数据统计</text>      
+            </view>
+            <view class="action" catchtap="toStore">
+                <text class="text-gray  text-sm">店铺统计</text>
+                <view class="pg-arrow-sm"></view>
+            </view>
+        </view>        
+        <view class="cu-list menu ">      
+            <view class="cu-item " >
+                <view class="action">使用中</view>
+                <view class="action ">51</view>
+            </view>
+            <view class="cu-item " >
+                <view class="action">中途退出</view>
+                <view class="action ">51</view>
+            </view>
+            <view class="cu-item " >
+                <view class="action">已完成</view>
+                <view class="action ">51</view>
+            </view>
+        </view>
+        <!-- <view class="cu-bar   ">
+            <view class="action"></view>
+            <view class="action">	
+                <text class="text-gray  text-sm margin-right-xs">今日收入</text>						
+                <text class=" text-xl text-red text-bold text-price"></text>
+                <text class=" text-xl text-red text-bold">{{preOrder.order_total || ""}}</text>
+            </view>
+        </view>					 -->
+    </view>
+</view>
+
+  <scroll-view scroll-x class="bg-white nav margin-top ">
+        <view class='flex  text-center  '>
+            <view class="cu-item flex-sub {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
+            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect">
+                    <view style="  position: relative" >
+                        <text class="">{{item.name}}</text>
+                        
+                        <!-- <view class="cu-tag badge" style="top:2px; right:-10px" >
+                            {{index==0?pendingList.length : ""}}
+                            {{index==1?processingList.length : ""}}
+                            {{index==2?completeList.length : ""}}
+                        </view> -->
+                    </view>
+            </view>
+        </view>
+    </scroll-view>
+
+<view wx:for="{{list}}">   
+    <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
+    <view class="cu-card padding-lr ">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <!-- <text class="cuIcon-title text-yellow "></text>                 -->
+                    <text class="text-black text-sm">SN:15678</text>      
+                </view>
+                <view class="action">
+                    <text class="">+85</text>
+                    <view class="pg-arrow-sm"></view>
+                </view>
+            </view>     
+        </view>
+    </view>
+
+</view> 

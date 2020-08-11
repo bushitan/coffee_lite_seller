@@ -1,4 +1,4 @@
-// pages4/share/total.js
+// pages4/share/store/store.js
 Page({
 
     /**

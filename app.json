@@ -17,7 +17,8 @@
         "pages3/order/order",
         "pages3/total/total",
 
-        "pages4/share/total",
+        "pages4/share/total/total",
+        "pages4/share/store/store",
 
         "pages_shop/admin/admin",
         "pages_shop/config/store",
@@ -49,7 +50,7 @@
                 "text": "集点卡"
             },
             {
-                "pagePath": "pages4/share/total",
+                "pagePath": "pages4/share/total/total",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
                 "text": "先享卡"
