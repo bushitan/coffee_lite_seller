@@ -35,6 +35,12 @@
                 <view class="pg-arrow-sm"></view>
             </view>
         </view>        
+         <!-- "CREATEDCardCount": 1,
+      "UsingCardCount": 0,使用中
+      "CHARGEDCardCount": 13,中途退出
+      "NO_CHARGECardCount": 5,  已完成
+      "ReturnBackFeeTotal": 55.92,  退款总金额
+      "DiscountFeeTotal": 25.35 已经优惠点金额-->
         <view class="cu-list menu ">      
             <view class="cu-item " >
                 <view class="action">使用中</view>
