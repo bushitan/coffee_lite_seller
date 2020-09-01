@@ -104,30 +104,37 @@
 
     <block wx:else>
         <view class="page">
-            <view class="page__hd">
-                <view class="page__title">您还未加入商户</view>
+             <view class="padding-lr margin-top-xl">
+                <video src="cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/info/index.mp4" style="width:100%;height:230px;"
+                autoplay="{{true}}" loop="{{false}}" object-fit="contain"></video>
+              <!--  <view class="page__title">您还未加入商户</view>
                 <view class="page__desc">这是集点卡商户端，为了保障数据安全，只有授权用户才有操作权限哦！ </view> 
-                <view class="page__desc">若想更深入了解分享集点卡的<label class='mark'>外卖营销定制功能</label>，请下拉页面</view>
+                <view class="page__desc">若想更深入了解分享集点卡的<label class='mark'>外卖营销定制功能</label>，请下拉页面</view> -->
             </view>
-            <view style='' class='btn_area'>        
+            <view  class=' margin-top flex justify-around'>        
                 <button
-                    type='primary' 
-                    style='background-color:#1d2a6d;'
+                    class="cu-btn bg-blue text-white lg"
                     open-type="getUserInfo" 
                     bindgetuserinfo="toRoute"
                 >登录认证</button>
                 <!-- <view style='height:20px;'></view> -->
-                <button catchtap='toPhone' type='primary' style='background-color:#1d2a6d;'>联系管理员</button>
+                <button catchtap='toPhone' class="cu-btn bg-yellow text-white lg" >联系管理员</button>
             </view>
             <view style='height:20px;'></view>
-            <image src='../../images/cover.jpg' mode='widthFix' style='width:750rpx;'></image>
+            <!-- <image src='../../images/cover.jpg' mode='widthFix' style='width:750rpx;'></image> -->
+            <view class="padding">
+                <image src='cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/info/index1.jpg' mode='widthFix' style='width:100%;' 
+                    catchtap="clickIndexImage" data-image_src="cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/info/index1.jpg"></image>
+                <image src='cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/info/index2.jpg' mode='widthFix' style='width:100%;'
+                    catchtap="clickIndexImage" data-image_src="cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/info/index2.jpg"></image>
+            </view>
         </view>    
     </block>
 
 <view>
 </view>
 
-<!-- <view style='height:40px;'></view> -->
+<view style='height:40px;'></view>
 
 
 <!-- <view class="weui-loadmore weui-loadmore_line" >

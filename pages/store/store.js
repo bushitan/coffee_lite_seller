@@ -222,6 +222,12 @@ Page({
 
     },
 
+    clickIndexImage(e){
+        wx.previewImage({
+            urls: [e.currentTarget.dataset.image_src],
+        })
+    },
+
     /**
      * 用户点击右上角分享
      */

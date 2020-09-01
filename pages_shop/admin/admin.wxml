@@ -71,7 +71,7 @@
                 <view class="text-black  text-sm text-right">
                     <view>{{order.ship_address.addr_detail}}</view>   
                     <view>{{order.ship_address.name}} {{order.ship_address.phonenumber}}</view>     
-                    <view>配送时间:{{order.wish_datetime}}</view>     
+                    <view>配送日期-时间:{{order.wish_datetime}}</view>     
                 </view>               
             </view>
 
@@ -84,7 +84,7 @@
                 </view>              
                 <view class="text-black  text-sm text-right">
                     <view>联系电话：{{order.ship_address.phonenumber}}</view>     
-                    <view>自取时间：{{order.wish_datetime}}</view>     
+                    <view>自取日期-时间：{{order.wish_datetime}}</view>     
                 </view>
             </view>
 

@@ -83,17 +83,36 @@
         </view>
     </scroll-view>
 
+<!-- <view wx:for="{{list}}">   
+    <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
+    <view class="cu-card padding-lr ">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <text class="text-black text-sm">用户头像，用户名字</text>      
+                </view>
+                <view class="action">
+                    <text class="">收入（+85）</text>
+                    <text class="">，先享卡优惠（-40）</text>
+                    <view class="pg-arrow-sm"></view>
+                </view>
+            </view>     
+        </view>
+    </view>
+
+</view>  -->
+
 <view wx:for="{{list}}">   
     <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
     <view class="cu-card padding-lr ">
         <view class=" bg-white pg-radius  shadow shadow-warp">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
-                    <!-- <text class="cuIcon-title text-yellow "></text>                 -->
-                    <text class="text-black text-sm">SN:15678</text>      
+                    <text class="text-black text-sm">用户头像，用户名字</text>      
                 </view>
                 <view class="action">
-                    <text class="">+85</text>
+                    <text class="">追回（+85）</text>
+                    <text class=""></text>
                     <view class="pg-arrow-sm"></view>
                 </view>
             </view>     

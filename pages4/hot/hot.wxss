@@ -1,0 +1,9 @@
+/* pages4/hot/hot.wxss */
+
+.bg{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: -999;
+}

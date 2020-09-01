@@ -1,0 +1,103 @@
+<!--pages4/hot/hot.wxml-->
+
+<!-- <image src="/images/2013/swiper.jpg" class="bg" mode="widthFix"></image> -->
+
+<view class="padding-lr margin-top ">
+    <view class="flex justify-between align-center  bg-white padding  radius">
+        <view class="flex  align-center">
+            <!-- <image src="{{store.Logo}}" class="cu-avatar round lg margin-right " mode="widthFix"></image> -->
+            <!-- <open-data type="userNickName" class="cu-avatar round lg margin-right "></open-data> -->
+            <open-data type="userAvatarUrl" class="cu-avatar round lg margin-right "></open-data>
+            <text class="text-bold text-lg ">{{store.Name}}</text>
+        </view>
+        <!-- <view>
+            <button class="cu-btn round  ">登录</button>
+        </view> -->
+    </view>        
+</view>
+
+<view class="cu-card padding-lr margin-top"  >
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">商城工具</text>      
+            </view>
+        </view>		
+        <view class="cu-bar  solid-bottom " catchtap="toMall">
+            <view class="action">
+                <text class="text-black text-sm">小商店助手</text>      
+            </view>
+            <view class="action">
+                <text class="pg-arrow "></text>       
+            </view>
+        </view>		
+        <view class="cu-bar  solid-bottom " catchtap="toMenu">
+            <view class="action">
+                <text class="text-black text-sm">点单小程序</text>      
+            </view>
+            <view class="action">
+                <text class="pg-arrow "></text>       
+            </view>
+        </view>	
+        <view class="cu-bar  solid-bottom " catchtap="toAD">
+            <view class="action">
+                <text class="text-black text-sm">博主招募</text>      
+            </view>
+            <view class="action">
+                <text class="text-gray text-sm">发布博主招募信息</text>   
+                <text class="pg-arrow "></text>       
+            </view>
+        </view>	
+    </view>
+</view>
+
+<view class="cu-card padding-lr margin-top"  >
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">今日集点区域</text>      
+            </view>
+            <view class="action">                
+                <text class="text-gray text-sm">会员分析</text>      
+            </view>
+        </view>		
+        <view class="cu-bar bg-white ">
+            <map id="map" style="width: 100%; height: 200rpx;"
+                longitude="{{longitude}}" 
+                latitude="{{latitude}}" 
+                scale="12" 
+                markers="{{mapMarkers}}"  
+                circles="{{circles}}"
+                show-location="true"
+                >
+            </map>
+        </view>
+    </view>
+</view>
+
+<view class="cu-card article {{isCard?'no-card':''}}">
+    <view class="cu-item shadow">
+        <view class="title">
+            
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">基础供应</text>  
+        </view>
+        <view class="content margin-bottom" wx:for="{{scList}}" catchtap="toBL">
+            <image src="{{item.cover}}" mode="aspectFill"></image>
+            <view class="desc">
+                <view class="text-content">{{item.des}}</view>
+                <view>
+                <view class="cu-tag bg-green light sm round" wx:for="{{item.icon}}" wx:for-item="icon">{{icon}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class=" padding-xs flex  align-center margin-top justify-center">
+    <text class="text-center text-sm  text-gray">到底啦</text>		
+</view>
+
+<view class="pg-space-xxl"></view>

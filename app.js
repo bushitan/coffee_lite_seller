@@ -72,32 +72,30 @@ App({
     },
 })
 
-    // ,
-    // {
-    //     "pagePath": "pages_shop/local/local",
-    //     "iconPath": "/images/icon/score_un.png",
-    //     "selectedIconPath": "/images/icon/score.png",
-    //     "text": "自助下单"
-    // }
 
-
-    //     "tabBar": {
+    // "tabBar": {
     //     "color": "#bfbfbf",
     //     "selectedColor": "#efaf30",
     //     "borderStyle": "black",
     //     "backgroundColor": "#ffffff",
     //     "list": [
     //         {
-    //             "pagePath": "pages2/self/self",
+    //             "pagePath": "pages/store/store",
     //             "iconPath": "/images/icon/prize_un.png",
     //             "selectedIconPath": "/images/icon/prize.png",
     //             "text": "集点卡"
     //         },
     //         {
+    //             "pagePath": "pages4/share/total/total",
+    //             "iconPath": "/images/icon/prize_un.png",
+    //             "selectedIconPath": "/images/icon/prize.png",
+    //             "text": "先享卡"
+    //         },
+    //         {
     //             "pagePath": "pages_shop/admin/admin",
     //             "iconPath": "/images/icon/score_un.png",
     //             "selectedIconPath": "/images/icon/score.png",
-    //             "text": "点单管理"
+    //             "text": "小程序点单"
     //         },
     //         {
     //             "pagePath": "pages3/menu/menu",

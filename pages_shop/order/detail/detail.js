@@ -214,11 +214,25 @@ Page({
         this.backConfirm(res)
     },   
 
-    // 拨打用户电话
+    // 拨打骑手电话
     takeRiderPhone(){
         wx.makePhoneCall({
             phoneNumber: this.data.riderInfo.rider_phone,
         })
     },
+    // 拨打用户电话
+    takeUserPhone() {
+        wx.makePhoneCall({
+            phoneNumber: this.data.order.ship_address.phonenumber,
+        })
+    },
 
+    copyAdd(){
+        var data = this.data.order.ship_address.name + "  "
+            + this.data.order.ship_address.phonenumber + "  "
+            + this.data.order.ship_address.addr_detail + "  "
+        wx.setClipboardData({
+            data:data
+        })
+    },
 })

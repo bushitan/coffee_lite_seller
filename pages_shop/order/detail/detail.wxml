@@ -219,6 +219,9 @@
 						<text class="cuIcon-title text-yellow "></text>                
 						<text class="text-black text-sm">配送信息</text>      
 					</view>
+					<view class="action">                
+						<button class="cu-btn line-gray round text-sm" catchtap="copyAdd">复制</button>      
+					</view>
 				</view>
 				<view class="cu-list menu " >
 					<view class="cu-item ">
@@ -267,10 +270,14 @@
 							</view>
 						</view>
 					</view>
-					<view class="cu-item solid-top" catchtap="takeRiderPhone" wx:if="{{riderInfo.rider_phone}}">
-						<view class="content text-center text-bold text-black text-lg" >
+					<view class="cu-item solid-top" >
+						<view class="content text-center text-bold text-black text-lg" catchtap="takeRiderPhone"  wx:if="{{riderInfo.rider_phone}}" >
 							<text class="cuIcon-phone "></text>
 							<text class="">致电骑手</text>
+						</view>
+                        <view class="content text-center text-bold text-black text-lg" catchtap="takeUserPhone" >
+							<text class="cuIcon-phone "></text>
+							<text class="">致电用户</text>
 						</view>
 					</view>
 				</view>				
@@ -287,7 +294,7 @@
                 <view class="cu-list menu " >
 					<view class="cu-item " >
 						<view class="content">
-							<text class="text-gray text-sm">预约时间</text>
+							<text class="text-gray text-sm">预约日期-时间</text>
 						</view>
 						<view class="action">
 							<view class="text-black text-sm">{{order.wish_datetime}}</view>
@@ -302,6 +309,12 @@
 								{{order.ship_address.name }}
 								{{order.ship_address.phonenumber}}
 							</view>
+						</view>
+					</view>
+					<view class="cu-item solid-top"  catchtap="takeUserPhone" >
+						<view class="content text-center text-bold text-black text-lg" >
+							<text class="cuIcon-phone "></text>
+							<text class="">致电用户</text>
 						</view>
 					</view>
                 </view>
@@ -325,6 +338,12 @@
 								{{order.ship_address.name }}
 								{{order.ship_address.phonenumber}}
 							</view>
+						</view>
+					</view>
+                    <view class="cu-item solid-top"  catchtap="takeUserPhone" >
+						<view class="content text-center text-bold text-black text-lg" >
+							<text class="cuIcon-phone "></text>
+							<text class="">致电用户</text>
 						</view>
 					</view>
                 </view>
