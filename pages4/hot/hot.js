@@ -1,4 +1,8 @@
 // pages4/hot/hot.js
+
+var API = require('../../api/api.js')
+var DB = require('../../api/db.js')
+var db = new DB()
 Page({
 
     /**
@@ -29,58 +33,38 @@ Page({
     onLoad: function (options) {
 
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
+    
+    /**去电商小程序 */
     toMall(){
         wx.navigateToMiniProgram({
             appId: 'wx4aedf8c9edf9fd72',
         })
     },
 
+    /**去点单小程序 */
     toMenu() {
         wx.navigateToMiniProgram({
             appId: 'wx28be8489b7a36aaa',
+        })
+    },
+
+    /**去点单小程序 */
+    async toCustomerGeo(){
+
+        var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
+        var storeUUID = userInfo.store_uuid
+        var store = await db.storeInfo(storeUUID)
+        
+        // GP.setData({
+        //     store: store,
+        //     userInfo: userInfo,
+        //     storeUUID: storeUUID,
+        //     isSeller: isSeller,
+        //     isHost: isHost,
+        // })
+        wx.navigateToMiniProgram({
+            appId: 'wxd19bbe9cb3b293b6',
+            path: "pages3/geo/geo?store_uuid=" + storeUUID + "&longitude=" + store.longitude + "&latitude=" + store.latitude ,
         })
     },
     toBL(){
