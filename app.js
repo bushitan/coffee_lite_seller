@@ -1,9 +1,11 @@
 //app.js
 var db = require('db/db.js')
 var db3 = require('db3/db.js')
+var db4Share = require('db4_share/db.js')
 App({
     db: db,
     db3: db3,
+    db4: db4Share,
     onLaunch: function (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
         this.globalData.scene = options.scene

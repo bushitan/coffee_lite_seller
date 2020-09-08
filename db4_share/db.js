@@ -1,7 +1,7 @@
 
 
 // import dbFather from '../db/db_6_seller.js'
-var dbFather = require('db_8_share.js')
+var dbFather = require('db_2_menu.js')
 class db extends dbFather {
 
 

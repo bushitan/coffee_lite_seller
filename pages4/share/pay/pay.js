@@ -1,19 +1,24 @@
 // pages4/share/total.js
 var app = getApp()
+var TAB_PAY = 0
+var TAB_BACK = 1
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        TabCur: 0,
+        TAB_PAY: TAB_PAY,
+        TAB_BACK: TAB_BACK,
+        TabCur: TAB_PAY,
         SortMenu: [
-            { id: 0, name: "收款", },
-            { id: 1, name: "约定追回", },
+            { id: TAB_PAY, name: "收款", },
+            { id: TAB_BACK, name: "约定追回", },
             // { id: 2, name: "已处理", },
         ],
 
-        list:[1,1,1,1,1,1,1,1,1],
+        payList: [],
+        backList: [1, 1, 1, 1, 1, 1, 1, 1, 1],
     },
 
     /**
@@ -25,12 +30,22 @@ Page({
 
     async onInit(){
 
-        var res = await app.db4.login({
-            ShopId: 70
+        // var res = await app.db4.login({
+        //     ShopId: 70
+        // })
+
+        // var res = await app.db4.shareStateByStore({
+        //     ShopId:70
+        // })
+
+        var res = await app.db.shareGetPayDiscount({
+            ShopId: 70,
+            PageIndex:1,
+            PageSize:100,
         })
 
-        var res = await app.db4.shareStateByStore({
-            ShopId:70
+        this.setData({
+            payList:res.data.Items
         })
     },
 
@@ -56,26 +71,10 @@ Page({
         //     list: res.data
         // })
     },
-
-    /**查看门店信息详情 */
-    toStore() {
+    toDetail(){
         wx.navigateTo({
-            url: '/pages4/share/store/store',
+            url: '/pages4/share/detail/detail',
         })
-    },
-    /**查看支付详情 */
-    toPay() {
-        wx.navigateTo({
-            url: '/pages4/share/pay/pay',
-        })
-    },
-
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
     },
 
     /**

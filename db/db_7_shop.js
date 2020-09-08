@@ -10,6 +10,7 @@ class dbStats extends dbFather {
     }
 
     WM_URL = "https://wm.51zfgx.com/"
+    APP_ID = "7016db59b1e84bd1a84f4e974074fa78"  //
 
     STORE_TAKE_TYPE_WM = 1 // 外卖
     STORE_TAKE_TYPE_ZQ = 2 // 到店自取
@@ -49,8 +50,9 @@ class dbStats extends dbFather {
         return new Promise((resolve, reject) => {
             var data = options.data || {}
             data['Session'] = wx.getStorageSync(this.KEY_SHOP_SESSION)
-            data['AppId'] = "7016db59b1e84bd1a84f4e974074fa78"
-            // data['Session'] = "5IRWgui7bOjkYGlrvi766K9mKd2tRwIgC4WzmK+7X+CZp7kSGSmJSIqltssQ/OrB9p2lDvRpvUin0yjie7GJ7mZb5PXUZTTlx8w737wzdRzwrePHmYWLj4bUvFUrzWCjB6YaLiWte5+/W7YZrm6CzseU4jAvZ3vckhY+T+qfdrCrtig+LpW4XNwmw3sWuotpQehImOyje4aK2zIQ/8UF6PoM/EgItRoOGfplfX0FuESN4z+Fd6vjxAcxHrhuzJ6RLOCiL+0gTCka+kRdZERzxXl262keOsnn1X6CvwZfFKeFckWkF4NYPw1ES5ELF0q2+aiznxXSXzUzatU5xirc1XcySPMCSzLbjd+8DTaWs4l11GTOXxqxIQTecC857+rCBHOjFB3lI8g="
+            // data['AppId'] = this.APP_ID
+            
+            data['AppId'] = '7016db59b1e84bd1a84f4e974074fa78'
             
 
             var startTime = new Date().getTime();

@@ -1,0 +1,51 @@
+
+<view class="padding  text-center">
+    <!-- <text class="cuIcon-title text-yellow "></text>                 -->
+    <text class="text-black text-bold text-xl ">先享卡使用记录</text>      
+</view>
+
+<view class="cu-card padding-lr ">
+    <view class=" bg-gray pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">{{card.CardInfo.objectives[0].name}}</text>      
+            </view>
+            <view class="action" catchtap="toPay">
+                <text class="  text-sm">{{card.CardInfo.objectives[0].count}}{{card.CardInfo.objectives[0].unit}}</text>
+                <!-- <view class="pg-arrow-sm"></view> -->
+            </view>
+        </view>        
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="text-black text-sm">{{card.CardInfo.rewards[0].name}}</text>      
+            </view>
+            
+        </view>        
+        
+        <view class="cu-bar   ">
+            <view class="action">
+                <text class="text-black text-sm">{{card.CardInfo.rewards[0].description}}</text>      
+            </view>
+        </view>      
+    </view>
+</view>
+
+<view class="cu-timeline">
+  <!-- <view class="cu-time">优惠记录</view> -->
+  <view class="cu-item" wx:for="{{card.CardInfo.rewards[0].reward_usage_records}}">
+    <view class="content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-cyan">第{{index+1}}次</view>
+        <view class="cu-tag line-cyan">{{item.usage_time}}</view>
+      </view>
+      <view class="margin-top">{{item.description}}</view>
+    </view>
+  </view>
+</view>
+
+<view class=" padding-xs flex  align-center margin-top justify-center">
+    <text class="text-center text-sm  text-gray">到底了</text>		
+</view>
+
+<view class="pg-space-xl"></view>

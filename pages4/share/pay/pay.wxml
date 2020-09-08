@@ -1,0 +1,90 @@
+
+<scroll-view scroll-x class="bg-white nav ">
+    <view class='flex  text-center  '>
+        <view class="cu-item flex-sub {{item.id==TabCur?'text-yellow text-bold cur':' text-gray'}} " 
+        wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect">
+                <view style="  position: relative" >
+                    <text class="">{{item.name}}</text>
+                    
+                    <!-- <view class="cu-tag badge" style="top:2px; right:-10px" >
+                        {{index==0?pendingList.length : ""}}
+                        {{index==1?processingList.length : ""}}
+                        {{index==2?completeList.length : ""}}
+                    </view> -->
+                </view>
+        </view>
+    </view>
+</scroll-view>
+
+ <!-- "RowNo": 1,
+        "ShopId": 70,
+        "WxOpenId": "ok6Wq5Rxw8sLwdo4U7XXUx4yhxgA",
+        "WxNickName": "雕",
+        "WxAvatarUrl": "https://thirdwx.qlogo.cn/mmopen/vi_32/s6ZNWibMsQIyEJOUZMzbZQSU8iajVvwzlsvHRmcuqCDJnnZfhY9pib6F6qCZAUWulMN7bpFe7ZskD6QeCTkqkJ4pA/132",
+        "CardOutOrderNo": "b90f83164e464f54a44c4b02d4543a75",
+        "TotalFee": 1.1,
+        "RealFee": 0.88,
+        "DiscountFee": 0.22,
+        "PayTime": "2020-09-05 00:28:46"
+         -->
+<view wx:for="{{payList}}" hidden="{{TabCur == TAB_PAY?false:true}}" >   
+    <view class="padding-lr margin-top-sm text-xs text-gray flex algin-center">
+        <text class="cuIcon-title text-yellow "></text>
+        {{item.PayTime}}                               
+       
+    </view>
+    <view class="cu-card padding-lr " catchtap="toDetail">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <view class="cu-avatar round " style="background-image:url({{item.WxAvatarUrl}});margin:0" ></view>
+                    <view>
+                        <text class="text-black text-sm margin-left-xs">{{item.WxNickName}}</text>   
+                        <view>
+                            <view class="cu-capsule round ">
+                                <view class="cu-tag bg-red sm">原价</view>
+                                <view class="cu-tag line-red sm">{{item.TotalFee}}</view>
+                            </view>
+                            <view class="cu-capsule round ">
+                                <view class="cu-tag bg-green sm">先享优惠</view>
+                                <view class="cu-tag line-green sm">{{item.DiscountFee}}</view>
+                            </view>
+                        </view>
+                    </view>    
+                </view>
+                <view class="action">
+                    <view>+{{item.RealFee}}</view>
+                    
+                    <view class="pg-arrow-sm"></view>
+                </view>
+            </view>     
+        </view>
+    </view>
+</view> 
+<view wx:for="{{backList}}" hidden="{{TabCur == TAB_BACK?false:true}}" >   
+    <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
+    <view class="cu-card padding-lr " catchtap="toDetail">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                     <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);margin:0" ></view>
+                    <text class="text-black text-sm margin-left-xs">用户名字</text>   
+                </view>
+                <view class="action">
+                    <view class="cu-capsule round">
+                        <view class="cu-tag bg-red ">追回金额</view>
+                        <view class="cu-tag line-red">23</view>
+                    </view>
+                    <view class="pg-arrow-sm"></view>
+                </view>
+            </view>     
+        </view>
+    </view>
+</view> 
+
+
+<view class=" padding-xs flex  align-center margin-top justify-center">
+    <text class="text-center text-sm  text-gray">到底了</text>		
+</view>
+
+<view class="pg-space-xl"></view>

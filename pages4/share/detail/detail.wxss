@@ -1,0 +1,4 @@
+/* pages4/share/total.wxss */
+page{
+    background-color: #ffffff
+}
