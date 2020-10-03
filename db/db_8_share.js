@@ -25,6 +25,7 @@ class dbStats extends dbFather {
             this.orderRequest({
                 url: this.WM_URL + "api/query/paywithwxdiscount/",
                 method: "POST",
+                data:data,
             }).then(res => {
                 console.log(res.data)
                 resolve(res)

@@ -1,8 +1,5 @@
 {
     "pages": [
-        
-        "pages4/hot/hot",
-
         "pages/route/route",
         "pages2/self/self",
         "pages2/self_qr/self_qr",
@@ -20,6 +17,7 @@
         "pages3/order/order",
         "pages3/total/total",
 
+        "pages4/hot/hot",
         "pages4/share/total/total",
         "pages4/share/store/store",
         "pages4/share/pay/pay",
@@ -61,7 +59,7 @@
                 "text": "集点卡"
             },
             {
-                "pagePath": "pages4/share/total/total",
+                "pagePath": "pages4/share/pay/pay",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
                 "text": "先享卡"

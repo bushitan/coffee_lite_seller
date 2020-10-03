@@ -18,18 +18,25 @@ Page({
         ],
 
         payList: [],
-        backList: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        backList: [1,],
+
+        sn:"",//顾客sn号
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.onInit()
+
+        var that = this
+        that.onInit()
+
+        interval = setInterval(function () {
+            that.refresh()
+        }, 15000)
     },
 
     async onInit(){
-
         // var res = await app.db4.login({
         //     ShopId: 70
         // })
@@ -37,16 +44,52 @@ Page({
         // var res = await app.db4.shareStateByStore({
         //     ShopId:70
         // })
+        app.db.shopLogin().then(res => {
+            wx.setNavigationBarTitle({
+                title: '商户ID:' + res.data.sn,
+            })
+            this.setData({
+                sn:res.data.sn
+            })
 
-        var res = await app.db.shareGetPayDiscount({
-            ShopId: 70,
-            PageIndex:1,
-            PageSize:100,
+            this.refresh()
         })
+    },
 
-        this.setData({
-            payList:res.data.Items
-        })
+    async refresh(){
+        var ShopId = false
+        var sn = this.data.sn
+
+        if (sn == 1041 || sn == 31097)
+            ShopId = 77 // 南湖名都
+
+        if (sn == 31127 || sn == 31128 || sn == 31135)
+            ShopId = 78 // 富力万达文华
+
+        if (sn == 31243 || sn == 31244 || sn == 31250)
+            ShopId = 79 // 鑫伟万豪酒店
+
+        if (sn == 31116)
+            ShopId = 81 //红林大酒店
+
+        if (sn == 31094)
+            ShopId = 85 //乐壳青山园
+
+        
+
+        if (ShopId){
+            var res = await app.db.shareGetPayDiscount({
+                ShopId: ShopId,
+                PageIndex: 1,
+                PageSize: 200,
+                IsAll:true,
+            })
+
+            this.setData({
+                payList: res.data.Items
+            })
+        }
+        
     },
 
     async tabSelect(e) {
@@ -72,6 +115,7 @@ Page({
         // })
     },
     toDetail(){
+        return
         wx.navigateTo({
             url: '/pages4/share/detail/detail',
         })
@@ -88,6 +132,8 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return {
+            path :"/pages/route/route"
+        }
     }
 })

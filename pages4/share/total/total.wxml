@@ -44,15 +44,15 @@
         <view class="cu-list menu ">      
             <view class="cu-item " >
                 <view class="action">使用中</view>
-                <view class="action ">51</view>
+                <view class="action ">40</view>
             </view>
             <view class="cu-item " >
                 <view class="action">中途退出</view>
-                <view class="action ">51</view>
+                <view class="action ">8</view>
             </view>
             <view class="cu-item " >
                 <view class="action">已完成</view>
-                <view class="action ">51</view>
+                <view class="action ">20</view>
             </view>
         </view>
         <!-- <view class="cu-bar   ">
@@ -82,15 +82,15 @@
         <view class="cu-list menu ">      
             <view class="cu-item " >
                 <view class="action">收入金额</view>
-                <view class="action ">51</view>
+                <view class="action ">256.50</view>
             </view>
             <view class="cu-item " >
                 <view class="action">优惠</view>
-                <view class="action ">51</view>
+                <view class="action ">26.50</view>
             </view>
             <view class="cu-item " >
                 <view class="action">追回</view>
-                <view class="action ">51</view>
+                <view class="action ">39</view>
             </view>
         </view>
     </view>

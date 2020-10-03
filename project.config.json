@@ -1,261 +1,291 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": true,
-		"showShadowRootInWxmlPanel": false,
-		"scopeDataCheck": true,
-		"uglifyFileName": true,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"bundle": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.6.5",
-	"appid": "wx3e0f68d227f05241",
-	"projectname": "%E9%9B%86%E7%82%B9%E5%8D%A1%E5%95%86%E6%88%B7",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 3,
-			"list": [
-				{
-					"id": 0,
-					"name": "store",
-					"pathName": "pages/store/store",
-					"query": "store_uuid=68e54718-7156-11e9-b456-e95aa2c51b5d",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "host",
-					"pathName": "pages/host/host",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "log",
-					"pathName": "pages/log/log",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "auto_share",
-					"pathName": "pages/auto_share/auto_share",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/test_unit/test_unit",
-					"pathName": "pages/test_unit/test_unit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages2/stats_edt/stats_edt数据统计",
-					"pathName": "pages2/stats_edt/stats_edt",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages2/rule_edt/rule_edt 店铺编辑",
-					"pathName": "pages2/rule_edt/rule_edt",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages2/notice_edt/notice_edt ",
-					"pathName": "pages2/notice_edt/notice_edt",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages2/self/self",
-					"pathName": "pages2/self/self",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages2/cover_edt/cover_edt",
-					"pathName": "pages2/cover_edt/cover_edt",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/admin/admin 商城后台",
-					"pathName": "pages_shop/admin/admin",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "pages_shop/order_add/order_add 自助下单 ",
-					"pathName": "pages_shop/order/add/add",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/local/local 自助下单",
-					"pathName": "pages_shop/local/local",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/order/address/address 填写地址",
-					"pathName": "pages_shop/order/address/address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 14,
-					"name": "pages_shop/order/detail/detail 订单详情",
-					"pathName": "pages_shop/order/detail/detail",
-					"query": "orderId=1810",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/order/list/list 订单列表",
-					"pathName": "pages_shop/order/list/list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "pages_shop/order/detail/detail",
-					"pathName": "pages_shop/order/detail/detail",
-					"query": "orderId=147",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/config/store",
-					"pathName": "pages_shop/config/store",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages_shop/config/product",
-					"pathName": "pages_shop/config/product",
-					"query": "shopId=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/route/route",
-					"pathName": "pages/route/route",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages3/menu/menu 收银菜单",
-					"pathName": "pages3/menu/menu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages3/order/order 详细订单",
-					"pathName": "pages3/order/order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 22,
-					"name": "pages4/share/total",
-					"pathName": "pages4/share/total/total",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages4/share/total/total",
-					"pathName": "pages4/share/total/total",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages4/share/store/store",
-					"pathName": "pages4/share/store/store",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages4/share/total/total 先享卡首页",
-					"pathName": "pages4/share/total/total",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages4/share/pay/pay 先享卡支付列表",
-					"pathName": "pages4/share/pay/pay",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages4/share/detail/detail 支付详情",
-					"pathName": "pages4/share/detail/detail",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+    "description": "项目配置文件",
+    "packOptions": {
+        "ignore": []
+    },
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": true,
+        "showShadowRootInWxmlPanel": false,
+        "scopeDataCheck": false,
+        "uglifyFileName": true,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "useMultiFrameRuntime": false,
+        "useApiHook": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "bundle": true,
+        "useIsolateContext": true,
+        "useCompilerModule": true,
+        "userConfirmedUseCompilerModuleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": []
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.13.1",
+    "appid": "wx3e0f68d227f05241",
+    "projectname": "%E9%9B%86%E7%82%B9%E5%8D%A1%E5%95%86%E6%88%B7",
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "isGameTourist": false,
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "plugin": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "gamePlugin": {
+            "current": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": 3,
+            "list": [
+                {
+                    "id": 0,
+                    "name": "store",
+                    "pathName": "pages/store/store",
+                    "query": "store_uuid=68e54718-7156-11e9-b456-e95aa2c51b5d",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "host",
+                    "pathName": "pages/host/host",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "log",
+                    "pathName": "pages/log/log",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "auto_share",
+                    "pathName": "pages/auto_share/auto_share",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/test_unit/test_unit",
+                    "pathName": "pages/test_unit/test_unit",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 5,
+                    "name": "pages2/stats_edt/stats_edt数据统计",
+                    "pathName": "pages2/stats_edt/stats_edt",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages2/rule_edt/rule_edt 店铺编辑",
+                    "pathName": "pages2/rule_edt/rule_edt",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages2/notice_edt/notice_edt ",
+                    "pathName": "pages2/notice_edt/notice_edt",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages2/self/self",
+                    "pathName": "pages2/self/self",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages2/cover_edt/cover_edt",
+                    "pathName": "pages2/cover_edt/cover_edt",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/admin/admin 商城后台",
+                    "pathName": "pages_shop/admin/admin",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 11,
+                    "name": "pages_shop/order_add/order_add 自助下单 ",
+                    "pathName": "pages_shop/order/add/add",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/local/local 自助下单",
+                    "pathName": "pages_shop/local/local",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/order/address/address 填写地址",
+                    "pathName": "pages_shop/order/address/address",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 14,
+                    "name": "pages_shop/order/detail/detail 订单详情",
+                    "pathName": "pages_shop/order/detail/detail",
+                    "query": "orderId=1810",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/order/list/list 订单列表",
+                    "pathName": "pages_shop/order/list/list",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 16,
+                    "name": "pages_shop/order/detail/detail",
+                    "pathName": "pages_shop/order/detail/detail",
+                    "query": "orderId=147",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/config/store",
+                    "pathName": "pages_shop/config/store",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages_shop/config/product",
+                    "pathName": "pages_shop/config/product",
+                    "query": "shopId=3",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/route/route",
+                    "pathName": "pages/route/route",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages3/menu/menu 收银菜单",
+                    "pathName": "pages3/menu/menu",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages3/order/order 详细订单",
+                    "pathName": "pages3/order/order",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 22,
+                    "name": "pages4/share/total",
+                    "pathName": "pages4/share/total/total",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/total/total",
+                    "pathName": "pages4/share/total/total",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/store/store",
+                    "pathName": "pages4/share/store/store",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/total/total 先享卡首页",
+                    "pathName": "pages4/share/total/total",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/pay/pay 先享卡支付列表",
+                    "pathName": "pages4/share/pay/pay",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/detail/detail 支付详情",
+                    "pathName": "pages4/share/detail/detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/total/total",
+                    "pathName": "pages4/share/total/total",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/share/pay/pay",
+                    "pathName": "pages4/share/pay/pay",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages4/hot/hot",
+                    "pathName": "pages4/hot/hot",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }
