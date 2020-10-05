@@ -17,6 +17,7 @@
         "pages3/order/order",
         "pages3/total/total",
 
+        "pages4/geo/geo",
         "pages4/hot/hot",
         "pages4/share/total/total",
         "pages4/share/store/store",

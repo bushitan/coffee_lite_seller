@@ -2,6 +2,11 @@
 
 <!-- <image src="/images/2013/swiper.jpg" class="bg" mode="widthFix"></image> -->
 
+
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+
+
+
 <view class="padding-lr margin-top " hidden="true">
     <view class="flex justify-between align-center  bg-white padding  radius">
         <view class="flex  align-center">

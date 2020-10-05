@@ -1,5 +1,6 @@
 <!--pages/user/user.wxml-->
 
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
 <wave
     score="{{data.score_num>store.exchange_value? store.exchange_value :data.score_num}}"
     logo="{{store.logo}}"
@@ -91,6 +92,19 @@
                 </view>
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
+                </view>
+            </view>
+            
+            <view  
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" catchtap='qrGetCover'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">获取台卡</view>
+                    <view class="weui-media-box__desc">台卡打印尺寸 150mm * 10mm</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/meun_auto.png" />
                 </view>
             </view>
         </view>

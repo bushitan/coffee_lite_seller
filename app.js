@@ -2,11 +2,13 @@
 var db = require('db/db.js')
 var db3 = require('db3/db.js')
 var db4Share = require('db4_share/db.js')
+var db5Customer = require('db5_customer/db.js')
 App({
     db: db,
     db3: db3,
     db4: db4Share,
-    onLaunch: function (options) {
+    db5Customer: db5Customer,
+    async onLaunch (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
         this.globalData.scene = options.scene
 
@@ -26,6 +28,17 @@ App({
                 }
             }
         })
+
+        // 加载 customer 云函数
+        await db5Customer.init()
+        // db5Customer.getGeoStoreList({
+        //     store_uuid: 'e8eeb038-a2d0-11ea-97f8-e95aa2c51b5d', //&longitude=108.333693&latitude=22.805182// this.data.storeUUID,
+        //     // isToday: this.data.TabCur == 0?true :false,
+        //     range: 1 //this.data.SortMenu[this.data.TabCur].range
+        // }).then(res=>{
+        //     console.log(res)
+        // })
+
     },
 
     // 判断用户选择

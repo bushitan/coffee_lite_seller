@@ -3,6 +3,9 @@
 var API = require('../../api/api.js')
 var DB = require('../../api/db.js')
 var db = new DB()
+var app = getApp()
+
+
 Page({
 
     /**
@@ -41,7 +44,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+       
+    },
 
+
+
+
+    // onReady(){
+        
+    // },
+
+    onInit(){
+        app.db5Customer.getStoreQR({
+            store_uuid:"c2332634-0397-11eb-86fa-e95aa2c51b5d",
+        })
     },
     
     /**去电商小程序 */
@@ -61,6 +77,23 @@ Page({
     /**去点单小程序 */
     async toCustomerGeo(){
 
+        var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
+        if (!userInfo.is_host){
+            wx.showModal({
+                title: '权限不足',
+                content: '请联系店主查看',
+            })
+            return 
+        }
+            
+
+        wx.navigateTo({
+            url: '/pages4/geo/geo?store_uuid=' + userInfo.store_uuid,
+        })
+        
+        // this.onInit()
+
+
         // var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
         // var storeUUID = userInfo.store_uuid
         // var store = await db.storeInfo(storeUUID)
@@ -77,48 +110,50 @@ Page({
         //     path: "pages3/geo/geo?store_uuid=" + storeUUID + "&longitude=" + store.longitude + "&latitude=" + store.latitude ,
         // })
 
-                // 声明新的 cloud 实例
-        var c1 = new wx.cloud.Cloud({
-            // 资源方 AppID
-            resourceAppid: 'wxd19bbe9cb3b293b6',
-            // 资源方环境 ID
-            resourceEnv: 'cup-customer-release',
-        })
-        console.log(c1)
-        
-        // 跨账号调用，必须等待 init 完成
-        // init 过程中，资源方小程序对应环境下的 cloudbase_auth 函数会被调用，并需返回协议字段（见下）来确认允许访问、并可自定义安全规则
-        // var res = await c1.init()
-        var res =   c1.init({traceUser: true})
-        console.log(res)
-        c1.callFunction({
-            name: 'geo',
-            data: {
-                "action":"get_geo_store_list",
-                store_uuid: this.data.storeUUID,
-                // isToday: this.data.TabCur == 0?true :false,
-                range: this.data.SortMenu[this.data.TabCur].range
-            },
-            success : res => {
-                console.log(res)
-                var temp = res.result.data
-                var list = []
-                for (var i = 0; i < temp.length;i++)
-                    list.push({
-                        "count": 100,
-                        "lng": temp[i].geo.coordinates[0],
-                        // "lng": temp[i].geo.coordinates[0],
-                        "lat": temp[i].geo.coordinates[1]
-                    })
-                console.log(JSON.stringify( list))
-                this.setData({
-                    list:list
-                })
-                this.addMarkers()
-                // wx.setStorageSync("list", list)
-            },
-        })
+
+        // 声明新的 cloud 实例
+        // var c1 = new wx.cloud.Cloud({
+        //     // appid:"wx3e0f68d227f05241",
+        //     // 资源方 AppID
+        //     resourceAppid: 'wxd19bbe9cb3b293b6',
+        //     // 资源方环境 ID
+        //     resourceEnv: 'cup-customer-release',
+        // })
+        // // console.log(c1)
+
+        // // 跨账号调用，必须等待 init 完成
+        // // init 过程中，资源方小程序对应环境下的 cloudbase_auth 函数会被调用，并需返回协议字段（见下）来确认允许访问、并可自定义安全规则
+        // await c1.init()
+        // c1.callFunction({
+        //     name: 'geo',
+        //     data: {
+        //         "action": "get_geo_store_list",
+        //         store_uuid: 'e8eeb038-a2d0-11ea-97f8-e95aa2c51b5d', //&longitude=108.333693&latitude=22.805182// this.data.storeUUID,
+        //         // isToday: this.data.TabCur == 0?true :false,
+        //         range: 1 //this.data.SortMenu[this.data.TabCur].range
+        //     },
+        //     success: res => {
+        //         console.log(res)
+        //         var temp = res.result.data
+        //         var list = []
+        //         for (var i = 0; i < temp.length; i++)
+        //             list.push({
+        //                 "count": 100,
+        //                 "lng": temp[i].geo.coordinates[0],
+        //                 // "lng": temp[i].geo.coordinates[0],
+        //                 "lat": temp[i].geo.coordinates[1]
+        //             })
+        //         console.log(JSON.stringify(list))
+        //         this.setData({
+        //             list: list
+        //         })
+        //         this.addMarkers()
+        //         // wx.setStorageSync("list", list)
+        //     },
+        // })
     },
+
+
 
 
 

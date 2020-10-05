@@ -6,6 +6,7 @@ var DB = require('../../api/db.js')
 var db = new DB()
 var app = getApp()
 
+var QR_Behavior = require('js/qr.js')
 Page({
 
     /**
@@ -20,6 +21,7 @@ Page({
         isHost: false,
     },
 
+    behaviors: [QR_Behavior],
     /**
      * 生命周期函数--监听页面加载
      */
