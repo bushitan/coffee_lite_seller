@@ -17,7 +17,13 @@ Page({
         latitude: 22.81521,
 
         scList: [
-
+            {
+                cover: "/images/good/1.jpg",
+                des: '野生植物燕麦奶',
+                icon: ["燕麦奶", "野生"],
+                appId: "wx7d6caecfc99ccdc5",
+                path: "plugin-private://wx34345ae5855f892d/pages/productDetail/productDetail?productId=601428",
+            },
             {
                 cover: "/images/good/1_lizi.jpg",
                 des: '下午茶的小蛋糕',
@@ -25,13 +31,13 @@ Page({
                 appId:"wx7d6caecfc99ccdc5",
                 path:"plugin-private://wx34345ae5855f892d/pages/productDetail/productDetail?productId=601428",
             },
-            {
-                cover: "https://wm.51zfgx.com/images/thumbs/0002454.jpeg",
-                des: '轻餐搭配。',
-                icon: ["可颂", "面包"],
-                appId: 'wx9e97c9fb1e0b26b4',
-                path: "pages/menu/menu_sc",
-            },
+            // {
+            //     cover: "https://wm.51zfgx.com/images/thumbs/0002454.jpeg",
+            //     des: '轻餐搭配。',
+            //     icon: ["可颂", "面包"],
+            //     appId: 'wx9e97c9fb1e0b26b4',
+            //     path: "pages/menu/menu_sc",
+            // },
             // {
             //     cover: "https://wm.51zfgx.com/images/thumbs/0002461_5_75.jpeg",
             //     des: '材料只有面粉、水、盐和酵母，不含油、糖以及任何添加剂，吃起来更放心。',
