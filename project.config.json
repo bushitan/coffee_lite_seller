@@ -283,6 +283,13 @@
 					"id": -1,
 					"name": "pages4/hot/hot",
 					"pathName": "pages4/hot/hot",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages4/mall/index/index",
+					"pathName": "pages4/mall/index/index",
 					"scene": null
 				}
 			]

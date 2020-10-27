@@ -1,0 +1,8 @@
+<!--pages4/mall/index/index.wxml-->
+
+<image  wx:for="{{2}}"  catchtap="preview" data-index="{{index}}"
+    src="cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/mall_swiper/{{index+1}}.png" class="bg block margin-bottom-xs" mode="widthFix"></image>
+<view class="padding-lr-xs">
+    <image wx:for="{{13}}"  catchtap="preview" data-index="{{index+2}}"
+    src="cloud://sjshop-21at0.736a-sjshop-21at0-1301522941/mall_swiper/{{index+3}}.png" class="bg block margin-bottom-xs" mode="widthFix"></image>
+</view>

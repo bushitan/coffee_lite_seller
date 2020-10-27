@@ -217,6 +217,26 @@ Page({
         wx.makePhoneCall({ phoneNumber: '13677730361'})
     },
 
+
+    /**查看集点数据 */
+    async toCustomerGeo() {
+
+        var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
+        if (!userInfo.is_host) {
+            wx.showModal({
+                title: '权限不足',
+                content: '请联系店主查看',
+            })
+            return
+        }
+
+
+        wx.navigateTo({
+            url: '/pages4/geo/geo?store_uuid=' + userInfo.store_uuid,
+        })
+    },
+
+
     /**
      * 生命周期函数--监听页面显示
      */

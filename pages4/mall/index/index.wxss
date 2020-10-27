@@ -1,0 +1,7 @@
+/* pages4/mall/index/index.wxss */
+page{
+    background-color: #ffffff;
+}
+.bg{
+    width: 100%;
+}

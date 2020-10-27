@@ -154,3 +154,35 @@ App({
     //     "selectedIconPath": "/images/icon/score.png",
     //     "text": "收银"
     // }
+
+
+    //  {
+    //             "pagePath": "pages/store/store",
+    //             "iconPath": "/images/icon/prize_un.png",
+    //             "selectedIconPath": "/images/icon/prize.png",
+    //             "text": "集点卡"
+    //         },
+    //         {
+    //             "pagePath": "pages4/hot/hot",
+    //             "iconPath": "/images/icon/prize_un.png",
+    //             "selectedIconPath": "/images/icon/prize.png",
+    //             "text": "便利店"
+    //         },
+    //         {
+    //             "pagePath": "pages4/share/pay/pay",
+    //             "iconPath": "/images/icon/prize_un.png",
+    //             "selectedIconPath": "/images/icon/prize.png",
+    //             "text": "先享卡"
+    //         },
+    //         {
+    //             "pagePath": "pages_shop/admin/admin",
+    //             "iconPath": "/images/icon/score_un.png",
+    //             "selectedIconPath": "/images/icon/score.png",
+    //             "text": "小程序点单"
+    //         },
+    //         {
+    //             "pagePath": "pages3/menu/menu",
+    //             "iconPath": "/images/icon/score_un.png",
+    //             "selectedIconPath": "/images/icon/score.png",
+    //             "text": "收银"
+    //         }

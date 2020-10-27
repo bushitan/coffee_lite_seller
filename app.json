@@ -12,18 +12,15 @@
         "pages/host/host",
         "pages/store/store",
         "pages/test_unit/test_unit",
-
         "pages3/menu/menu",
         "pages3/order/order",
         "pages3/total/total",
-
         "pages4/geo/geo",
         "pages4/hot/hot",
         "pages4/share/total/total",
         "pages4/share/store/store",
         "pages4/share/pay/pay",
         "pages4/share/detail/detail",
-
         "pages_shop/admin/admin",
         "pages_shop/config/store",
         "pages_shop/config/product",
@@ -32,13 +29,14 @@
         "pages_shop/order/add/add",
         "pages_shop/order/address/address",
         "pages_shop/order/list/list",
-        "pages_shop/stats/stats"
+        "pages_shop/stats/stats",
+        "pages4/mall/index/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",
         "navigationBarBackgroundColor": "#efaf30",
-        "navigationBarTitleText": "分享集点卡商户版",
+        "navigationBarTitleText": "小杯子集点卡商户版",
         "navigationBarTextStyle": "white"
     },
     "tabBar": {
@@ -48,16 +46,16 @@
         "backgroundColor": "#ffffff",
         "list": [
             {
-                "pagePath": "pages4/hot/hot",
-                "iconPath": "/images/icon/prize_un.png",
-                "selectedIconPath": "/images/icon/prize.png",
-                "text": "最新功能"
-            },
-            {
                 "pagePath": "pages/store/store",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
                 "text": "集点卡"
+            },
+            {
+                "pagePath": "pages4/mall/index/index",
+                "iconPath": "/images/icon/mall_un.png",
+                "selectedIconPath": "/images/icon/mall.png",
+                "text": "便利店"
             },
             {
                 "pagePath": "pages4/share/pay/pay",
@@ -70,12 +68,6 @@
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
                 "text": "小程序点单"
-            },
-            {
-                "pagePath": "pages3/menu/menu",
-                "iconPath": "/images/icon/score_un.png",
-                "selectedIconPath": "/images/icon/score.png",
-                "text": "收银"
             }
         ]
     },

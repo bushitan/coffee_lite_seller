@@ -13,6 +13,7 @@ Page({
     data: {
         // isShowLogin: false,
         isReload: false,
+        
     },
 
     /**
@@ -78,8 +79,8 @@ Page({
         // return
         var options = GP.data.options
         wx.switchTab({
-            // url: `/pages/store/store`,
-            url: "/pages4/hot/hot"
+            url: `/pages/store/store`,
+            // url: "/pages4/hot/hot"
         })
     },
 

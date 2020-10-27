@@ -94,6 +94,20 @@
                     <image class="weui-media-box__thumb" src="../../images/meun_setting.png" />
                 </view>
             </view>
+
+            <view 
+                wx:if="{{isHost}}"
+                class="weui-media-box weui-media-box_appmsg " 
+                hover-class="weui-cell_active" catchtap='toCustomerGeo'
+            >
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">用户分布</view>
+                    <view class="weui-media-box__desc">我的门店用户地图</view>
+                </view>
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="../../images/menu_address.png" />
+                </view>
+            </view>
             
             <view  
                 class="weui-media-box weui-media-box_appmsg " 
@@ -101,7 +115,7 @@
             >
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                     <view class="weui-media-box__title">获取台卡</view>
-                    <view class="weui-media-box__desc">台卡打印尺寸 150mm * 10mm</view>
+                    <view class="weui-media-box__desc">台卡打印尺寸 150mm * 100mm</view>
                 </view>
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                     <image class="weui-media-box__thumb" src="../../images/meun_auto.png" />

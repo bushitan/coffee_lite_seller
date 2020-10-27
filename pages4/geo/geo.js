@@ -4,6 +4,8 @@ var PI = 3.1415926535897932384626;
 var a = 6378245.0;
 var ee = 0.00669342162296594323;
 var app = getApp()
+
+var mapContext 
 Page({
 
     /**
@@ -48,6 +50,7 @@ Page({
             
 
 
+        mapContext = wx.createMapContext('map', this);
         this.onInit()
     },
 
@@ -57,9 +60,18 @@ Page({
             store_uuid: this.data.storeUUID,
             range: this.data.SortMenu[this.data.TabCur].range
         })
+        
 
         console.log(res)
         var temp = res.data
+        if(temp.length==0){
+            wx.showModal({
+                title: '该时段内暂时没有一物一码集点数据',
+                showCancel:false
+            })
+        }
+
+
         var list = []
         for (var i = 0; i < temp.length;i++)
             list.push({
@@ -72,6 +84,8 @@ Page({
         this.setData({
             list:list
         })
+
+        
         this.addMarkers()
         // wx.setStorageSync("list", list)
 
@@ -131,6 +145,17 @@ Page({
         this.setData({
             markers: tempList
         })
+
+        mapContext.includePoints({
+            padding: [100, 80, 100, 80],
+            points: tempList, //放入所有坐标轴的数组   并引用此方法
+            success: (res) => {
+                console.log(res)
+            },
+            fail: (res) => {
+                console.log(res)
+            },
+        }, this)
     },
 
     /**
