@@ -70,6 +70,12 @@
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
                 "text": "小程序点单"
+            },
+            {
+                "pagePath": "pages3/menu/menu",
+                "iconPath": "/images/icon/score_un.png",
+                "selectedIconPath": "/images/icon/score.png",
+                "text": "收银"
             }
         ]
     },

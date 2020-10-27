@@ -75,6 +75,8 @@ Page({
         if (sn == 31094)
             ShopId = 85 //乐壳青山园
 
+      if (sn == 1041 || sn == 29487 || sn == 31464)
+            ShopId = 86 //居酒屋
         
 
         if (ShopId){
