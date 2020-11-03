@@ -15,6 +15,7 @@
         "pages3/menu/menu",
         "pages3/order/order",
         "pages3/total/total",
+        "pages4/share/index/index",
         "pages4/geo/geo",
         "pages4/hot/hot",
         "pages4/share/total/total",
@@ -58,10 +59,10 @@
                 "text": "便利店"
             },
             {
-                "pagePath": "pages4/share/pay/pay",
+                "pagePath": "pages4/share/index/index",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
-                "text": "先享卡"
+                "text": "支付统计"
             },
             {
                 "pagePath": "pages_shop/admin/admin",

@@ -1,10 +1,9 @@
 
-<view class="padding  text-center">
-    <!-- <text class="cuIcon-title text-yellow "></text>                 -->
+<!-- <view class="padding  text-center">
     <text class="text-black text-bold text-xl ">先享卡使用记录</text>      
-</view>
+</view> -->
 
-<view class="cu-card padding-lr ">
+<view class="cu-card padding ">
     <view class=" bg-gray pg-radius  shadow shadow-warp">
         <view class="cu-bar  solid-bottom ">
             <view class="action">
@@ -33,16 +32,37 @@
 
 <view class="cu-timeline">
   <!-- <view class="cu-time">优惠记录</view> -->
-  <view class="cu-item" wx:for="{{card.CardInfo.rewards[0].reward_usage_records}}">
-    <view class="content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-cyan">第{{index+1}}次</view>
-        <view class="cu-tag line-cyan">{{item.usage_time}}</view>
-      </view>
-      <view class="margin-top">{{item.description}}</view>
+    <view class="cu-item" wx:for="{{card.CardInfo.rewards[0].reward_usage_records}}">
+        <view class="content">
+        <view class="cu-capsule radius">
+            <view class="cu-tag bg-cyan">第{{index+1}}次</view>
+            <view class="cu-tag line-cyan">{{item.usage_time}}</view>
+        </view>
+        <view class="margin-top">{{item.remark}}</view>
+        </view>
     </view>
-  </view>
+    <view class="cu-item" wx:if='{{card.CardInfo.state=="UNFINISHED"}}'>
+        <view class="content">
+            <view class="cu-capsule radius">
+                <view class="cu-tag bg-red" wx:if="{{card.CardInfo.pay_information.pay_state=='PAID'}}">已退回</view>
+                <view class="cu-tag bg-red" wx:else>退回中</view>
+                <view class="cu-tag line-red">{{card.CardInfo.pay_information.pay_time}}</view>
+            </view>
+        <view class="margin-top">
+            退回商户金额：{{card.CardInfo.pay_information.pay_amount/100}}元
+        </view>
+        </view>
+    </view>
 </view>
+
+<!-- <view>
+    <view>{{card.CardInfo.state}}</view>
+    <view>{{card.CardInfo.unfinished_reason}}</view>
+    <view>{{card.CardInfo.pay_information.pay_amount}}</view>
+    <view>{{card.CardInfo.pay_information.pay_state}}</view>
+    <view>{{card.CardInfo.pay_information.transaction_id}}</view>
+    <view>{{card.CardInfo.pay_information.pay_time}}</view>
+</view> -->
 
 <view class=" padding-xs flex  align-center margin-top justify-center">
     <text class="text-center text-sm  text-gray">到底了</text>		

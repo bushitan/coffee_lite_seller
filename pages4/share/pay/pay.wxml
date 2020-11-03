@@ -27,13 +27,12 @@
         "DiscountFee": 0.22,
         "PayTime": "2020-09-05 00:28:46"
          -->
-<view wx:for="{{payList}}" hidden="{{TabCur == TAB_PAY?false:true}}" >   
+<view wx:for="{{payList}}" wx:key hidden="{{TabCur == TAB_PAY?false:true}}" >   
     <view class="padding-lr margin-top-sm text-xs text-gray flex algin-center">
         <text class="cuIcon-title text-yellow "></text>
-        <text class="text-black margin-right ">订单ID：{{item.OrderId}}</text> {{item.PayTime}}                               
-       
+        <text class="text-black margin-right ">订单ID：{{item.OrderId}}</text> {{item.PayTime}}                             
     </view>
-    <view class="cu-card padding-lr " catchtap="toDetail">
+    <view class="cu-card padding-lr " catchtap="toDetail" data-out_order_no="{{item.CardOutOrderNo}}">
         <view class=" bg-white pg-radius  shadow shadow-warp">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
@@ -45,7 +44,7 @@
                                 <view class="cu-tag bg-red sm">原价</view>
                                 <view class="cu-tag line-red sm">{{item.TotalFee}}</view>
                             </view>
-                            <view class="cu-capsule round ">
+                            <view class="cu-capsule round "  wx:if="{{item.CardOutOrderNo}}">
                                 <view class="cu-tag bg-green sm">先享优惠</view>
                                 <view class="cu-tag line-green sm">{{item.DiscountFee}}</view>
                             </view>
@@ -55,15 +54,15 @@
                 <view class="action">
                     <view>+{{item.RealFee}}</view>
                     
-                    <view class="pg-arrow-sm"></view>
+                    <view class="pg-arrow-sm" wx:if="{{item.CardOutOrderNo}}"></view>
                 </view>
             </view>     
         </view>
     </view>
 </view> 
-<view wx:for="{{backList}}" hidden="{{TabCur == TAB_BACK?false:true}}" >   
+<view wx:for="{{backList}}" wx:key hidden="{{TabCur == TAB_BACK?false:true}}" >   
     <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
-    <view class="cu-card padding-lr " catchtap="toDetail">
+    <view class="cu-card padding-lr " catchtap="toDetail" data-out_order_no="{{item.CardOutOrderNo}}">
         <view class=" bg-white pg-radius  shadow shadow-warp">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">

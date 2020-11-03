@@ -21,6 +21,8 @@ Page({
         backList: [1,],
 
         sn:"",//顾客sn号
+
+        shopID: "",
     },
 
     /**
@@ -28,15 +30,20 @@ Page({
      */
     onLoad: function (options) {
 
+        this.setData({
+            shopID: options.shopID
+        })
+
         var that = this
         that.onInit()
 
-        interval = setInterval(function () {
-            that.refresh()
-        }, 15000)
+        // interval = setInterval(function () {
+        //     that.refresh()
+        // }, 15000)
     },
 
     async onInit(){
+        this.getPayList()
         // var res = await app.db4.login({
         //     ShopId: 70
         // })
@@ -44,17 +51,33 @@ Page({
         // var res = await app.db4.shareStateByStore({
         //     ShopId:70
         // })
-        app.db.shopLogin().then(res => {
-            wx.setNavigationBarTitle({
-                title: '商户ID:' + res.data.sn,
-            })
-            this.setData({
-                sn:res.data.sn
-            })
+        // app.db.shopLogin().then(res => {
+        //     wx.setNavigationBarTitle({
+        //         title: '商户ID:' + res.data.sn,
+        //     })
+        //     this.setData({
+        //         sn:res.data.sn
+        //     })
 
-            this.refresh()
+        //     this.refresh()
+        // })
+    },
+
+    async getPayList(){
+        var res = await app.db4.shareGetPayList({
+            ShopId: this.data.shopID,
+            PageIndex: 1,
+            PageSize: 200,
+            IsAll: true,
+        })
+
+        this.setData({
+            payList: res.data.Items
         })
     },
+
+
+
 
     async refresh(){
         var ShopId = false
@@ -116,11 +139,19 @@ Page({
         //     list: res.data
         // })
     },
-    toDetail(){
-        return
-        wx.navigateTo({
-            url: '/pages4/share/detail/detail',
-        })
+    toDetail(e){
+        var out_order_no = e.currentTarget.dataset.out_order_no
+        // return
+        console.log(out_order_no)
+        if (out_order_no)
+            wx.navigateTo({
+                url: '/pages4/share/detail/detail?out_order_no=' + out_order_no,
+            })
+        // else
+        //     wx.showModal({
+        //         title: ''',
+        //         content: '',
+        //     })
     },
 
     /**

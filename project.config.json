@@ -290,6 +290,21 @@
 					"id": -1,
 					"name": "pages4/mall/index/index",
 					"pathName": "pages4/mall/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "先享卡查询首页 pages4/share/index/index",
+					"pathName": "pages4/share/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "先享卡详情  pages4/share/detail/detail",
+					"pathName": "pages4/share/detail/detail",
+					"query": "out_order_no=3fb306ef7fbc429d97db3ff0f0b39394",
 					"scene": null
 				}
 			]
