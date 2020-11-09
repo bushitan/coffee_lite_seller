@@ -53,11 +53,34 @@ class dbSystem extends dbFather {
                 resolve(res)
             }).catch(res => reject(res))
         })
+    }  
+
+    /**
+     * @method 小杯子优惠Go__先享卡未履约退款
+     * @param 
+     *  ShopId
+     *  StartDate
+     *  EndDate
+     */
+    shareGetBackList(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/littlecup/refundwithwxdiscount/",
+                method: "POST",
+                data: data,
+            }).then(res => {
+                console.log(res.data)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
     }
 
 
     /**
-     * @method 查询台卡支付情况
+     * @method 获取微信先享卡使用进度详情
+     * @param
+     *  out_order_no 先享卡的订单号
+     *  ShopId 可不填
      */
     shareGetPayDetail(data) {
         return new Promise((resolve, reject) => {

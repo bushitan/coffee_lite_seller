@@ -18,7 +18,7 @@ Page({
         ],
 
         payList: [],
-        backList: [1,],
+        backList: [],
 
         sn:"",//顾客sn号
 
@@ -76,47 +76,15 @@ Page({
         })
     },
 
-
-
-
-    async refresh(){
-        var ShopId = false
-        var sn = this.data.sn
-
-        if (sn == 1041 || sn == 31097)
-            ShopId = 77 // 南湖名都
-
-        if (sn == 31127 || sn == 31128 || sn == 31135)
-            ShopId = 78 // 富力万达文华
-
-        if (sn == 31243 || sn == 31244 || sn == 31250)
-            ShopId = 79 // 鑫伟万豪酒店
-
-        if (sn == 31116)
-            ShopId = 81 //红林大酒店
-
-        if (sn == 31094)
-            ShopId = 85 //乐壳青山园
-
-      if (sn == 1041 || sn == 29487 || sn == 31464)
-            ShopId = 86 //居酒屋
-        
-
-        if (ShopId){
-            var res = await app.db.shareGetPayDiscount({
-                ShopId: ShopId,
-                PageIndex: 1,
-                PageSize: 200,
-                IsAll:true,
-            })
-
-            this.setData({
-                payList: res.data.Items
-            })
-        }
-        
+    async getBackList(){
+        var res = await app.db4.shareGetBackList({
+            ShopId: this.data.shopID,
+        })
+        this.setData({
+            backList: res.data
+        })
     },
-
+    // 点击tab
     async tabSelect(e) {
         console.log(e)
         var id = e ? e.currentTarget.dataset.tab_id : this.data.TabCur
@@ -124,21 +92,18 @@ Page({
             TabCur: id,
             // list: [],
         })
-        // switch (id) {
-        //     case 0: var res = await app.db.orderGetList({
-        //         Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING, CreatedAtMin: today
-        //     }); break;
-        //     case 1: var res = await app.db.orderGetList({
-        //         Page: 1, Limit: 100, FilterStatus: app.db.SELLER_RIDING, CreatedAtMin: today
-        //     }); break;
-        //     case 2: var res = await app.db.orderGetList({
-        //         Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE, CreatedAtMin: today
-        //     }); break;
-        // }
-        // this.setData({
-        //     list: res.data
-        // })
+        this.refresh()
     },
+
+    // 刷新
+    refresh() {
+        var id = this.data.TabCur
+        switch (id) {
+            case 0: this.getPayList(); break;
+            case 1: this.getBackList(); break;
+        }
+    },
+
     toDetail(e){
         var out_order_no = e.currentTarget.dataset.out_order_no
         // return
@@ -170,3 +135,46 @@ Page({
         }
     }
 })
+
+
+
+
+
+
+    // async refresh(){
+    //     var ShopId = false
+    //     var sn = this.data.sn
+
+    //     if (sn == 1041 || sn == 31097)
+    //         ShopId = 77 // 南湖名都
+
+    //     if (sn == 31127 || sn == 31128 || sn == 31135)
+    //         ShopId = 78 // 富力万达文华
+
+    //     if (sn == 31243 || sn == 31244 || sn == 31250)
+    //         ShopId = 79 // 鑫伟万豪酒店
+
+    //     if (sn == 31116)
+    //         ShopId = 81 //红林大酒店
+
+    //     if (sn == 31094)
+    //         ShopId = 85 //乐壳青山园
+
+    //   if (sn == 1041 || sn == 29487 || sn == 31464)
+    //         ShopId = 86 //居酒屋
+
+
+    //     if (ShopId){
+    //         var res = await app.db.shareGetPayDiscount({
+    //             ShopId: ShopId,
+    //             PageIndex: 1,
+    //             PageSize: 200,
+    //             IsAll:true,
+    //         })
+
+    //         this.setData({
+    //             payList: res.data.Items
+    //         })
+    //     }
+
+    // },

@@ -87,7 +87,7 @@
 </view>
 
 <view class="padding bg-white flex justify-around solid-top" style="position:fixed; bottom:0;left:0;right:0;"  >
-    <button class="cu-btn  line-yellow round  " catchtap="refresh" >手动刷新</button>
+    <button class="cu-btn  line-yellow round  " catchtap="refresh" >刷新</button>
 </view>
 
 <view class="pg-space-xl"></view>
