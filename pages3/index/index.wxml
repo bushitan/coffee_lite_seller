@@ -7,9 +7,9 @@
 <view class="padding-lr">
     <view class="flex justify-between align-center shadow shadow-warp margin-bottom padding bg-white" wx:for="{{list}}">
         <view class="basis-lg">{{item.Name}}</view>
-        <view class="basis-df text-right">
+        <view class="basis-sm text-right">
             <text class="cu-btn line-gray margin-right-sm" catchtap="toTotal" data-shop_id="{{item.Id}}">统计</text>
-            <text class="cu-btn bg-yellow text-white" catchtap="toDetail" data-shop_id="{{item.Id}}">订单</text>
+            <text class="cu-btn bg-blue text-white" catchtap="toMenu" data-shop_id="{{item.Id}}">点单</text>
         </view>
     </view>
 </view>

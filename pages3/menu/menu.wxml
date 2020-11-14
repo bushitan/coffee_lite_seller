@@ -20,7 +20,7 @@
     </scroll-view>
 
 
-    <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - {{swiperHeight}} - 0px)"
+    <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - {{swiperHeight}} - {{ SpaceBottom }}px)"
         scroll-into-view="main-{{mainCur}}" bindscroll="VerticalMain">
         <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-item="category" wx:for-index='index' id="main-{{categoryindex}}">
             <view class="cu-bar  bg-white">
@@ -130,6 +130,10 @@ module.exports = {
         </view>
     </view>
 </view>
+<view>第一行第一行第一行第一行</view>
+<view>第一行第一行第一行第一行</view>
+<view>第一行第一行第一行第一行</view>
+<view>第一行第一行第一行第一行</view>
 
 
 

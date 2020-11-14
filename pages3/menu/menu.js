@@ -1,4 +1,6 @@
 // pages3/menu/menu.js
+
+// "navigationStyle": "custom",
 var app = getApp()
 Page({
 
@@ -6,7 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        SpaceBottom: 0,
+        SpaceBottom: 100,
         CustomBar: app.globalData.CustomBar,
         showReLoad: false,
 
@@ -47,12 +49,16 @@ Page({
         }, //订单数据
         totalPrice: 0,
         totalQuantity: 0,
+        shopID:"",
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            shopID: options.shopID || ""
+        })
         this.onInit()
     },
     async onInit() {
@@ -60,7 +66,7 @@ Page({
 
 
         var res = await app.db3.productMenu({
-            shopId:4
+            shopId: this.data.shopID
         })
         if (res.code == 0) {
             var temp = res.data

@@ -306,6 +306,27 @@
 					"pathName": "pages4/share/detail/detail",
 					"query": "out_order_no=3fb306ef7fbc429d97db3ff0f0b39394",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/index/index 收银",
+					"pathName": "pages3/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/menu/menu",
+					"pathName": "pages3/menu/menu",
+					"query": "shopID=14",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/menu/menu shopID=97",
+					"pathName": "pages3/menu/menu",
+					"query": "shopID=97",
+					"scene": null
 				}
 			]
 		}

@@ -24,10 +24,10 @@ Page({
             list : res.data
         })
     },
-    toDetail(e){
+    toMenu(e){
         var shopID = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages4/share/pay/pay?shopID=' + shopID,
+            url: '/pages3/menu/menu?shopID=' + shopID,
         }) 
     },
     toTotal(e) {
