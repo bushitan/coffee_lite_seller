@@ -1,18 +1,11 @@
 <!--pages3/menu/menu.wxml-->
 
-<!-- <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{4}}" wx:for-index='index'>
-    <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
-  </swiper-item>
-</swiper> -->
-
 <view class="VerticalBox">
 
     <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{verticalNavTop}}" 
     style=" height:calc(100vh - {{swiperHeight}} - {{ SpaceBottom }}px)">
-        <view class="cu-item {{index==tabCur?'text-yellow text-bold  bg-white cur flex align-center ':''}}" 
-        wx:for="{{list}}" wx:for-item="category" wx:for-index="index"   catchtap="TabSelect" data-id="{{index}}"
-        style="white-space: nowrap;    overflow: hidden;    text-overflow: ellipsis;">
+        <view class="cu-item nowrap flex align-center {{index==tabCur?'text-yellow text-bold  bg-white cur flex align-center ':''}}" 
+        wx:for="{{list}}" wx:for-item="category" wx:for-index="index"   catchtap="TabSelect" data-id="{{index}}">
             {{category.category.cate_name}}
         </view>
         <view class="pg-space-xxl"></view>
@@ -25,47 +18,28 @@
         <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-item="category" wx:for-index='index' id="main-{{categoryindex}}">
             <view class="cu-bar  bg-white">
                 <view class="action">
-                    <text class="cuIcon-title text-blue"></text>{{category.category.cate_name}}</view>
+                    <text class="cuIcon-title text-blue"></text>{{category.category.cate_name}}
+                </view>
             </view>       
             <view class="cu-list menu ">
-                <view class="cu-item " style=" align-items: flex-start"  wx:for="{{category.products}}" 
-                wx:for-item="item" wx:for-index="itemIndex" catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}" >
-                    <!-- openDetail修改 -->
-                    
+                <view class="cu-item "  wx:for="{{category.products}}" style="align-items: start;"
+                wx:for-item="item" wx:for-index="itemIndex" catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}" >                    
                     <view class="">
-                        <image src='{{item.imgs? item.imgs[0] ? item.imgs[0].src : "" :"" }}'
-                            class="cu-avatar radius lg  bg-gray margin-right-sm " 
-                            style="width:60px;height:60px"
+                        <image src='{{item.imgs[0].src}}'
+                            class="cu-avatar radius xl  bg-gray margin-right-sm " 
                             mode="aspectFill"
                             ></image>
                     </view>							
                     <view class="action basis-xl padding-bottom" >
-                        <view class="">
-                            <text class=" text-black text-bold text-df">{{item.name}}</text>
-                        </view>
-                        <!-- <view class="margin-top-xs">
-                            <text class="bg-gray radius  text-xs margin-right-sm "  wx:for="{{item.tags}}" wx:for-item="tag" wx:for-index="tagIndex"
-                            style="padding:2px 3px;margin-top: 20px;">{{tag}}</text>				
-                        </view> -->
-
-                        <view class="text-gray text-xs margin-top-xs">
-                            今日销售234
-                        </view>	
-
-                        <!-- <view class="flex flex-start margin-top-sm">
-                            <text class="text-gray radius  text-sm  text-left" >{{item.shortDescription}}</text>					
-                        </view> -->
-                        <!-- <view class="margin-top-xs" wx:if="{{item.shortDescription? true :false}} " >
-                            <text class="bg-gray radius  text-xs margin-right-sm " style="padding:2px 3px;">{{item.shortDescription}}</text>
-                        </view> -->
-                        
+                        <view class=" text-black text-bold text-df"> {{item.name}}</view>     
+                        <view class="text-gray text-xs margin-top-xs">今日销售（字段缺失）</view>	
                         <view class="margin-top-xs flex justify-between align-center">
                             <view class="text-red text-lg">
                                 <text class="text-price"></text>{{item.price}}
                             </view>
                             <view style="position:relative">
                                 <button class="cu-btn round line-yellow  sm" >选规格</button>
-                                <view class="cu-tag badge" wx:if="{{item.num}}">{{item.num}}</view>										
+                                <view class="cu-tag badge" wx:if="{{item.num}}">{{item.num}}</view>	
                             </view>
                         </view>
                     </view>							
@@ -77,148 +51,79 @@
         <view class="pg-space-xxl"></view>
     </scroll-view>
 </view>
-<!--  -->
-<!-- wx:if="{{Object.keys(order).length>0}}"" 大于 -->
-<!-- <wxs module="foo">
 
-function check(order){
-   return  Object.keys(order).length > 0
-}
-
-module.exports = {
-  check : check,
-}
-</wxs> -->
-<!-- wx:if="{{Object.keys(order).length >= 0}}" wx:if="{{ foo.check(order) }}"  -->
-<view class="bg-white cu-list menu-avatar" style="position: fixed; bottom:{{SpaceBottom}}px; left: 0; right: 0;" 
->
+<view class="bg-white cu-list menu-avatar" style="position: fixed; bottom:{{SpaceBottom}}px; left: 0; right: 0;" >
     <view class="cu-item" >
         <view class="cu-avatar round lg " catchtap="openBill" > 
             <view  style="position:relative">
-                <image  src='/images/icon_cup.png'
-                    class="cu-avatar  lg round " 
-                    style="background-color:#ffffff"
-                    mode="aspectFill"
-                    ></image>
-                    
-                <view class="cu-tag badge">{{totalQuantity}}</view>
+                <image  src='/images/icon_cup.png' class="cu-avatar  lg round bg-white" mode="aspectFill"></image>  
+                <view class="cu-tag badge">{{total.totalQuantity || 0}}</view>
             </view>
         </view>
         <view class="content">
             <view class="text-grey">
                 <view class="text-bold text-xl text-red">
-                    <text class="text-price "></text>{{totalPrice}}
+                    <text class="text-price "></text>{{total.totalPrice || 0}}
                 </view>
-            </view>
-            <!-- <view class="text-gray text-sm flex">
-                <text class="text-cut">
-                    <text class="cuIcon-infofill text-red  margin-right-xs"></text>
-                    顺风专送 | 免配送费 | 支持自取
-                </text>
-                </view> -->
-                
-                <view class="text-gray text-sm flex align-center">
-                <!-- <image src='/static/sf.png'
-                    class="cu-avatar radius lg  bg-gray margin-right-sm" 
-                    style="width: 23px;height: 23px;"
-                    ></image> -->
-                收银点单
-                </view>
+            </view>                
+            <view class="text-gray text-sm flex align-center">seeking XX商城 | 收银点单 （字段缺失）</view>
         </view>
         <view class="">
                 <button class='cu-btn round bg-yellow text-white shadow margin-right-sm' catchtap="toPay">去结算</button>	
         </view>
     </view>
 </view>
-<view>第一行第一行第一行第一行</view>
-<view>第一行第一行第一行第一行</view>
-<view>第一行第一行第一行第一行</view>
-<view>第一行第一行第一行第一行</view>
 
-
-
-
-    
 <!-- 详情选项 -->
 <view class="cu-modal {{showChoice?'show':''}}" >
-    <view class="cu-dialog" style="position: absolute;top:{{CustomBar}}px;bottom:15px;left: 15px;right: 15px;">
-        <view class="cu-bar bg-white justify-end">
+    <view class="cu-dialog" style="position: absolute;top:{{CustomBar}}px;bottom:45px;left: 15px;right: 15px;">
+        <view class="cu-bar bg-white justify-end" catchtap="closeShow">
             <view class="content text-bold">{{currentItem.name}}</view>
-            <view class="action" catchtap="closeShow">
+            <view class="action" >
                 <text class="cuIcon-close text-red"></text>
             </view>
-            </view>
-            <!--height: calc(100vh - 150px - 105px -36px); -->
-            
-            <!-- 
-            :style="'width: 100%;height: calc(100vh - 50px - 105px - 36px - 30px - ' + CustomBar + 'px)'"> -->
-        <scroll-view 
-            scroll-y scroll-with-animation 
-            style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)">
-            <view class="" >
-                <image src='{{currentItem? currentItem.imgs[0].src :""}}' class="block " style="width:100%; height:150px"  mode="aspectFill"></image>
-            </view>
+        </view>
+        <scroll-view scroll-y scroll-with-animation style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)"> 
+            <image src='{{currentItem.imgs[0].src}}' class="block " style="width:100%; height:150px" mode="aspectFit"></image>
             <view class="padding-lr margin-top">
                 <view class="flex flex-start">
                     <text class="bg-gray radius  text-xs margin-right-sm padding-xs"
-                        wx:for="{{currentItem.tags}}" wx:for-item="tag" wx:for-index="tagIndex">{{tag}}</text>						
+                        wx:for="{{currentItem.tags}}" wx:for-item="tag" wx:for-index="tagIndex">{{tag}}</text>	
                 </view>
-                <view class="flex flex-start margin-top-sm">
-                    <text class="text-gray radius  text-sm  text-left" >{{currentItem.shortDescription || ""}}</text>					
-                </view>
-                <!-- <view class="flex flex-start margin-top-sm">
-                    <text class="text-gray radius  text-sm  text-left" >{{currentItem.fullDescription || ""}}</text>					
-                </view> -->
+                <view class="radius text-sm text-left margin-top-sm">{{currentItem.shortDescription || ""}}</view>			
             </view>
             <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}" wx:for-item="att"  wx:for-index="attIndex">
-                <view class="flex flex-start margin-top-sm">
-                    <text class="text-gray radius  text-sm  text-left" >{{att.productAttributeName}} </text>					
-                </view>
-                <view class="flex flex-start  flex-wrap margin-top-sm">	
-                                        <!-- {{att.attributeValues[0]}}
-                                        
-                                        {{currentItem}} -->
-                        <!-- class="cu-btn radius text-sm text-center margin-right-sm margin-bottom-sm"  -->
-                    <view wx:for="{{ att.attributeValues }}" wx:for-item="value" wx:for-index="valueIndex">
- <button class="cu-btn radius text-sm text-center margin-right-sm margin-bottom-sm {{att.attributeValues[valueIndex].isSelect?'bg-yellow text-white' :'line-gray'}}" 
-                    
-                    catchtap="clickAtt"
-                    data-attindex="{{attIndex}}"
-                    data-valueindex="{{valueIndex}}"
-                    >{{value.name}}</button>		
+                <view class=" text-left margin-top-sm text-gray text-sm">{{att.productAttributeName}}</view>
+                <view class="flex flex-start flex-wrap margin-top-sm">	
+                    <view class="text-sm text-center margin-right-sm margin-bottom-sm" wx:for="{{ att.attributeValues }}" wx:for-item="value" wx:for-index="valueIndex">
+                        <button class="cu-btn radius {{att.attributeValues[valueIndex].isSelect?'bg-yellow text-white' :'line-gray'}}"                     
+                        catchtap="clickAtt"
+                        data-attindex="{{attIndex}}"
+                        data-valueindex="{{valueIndex}}"
+                        >{{value.name}}
+                        </button>		
                     </view>
                 </view>
             </view>
             <view class="pg-space-xxl"></view>
         </scroll-view>
+
         <view class="" style="position: absolute ;bottom: 0; left: 0;right: 0; ">
-            <view class="padding-lr padding-tb-sm   solid-bottom"  hidden="{{order[key]?order[key].attDes == ''? true:false : true}}" style="background-color: rgba(255,255,255,0.8);">
+            <view class="padding-lr padding-tb-sm solid-bottom mask"  hidden="{{order[key]?order[key].attDes == ''? true:false : true}}"  >
                 <view class="flex flex-start text-sm align-center">		
                     <text class="text-gray ">已选规格：</text>{{order[key]?  order[key].attDes:""}}						
                 </view>					
             </view>
             
-            <view class="padding " style="background-color: rgba(255,255,255,0.8);">
+            <view class="padding mask">
                 <view class="flex justify-between align-center text-xxl">						
                     <view class="text-red ">
                         <text class="text-price"></text>{{currentItem.price}}
                     </view>				
-                    <view class="flex justify-between align-center">
-                        <!-- <button class="cu-btn  round  bg-gray sm "  
-                            :hidden="order[key]? false : true"
-                            @click="cutItem()">
-                        </button> -->
-                        
-                        <image src="/static/images/icon/cut.png"  class="pg-icon" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></image>								
-                        <text class="padding-lr-sm">{{ order[key].Quantity  ? order[key].Quantity : 0 }}</text>				
-            			<!-- {{order[key]}} -->
-
-                        <!-- <view wx:for="{{order}}">{{item}}</view> -->
-
-                        <image src="/static/images/icon/add.png"  class="pg-icon" catchtap="addItem"></image>
-                        <!-- <button class="cu-btn text-bold round bg-yellow text-white text-lg pg-btn-icon"  @click="addItem()">
-                            +
-                        </button> -->
+                    <view class="flex justify-between align-center">                        
+                        <image src="/static/images/icon/cut.png"  class="cu-avatar sm bg-white" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></image>								
+                        <text class="padding-lr-sm">{{ order[key].Quantity || 0 }}</text>	
+                        <image src="/static/images/icon/add.png"  class="cu-avatar sm bg-white" catchtap="addItem"></image>
                     </view>						
                 </view>
                 <view class="margin-top-sm">
@@ -232,68 +137,56 @@ module.exports = {
 
 <view class="cu-modal padding-tb-xl {{ showOrder?'show':''}}" >
     <view class="cu-dialog" style=" position: relative;">
+
         <view class="cu-bar bg-white justify-between">
             <view class="action">
                 <button class="cu-btn bg-red round " catchtap="clearOrder">清空</button>
-                <!-- <button class="cu-btn bg-yellow text-white round margin-left" catchtap="closeShow">确定</button> -->
             </view>
             <view class="content text-bold">当前订单</view>
             <view class="action" catchtap="closeShow">
                 <text class="cuIcon-close text-red"></text>
             </view>
         </view>
+
         <view class="padding-lr padding-tb-sm text-left">
-            <!-- <view class="line-red text-sm " v-for="(item,key) in shopDiscount" v-bind:key="key">{{item.name}}</view> -->
-        
             <text class="line-red text-bold">{{shopDiscount}}</text>
         </view>
         <view class="cu-list menu bg-white">
-            <view class="cu-item margin-tb-sm" wx:for="{{order}}" wx:for-item="item" wx:for-index="key">
+            <view class="cu-item margin-tb-sm align-start" style="align-items:flex-start" wx:for="{{order}}" wx:for-item="item" wx:for-index="key">
                 <view class="action">
-                    <image src='{{item?item.cover:""}}' 
-                        class="cu-avatar radius lg  bg-gray margin-right-sm " 
-                        style="width:60px;height:60px"
-                        mode="aspectFill"
-                        ></image>
+                    <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
                 </view>
                 <view class="content ">
                     <view class="text-black text-left">{{item.name}}</view>
                     <view class="text-gray  text-sm text-left">{{item.attDes}}</view>
                     <view class="flex justify-between">
                         <view class="text-gray ">
-                                <text class="text-price"></text>
-                                <text class="text-red">{{item.total}}</text>
+                            <text class="text-price"></text>
+                            <text class="text-red">{{item.total}}</text>
                         </view>
-                        <view class="text-gray  flex justify-between align-center">									
-                            <!-- <button class="cu-btn  round  bg-gray sm" @click="cutOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">-</button> -->
-                            <image src="/static/images/icon/cut.png"  class="pg-icon" 
+                        <view class="text-gray  flex justify-between align-center">
+                            <image src="/static/images/icon/cut.png"  class="cu-avatar sm bg-white" 
                                 catchtap="cutOrder"
                                 data-categoryindex="{{item.categoryIndex}}"
                                 data-itemindex="{{item.itemIndex}}"
                                 data-attindex="{{item.attIndex}}"
                                 data-valueindex="{{item.valueIndex}}"
                             ></image>
-                            <!-- {{item.Quantity}}	 -->
-                            <text class="padding-lr-xs ">{{order[key]? order[key].Quantity : 0 }}</text>								
-                            <!-- <button class="cu-btn  round bg-yellow text-white sm" @click="addOrder(item.categoryIndex,item.itemIndex,item.attIndex,item.valueIndex)">+</button>								 -->
-                            <image src="/static/images/icon/add.png"  class="pg-icon" 
+                            <text class="padding-lr-xs ">{{ order[key].Quantity || 0 }}</text>								
+                            <image src="/static/images/icon/add.png"  class="cu-avatar sm bg-white" 
                                 catchtap="addOrder"
                                 data-categoryindex="{{item.categoryIndex}}"
                                 data-itemindex="{{item.itemIndex}}"
                                 data-attindex="{{item.attIndex}}"
                                 data-valueindex="{{item.valueIndex}}"
-                            ></image>
-                        
+                            ></image>                        
                         </view>
                     </view>
                 </view>
             </view>					
-        </view>
-                
-        <view class="cu-bar bg-white justify-end">
-            
+        </view>                
+        <view class="cu-bar bg-white justify-end">            
             <view class="action">
-                <!-- <button class="cu-btn line-yellow round " catchtap="closeShow">取消</button> -->
                 <button class="cu-btn bg-yellow text-white round margin-left" catchtap="closeShow">确定</button>
             </view>
         </view>

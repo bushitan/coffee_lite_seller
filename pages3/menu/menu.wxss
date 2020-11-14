@@ -1,66 +1,75 @@
 /* pages3/menu/menu.wxss */
+.nowrap{
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis;
+}
+
+.mask{
+    background-color: rgba(255,255,255,0.8);
+}
+
 .screen-swiper , .screen-swiper swiper-item,.screen-swiper image{
 		
-	}
-	.swiper-height{
-		height: 250rpx;
-	}
-	
-	.fixed {
-		position: fixed;
-		z-index: 99;
-	}
+}
+.swiper-height{
+    height: 250rpx;
+}
 
-	.VerticalNav.nav {
-		width: 200rpx;
-		white-space: initial;
-	}
+.fixed {
+    position: fixed;
+    z-index: 99;
+}
 
-	.VerticalNav.nav .cu-item {
-		width: 100%;
-		text-align: center;
-		/* background-color: #fff; */
-		margin: 0;
-		border: none;
-		height: 50px;
-		position: relative;
-	}
+.VerticalNav.nav {
+    width: 200rpx;
+    white-space: initial;
+}
 
-	.VerticalNav.nav .cu-item.cur {
-		/* background-color: #f1f1f1; */
-		background-color: #ffffff;
-	}
+.VerticalNav.nav .cu-item {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    border: none;
+    height: auto;
+    position: relative;
+    padding: 15rpx 15rpx;
 
-	.VerticalNav.nav .cu-item.cur::after {
-		content: "";
-		width: 8rpx;
-		height: 30rpx;
-		border-radius: 10rpx 0 0 10rpx;
-		position: absolute;
-		background-color: currentColor;
-		top: 0;
-		right: 0rpx;
-		bottom: 0;
-		margin: auto;
-	}
+}
 
-	.VerticalBox {
-		display: flex;
-	}
+.VerticalNav.nav .cu-item.cur {
+    background-color: #ffffff;
+}
 
-	.VerticalMain {
-		/* background-color: #f1f1f1; */
-		background-color: --var(ghostWhite);
-		flex: 1;
-	}
-	
-	.cu-item:after{border: none !important;}
-	
-	.swiper_image{
-		position: relative;
-	}
-	.swiper_mask{
-		position: absolute;
-		bottom:0;
-	}
-	
+.VerticalNav.nav .cu-item.cur::after {
+    content: "";
+    width: 8rpx;
+    height: 30rpx;
+    border-radius: 10rpx 0 0 10rpx;
+    position: absolute;
+    background-color: currentColor;
+    top: 0;
+    right: 0rpx;
+    bottom: 0;
+    margin: auto;
+}
+
+.VerticalBox {
+    display: flex;
+}
+
+.VerticalMain {
+    /* background-color: #f1f1f1; */
+    /* background-color: --var(ghostWhite); */
+    /* flex: 1; */
+}
+
+.cu-item:after{border: none !important;}
+
+.swiper_image{
+    position: relative;
+}
+.swiper_mask{
+    position: absolute;
+    bottom:0;
+}
