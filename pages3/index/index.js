@@ -17,9 +17,9 @@ Page({
     },
 
     async onInit(){
-        var res = await app.db4.login()
+        var res = await app.db3.productSellerGetToken()
 
-        var res = await app.db4.shareGetStoreList()
+        var res = await app.db3.productGetStoreList()
         this.setData({
             list : res.data
         })
@@ -33,7 +33,7 @@ Page({
     toTotal(e) {
         var shopID = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages4/share/total/total?shopID=' + shopID,
+            url: '/pages3/total/total?shopID=' + shopID,
         }) 
 
     },

@@ -1,0 +1,72 @@
+<!--pages_my/my/my.wxml-->
+
+
+
+<view class="cu-bar padding-tb bg-white">
+    <view class="action">
+        <image class="cu-avatar xl round bg-white margin-right-sm"  src="/images/user-unlogin.png" ></image>
+        <text class="text-bold text-lg">Name</text>
+    </view>
+    <view class="action">
+        <image class="cu-avatar sm bg-white" src="/images/icon_qr.png"></image>
+    </view>
+</view>
+
+<view class="padding margin-top-sm bg-white">
+    <text class="cuIcon-titles"></text>
+    <text class="">我的门店</text>
+</view>
+<view class="cu-card padding-lr padding-bottom bg-white">
+    <view class=" bg-white pg-radius  shadow shadow-warp margin-bottom" wx:for="{{list}}" wx:key>
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">{{item.Name}}(店主)</text>      
+            </view>
+            <view class="action" catchtap="switchDetail" data-index="{{index}}">
+                <text class="text-gray  text-sm">{{item.showDetail?"关闭":"展开"}}</text>
+            </view>
+        </view>        
+        <view class="cu-list menu" wx:if="{{item.showDetail}}">      
+            <view class="cu-item " >
+                <view class="action">集点卡</view>
+                <view class="action ">
+                    <button class="cu-btn sm">统计</button>
+                </view>
+            </view>
+            <view class="cu-item " >
+                <view class="action ">便利店</view>
+                <view class="action ">
+                    <button class="cu-btn sm margin-right-sm">统计</button>
+                    <button class="cu-btn sm">订单列表</button>
+                </view>
+            </view>
+            <view class="cu-item " >
+                <view class="action ">小程序点单</view>
+                <view class="action ">
+                    <button class="cu-btn sm margin-right-sm">统计</button>
+                    <button class="cu-btn sm">订单列表</button>
+                </view>
+            </view>
+            <view class="cu-item " >
+                <view class="action ">收银</view>
+                <view class="action ">
+                    <button class="cu-btn sm margin-right-sm">统计</button>
+                    <button class="cu-btn sm">订单列表</button>
+                </view>
+            </view>
+            <view class="cu-item " >
+                <view class="action ">小杯子优惠GO收款</view>
+                <view class="action ">
+                    <button class="cu-btn sm margin-right-sm">统计</button>
+                    <button class="cu-btn sm">订单列表</button>
+                </view>
+            </view>
+
+        </view>
+
+        			
+    </view>
+
+    
+</view>

@@ -30,8 +30,9 @@ module.exports = Behavior({
             this.setData({
                 order: {},
                 list: list,
-                totalPrice: 0,
-                totalQuantity: 0,
+                total:{},
+                // totalPrice: 0,
+                // totalQuantity: 0,
             })
             wx.setStorageSync("order", {})
         },
@@ -42,6 +43,7 @@ module.exports = Behavior({
         orderKeySet() {
             var key = this.data.categoryIndex + "_" + this.data.itemIndex + "_"
             var currentItem = this.data.currentItem
+            // debugger
             for (var i = 0; i < currentItem.attributes.length; i++) {
                 for (var j = 0; j < currentItem.attributes[i].attributeValues.length; j++) {
                     if (currentItem.attributes[i].attributeValues[j].isSelect == true) {
@@ -120,6 +122,27 @@ module.exports = Behavior({
             // order[key] = OrderItems
         },
 
+        orderBtnAdd(key){
+            var order = this.data.order
+            order[key].Quantity += 1
+            order[key].total = parseFloat(order[key].Quantity * order[key].price).toFixed(2)
+            this.setData({
+                order: order
+            })
+        },
+
+        orderBtnCut(key) {
+            var order = this.data.order
+            order[key].Quantity -= 1
+            order[key].Quantity < 0 ? 0 : order[key].Quantity
+            order[key].total = parseFloat(order[key].Quantity * order[key].price).toFixed(2)
+
+            if (order[key].Quantity <= 0)
+                delete order[key]
+            this.setData({
+                order: order
+            })
+        },
 
         orderTotalSet() {
             var total = this.data.total

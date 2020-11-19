@@ -32,6 +32,9 @@
         "pages_shop/order/address/address",
         "pages_shop/order/list/list",
         "pages_shop/stats/stats",
+
+        "pages_my/my/my",
+
         "pages4/mall/index/index"
     ],
     "window": {
@@ -60,22 +63,22 @@
                 "text": "便利店"
             },
             {
-                "pagePath": "pages4/share/index/index",
-                "iconPath": "/images/icon/prize_un.png",
-                "selectedIconPath": "/images/icon/prize.png",
-                "text": "支付统计"
-            },
-            {
                 "pagePath": "pages_shop/admin/admin",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "小程序点单"
+                "text": "顾客点单"
             },
             {
-                "pagePath": "pages3/index/index",
+                "pagePath": "pages4/share/index/index",
+                "iconPath": "/images/icon/prize_un.png",
+                "selectedIconPath": "/images/icon/prize.png",
+                "text": "收银"
+            },
+            {
+                "pagePath": "pages_my/my/my",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "收银"
+                "text": "我的"
             }
         ]
     },

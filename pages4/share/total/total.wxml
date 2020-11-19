@@ -22,51 +22,115 @@
     <view>完成整个先享卡</view>
 </view> -->
 
+<!-- ApplyRefundFee: 0
+BillableAmount: 13.79
+CouponFee: 4.28
+CouponRefundFee: 0
+EndTime: "2020-11-01"
+OrderNum: 25
+OrderTotal: 16.8
+RefundFee: 0
+RelateStore: "宸益堂中医馆↵"
+ServiceCharge: 0
+StartTime: "2020-09-01"
+SubItems: [{ShopId: 70, StartTime: "2020-09-01", EndTime: "2020-11-01", RelateStore: "宸益堂中医馆",…}]
+WxDiscountCardRefund: 1.27
+WxDiscountCardRefundOrderNum: 10 -->
+
+<view class="cu-form-group">
+    <view class="title">选择月份</view>
+    <picker mode="date" fields="month" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
+        <view class="picker">
+            {{CreatedAtMin}}
+        </view>
+    </picker>
+</view>
+<!-- <view class="cu-form-group solid-bottom">
+    <view class="title">选择结束日期</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMaxChange">
+        <view class="picker">
+            {{CreatedAtMax}}
+        </view>
+    </picker>
+</view> -->
 
 <view class="cu-card padding-lr margin-top">
     <view class=" bg-white pg-radius  shadow shadow-warp">
         <view class="cu-bar  solid-bottom ">
             <view class="action">
                 <text class="cuIcon-title text-yellow "></text>                
-                <text class="text-black text-sm">数据统计</text>      
+                <text class="text-black text-sm">{{summary.RelateStore}}</text>      
             </view>
             <view class="action" catchtap="toStore">
-                <text class="text-gray  text-sm">店铺统计</text>
+                <text class="text-gray  text-sm">{{summary.StartTime + "至" + summary.EndTime}}</text>
                 <view class="pg-arrow-sm"></view>
             </view>
         </view>        
-         <!-- "CREATEDCardCount": 1,
-      "UsingCardCount": 0,使用中
-      "CHARGEDCardCount": 13,中途退出
-      "NO_CHARGECardCount": 5,  已完成
-      "ReturnBackFeeTotal": 55.92,  退款总金额
-      "DiscountFeeTotal": 25.35 已经优惠点金额-->
         <view class="cu-list menu ">      
             <view class="cu-item " >
-                <view class="action">使用中</view>
-                <view class="action ">40</view>
+                <view class="action">账单金额</view>
+                <view class="action ">{{summary.OrderTotal}}</view>
             </view>
             <view class="cu-item " >
-                <view class="action">中途退出</view>
-                <view class="action ">8</view>
+                <view class="action">优惠金额</view>
+                <view class="action ">{{summary.CouponFee}}</view>
             </view>
-            <view class="cu-item " >
-                <view class="action">已完成</view>
-                <view class="action ">20</view>
+            <view class="cu-item  " >
+                <view class="action">先享卡追回金额</view>
+                <view class="action ">{{summary.WxDiscountCardRefund}}</view>
             </view>
         </view>
-        <!-- <view class="cu-bar   ">
-            <view class="action"></view>
-            <view class="action">	
-                <text class="text-gray  text-sm margin-right-xs">今日收入</text>						
+        <view class="cu-bar  solid-top ">
+            <view class="action">小杯子优惠GO收款金额</view>
+            <view class="action">					
                 <text class=" text-xl text-red text-bold text-price"></text>
-                <text class=" text-xl text-red text-bold">{{preOrder.order_total || ""}}</text>
+                <text class=" text-xl text-red text-bold">{{summary.BillableAmount}}</text>
             </view>
-        </view>					 -->
+        </view>					
     </view>
 </view>
 
 
+<view class="cu-card padding-lr margin-top">
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">对账单</text>      
+            </view>
+            <view class="action" catchtap="toStore">
+                <text class="text-gray  text-sm">{{summary.StartTime + "至" + summary.EndTime}}</text>
+                <view class="pg-arrow-sm"></view>
+            </view>
+        </view>        
+        <view class="cu-list menu ">      
+            <view class="cu-item " >
+                <view class="action">账单金额</view>
+                <view class="action ">{{summary.OrderTotal}}</view>
+            </view>
+            <view class="cu-item " >
+                <view class="action">优惠金额</view>
+                <view class="action ">{{summary.CouponFee}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">先享卡追回金额</view>
+                <view class="action ">{{summary.WxDiscountCardRefund}}</view>
+            </view>
+        </view>
+        <view class="cu-bar  solid-top ">
+            <view class="action">小杯子优惠GO收款金额</view>
+            <view class="action">					
+                <text class=" text-xl text-red text-bold text-price"></text>
+                <text class=" text-xl text-red text-bold">{{summary.BillableAmount}}</text>
+            </view>
+        </view>					
+    </view>
+</view>
+
+<view class="page-space-60"></view>
+
+
+<!-- 
 <view class="cu-card padding-lr margin-top">
     <view class=" bg-white pg-radius  shadow shadow-warp">
         <view class="cu-bar  solid-bottom ">
@@ -94,4 +158,4 @@
             </view>
         </view>
     </view>
-</view>
+</view> -->

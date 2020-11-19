@@ -252,10 +252,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 26,
 					"name": "pages4/share/pay/pay 先享卡支付列表",
 					"pathName": "pages4/share/pay/pay",
-					"query": "",
+					"query": "shopID1=70",
 					"scene": null
 				},
 				{
@@ -266,10 +266,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 28,
 					"name": "pages4/share/total/total",
 					"pathName": "pages4/share/total/total",
-					"query": "",
+					"query": "shopID=70",
 					"scene": null
 				},
 				{
@@ -326,6 +326,27 @@
 					"name": "pages3/menu/menu shopID=97",
 					"pathName": "pages3/menu/menu",
 					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/order/order 下订单",
+					"pathName": "pages3/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages3/total/total shopID=97",
+					"pathName": "pages3/total/total",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_my/my/my",
+					"pathName": "pages_my/my/my",
+					"query": "",
 					"scene": null
 				}
 			]

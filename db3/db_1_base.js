@@ -9,9 +9,9 @@ class dbBase {
     KEY_USER_INFO = "user_info"
     KEY_UUID = "uuid"
     KEY_TOKEN = "token"
-    KEY_SESSION = "Session"
-    KEY_SN = "sn"
-    KEY_UNION_KEY = "union_key"
+    KEY_SESSION = "mesnu_Session"
+    KEY_SN = "mesnu_sn"
+    KEY_UNION_KEY = "menu_union_key"
     KEY_SHOP_ID = "shop_id"
     KEY_SHOP_NAME = "shop_name"
     KEY_SHOP_TAKE_TYPE = "shop_take_type"
@@ -19,7 +19,7 @@ class dbBase {
     KEY_ORDER_PRE_ADDRESS = "order_pre_address"
 
     HOST_URL = "https://wm.51zfgx.com/"
-    APP_ID = "59c38d10ba0e453ba52111b8059482c5"  //
+    APP_ID = "7016db59b1e84bd1a84f4e974074fa78"  //
 
     constructor() {
 
@@ -32,12 +32,12 @@ class dbBase {
             // data['customer_uuid'] = wx.getStorageSync(this.KEY_UUID)
             // data['session'] =  wx.getStorageSync(this.KEY_SESSION) 
 
-            // data["Session"] = wx.getStorageSync(this.KEY_SESSION)  
+            data["Session"] = wx.getStorageSync(this.KEY_SESSION)  
 
-            data["Session"] = "5IRWgui7bOgux2bPP/yG/+X6ggVyOfVOuddyHjREIRovkeAica+InpgVULYXNQXKPkSpPKqTVj1LlRTjhSESW6FymvO6KP2dSbxqgTd9Bi86ESKz50jF8CBGHN/jOAaOz70JIJ3jHIcmgoCbF+u5JQBxAQHxV7vXOeNImc5F7IWrfRbQGjukCY8TQ39EbjQIGW3tZhmME9AmRTAT/WiMtm8Dtiqany+CKI6Hzmg4vM5MeaKKhVOvAE1souwPnLXbE1KBJ+Pfc8QQsLcNFeR1HrN6jxautESS57A7t1eVwD5z1fI23Y45oyNJlNb9rsc3dr6eDdLhH5QR6qTXz6OQgtYrMjOXzPLKogxO5gcfQhE=" 
+            // data["Session"] = "5IRWgui7bOgux2bPP/yG/+X6ggVyOfVOuddyHjREIRovkeAica+InpgVULYXNQXKPkSpPKqTVj1LlRTjhSESW6FymvO6KP2dSbxqgTd9Bi86ESKz50jF8CBGHN/jOAaOz70JIJ3jHIcmgoCbF+u5JQBxAQHxV7vXOeNImc5F7IWrfRbQGjukCY8TQ39EbjQIGW3tZhmME9AmRTAT/WiMtm8Dtiqany+CKI6Hzmg4vM5MeaKKhVOvAE1souwPnLXbE1KBJ+Pfc8QQsLcNFeR1HrN6jxautESS57A7t1eVwD5z1fI23Y45oyNJlNb9rsc3dr6eDdLhH5QR6qTXz6OQgtYrMjOXzPLKogxO5gcfQhE=" 
 
             // data["AppId"] = this.APP_ID
-            data["AppId"] = "cd8ef711513b41ad8d2f6aea94349e2d"
+            data["AppId"] = this.APP_ID
 
             var startTime = new Date().getTime();
             wx.request({

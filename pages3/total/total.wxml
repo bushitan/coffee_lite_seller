@@ -1,2 +1,154 @@
 <!--pages3/total/total.wxml-->
-<text>pages3/total/total.wxml</text>
+<!-- 
+AliPaySubTotal: 0
+CashSubTotal: 0 
+LittleCupSubTotal: 0
+OrderTotal: 0.02
+OtherSubTotal: 0
+UnionBankPaySubTotal: 0
+WxOrderSubTotal: 0.02 -->
+
+    <view class="cu-form-group">
+		<view class="title">选择开始日期</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
+			<view class="picker">
+				{{CreatedAtMin}}
+			</view>
+		</picker>
+	</view>
+    <view class="cu-form-group solid-bottom">
+		<view class="title">选择结束日期</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMaxChange">
+			<view class="picker">
+				{{CreatedAtMax}}
+			</view>
+		</picker>
+	</view>
+    
+<view class=" bg-white padding flex justify-between">
+    <view> <text class="cuIcon-title"></text> 统计汇总</view>
+    <view>总计：{{summary.OrderTotal}}</view>
+</view>
+<view class="cu-list menu padding-lr bg-white ">
+    <view class="cu-item" >
+        <view class="action">微信支付</view><view class="action">{{summary.WxOrderSubTotal}}</view>
+    </view>
+    <view class="cu-item" >
+        <view class="action">支付宝</view><view class="action">{{summary.AliPaySubTotal}}</view>
+    </view>
+    <view class="cu-item" >
+        <view class="action">小杯子优惠GO</view><view class="action">{{summary.LittleCupSubTotal}}</view>
+    </view>
+    <view class="cu-item" >
+        <view class="action">现金</view><view class="action">{{summary.CashSubTotal}}</view>
+    </view>
+    <view class="cu-item" >
+        <view class="action">银联</view><view class="action">{{summary.UnionBankPaySubTotal}}</view>
+    </view>
+    <view class="cu-item" >
+        <view class="action">其他</view><view class="action">{{summary.OtherSubTotal}}</view>
+    </view>
+</view>
+
+<scroll-view scroll-x class="bg-white nav ">
+    <view class='flex  text-center  '>
+        <view class="cu-item flex-sub {{item.id==TabCur?'text-yellow text-bold cur':' text-gray'}} " 
+        wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect">
+                <view style="  position: relative" >
+                    <text class="">{{item.name}}</text>
+                    
+                    <!-- <view class="cu-tag badge" style="top:2px; right:-10px" >
+                        {{index==0?pendingList.length : ""}}
+                        {{index==1?processingList.length : ""}}
+                        {{index==2?completeList.length : ""}}
+                    </view> -->
+                </view>
+        </view>
+    </view>
+</scroll-view>
+ <!-- hidden="{{TabCur == TAB_PAY?false:true}}" -->
+<view wx:for="{{list}}" wx:key >   
+    <view class="padding-lr margin-top-sm text-xs text-gray flex algin-center">
+        <text class="cuIcon-title text-yellow "></text>
+        <text class="text-black margin-right ">订单ID：{{item.id}}</text> {{item.created_on_utc}}                             
+    </view>
+    <view class="cu-card padding-lr " catchtap="toDetail" data-index="{{index}}" data-out_order_no="{{item.CardOutOrderNo}}">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <view></view>
+                    <image class="cu-avatar round " src="{{item.customer.WxAvatarUrl}}" style="flex-shrink:0;"  ></image>
+                    <view class="padding-left-xs" >
+                        <text class="text-black text-sm margin-right-xs">{{item.customer.WxNickName || '用户未登录'}}</text>   
+                        <text class="cu-tag bg-green sm round"  wx:if="{{item.payment_status_code == PAYMENT_STATUS_PAID}}">已完成</text>
+                        <text class="cu-tag bg-red sm round" wx:else>取消</text>
+                        <view>
+                            <view class="cu-tag line-gray round sm" wx:for="{{ item.order_items }}" wx:for-item="orderItem">{{ orderItem.product.name}}</view> 
+                        </view>
+                    </view>  
+                    
+                </view>
+                <view class="action">
+                    <view>+{{item.order_total}}</view>                    
+                    <view class="pg-arrow-sm" ></view>
+                </view>
+            </view>     
+        </view>
+    </view>
+</view> 
+
+
+
+
+<view class="cu-modal {{showDetail?'show':''}}" >
+    <view class="cu-dialog">
+        <view class=" bg-white pg-radius  shadow shadow-warp">
+            <view class="cu-bar  ">
+                <view class="action">
+                    <text class="cuIcon-title text-yellow "></text>                
+                    <text class="text-black text-sm">商品明细</text>      
+                </view>
+            </view>
+            <view class="cu-list menu ">
+                <view class="cu-item margin-tb-sm" wx:for="{{order.order_items}}" wx:for-item="item"  wx:for-index="key">
+                    <view class="action"> 
+                        <image src='{{item.product.images[0]}}' 
+                            class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                            style="width:60px;height:60px"
+                            mode="aspectFill"
+                            ></image>
+                    </view>
+                    <view class="content">
+                        <view class="text-black   text">{{item.product.name}}</view>
+                        <view class="text-gray   text-sm">{{item.attr_desc}}</view>
+                        
+                        <view class=" flex justify-between">
+                            <view class="action">
+                                <view class=" text-sm">数量：{{item.quantity}}</view>
+                            </view>
+                            <view class="action">
+                                <text class="text-price text-red"></text>
+                                <text class="text-red">{{item.price_excl_tax}}</text>									
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            
+            <view class="cu-bar   ">
+                <view class="action"></view>
+                <view class="action">		  
+                    <text class="text-gray  text-sm margin-right-xs">合计</text>						
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">{{order.order_total || ""}}</text>
+                </view>
+            </view>	
+            <view class="cu-bar">
+                <view class="action"></view>
+                <view class="action">
+                    <button class="cu-btn bg-yellow text-white" catchtap="closeDetail">确定</button>
+                </view>
+            </view>				
+        </view>
+    </view>
+</view>

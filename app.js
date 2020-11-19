@@ -186,3 +186,12 @@ App({
     //             "selectedIconPath": "/images/icon/score.png",
     //             "text": "收银"
     //         }
+
+
+
+{
+    // "pagePath": "pages3/index/index",
+    //     "iconPath": "/images/icon/score_un.png",
+    //         "selectedIconPath": "/images/icon/score.png",
+    //             "text": "收银"
+}

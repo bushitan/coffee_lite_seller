@@ -54,10 +54,20 @@ Page({
             shopID: options.shopID || ""
         })
         this.onInit()
+        this.getStore()
     },
     async onInit() {
         this.productInit()
     },   
+    // 获取门店信息
+    async getStore() {
+        var res = await app.db3.productGetStoreInfo({
+            ShopId: this.data.shopID
+        })
+        this.setData({
+            store: res.data
+        })
+    },
 
     // 点击事件
     // 展示产品详情
@@ -75,7 +85,8 @@ Page({
         })
 
         this.itemSet()
-        this.itemSKUInit()
+        this.itemSKUInit() // 初始化sku选项
+        this.itemGetSKUPrice() // 根据sku请求价格
         this.orderKeySet() // 初始化key
 
         // this.initSelect()  // 点击窗口后，初始化选择框	
@@ -108,6 +119,7 @@ Page({
     // 切换SKU
     clickAtt(e) {
         this.itemSKUSet(e)
+        this.itemGetSKUPrice()
         this.orderKeySet()
 
     },
@@ -135,23 +147,60 @@ Page({
         wx.setStorageSync("order", this.data.order)
     },
 
+    // // 订单内的增删
+    // addOrder(e) {
+    //     // var key = e.currentTarget.dataset.key
+    //     this.indexSet(e)
+    //     // this.orderBtnAdd(key)
+    //     this.addItem()
+
+    // },
+    // // 在订单点点击增删按钮
+    // cutOrder(e) {
+    //     if (Object.keys(this.data.order).length == 0) // 防止出现负数
+    //         return 
+    //     this.indexSet(e)
+    //     this.cutItem()
+    //     if (Object.keys(this.data.order).length == 0)
+    //         this.closeShow()
+    //     // console.log(this.data.order.length)
+    // },
+
     // 订单内的增删
     addOrder(e) {
-
+        var key = e.currentTarget.dataset.key
         this.indexSet(e)
-        this.addItem()
+        // this.addItem()
+        this.itemSet()
+        this.productNumSet(true)
+        this.orderKeySet()
+        this.orderBtnAdd(key)
+        // this.orderChange(true)
+        this.orderTotalSet()
+        wx.setStorageSync("order", this.data.order)
 
     },
     // 在订单点点击增删按钮
     cutOrder(e) {
+        var key = e.currentTarget.dataset.key
         if (Object.keys(this.data.order).length == 0) // 防止出现负数
-            return 
+            return
         this.indexSet(e)
-        this.cutItem()
+        // this.cutItem()
+
+        this.itemSet()
+        this.productNumSet(false)
+        this.orderKeySet()
+        // this.orderChange(false)
+        this.orderBtnCut(key)
+        this.orderTotalSet()
+
+        wx.setStorageSync("order", this.data.order)
         if (Object.keys(this.data.order).length == 0)
             this.closeShow()
         // console.log(this.data.order.length)
     },
+
 
     indexSet(e){
 
@@ -159,6 +208,7 @@ Page({
         var itemIndex = e.currentTarget.dataset.itemindex
         var attIndex = e.currentTarget.dataset.attindex
         var valueIndex = e.currentTarget.dataset.valueindex
+        console.log(categoryIndex, itemIndex, attIndex, valueIndex)
         this.setData({
             categoryIndex: categoryIndex,  // 当前选择的目录
             itemIndex: itemIndex, // 当前选择产品标志位
@@ -171,7 +221,7 @@ Page({
     /******路由******/
     toPay() {
         wx.navigateTo({
-            url: "/pages3/order/order"
+            url: "/pages3/order/order?shopID=" + this.data.shopID
         })
     },
 

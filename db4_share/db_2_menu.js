@@ -94,6 +94,23 @@ class dbSystem extends dbFather {
             }).catch(res => reject(res))
         })
     }
+    
+
+    /**
+     * @method 微信对账单汇总
+     */
+    shareGetOrderSummary(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/order/summary/",
+                method: "POST",
+                data: data,
+            }).then(res => {
+                console.log(res.data)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
 
 
 }

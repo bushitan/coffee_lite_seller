@@ -16,7 +16,7 @@ class dbSystem extends dbFather {
 	  * 	session
 	  * 	AppId
      */
-    customerGetToken() {
+    productSellerGetToken() {
         return new Promise((resolve, reject) => {
             var that = this
             wx.login({
@@ -30,9 +30,9 @@ class dbSystem extends dbFather {
                         },
                         method: "POST",
                     }).then(res => {
-                        wx.setStorageSync(that.KEY_SESSION, res.data.data.session) //session
-                        wx.setStorageSync(that.KEY_SN, res.data.data.sn)  //序列号			
-                        wx.setStorageSync(that.KEY_UNION_KEY, res.data.data.unionKey)  //唯一值				
+                        wx.setStorageSync(that.KEY_SESSION, res.data.session) //session
+                        wx.setStorageSync(that.KEY_SN, res.data.sn)  //序列号			
+                        wx.setStorageSync(that.KEY_UNION_KEY, res.data.unionKey)  //唯一值				
 
                         console.log("get customerGetToken success")
                         resolve(true)
@@ -50,20 +50,64 @@ class dbSystem extends dbFather {
         })
     }
 
+    /**
+       * @method 查找可查看订单统计的门店列表
+       */
+    productGetStoreList(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/sp/storeslist/",
+                method: "POST",
+            }).then(res => {
+                console.log(res.data)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
 
     /**
          * @method 3 获取该店铺的菜单
          * @param 
             id
             fields
-         */
+    */
     productMenu(data) {
         return new Promise((resolve, reject) => {
             wx.showLoading()
 
-            var startTime = new Date().getTime();
             this.base({ url: this.HOST_URL + "api/category/products", data: data, }).then(res => {
                 wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+    productGetSKUPrice(data){
+        return new Promise((resolve, reject) => {
+
+            wx.showLoading({
+                mask:true
+            })
+            this.base({ url: this.HOST_URL + "api/sku/change", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+
+    /**
+        * @method 获取当前门店
+    */
+    productGetStoreInfo(data) {
+        return new Promise((resolve, reject) => {
+            this.base({ url: this.HOST_URL + "api/current_store", data: data, }).then(res => {
                 resolve(res)
             }).catch(res => {
                 reject(res)
@@ -71,6 +115,93 @@ class dbSystem extends dbFather {
         })
     }
 
+    
+
+    /**
+     * @method 获取订单的价格
+     */
+    productGetPrice(data){
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/caculate/price", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+    /**
+     * @method 生成订单
+     */
+    productGen(data) {
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/orders/gen", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+    /**
+     * @method 点单系统完成订单
+     * @param
+     *      OrderId: 3412,
+            PayMethod:0, // 0微信支付 1支付宝 2零钱 3银联 4其他
+            Reason:"",
+     */
+    productFinish(data){
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/shoper/finishOrder", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+
+    /***************统计流程************/
+    /**
+     * @method 订单列表
+    */
+    productGetOrderList(data) {
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/spseller/getorderslist", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+    /**
+     * @method 订单汇总
+    */
+    productGetOrderSummary(data) {
+        return new Promise((resolve, reject) => {
+            // wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/spseller/summary", data: data, }).then(res => {
+                // wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
 }
 
 

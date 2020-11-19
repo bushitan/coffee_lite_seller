@@ -1,36 +1,63 @@
 // pages4/share/total.js
 var app = getApp()
+
+var date = new Date()
+const year = date.getFullYear()
+const month = date.getMonth() + 1
+const d = date.getDate()
+const t = date.getDate() + 1
+var today = [year, month, d].join('-')
+var tomorrow = [year, month, t].join('-')
+var currentMonth = [year, month].join('-')
+console.log(today)
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        TabCur: 0,
-        SortMenu: [
-            { id: 0, name: "收款", },
-            { id: 1, name: "约定追回", },
-            // { id: 2, name: "已处理", },
-        ],
+        // TabCur: 0,
+        // SortMenu: [
+        //     { id: 0, name: "收款", },
+        //     { id: 1, name: "约定追回", },
+        //     // { id: 2, name: "已处理", },
+        // ],
+        CreatedAtMin: currentMonth,
+        // CreatedAtMax: tomorrow,
 
-        list:[1,1,1,1,1,1,1,1,1],
+        list: [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        shopID: "",
+        summary:{},
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+
+        this.setData({
+            shopID: options.shopID || ""
+        })
         this.onInit()
     },
 
     async onInit(){
 
-        var res = await app.db4.login({
-            ShopId: 70
-        })
+        // var res = await app.db4.login({
+        //     ShopId: 70
+        // })
 
-        var res = await app.db4.shareStateByStore({
-            ShopId:70
+        // var res = await app.db4.shareStateByStore({
+        //     ShopId:70
+        // })
+
+        var res = await app.db4.shareGetOrderSummary({
+            ShopId: this.data.shopID,
+            StartDate: "2020-9-1",
+            EndDate: "2020-11-1",
+        })
+        this.setData({
+            summary:res.data
         })
     },
 
@@ -70,6 +97,17 @@ Page({
         })
     },
 
+
+    // 改变开始日期
+    CreatedAtMinChange(e) {
+        this.setData({ CreatedAtMin: e.detail.value })
+        this.onInit()
+    },
+    // // 改变结束日期
+    // CreatedAtMaxChange(e) {
+    //     this.setData({ CreatedAtMax: e.detail.value })
+    //     this.onInit()
+    // },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作

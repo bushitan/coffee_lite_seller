@@ -86,7 +86,46 @@ module.exports = Behavior({
             
         },
 
+        /**
+         * @method 获取sku的价格和库存
+         */
+        async itemGetSKUPrice(){
+            var currentItem = this.data.currentItem
+            var Attributes = []
+            for (var i = 0; i < currentItem.attributes.length; i++) {
+                for (var j = 0; j < currentItem.attributes[i].attributeValues.length; j++) {
+                    if (currentItem.attributes[i].attributeValues[j].isSelect == true) {
+                        Attributes.push({
+                            "Id": currentItem.attributes[i].productAttributeID,
+                            "Value": currentItem.attributes[i].attributeValues[j].id
+                        })
+                    }
+                }
+            }
 
+            var obj = {
+                "id": currentItem.id,
+                "Attributes": Attributes
+                //  [
+                //     {
+                //         "Id": currentItem.attributes[attIndex].productAttributeID,
+                //         "Value": currentItem.attributes[attIndex].attributeValues[valueIndex].id
+                //     }
+                // ]
+            }
+            var res = await app.db3.productGetSKUPrice({
+                productSkuParameter: JSON.stringify(obj)
+            })
+            console.log(res)
+            
+            currentItem.price = res.data.price
+            currentItem.stock = res.data.StockQuantity > 0 ? res.data.StockQuantity : 0
+
+            this.setData({
+                currentItem: currentItem
+            })
+
+        },
 
 
 
