@@ -14,7 +14,8 @@
         "pages/test_unit/test_unit",
         "pages3/menu/menu",
         "pages3/order/order",
-        "pages3/total/total",
+        "pages3/cash_list/cash_list",
+        "pages3/cash_stat/cash_stat",
         "pages3/index/index",
         "pages4/share/index/index",
         "pages4/geo/geo",
@@ -34,6 +35,7 @@
         "pages_shop/stats/stats",
 
         "pages_my/my/my",
+        "pages_my/score_geo/score_geo",
 
         "pages4/mall/index/index"
     ],
@@ -69,7 +71,7 @@
                 "text": "顾客点单"
             },
             {
-                "pagePath": "pages4/share/index/index",
+                "pagePath": "pages3/index/index",
                 "iconPath": "/images/icon/prize_un.png",
                 "selectedIconPath": "/images/icon/prize.png",
                 "text": "收银"

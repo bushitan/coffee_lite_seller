@@ -1,4 +1,5 @@
 // pages_my/my/my.js
+var API = require('../../api/api.js')
 var app = getApp()
 Page({
 
@@ -25,7 +26,7 @@ Page({
         })
     },
 
-    /**
+    /**`
      * @method 切换门店的开关
      */
     switchDetail(e){
@@ -37,6 +38,53 @@ Page({
         })
     },
 
+
+    /****路由****/
+    toScoreGeo(){
+        var userInfo = wx.getStorageSync(API.USER_INFO, userInfo)
+        // if (!userInfo.is_host) {
+        //     wx.showModal({
+        //         title: '权限不足',
+        //         content: '请联系店主查看',
+        //     })
+        //     return
+        // }
+        wx.navigateTo({
+            url: '/pages_my/score_geo/score_geo?store_uuid=' + userInfo.store_uuid,
+        })
+    },
+
+    // 小程序订单列表
+    toLiteOrderList(){
+        wx.navigateTo({
+            url: '/pages_shop/order/list/list',
+        })
+    },
+
+    // 收银下单列表
+    toCashList(){
+        wx.navigateTo({
+            url: '/pages3/cash_list/cash_list',
+        })
+    },
+
+    // 收银下单统计
+    toCashStat() {
+        wx.navigateTo({
+            url: '/pages3/cash_stat/cash_stat',
+        })
+    },
+
+    toPayList() {
+        wx.navigateTo({
+            url: '/pages4/share/pay/pay',
+        })
+    },
+    toPayStat() {
+        wx.navigateTo({
+            url: '/pages4/share/total/total',
+        })
+    },
     /**
      * 用户点击右上角分享
      */

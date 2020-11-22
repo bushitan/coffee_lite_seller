@@ -24,19 +24,33 @@ Page({
             list : res.data
         })
     },
+
+    // to支付列表
+    toPayList(e) {
+        var shopID = e.currentTarget.dataset.shop_id
+        wx.navigateTo({
+            url: '/pages4/share/pay/pay?shopID=' + shopID,
+        })
+    },
+
+    // to点单列表
+    toTotal(e) {
+        var shopID = e.currentTarget.dataset.shop_id
+        wx.navigateTo({
+            url: '/pages3/order_list/order_list?shopID=' + shopID,
+        })
+
+    },
+
+    // 点单
     toMenu(e){
         var shopID = e.currentTarget.dataset.shop_id
         wx.navigateTo({
             url: '/pages3/menu/menu?shopID=' + shopID,
         }) 
     },
-    toTotal(e) {
-        var shopID = e.currentTarget.dataset.shop_id
-        wx.navigateTo({
-            url: '/pages3/total/total?shopID=' + shopID,
-        }) 
 
-    },
+
     /**
      * 用户点击右上角分享
      */

@@ -31,35 +31,35 @@
             <view class="cu-item " >
                 <view class="action">集点卡</view>
                 <view class="action ">
-                    <button class="cu-btn sm">统计</button>
+                    <button class="cu-btn sm" catchtap="toScoreGeo" >统计</button>
                 </view>
             </view>
-            <view class="cu-item " >
+            <!-- <view class="cu-item " >
                 <view class="action ">便利店</view>
                 <view class="action ">
                     <button class="cu-btn sm margin-right-sm">统计</button>
                     <button class="cu-btn sm">订单列表</button>
                 </view>
-            </view>
+            </view> -->
             <view class="cu-item " >
                 <view class="action ">小程序点单</view>
                 <view class="action ">
-                    <button class="cu-btn sm margin-right-sm">统计</button>
-                    <button class="cu-btn sm">订单列表</button>
+                    <!-- <button class="cu-btn sm margin-right-sm">统计</button> -->
+                    <button class="cu-btn sm " catchtap="toLiteOrderList">订单列表</button>
                 </view>
             </view>
             <view class="cu-item " >
                 <view class="action ">收银</view>
                 <view class="action ">
-                    <button class="cu-btn sm margin-right-sm">统计</button>
-                    <button class="cu-btn sm">订单列表</button>
+                    <button class="cu-btn sm margin-right-sm" catchtap="toCashStat">下单统计</button>
+                    <button class="cu-btn sm" catchtap="toCashList">店员下单列表</button>
                 </view>
             </view>
             <view class="cu-item " >
                 <view class="action ">小杯子优惠GO收款</view>
                 <view class="action ">
-                    <button class="cu-btn sm margin-right-sm">统计</button>
-                    <button class="cu-btn sm">订单列表</button>
+                    <button class="cu-btn sm margin-right-sm" catchtap="toPayStat">统计</button>
+                    <button class="cu-btn sm" catchtap="toPayList">订单列表</button>
                 </view>
             </view>
 
