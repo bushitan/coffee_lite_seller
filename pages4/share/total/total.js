@@ -27,7 +27,8 @@ Page({
 
         list: [1, 1, 1, 1, 1, 1, 1, 1, 1],
         shopID: "",
-        summary:{},
+        summary: {},
+        bill: {},
     },
 
     /**
@@ -53,12 +54,23 @@ Page({
 
         var res = await app.db4.shareGetOrderSummary({
             ShopId: this.data.shopID,
-            StartDate: "2020-9-1",
-            EndDate: "2020-11-1",
+            StartDate: "2020-10-1",
+            EndDate: "2020-10-31",
         })
         this.setData({
             summary:res.data
         })
+
+
+        var res = await app.db4.shareGetBillSummary({
+            ShopId: this.data.shopID,
+            StartDate: "2020-10-1",
+            EndDate: "2020-10-31",
+        })
+        this.setData({
+            bill: res.data
+        })
+        
     },
 
     async tabSelect(e) {

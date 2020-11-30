@@ -41,7 +41,7 @@ Page({
     onLoad: function (options) {
 
         this.setData({
-            shopID: options.shopID || 97
+            shopID: options.shopID || ""
         })
         this.onInit()
     },
@@ -56,7 +56,8 @@ Page({
      */
     async getOrderSummary(){
         var res = await app.db3.productGetOrderSummary({
-            ShopId: this.data.shopID
+            ShopId: this.data.shopID,
+            PayMethod: -1
         })
         this.setData({
             summary:res.data
@@ -68,7 +69,8 @@ Page({
         var res = await app.db3.productGetOrderList({
             Page:1,
             Limit:100,
-            ShopId: this.data.shopID
+            ShopId: this.data.shopID,
+            PayMethod: -1
         })
 
 

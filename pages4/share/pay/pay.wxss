@@ -1,1 +1,5 @@
 /* pages4/share/total.wxss */
+
+.refresh{
+    z-index: 999999
+}

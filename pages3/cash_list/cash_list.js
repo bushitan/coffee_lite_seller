@@ -22,8 +22,8 @@ Page({
         TAB_BACK: TAB_BACK,
         TabCur: TAB_PAY,
         SortMenu: [
-            { id: TAB_PAY, name: "收款", },
-            { id: TAB_BACK, name: "约定追回", },
+            { id: TAB_PAY, name: "收银", },
+            { id: TAB_BACK, name: "作废", },
             // { id: 2, name: "已处理", },
         ],
         shopID:"",
@@ -41,34 +41,37 @@ Page({
     onLoad: function (options) {
 
         this.setData({
-            shopID: options.shopID || 97
+            shopID: options.shopID || ""
         })
         this.onInit()
     },
     
     onInit(){
         this.getOrderList()
-        this.getOrderSummary()
+        // this.getOrderSummary()
     },
 
     /**
      * @method 点单点总统计结果
      */
-    async getOrderSummary(){
-        var res = await app.db3.productGetOrderSummary({
-            ShopId: this.data.shopID
-        })
-        this.setData({
-            summary:res.data
-        })
-        console.log(res)
-    },
+    // async getOrderSummary(){
+    //     var res = await app.db3.productGetOrderSummary({
+    //         ShopId: this.data.shopID,
+    //         PayMethod:-1
+    //     })
+    //     this.setData({
+    //         summary:res.data
+    //     })
+    //     console.log(res)
+    // },
 
     async getOrderList(){
         var res = await app.db3.productGetOrderList({
             Page:1,
             Limit:100,
-            ShopId: this.data.shopID
+            ShopId: this.data.shopID,
+            FilterStatus: this.data.TabCur == 0 ? 32 : 40,// 30已完成   40已取消（作废）
+            // PayMethod: -1
         })
 
 

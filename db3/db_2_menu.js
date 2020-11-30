@@ -153,7 +153,7 @@ class dbSystem extends dbFather {
      * @method 点单系统完成订单
      * @param
      *      OrderId: 3412,
-            PayMethod:0, // 0微信支付 1支付宝 2零钱 3银联 4其他
+            PayMethod:0, // 0微信支付 1支付宝 2零钱 3银联 4其他 5小杯子优惠GO
             Reason:"",
      */
     productFinish(data){

@@ -6,6 +6,7 @@ class dbBase {
     // APP_ID = 2  // "wx3e0f68d227f05241" 商户端
 
     HOST_URL = "https://wm.51zfgx.com/"
+    // HOST_URL = "http://139.159.241.56:8089/"
     APP_ID = "7016db59b1e84bd1a84f4e974074fa78"  //
     KEY_SHARE_SESSION = "share_session"
 

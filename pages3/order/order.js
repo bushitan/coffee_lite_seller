@@ -147,7 +147,7 @@ Page({
 
         var res = await app.db3.productFinish({
             OrderId: OrderId,
-            PayMethod: 2, // 0微信支付 1支付宝 2零钱 3银联 4其他
+            PayMethod: -1, // 0微信支付 1支付宝 2零钱 3银联 4其他
             Reason:"",
         })
         if(res.code == 0){

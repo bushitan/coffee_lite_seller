@@ -51,15 +51,15 @@
             <view class="cu-item " >
                 <view class="action ">收银</view>
                 <view class="action ">
-                    <button class="cu-btn sm margin-right-sm" catchtap="toCashStat">下单统计</button>
-                    <button class="cu-btn sm" catchtap="toCashList">店员下单列表</button>
+                    <button class="cu-btn sm margin-right-sm" catchtap="toCashStat"  data-shop_id="{{item.Id}}">下单统计</button>
+                    <button class="cu-btn sm" catchtap="toCashList"  data-shop_id="{{item.Id}}">店员下单列表</button>
                 </view>
             </view>
             <view class="cu-item " >
                 <view class="action ">小杯子优惠GO收款</view>
                 <view class="action ">
-                    <button class="cu-btn sm margin-right-sm" catchtap="toPayStat">统计</button>
-                    <button class="cu-btn sm" catchtap="toPayList">订单列表</button>
+                    <button class="cu-btn sm margin-right-sm" catchtap="toPayStat" data-shop_id="{{item.Id}}">统计</button>
+                    <button class="cu-btn sm" catchtap="toPayList" data-shop_id="{{item.Id}}">订单列表</button>
                 </view>
             </view>
 

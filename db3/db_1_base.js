@@ -19,6 +19,7 @@ class dbBase {
     KEY_ORDER_PRE_ADDRESS = "order_pre_address"
 
     HOST_URL = "https://wm.51zfgx.com/"
+    // HOST_URL = "http://139.159.241.56:8089/"
     APP_ID = "7016db59b1e84bd1a84f4e974074fa78"  //
 
     constructor() {

@@ -62,27 +62,31 @@ Page({
     },
 
     // 收银下单列表
-    toCashList(){
+    toCashList(e) {
+        var shop_id = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages3/cash_list/cash_list',
+            url: '/pages3/cash_list/cash_list?shopID=' + shop_id,
         })
     },
 
     // 收银下单统计
-    toCashStat() {
+    toCashStat(e) {
+        var shop_id = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages3/cash_stat/cash_stat',
+            url: '/pages3/cash_stat/cash_stat?shopID=' + shop_id,
         })
     },
 
-    toPayList() {
+    toPayList(e) {
+        var shop_id = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages4/share/pay/pay',
+            url: '/pages4/share/pay/pay?shopID=' + shop_id,
         })
     },
-    toPayStat() {
+    toPayStat(e) {
+        var shop_id = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages4/share/total/total',
+            url: '/pages4/share/total/total?shopID=' + shop_id,
         })
     },
     /**

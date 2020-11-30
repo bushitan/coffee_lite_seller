@@ -72,7 +72,7 @@
                 <view class="action">
                     <view class="cu-capsule round">
                         <view class="cu-tag bg-red ">追回金额</view>
-                        <view class="cu-tag line-red">0.02</view>
+                        <view class="cu-tag line-red">{{itemDiscountFee}}</view>
                     </view>
                     <view class="pg-arrow-sm"></view>
                 </view>
@@ -86,7 +86,7 @@
     <text class="text-center text-sm  text-gray">到底了</text>		
 </view>
 
-<view class="padding bg-white flex justify-around solid-top" style="position:fixed; bottom:0;left:0;right:0;"  >
+<view class="padding bg-white flex justify-around solid-top refresh" style="position:fixed; bottom:0;left:0;right:0;"  >
     <button class="cu-btn  line-yellow round  " catchtap="refresh" >刷新</button>
 </view>
 

@@ -96,32 +96,47 @@ WxDiscountCardRefundOrderNum: 10 -->
         <view class="cu-bar  solid-bottom ">
             <view class="action">
                 <text class="cuIcon-title text-yellow "></text>                
-                <text class="text-black text-sm">对账单</text>      
+                <text class="text-black text-sm">小杯子优惠GO对账单</text>      
             </view>
             <view class="action" catchtap="toStore">
-                <text class="text-gray  text-sm">{{summary.StartTime + "至" + summary.EndTime}}</text>
+                <text class="text-gray  text-sm">{{bill.StartTime + "至" + bill.EndTime}}</text>
                 <view class="pg-arrow-sm"></view>
             </view>
         </view>        
         <view class="cu-list menu ">      
             <view class="cu-item " >
                 <view class="action">账单金额</view>
-                <view class="action ">{{summary.OrderTotal}}</view>
+                <view class="action ">{{bill.OrderTotal}}</view>
+            </view>    
+            <!-- <view class="cu-item " >
+                <view class="action">实收金额</view>
+                <view class="action ">{{bill.BillableAmount}}</view>
+            </view>   -->
+            <view class="cu-item " >
+                <view class="action">代金券金额</view>
+                <view class="action ">{{bill.CouponFee}}</view>
             </view>
             <view class="cu-item " >
-                <view class="action">优惠金额</view>
-                <view class="action ">{{summary.CouponFee}}</view>
+                <view class="action">手续费</view>
+                <view class="action ">{{bill.ServiceCharge}}</view>
             </view>
-            <view class="cu-item  " >
+            <!-- <view class="cu-item  " >
                 <view class="action">先享卡追回金额</view>
-                <view class="action ">{{summary.WxDiscountCardRefund}}</view>
-            </view>
+                <view class="action ">{{bill.WxDiscountCardRefund}}</view>
+            </view> -->
         </view>
         <view class="cu-bar  solid-top ">
-            <view class="action">小杯子优惠GO收款金额</view>
+            <view class="action">微信支付实收金额</view>
             <view class="action">					
                 <text class=" text-xl text-red text-bold text-price"></text>
-                <text class=" text-xl text-red text-bold">{{summary.BillableAmount}}</text>
+                <text class=" text-xl text-red text-bold">{{bill.BillableAmount}}</text>
+            </view>
+        </view>	
+        <view class="cu-bar  solid-top ">
+            <view class="action">银行卡收款金额</view>
+            <view class="action">					
+                <text class=" text-xl text-red text-bold text-price"></text>
+                <text class=" text-xl text-red text-bold">{{bill.BankFee}}</text>
             </view>
         </view>					
     </view>
