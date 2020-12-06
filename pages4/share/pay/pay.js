@@ -1,5 +1,7 @@
 // pages4/share/total.js
 var app = getApp()
+var util = require('../../../utils/util.js')
+var dateBehaviors = require('../../../utils/date_behaviors.js')
 var TAB_PAY = 0
 var TAB_BACK = 1
 Page({
@@ -8,9 +10,14 @@ Page({
      * 页面的初始数据
      */
     data: {
+        CreatedAtMin: "" ,
+        CreatedAtMax: "",
+        yesterday:util.yesterday,
+        today:util.today,
+
         TAB_PAY: TAB_PAY,
         TAB_BACK: TAB_BACK,
-        TabCur: TAB_PAY,
+        TabCur: 0,
         SortMenu: [
             { id: TAB_PAY, name: "收款", },
             { id: TAB_BACK, name: "约定追回", },
@@ -25,49 +32,39 @@ Page({
         shopID: "",
     },
 
+    behaviors:[dateBehaviors],
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
 
         this.setData({
-            shopID: options.shopID
+            shopID: options.shopID,
+            // CreatedAtMin: '2020-01-01',
+            CreatedAtMin: util.today,
+            CreatedAtMax: util.today,
         })
 
         var that = this
         that.onInit()
 
-        // interval = setInterval(function () {
-        //     that.refresh()
-        // }, 15000)
     },
 
     async onInit(){
-        this.getPayList()
-        // var res = await app.db4.login({
-        //     ShopId: 70
-        // })
-
-        // var res = await app.db4.shareStateByStore({
-        //     ShopId:70
-        // })
-        // app.db.shopLogin().then(res => {
-        //     wx.setNavigationBarTitle({
-        //         title: '商户ID:' + res.data.sn,
-        //     })
-        //     this.setData({
-        //         sn:res.data.sn
-        //     })
-
-        //     this.refresh()
-        // })
+        if(this.data.TabCur == 0)
+            this.getPayList()
+        else 
+            this.getBackList()
     },
 
     async getPayList(){
         var res = await app.db4.shareGetPayList({
             ShopId: this.data.shopID,
+            StartDate: this.data.CreatedAtMin,
+            EndDate: this.data.CreatedAtMax,
             PageIndex: 1,
-            PageSize: 200,
+            PageSize:50,
             IsAll: true,
         })
 
@@ -79,9 +76,11 @@ Page({
     async getBackList(){
         var res = await app.db4.shareGetBackList({
             ShopId: this.data.shopID,
+            StartDate: this.data.CreatedAtMin,
+            EndDate: this.data.CreatedAtMax,
         })
         this.setData({
-            backList: res.data
+            backList: res.data.Items
         })
     },
     // 点击tab

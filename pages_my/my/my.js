@@ -7,8 +7,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        login:{},
         list: [],
-
+        userInfo:{},
     },
 
     onLoad: function (options) {
@@ -17,13 +18,42 @@ Page({
 
     async onInit() {
         var res = await app.db4.login()
+         this.setData({
+            login: res.data
+        })
 
         var res = await app.db4.shareGetStoreList()
+
         var list = res.data
         list[0].showDetail = true
         this.setData({
             list: res.data
         })
+        
+        this.getSellerUserInfo()
+    },
+
+    async getSellerUserInfo(){
+        var res = await app.db4.shareGetSellerUserInfo()
+        this.setData({
+            userInfo : res.data
+        })
+        // console.log(res)
+    },
+
+    async updateSellerUserInfo(e){
+        var userinfo = e.detail.userInfo
+        // console.log(e.detail)
+        var res = await app.db4.shareUpdateSellerUserInfo({
+            WxAvatarUrl:userinfo.avatarUrl,
+            WxCity:userinfo.city,
+            WxCountry:userinfo.country,
+            WxGender:userinfo.gender,
+            WxLanguage:userinfo.WxLanguage,
+            WxNickName:userinfo.nickName,
+            WxProvince:userinfo. province,
+        })
+        console.log(res)
     },
 
     /**`
@@ -83,10 +113,19 @@ Page({
             url: '/pages4/share/pay/pay?shopID=' + shop_id,
         })
     },
-    toPayStat(e) {
+
+    // 支付对账单
+    toBillStat(e) {
         var shop_id = e.currentTarget.dataset.shop_id
         wx.navigateTo({
-            url: '/pages4/share/total/total?shopID=' + shop_id,
+            url: '/pages4/share/total/total?shopID=' + shop_id + "&type=bill",
+        })
+    },
+    // 支付订单统计
+    toPayOrderStat(e) {
+        var shop_id = e.currentTarget.dataset.shop_id
+        wx.navigateTo({
+            url: '/pages4/share/total/total?shopID=' + shop_id + "&type=order",
         })
     },
     /**

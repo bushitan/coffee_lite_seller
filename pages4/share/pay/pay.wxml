@@ -1,4 +1,21 @@
 
+
+<view class="cu-form-group">
+    <view class="title">选择开始日期</view>
+    <picker mode="date" value="{{CreatedAtMin}}" start="2020-01-01" end="{{today}}" bindchange="CreatedAtMinChange">
+        <view class="picker">
+            {{CreatedAtMin}}
+        </view>
+    </picker>
+</view>
+<view class="cu-form-group solid-bottom">
+    <view class="title">选择结束日期</view>
+    <picker mode="date" value="{{CreatedAtMax}}" start="2020-01-01" end="{{today}}" bindchange="CreatedAtMaxChange">
+        <view class="picker">
+            {{CreatedAtMax}}
+        </view>
+    </picker>
+</view>
 <scroll-view scroll-x class="bg-white nav ">
     <view class='flex  text-center  '>
         <view class="cu-item flex-sub {{item.id==TabCur?'text-yellow text-bold cur':' text-gray'}} " 
@@ -60,19 +77,33 @@
         </view>
     </view>
 </view> 
+
+<!-- 
+RowNo: 1
+CardOutOrderNo: "937cdbbdb07645b493c6c6389a6142d4"
+WxOpenId: "ok6Wq5c6zOQ7QfdXAhSQvX_8dmyY"
+ShopId: 70
+StoreName: "宸益堂中医馆"
+WxNickName: "this.丰丰 (¦(¦3[]"
+WxAvatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKULJtnL8qOYa871HwibG1JpY5GPibDVg77MXQj8vsfiaqtFmzwo4aTEvrl5RqYDhBZsT6XjDkWFnmIQ/132"
+TotalFee: 1
+RealFee: 0.8
+DiscountFee: 0.2
+PayTime: "2020-09-09 15:13:18"
+TotalRecords: 10 -->
 <view wx:for="{{backList}}" wx:key hidden="{{TabCur == TAB_BACK?false:true}}" >   
-    <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>     2020-08-06 21:11:23</view>
+    <view class="padding-lr margin-top-sm text-xs text-gray"><text class="cuIcon-title text-yellow "></text>{{item.PayTime}}</view>
     <view class="cu-card padding-lr " catchtap="toDetail" data-out_order_no="{{item.CardOutOrderNo}}">
         <view class=" bg-white pg-radius  shadow shadow-warp">
             <view class="cu-bar  solid-bottom ">
                 <view class="action">
-                     <view class="cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);margin:0" ></view>
-                    <text class="text-black text-sm margin-left-xs">刘哈哈</text>   
+                     <view class="cu-avatar round " style="background-image:url({{item.WxAvatarUrl}});margin:0" ></view>
+                    <text class="text-black text-sm margin-left-xs">{{item.WxNickName || '用户未登录'}}</text>   
                 </view>
                 <view class="action">
                     <view class="cu-capsule round">
                         <view class="cu-tag bg-red ">追回金额</view>
-                        <view class="cu-tag line-red">{{itemDiscountFee}}</view>
+                        <view class="cu-tag line-red">{{item.DiscountFee}}</view>
                     </view>
                     <view class="pg-arrow-sm"></view>
                 </view>
@@ -86,8 +117,8 @@
     <text class="text-center text-sm  text-gray">到底了</text>		
 </view>
 
-<view class="padding bg-white flex justify-around solid-top refresh" style="position:fixed; bottom:0;left:0;right:0;"  >
+<!-- <view class="padding bg-white flex justify-around solid-top refresh" style="position:fixed; bottom:0;left:0;right:0;"  >
     <button class="cu-btn  line-yellow round  " catchtap="refresh" >刷新</button>
-</view>
+</view> -->
 
 <view class="pg-space-xl"></view>

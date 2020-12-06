@@ -26,7 +26,7 @@ class dbBase {
             // var res = await this.cloud.init()
             // console.log(res)
             this.cloud.init().then(res=>{
-                console.log("clound init")
+                // console.log("clound init")
                 reslove()
             }).catch(res=>{
                 reject()

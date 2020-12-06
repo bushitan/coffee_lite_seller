@@ -37,14 +37,6 @@ SubItems: [{ShopId: 70, StartTime: "2020-09-01", EndTime: "2020-11-01", RelateSt
 WxDiscountCardRefund: 1.27
 WxDiscountCardRefundOrderNum: 10 -->
 
-<view class="cu-form-group">
-    <view class="title">选择月份</view>
-    <picker mode="date" fields="month" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
-        <view class="picker">
-            {{CreatedAtMin}}
-        </view>
-    </picker>
-</view>
 <!-- <view class="cu-form-group solid-bottom">
     <view class="title">选择结束日期</view>
     <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMaxChange">
@@ -54,7 +46,25 @@ WxDiscountCardRefundOrderNum: 10 -->
     </picker>
 </view> -->
 
-<view class="cu-card padding-lr margin-top">
+
+<view class="cu-form-group">
+    <view class="title">选择开始日期</view>
+    <picker mode="date" value="{{CreatedAtMin}}" start="2020-01-01" end="{{ type == 'order' ? today :yesterday}}" bindchange="CreatedAtMinChange">
+        <view class="picker">
+            {{CreatedAtMin}}
+        </view>
+    </picker>
+</view>
+<view class="cu-form-group solid-bottom">
+    <view class="title">选择结束日期</view>
+    <picker mode="date" value="{{CreatedAtMax}}" start="2020-01-01" end="{{type == 'order' ? today :yesterday}}" bindchange="CreatedAtMaxChange">
+        <view class="picker">
+            {{CreatedAtMax}}
+        </view>
+    </picker>
+</view>
+
+<view class="cu-card padding-lr margin-top" wx:if="{{type == 'order'}}">
     <view class=" bg-white pg-radius  shadow shadow-warp">
         <view class="cu-bar  solid-bottom ">
             <view class="action">
@@ -72,7 +82,7 @@ WxDiscountCardRefundOrderNum: 10 -->
                 <view class="action ">{{summary.OrderTotal}}</view>
             </view>
             <view class="cu-item " >
-                <view class="action">优惠金额</view>
+                <view class="action">先享卡优惠金额</view>
                 <view class="action ">{{summary.CouponFee}}</view>
             </view>
             <view class="cu-item  " >
@@ -91,16 +101,16 @@ WxDiscountCardRefundOrderNum: 10 -->
 </view>
 
 
-<view class="cu-card padding-lr margin-top">
+<view class="cu-card padding-lr margin-top" wx:if="{{type == 'bill'}}">
     <view class=" bg-white pg-radius  shadow shadow-warp">
         <view class="cu-bar  solid-bottom ">
             <view class="action">
                 <text class="cuIcon-title text-yellow "></text>                
-                <text class="text-black text-sm">小杯子优惠GO对账单</text>      
+                <text class="text-black text-sm">小杯子优惠GO收款对账单</text>      
             </view>
-            <view class="action" catchtap="toStore">
+            <view class="action" >
                 <text class="text-gray  text-sm">{{bill.StartTime + "至" + bill.EndTime}}</text>
-                <view class="pg-arrow-sm"></view>
+                <!-- <view class="pg-arrow-sm"></view> -->
             </view>
         </view>        
         <view class="cu-list menu ">      
@@ -142,6 +152,7 @@ WxDiscountCardRefundOrderNum: 10 -->
     </view>
 </view>
 
+<view wx:if="{{type == 'bill'}}" class="text-center text-gray text-sm margin-top">现金对账单，统计至{{yesterday}}信息</view>
 <view class="page-space-60"></view>
 
 

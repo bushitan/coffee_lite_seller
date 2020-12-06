@@ -168,6 +168,28 @@ class dbSystem extends dbFather {
             })
         })
     }
+    
+
+    /**
+     * @method 点单系统作废订单
+     * @param
+     *      orderId：
+            reason：
+     */
+    productVoideOrder(data){
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/orders/SpVoideOrder", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+
 
 
     /***************统计流程************/

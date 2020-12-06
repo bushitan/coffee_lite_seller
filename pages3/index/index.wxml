@@ -8,12 +8,12 @@
     <view class="flex justify-between align-center shadow shadow-warp margin-bottom padding bg-white" wx:for="{{list}}">
         <view class="basis-sm text-sm" >{{item.Name}}</view>
         <view class="basis-xl text-right">
-            <text class="cu-btn bg-yellow text-white sm" catchtap="toPayList" data-shop_id="{{item.Id}}">小程序接单</text> 
+            <text class="cu-btn bg-blue text-white sm" catchtap="toLiteOrder" data-shop_id="{{item.Id}}">小程序接单</text> 
             <text class="margin-lr-sm">|</text> 
             <text class="cu-btn bg-yellow text-white sm" catchtap="toPayList" data-shop_id="{{item.Id}}">收款</text> 
             <text class="margin-lr-sm">|</text> 
             <!-- <text class="cu-btn line-gray margin-right-sm sm" catchtap="toTotal" data-shop_id="{{item.Id}}">点单列表</text> -->
-            <text class="cu-btn bg-blue text-white sm" catchtap="toMenu" data-shop_id="{{item.Id}}">点单</text>
+            <text class="cu-btn bg-red text-white sm" catchtap="toMenu" data-shop_id="{{item.Id}}">点单</text>
         </view>
     </view>
 </view>

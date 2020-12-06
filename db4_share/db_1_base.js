@@ -46,7 +46,7 @@ class dbBase {
                 success(res) {
 
                     var completeTime = new Date().getTime();
-                    console.log(options.url , ":", completeTime - startTime)
+                    // console.log(options.url , ":", completeTime - startTime)
                     resolve(res.data)
                 },
                 fail(res) {

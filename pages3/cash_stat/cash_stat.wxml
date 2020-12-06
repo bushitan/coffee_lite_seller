@@ -1,24 +1,96 @@
 <!--pages3/total/total.wxml-->
 
-    <view class="cu-form-group">
-		<view class="title">选择开始日期</view>
-		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMinChange">
-			<view class="picker">
-				{{CreatedAtMin}}
-			</view>
-		</picker>
-	</view>
-    <view class="cu-form-group solid-bottom">
-		<view class="title">选择结束日期</view>
-		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="CreatedAtMaxChange">
-			<view class="picker">
-				{{CreatedAtMax}}
-			</view>
-		</picker>
-	</view>
+<view class="cu-form-group">
+    <view class="title">选择开始日期</view>
+    <picker mode="date" value="{{CreatedAtMin}}" start="2020-01-01" end="{{today}}" bindchange="CreatedAtMinChange">
+        <view class="picker">
+            {{CreatedAtMin}}
+        </view>
+    </picker>
+</view>
+<view class="cu-form-group solid-bottom">
+    <view class="title">选择结束日期</view>
+    <picker mode="date" value="{{CreatedAtMax}}" start="2020-01-01" end="{{today}}" bindchange="CreatedAtMaxChange">
+        <view class="picker">
+            {{CreatedAtMax}}
+        </view>
+    </picker>
+</view>
+
+    <!-- <view wx:for="{{summary}}">{{item}}</view> -->
+    <!-- OrderTotal: 2.08
+WxOrderSubTotal: 0
+AliPaySubTotal: 0
+CashSubTotal: 0.02
+UnionBankPaySubTotal: 0
+OtherSubTotal: 2.06
+LittleCupSubTotal: 0
+RefundOrderTotal: 0
+RefundingOrderTotal: 0
+VoidedOrderTotal: 0 -->
 
 
-    <view wx:for="{{summary}}">{{item}}</view>
+<view class="cu-card padding-lr margin-top">
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <!-- <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">{{summary.RelateStore}}</text>      
+            </view>
+            <view class="action" catchtap="toStore">
+                <text class="text-gray  text-sm">{{summary.StartTime + "至" + summary.EndTime}}</text>
+                <view class="pg-arrow-sm"></view>
+            </view>
+        </view>         -->
+        <view class="cu-list menu ">      
+            <view class="cu-item " >
+                <view class="action">微信支付</view>
+                <view class="action ">{{summary.WxOrderSubTotal}}</view>
+            </view>
+            <view class="cu-item " >
+                <view class="action">支付宝支付</view>
+                <view class="action ">{{summary.AliPaySubTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">现金支付</view>
+                <view class="action ">{{summary.CashSubTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">银联支付</view>
+                <view class="action ">{{summary.UnionBankPaySubTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">其他支付</view>
+                <view class="action ">{{summary.OtherSubTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">小杯子优惠GO支付</view>
+                <view class="action ">{{summary.LittleCupSubTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">先享卡退款金额</view>
+                <view class="action ">{{summary.RefundOrderTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">先享卡正在退款中金额</view>
+                <view class="action ">{{summary.RefundingOrderTotal}}</view>
+            </view>
+            <view class="cu-item  " >
+                <view class="action">点单作废金额</view>
+                <view class="action ">{{summary.VoidedOrderTotal}}</view>
+            </view>
+        </view>
+        <view class="cu-bar  solid-top ">
+            <view class="action">点单总额</view>
+            <view class="action">					
+                <text class=" text-xl text-red text-bold text-price"></text>
+                <text class=" text-xl text-red text-bold">{{summary.OrderTotal}}</text>
+            </view>
+        </view>					
+    </view>
+</view>
+<view class="pg-space-xxl"></view>
+
 <!-- 
 <scroll-view scroll-x class="bg-white nav ">
     <view class='flex  text-center  '>

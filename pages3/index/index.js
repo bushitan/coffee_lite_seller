@@ -50,6 +50,13 @@ Page({
         }) 
     },
 
+    // 小程序接单
+    toLiteOrder(e){
+        var shopID = e.currentTarget.dataset.shop_id
+        wx.navigateTo({
+          url: '/pages_shop/admin/admin?shopID=' + shopID,
+        })
+    },
 
     /**
      * 用户点击右上角分享

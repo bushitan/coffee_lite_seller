@@ -19,7 +19,7 @@ class dbSystem extends dbFather {
                 // url: this.HOST_URL + "api/sp/storeslist/",
                 method: "POST",
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
             }).catch(res => reject(res))
         })
     }
@@ -32,7 +32,7 @@ class dbSystem extends dbFather {
                 url: this.HOST_URL + "api/sp/storeslist/",
                 method: "POST",
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -44,14 +44,21 @@ class dbSystem extends dbFather {
      */
     shareGetPayList(data) {
         return new Promise((resolve, reject) => {
+             wx.showLoading({
+              mask:true,
+            })
             this.base({
                 url: this.HOST_URL + "api/query/paywithwxdiscount/",
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
+                wx.hideLoading()
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
         })
     }  
 
@@ -69,7 +76,7 @@ class dbSystem extends dbFather {
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -83,14 +90,21 @@ class dbSystem extends dbFather {
        */
     shareGetBackList(data) {
         return new Promise((resolve, reject) => {
+            wx.showLoading({
+              mask:true,
+            })
             this.base({
                 url: this.HOST_URL + "api/query/refumdwxOrderList/",
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
+                wx.hideLoading()
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
         })
     }
 
@@ -107,7 +121,7 @@ class dbSystem extends dbFather {
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 resolve(res)
             }).catch(res => reject(res))
         })
@@ -119,14 +133,21 @@ class dbSystem extends dbFather {
      */
     shareGetOrderSummary(data) {
         return new Promise((resolve, reject) => {
+            wx.showLoading({
+                mask:true,
+            })
             this.base({
                 url: this.HOST_URL + "api/order/summary/",
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                wx.hideLoading({ })
+                // console.log(res.data)
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res => {
+                wx.hideLoading({ })
+                reject(res)
+            })
         })
     }
 
@@ -136,16 +157,64 @@ class dbSystem extends dbFather {
      */
     shareGetBillSummary(data) {
         return new Promise((resolve, reject) => {
+            wx.showLoading({
+                mask:true,
+            })
             this.base({
                 url: this.HOST_URL + "api/bill/summary/",
                 method: "POST",
                 data: data,
             }).then(res => {
-                console.log(res.data)
+                wx.hideLoading({ })
+                // console.log(res.data)
                 resolve(res)
-            }).catch(res => reject(res))
+            }).catch(res => {
+                wx.hideLoading({ })
+                reject(res)
+            })
         })
     }
+
+    
+    /**
+     * @method 获取商户店员头像
+     * @param
+     *      orderId：
+            reason：
+     */
+    shareGetSellerUserInfo(data){
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/customer/selfinfo", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+ 
+    /**
+     * @method 更新商户店员头像
+     * @param
+     *      orderId：
+            reason：
+     */
+    shareUpdateSellerUserInfo(data){
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/customer/updatewxinfo", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+
 }
 
 
