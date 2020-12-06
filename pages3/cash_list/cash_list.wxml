@@ -51,12 +51,6 @@
                             <view class="cu-tag line-gray round sm" >{{ orderItem.product.name}}</view> 
                         </view>                     
                     </view>  
-                    <view class=" flex flex-warp" style="flex-wrap: wrap;">
-                        <view class="" wx:for="{{ item.order_items }}" wx:for-item="orderItem">
-                            <image class="cu-avatar round margin-right-xs margin-tb-xs " src="{{orderItem.product.images[0]}}" style="flex-shrink:0;"  ></image>
-                            <view class="cu-tag line-gray round sm" >{{ orderItem.product.name}}</view> 
-                        </view>                     
-                    </view>  
                     
                 </view>
                 <view class="action">
@@ -114,7 +108,10 @@
             </view>
             
             <view class="cu-bar   ">
-                <view class="action"></view>
+                <view class="action">
+                    <text class="text-sm text-gray">支付方式：</text>
+                    <text class="cu-tag line-yellow">{{order.payment_method_systemName}}</text>
+                </view>
                 <view class="action">		  
                     <text class="text-gray  text-sm margin-right-xs">合计</text>						
                     <text class=" text-xl text-red text-bold text-price"></text>

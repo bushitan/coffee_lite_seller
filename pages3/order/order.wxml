@@ -103,19 +103,20 @@
 
 <view class="bg-white cu-list menu padding-tb-sm solid-top" style="position: fixed; bottom:0; left: 0; right: 0;">
     <view class="cu-item" >
-        <view class="content">
-            <view class="text-grey">
-                <view class="text-red text-bold text-xxl">
-                    订单总计：<text class="text-price text-red"></text>{{preOrder.order_total || ""}}
-                </view>
+        <view class="content basis-df">
+            <view class="text-red text-bold text-xl">
+                订单总计：<text class="text-price text-red"></text>{{preOrder.order_total || ""}}
             </view>
-            <!-- <view class="text-gray text-sm flex align-center" v-if="ShopTakeValue == SHOP_TAKE_WM">
-                <image src='/static/images/icon/sf_logo.png'
-                    class="cu-avatar radius lg  bg-white margin-right-sm" 
-                    style="width: 100px;" 
-                    mode="widthFix"
-                    ></image>
-                </view> -->
+            <view class="text-sm" catchtap="switchPayMethod">                
+                <text >支付方式：</text>
+                <text wx:if="{{PayMethod == 0 }}">微信支付</text>
+                <text wx:if="{{PayMethod == 1 }}">支付宝</text>
+                <text wx:if="{{PayMethod == 2 }}">零钱</text>
+                <text wx:if="{{PayMethod == 3 }}">银联</text>
+                <text wx:if="{{PayMethod == 4 }}">其他</text>
+                <text wx:if="{{PayMethod == 5 }}">小杯子优惠GO</text>
+                <text class="margin-left-xs">[切换]</text>
+            </view>                
         </view>
         <view class="action"  >
             <button class='cu-btn round bg-yellow text-white shadow margin-right-sm' catchtap="getOrderGen"

@@ -70,16 +70,12 @@
                 </view>
             </view>
             <view class="cu-item " >
-                <view class="action ">银行卡对账单</view>
+                <view class="action ">汇总统计</view>
                 <view class="action ">
-                    <button class="cu-btn sm " catchtap="toBillStat" data-shop_id="{{item.Id}}">对账单</button>
+                    <button class="cu-btn sm margin-right-sm" catchtap="toBillStat" data-shop_id="{{item.Id}}">产品统计</button>
+                    <button class="cu-btn sm " catchtap="toBillStat" data-shop_id="{{item.Id}}">银行卡对账单</button>
                 </view>
             </view>
-
-        </view>
-
-        			
-    </view>
-
-    
+        </view>        			
+    </view>    
 </view>

@@ -20,7 +20,9 @@ Page({
         shopID:97,
         OrderNote:"",
         noPowerPay: true,
-    },
+
+        PayMethod:5, // 0微信支付 1支付宝 2零钱 3银联 4其他 5小杯子优惠GO
+    }, 
     /**
      * 生命周期函数--监听页面加载
      */
@@ -147,7 +149,7 @@ Page({
 
         var res = await app.db3.productFinish({
             OrderId: OrderId,
-            PayMethod: -1, // 0微信支付 1支付宝 2零钱 3银联 4其他
+            PayMethod: this.data.PayMethod, // 0微信支付 1支付宝 2零钱 3银联 4其他
             Reason:"",
         })
         if(res.code == 0){
@@ -171,6 +173,30 @@ Page({
             })
             
         }
+    },
+
+    /**
+        @Method  选择结账方式
+        0微信支付 1支付宝 2零钱 3银联 4其他 5小杯子优惠GO
+     */
+    switchPayMethod(){
+      
+        var itemList = [ "小杯子优惠GO" ,"微信支付" , "支付宝","零钱","银联 ","其他"]
+        wx.showActionSheet({
+            itemList: itemList,
+            success:res=>{
+                var PayMethod
+                switch (res.tapIndex) {
+                    case 0 : PayMethod = 5 ; break;                
+                    default : PayMethod = res.tapIndex - 1;break;
+                }
+                this.setData({
+                    PayMethod:PayMethod
+                })
+            }
+        })
+
+        
     },
 
 
