@@ -224,6 +224,42 @@ class dbSystem extends dbFather {
             })
         })
     }
+
+
+
+    /***************嗨翻节************/
+
+    productScanOrderID(data) {
+        return new Promise((resolve, reject) => {
+            // wx.showLoading({ title: "加载中" })
+            this.base({ url: this.HOST_URL + "api/seller/scan/", data: data, })
+                .then(res => {
+                    // wx.hideLoading()
+                    resolve(res)
+                })
+                .catch(res => {
+                    // wx.hideLoading()
+                    reject(res)
+                })
+        })
+    }
+     productGetHiOrderList(data) {
+        return new Promise((resolve, reject) => {
+            // wx.showLoading({ title: "加载中" })
+            this.base({ url: this.HOST_URL + "api/seller/getorderslist/", data: data, })
+                .then(res => {
+                    // wx.hideLoading()
+                    resolve(res)
+                })
+                .catch(res => {
+                    // wx.hideLoading()
+                    reject(res)
+                })
+        })
+    }
+
+
+
 }
 
 

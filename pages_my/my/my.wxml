@@ -19,6 +19,9 @@
     </view>
 </view>
 
+
+<view class="padding text-center text-sm text-gray">到底了</view>
+<!-- 
 <view class="padding margin-top-sm bg-white">
     <text class="cuIcon-titles"></text>
     <text class="">我的门店</text>
@@ -78,4 +81,4 @@
             </view>
         </view>        			
     </view>    
-</view>
+</view> -->

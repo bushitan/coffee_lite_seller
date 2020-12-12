@@ -1,3 +1,4 @@
 {
-  "usingComponents": {}
+    "navigationBarTitleText": "收银",
+    "usingComponents": {}
 }

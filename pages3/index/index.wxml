@@ -1,20 +1,119 @@
 <!--pages4/share/index/index.wxml-->
 
-<view class="padding text-yellow">
-    <text class="cuIcon-titles"></text>
-    <text class="">我的门店</text>
+
+
+<view class="cu-bar padding-tb bg-white">
+    <view class="action">
+        <image class="cu-avatar lg round bg-white margin-right-sm"  src="{{list[currentIndex].Logo  || '/images/user-unlogin.png' }}" ></image>
+        <view class=" flex flex-start flex-direction ">
+            <view>
+                <text class="text-bold ">{{list[currentIndex].Name }}</text>
+            </view>
+            <!-- <view class="text-gray" >(商户ID：{{login.sn}})</view> -->
+        </view>
+    </view>
+    
+    <view class="action basis-xs" wx:if="{{list.length > 0}}">
+        <picker bindchange="changeShop" value="{{currentIndex}}" range-key="Name" range="{{list}}">
+            <button class="cu-btn radius line-gray sm">切换门店</button>
+        </picker>
+    </view>
 </view>
+
 <view class="padding-lr">
-    <view class="flex justify-between align-center shadow shadow-warp margin-bottom padding bg-white" wx:for="{{list}}">
-        <view class="basis-sm text-sm" >{{item.Name}}</view>
-        <view class="basis-xl text-right">
-            <text class="cu-btn bg-blue text-white sm" catchtap="toLiteOrder" data-shop_id="{{item.Id}}">小程序接单</text> 
-            <text class="margin-lr-sm">|</text> 
-            <text class="cu-btn bg-yellow text-white sm" catchtap="toPayList" data-shop_id="{{item.Id}}">收款</text> 
-            <text class="margin-lr-sm">|</text> 
-            <!-- <text class="cu-btn line-gray margin-right-sm sm" catchtap="toTotal" data-shop_id="{{item.Id}}">点单列表</text> -->
-            <text class="cu-btn bg-red text-white sm" catchtap="toMenu" data-shop_id="{{item.Id}}">点单</text>
+    <view class="shadow shadow-warp bg-white padding-lr" >
+        <view class="padding-top-sm padding-tb-xs flex justify-between ">
+            <view class=" text-red">
+                <text class="cuIcon-titles"></text>
+                <text class="">店员下单收银</text>
+            </view>
+            <view> </view>
+        </view>
+        <view class="flex justify-between   ">
+                <text class=" radius  cu-btn bg-gray">今日下单金额：￥5</text>
+                <view class=" radius  cu-btn bg-gray">今日下单数：5</view>
+        </view>
+        <view class="cu-bar justify-start  ">
+            <button class="cu-btn bg-red radius margin-right-sm" catchtap="toMenu" >下单</button>
+            <button class="cu-btn line-red radius margin-right-sm" catchtap="toCashList" >下单列表</button>
+            <!-- <button c/lass="cu-btn line-red radius margin-right-sm" catchtap="toCashStat" >下单统计</button> -->
         </view>
     </view>
 </view>
+
+<view class="padding-lr margin-top">
+    <view class="shadow shadow-warp bg-white padding-lr" >
+        <view class="padding-top-sm padding-tb-xs flex justify-between ">
+            <view class=" text-orange">
+                <text class="cuIcon-titles"></text>
+                <text class="">嗨翻节核销订单</text>
+            </view>
+            <view> </view>
+        </view>
+        <view class="cu-bar justify-start  ">
+            <button class="cu-btn bg-orange radius margin-right-sm" catchtap="toHiScan" >扫码核销</button>
+            <button class="cu-btn line-orange radius margin-right-sm" catchtap="toHiOrderList" >订单列表</button>
+        </view>
+    </view>
+</view>
+
+
+<view class="padding-lr margin-top">
+    <view class="shadow shadow-warp bg-white padding-lr" >
+        <view class="padding-top-sm padding-tb-xs flex justify-between ">
+            <view class=" text-blue">
+                <text class="cuIcon-titles"></text>
+                <text class="">顾客自助点单</text>
+            </view>
+            <view> </view>
+        </view>
+        <view class="flex justify-between   ">
+                <text class=" radius  cu-btn bg-gray">今日点单金额：￥5</text>
+                <view class=" radius  cu-btn bg-gray">今日点单数：5</view>
+        </view>
+        <view class="cu-bar justify-start  ">
+            <button class="cu-btn bg-blue radius margin-right-sm" catchtap="toLiteOrder" >接单</button>
+            <button class="cu-btn line-blue radius margin-right-sm" catchtap="顾客自助点单"  >历史订单</button>
+            <button class="cu-btn line-blue radius margin-right-sm" catchtap=""  >下单统计</button>
+        </view>
+    </view>
+</view>
+
+
+<view class="padding-lr margin-top">
+    <view class="shadow shadow-warp bg-white padding-lr" >
+        <view class="padding-top-sm padding-tb-xs flex justify-between ">
+            <view class=" text-yellow">
+                <text class="cuIcon-titles"></text>
+                <text class="">顾客扫码支付</text>
+            </view>
+            <view> </view>
+        </view>
+        <view class="flex justify-between   ">
+                <text class=" radius  cu-btn bg-gray">今日支付金额：￥5</text>
+                <view class=" radius  cu-btn bg-gray">今日支付笔数：5</view>
+        </view>
+        <view class="cu-bar justify-start  ">
+            <button class="cu-btn line-yellow radius margin-right-sm" catchtap="toPayList" >支付列表</button>
+            <button class="cu-btn line-yellow radius margin-right-sm" catchtap="toPayOrderStat"  >支付统计</button>
+        </view>
+    </view>
+</view>
+
+<view class="padding-lr margin-top">
+    <view class="shadow shadow-warp bg-white padding-lr" >
+        <view class="padding-top-sm padding-tb-xs flex justify-between ">
+            <view class=" text-green">
+                <text class="cuIcon-titles"></text>
+                <text class="">汇总统计</text>
+            </view>
+            <view> </view>
+        </view>
+        <view class=" padding-bottom-sm ">
+            <button class="cu-btn line-green radius margin-right-sm" catchtap="toBillStat" >银行对账单</button>
+            <!-- <button class="cu-btn line-green radius margin-right-sm" catchtap="toBillStat" >产品SKU统计</button> -->
+        </view>
+    </view>
+</view>
+
 <view class="padding text-center text-sm text-gray">到底了</view>

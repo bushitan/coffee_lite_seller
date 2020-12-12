@@ -14,6 +14,7 @@
         "pages/test_unit/test_unit",
         "pages3/menu/menu",
         "pages3/order/order",
+        "pages3/hi_order/hi_order",
         "pages3/cash_list/cash_list",
         "pages3/cash_stat/cash_stat",
         "pages3/index/index",

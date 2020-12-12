@@ -1,0 +1,166 @@
+<!--pages_shop/admin/admin.wxml-->
+
+
+    <scroll-view scroll-x class="bg-white nav ">
+        <view class='flex  text-center  '>
+            <view class="cu-item flex-sub {{item.id==TabCur?'text-blue text-bold cur':' text-gray'}} " 
+            wx:for="{{SortMenu}}" wx:key="index" data-tab_id="{{item.id}}" catchtap="tabSelect">
+                <view style="  position: relative" >
+                    <text class="">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view class=" margin-top flex  align-center  justify-center">
+        <text class="text-center text-sm  text-gray">当前栏目订单：{{list.length }}</text>		
+    </view>
+
+
+    <view class="cu-card padding-lr margin-top " wx:for="{{list}}" wx:for-item="order" wx:for-index="orderIndex">
+        <view class="text-blue  text-sm"><text class="cuIcon-timefill "></text>{{order.created_on_utc}}</view>
+        <view class=" pg-radius  shadow shadow-warp ">
+            <view class="cu-bar bg-blue solid-bottom ">
+                <view class="action">                                
+                    <text class="text-white text-sm">ID:{{order.id}}</text>       
+                </view>
+                <view class="action">
+                    <button class="cu-btn bg-white text-blue round text-sm " 
+                        catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">拨打电话</button>
+                    <!-- <button class="cu-btn bg-white text-blue round text-sm" catchtap="toOrderDetail" data-order_id="{{order.id}}">详情</button> -->
+                </view>
+            </view>
+
+            <!-- <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">订单方式</view>
+                <view class=" text-right" >
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">外卖</text>
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">到店自取</text>
+                    <text class="text-bold text-yellow"  wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}">堂食</text>
+                </view>
+            </view> -->
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" catchtap="takePhone" data-phonenumber="{{order.ship_address.phonenumber}}">
+                <view class="text-gray text-sm">
+                    下单门店
+                </view>
+                <view class="text-black  text-sm text-right" >
+                    <view>{{order.store_name}}</view>     
+                </view>
+            </view>
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom" 
+            catchtap="takePhone" 
+            data-phonenumber="{{order.ship_address.phonenumber}}"
+            wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">
+                <view class="basis-xs">
+                    <text class="text-gray text-sm"  >配送地址</text>
+                </view>
+                <view class="text-black  text-sm text-right">
+                    <view>{{order.ship_address.addr_detail}}</view>   
+                    <view>{{order.ship_address.name}} {{order.ship_address.phonenumber}}</view>     
+                    <view>配送日期-时间:{{order.wish_datetime}}</view>     
+                </view>               
+            </view>
+
+            <view class="padding-tb- padding-lr bg-white flex justify-between align-center solid-bottom" 
+                catchtap="takePhone" 
+                data-phonenumber="{{order.ship_address.phonenumber}}"
+                wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}">
+                <view class="basis-sm">                   
+                    <text class="text-gray text-sm">自取联系</text>
+                </view>              
+                <view class="text-black  text-sm text-right">
+                    <view>联系电话：{{order.ship_address.phonenumber}}</view>     
+                    <view>自取日期-时间：{{order.wish_datetime}}</view>     
+                </view>
+            </view>
+
+            <view class="cu-list menu bg-white ">
+                <view class="cu-item margin-tb-sm" style="align-items:flex-start" 
+                    wx:for="{{order.order_items}}" wx:for-item="item"  wx:for-index="itemIndex">
+                    <view class="action">
+                        <image src='{{item.product.images[0]}}' 
+                            class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                            style="width:60px;height:60px"
+                            mode="aspectFill"
+                            ></image>
+                    </view>
+                    <view class="content ">
+                        <view class="text-black text-left text-sm">{{item.product.name}}</view>
+                        <view class="text-gray  text-left text-sm ">{{item.attr_desc}}</view>
+                        <view class="flex justify-between">
+                            <view class="text-gray "></view>
+                            <view class="text-gray  flex justify-between align-center">			
+                                <text class="padding-lr-xs text-sm">数量：{{item.quantity}}</text>		
+                            </view>
+                        </view>
+                    </view>
+                </view>					
+            </view>
+
+            <view class="padding-tb padding-lr bg-white flex justify-between align-center solid-bottom">
+                <view class="text-gray text-sm">备注</view>
+                <view class="text-black  text-sm text-right" >{{order.order_notes[0].Note == "订单已支付" ? "未填写" : order.order_notes[0].Note   }}</view>
+            </view>
+            <view class="cu-bar   bg-white solid-bottom ">
+                <view class="action"></view>
+                <view class="action">		                   
+                    <text class="text-gray  text-sm margin-right-xs">用户已支付金额</text>						
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">{{order.order_total}}</text>
+                </view>
+            </view>	
+
+            <view class="bg-white ">
+                <view class="padding text-red"  wx:if="{{order.shipping_status_code == SHIP_STATUS_ING }}">配送状态：{{order.shipping_status}}</view>
+            </view>
+
+
+            <view class="bg-white cu-bar" >  
+                <view class="action"></view>
+                <view class="action">
+                     <button class="cu-btn line-yellow text-sm " wx:if="{{TabCur==0}}">未核销</button>
+                     <button class="cu-btn bg-yellow text-sm text-white" wx:else>已核销</button>
+                </view>
+            </view>
+            <!-- <view class="bg-white " wx:if="{{TabCur==0}}">
+            
+
+                <view class="padding" wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}" >  
+                        <text class="text-red   margin-right-xs">提醒：{{order.payment_status}}（请在详情中操作）</text>			
+                </view>
+                <view class="padding" wx:elif="{{order.shipping_status_code == SHIP_STATUS_CANCEL || order.shipping_status_code == SHIP_STATUS_EXCEPTION}}" >   
+                    <text class="text-red   margin-right-xs">提醒：{{order.shipping_status}}（请在详情中操作）</text>			
+                </view>
+                <view class="cu-bar" wx:else>
+
+                    <view class="action" > 
+                        <view wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}">            
+                            <text class="text-gray  text-sm margin-right-xs">商户支付配送费</text>						
+                            <text class=" text-xl text-red text-bold text-price"></text>
+                            <text class=" text-xl text-red text-bold">{{order.store_take_ship_fee}}</text>
+                        </view>   
+                    </view>
+                    <view class="action">
+                        <button wx:if="{{order.payment_status_code == PAYMENT_STATUS_REFUND_APPLY}}"
+                            class="cu-btn round bg-red margin-right-sm text-sm" catchtap="clickCancle" data-order_id="{{order.id}}">退款</button> 
+
+                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_WM}}" 
+                            catchtap="orderShipSF" data-order_id="{{order.id}}"  data-name="顺丰接单">顺丰接单</button>
+                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_ZQ}}"
+                            catchtap="orderShipStore" data-order_id="{{order.id}}" data-name="到店自取接单" >到店自取接单</button>  
+                        <button class="cu-btn bg-yellow text-sm text-white" wx:if="{{order.customertaketype == STORE_TAKE_TYPE_TS}}"
+                            catchtap="orderShipStore" data-order_id="{{order.id}}" data-name="堂食接单" >堂食接单</button>       
+                    </view>
+                </view>
+            </view>	 -->
+            
+
+        </view>
+    </view>
+
+    <view class=" padding-xs flex  align-center margin-top justify-center">
+        <text class="text-center text-sm  text-gray">到底了</text>		
+    </view>
+
