@@ -104,10 +104,11 @@ class dbSystem extends dbFather {
 
     /**
         * @method 获取当前门店
+        根据ID，获取门店信息
     */
     productGetStoreInfo(data) {
         return new Promise((resolve, reject) => {
-            this.base({ url: this.HOST_URL + "api/current_store", data: data, }).then(res => {
+            this.base({ url: this.HOST_URL + "api/store/getbyid", data: data, }).then(res => {
                 resolve(res)
             }).catch(res => {
                 reject(res)

@@ -67,10 +67,6 @@ Page({
         })
 
         wx.showModal({ title: res.msg, showCancel: false, })
-        // if (res.code == 0)
-        //     wx.showModal({ title: res.msg, showCancel: false, })
-        // if (res.code == -1)
-        //     wx.showModal({ title: , showCancel: false, })
     },
 
     // 嗨翻节扫码
