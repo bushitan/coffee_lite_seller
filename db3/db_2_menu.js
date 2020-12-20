@@ -233,7 +233,7 @@ class dbSystem extends dbFather {
     productScanOrderID(data) {
         return new Promise((resolve, reject) => {
             // wx.showLoading({ title: "加载中" })
-            this.base({ url: this.HOST_URL + "api/seller/scan/", data: data, })
+            this.base({ url: this.HOST_URL + "api/shoper/HxOrder/", data: data, })
                 .then(res => {
                     // wx.hideLoading()
                     resolve(res)
@@ -261,6 +261,34 @@ class dbSystem extends dbFather {
 
 
 
+    /************角色权限************/
+    productGetSellerUserInfo(data) {
+        return new Promise((resolve, reject) => {
+            wx.showLoading()
+            this.base({ url: this.HOST_URL + "api/customer/selfinfo", data: data, }).then(res => {
+                wx.hideLoading()
+                resolve(res)
+            }).catch(res => {
+                wx.hideLoading()
+                reject(res)
+            })
+        })
+    }
+
+    productGetSellerRoles(data) {
+        return new Promise((resolve, reject) => {
+            // wx.showLoading({ title: "加载中" })
+            this.base({ url: this.HOST_URL + "api/customer/maproles/", data: data, })
+                .then(res => {
+                    // wx.hideLoading()
+                    resolve(res)
+                })
+                .catch(res => {
+                    // wx.hideLoading()
+                    reject(res)
+                })
+        })
+    }
 }
 
 

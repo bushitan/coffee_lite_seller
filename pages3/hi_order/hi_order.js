@@ -111,10 +111,12 @@ Page({
             case 0: var res = await app.db.orderGetList({
                 ShopId: this.data.shopId,
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING, //CreatedAtMin: today
+                LimitShop: 1,
             });break;
             case 1: var res = await app.db.orderGetList({
                 ShopId: this.data.shopId,
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE, //CreatedAtMin: today
+                LimitShop: 1,
             });break;
         }
         this.setData({

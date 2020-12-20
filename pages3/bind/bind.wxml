@@ -1,0 +1,3 @@
+<!--pages3/bind/bind.wxml-->
+
+<web-view src="{{src}}"></web-view>

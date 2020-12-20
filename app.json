@@ -34,11 +34,10 @@
         "pages_shop/order/address/address",
         "pages_shop/order/list/list",
         "pages_shop/stats/stats",
-
         "pages_my/my/my",
         "pages_my/score_geo/score_geo",
-
-        "pages4/mall/index/index"
+        "pages4/mall/index/index",
+        "pages3/bind/bind"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -66,16 +65,16 @@
                 "text": "便利店"
             },
             {
-                "pagePath": "pages3/index/index",
-                "iconPath": "/images/icon/prize_un.png",
-                "selectedIconPath": "/images/icon/prize.png",
-                "text": "接单收银"
-            },
-            {
-                "pagePath": "pages_my/my/my",
+                "pagePath": "pages_shop/admin/admin",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "我的"
+                "text": "小程序点单"
+            },
+            {
+                "pagePath": "pages3/index/index",
+                "iconPath": "/images/icon/score_un.png",
+                "selectedIconPath": "/images/icon/score.png",
+                "text": "接单收银"
             }
         ]
     },

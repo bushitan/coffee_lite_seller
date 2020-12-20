@@ -10,6 +10,7 @@ class dbStats extends dbFather {
     }
 
     WM_URL = "https://wm.51zfgx.com/"
+    // WM_URL = "http://139.159.241.56:8089/"
     APP_ID = "7016db59b1e84bd1a84f4e974074fa78"  //
 
     STORE_TAKE_TYPE_WM = 1 // 外卖

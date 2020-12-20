@@ -292,11 +292,11 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 32,
 					"name": "pages3/index/index 收银",
 					"pathName": "pages3/index/index",
-					"query": "",
-					"scene": null
+					"query": "bind_shop_id=99",
+					"scene": 1047
 				},
 				{
 					"id": -1,
