@@ -118,11 +118,20 @@
 
 
             <view class="bg-white cu-bar" >  
-                <view class="action"></view>
+                <view class="action">
+                    <view wx:if="{{TabCur==1}}">
+                        <view class="text-red text-sm">核销时间：{{order.order_notes[order.order_notes.length-1].compeleTime}}</view>
+                        <view class="text-red text-sm">核销门店：{{order.order_notes[order.order_notes.length-1].hx_ShopName}}</view>
+                    </view>
+                </view>
                 <view class="action">
                      <button class="cu-btn line-yellow text-sm " wx:if="{{TabCur==0}}">未核销</button>
-                     <button class="cu-btn bg-yellow text-sm text-white" wx:else>已核销</button>
-                </view>
+                     <view wx:else >
+                        
+                        <button class="cu-btn bg-yellow text-sm text-white" >已核销</button>
+                
+                     </view>
+                    </view>
             </view>
             <!-- <view class="bg-white " wx:if="{{TabCur==0}}">
             

@@ -168,11 +168,11 @@
         <text class="text-center text-sm  text-gray">到底了</text>		
     </view>
 
-    <view class="weui-loadmore weui-loadmore_line" >
+    <!-- <view class="weui-loadmore weui-loadmore_line" >
         <view class="weui-loadmore__tips weui-loadmore__tips_in-line" style='font-size:8pt;top:-1.2em'>
             小程序点单开通，请联系对接客服
         </view>
-    </view>
+    </view> -->
 
     <view class="padding bg-white flex justify-around solid-top" style="position:fixed; bottom:0;left:0;right:0;"  >
         <button class="cu-btn  line-yellow round  " catchtap="onInit" >刷新</button>

@@ -70,9 +70,10 @@ Page({
             wx.setNavigationBarTitle({
                 title: '商户ID:' + res.data.sn  ,
             })
+            this.onInit() // 初始化
         })
       
-        this.onInit() // 初始化
+        
 
         // var that = this
         // interval = setInterval(function(){
@@ -113,18 +114,48 @@ Page({
                 Page: 1, Limit: 100, FilterStatus: app.db.SELLER_PENDING, //CreatedAtMin: today
                 LimitShop: 1,
             });break;
-            case 1: var res = await app.db.orderGetList({
-                ShopId: this.data.shopId,
-                Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE, //CreatedAtMin: today
-                LimitShop: 1,
-            });break;
+            case 1: 
+             
+                var res = await app.db.orderGetList({
+                    ShopId: this.data.shopId,
+                    Page: 1, Limit: 100, FilterStatus: app.db.SELLER_COMLETE,
+                    //CreatedAtMin: today
+                    LimitShop: 1,
+                });
+                var data = res.data                
+                for (var i = 0; i < data.length-1;i++){
+                    for (var j = i+1; j < data.length; j++) {
+                        var temp = data[i]
+                        console.log(temp.order_notes[temp.order_notes.length - 1].compeleTime)
+                        console.log(i,j)
+                        if (this.compareTime(
+                                data[i].order_notes[data[i].order_notes.length - 1].compeleTime, 
+                                data[j].order_notes[data[j].order_notes.length - 1].compeleTime
+                            )){
+
+                            data[i] = data[j]
+                            data[j] = temp
+                        }
+                    }
+                }
+                res.data = data
+                break;
         }
         this.setData({
             list: res.data
         })
     },
 
- 
+    compareTime(date, date1) {
+        var date = new Date(date);
+        var date1 = new Date(date1);
+        if (date.getTime() - date1.getTime() < 0) {
+            return  true// false //'第一个时间大';
+        } else {
+            return false//true // '第二个时间大';
+        }
+    },
+    
 
     // 拨打用户号码
     takePhone(e){

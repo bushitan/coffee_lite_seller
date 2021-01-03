@@ -64,7 +64,7 @@ Page({
             StartDate: this.data.CreatedAtMin,
             EndDate: this.data.CreatedAtMax,
             PageIndex: 1,
-            PageSize:50,
+            PageSize:300,
             IsAll: true,
         })
 

@@ -15,9 +15,9 @@ Page({
         ROLE_MANAGER: 6,//门店核销员
         ROLE_MENU: 11,//门店核销员
         // ROLE_CUSTOMER_PAY:3,// 普通会员   用户支付
-        isSeller:false,
-        isManager:false,
-        isMenu:false,
+        isSeller:!false,
+        isManager:!false,
+        isMenu:!false,
     },
 
     /**
@@ -31,6 +31,8 @@ Page({
     async onInit(){
         wx.showLoading({mask:true})
         var res = await app.db3.productSellerGetToken()
+
+        var res =  app.db4.login() //登录ii
 
 
         var res = await app.db3.productGetStoreList()

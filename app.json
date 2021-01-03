@@ -68,13 +68,13 @@
                 "pagePath": "pages_shop/admin/admin",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "小程序点单"
+                "text": "小程序接单"
             },
             {
                 "pagePath": "pages3/index/index",
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
-                "text": "接单收银"
+                "text": "核销收银"
             }
         ]
     },
