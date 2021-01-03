@@ -1,0 +1,259 @@
+<!--pages3/order/order.wxml-->
+
+
+<!-- <view class="flex justify-center">
+    <image src="/images/qr/meni_pay.png" mode="widthFix"></image>
+</view>
+<view class="flex justify-center text-bold text-xl">
+    扫码支付
+</view> -->
+
+
+<page-meta 
+    background-color="#ffffff"
+    root-background-color="#ffffff"
+    background-color-top="#ffffff"
+    background-color-bottom="#ffffff"
+    root-font-size="20px"
+    page-orientation=""    
+    scroll-top="{{mirrorScroll}}"
+></page-meta>
+
+<view class="pad page {{config.theme}}">
+    <view class="pg-space-xxl"></view>
+
+    <view class="padding-xl {{isMirror?'pg-mirror-vertical':''}}">
+        <view class="padding-tb text-xl">门店信息</view>
+        <view class="solid-top  padding-tb">      
+            <text class="cuIcon-home margin-right"></text> 
+            <text class="">{{store.Name||"SeekingCoffee 金湖店"}}</text> 
+        </view>
+
+        <view class="padding-tb text-xl">订单备注</view>
+        <view class="solid-top  padding-tb flex align-center ">      
+            <text class="cuIcon-write margin-right"></text> 
+            <input placeholder="请输入口味等" name="OrderNote" placeholder-class="text-xl" class="text-xl basis-xl theme-text " bindinput="inputOrderNote"></input>
+        </view>
+        
+        <view class="padding-tb text-xl margin-top">商品信息</view>
+        <view class="solid-top padding-tb">
+            <view class="flex justify-between margin-tb-xl " wx:for="{{order}}" wx:for-item="item"  wx:for-index="key">
+                <view class="basis-xl flex ">   
+                    <view>
+                        <image src='{{item.cover}}' 
+                        class="cu-avatar radius xl block bg-gray margin-right-sm " 
+                        style="width:60px;height:60px"
+                        mode="aspectFill"
+                        ></image>
+                    </view>      
+                    <view>
+                        <view class="text-black   text">{{item.name}}</view>
+                        <view class="text-gray   text-sm">{{item.attDes}}</view>
+                    </view>       
+                    
+                </view>
+                <view class="basis-xs text-right">
+                    <view class="">
+                        <text class="text-price text-bold"></text>
+                        <text class="text-bold">{{item.total}}</text>									
+                    </view>
+                    <view class="">
+                        <view class="text-gray text-sm">x{{item.Quantity}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="flex justify-end ">
+            <view>
+            <text class="margin-right-xs">共1件，订单金额：</text>						
+            <text class="text-sl text-red text-bold text-price"></text>
+            <text class="text-sl text-red text-bold">{{preOrder.order_total || ""}}</text>
+            </view>
+            
+        </view>
+
+        
+    </view>
+
+    <view class="flex justify-between align-center bg-white padding-xl solid-top" style="position: fixed; bottom:0; left: 0; right: 0;">
+        <view class="  text-xl">
+            <text class="text-black"> 订单金额：</text>
+            <text class="text-price text-red text-bold text-sl"></text>
+            <text class="text-red text-sl text-bold">{{preOrder.order_total || ""}}</text>
+        </view>
+            
+        <view class=""   >
+
+        
+            <navigator class='cu-btn margin-right-sm radius lg' open-type="navigateBack" >返回</navigator>
+            <button class='cu-btn margin-right-sm  lg' catchtap="switchMirror"   >反转</button>	
+            <button class="cu-btn text-gray  margin-right  lg" catchtap="switchPayMethod">
+                <!-- <text >支付方式：</text> -->
+                <text class="text-yellow text-bold">
+                    <text wx:if="{{PayMethod == 0 }}">微信支付</text>
+                    <text wx:if="{{PayMethod == 1 }}">支付宝</text>
+                    <text wx:if="{{PayMethod == 2 }}">零钱</text>
+                    <text wx:if="{{PayMethod == 3 }}">银联</text>
+                    <text wx:if="{{PayMethod == 4 }}">其他</text>
+                    <text wx:if="{{PayMethod == 5 }}">小杯子优惠GO</text>
+                </text>
+                <text class="margin-left-xs">[切换]</text>
+                
+            </button>
+            <button class="cu-btn bg-yellow text-white shadow shadow-blur lg" catchtap="genOrder" >下单</button>	
+                <!-- disabled="{{noPowerPay}}" -->
+        </view>
+    </view>
+
+
+
+
+
+    <view class="cu-modal padding-tb-xl {{ showQR?'show':''}}" >
+        <view class="cu-dialog" style=" position: relative;">
+            <view class="flex justify-between align-center padding solid-bottom">
+                <view class="action"></view>
+                <view class="content text-bold">                        
+                    <text wx:if="{{PayMethod == 0 }}">微信支付</text>
+                    <text wx:if="{{PayMethod == 1 }}">支付宝</text>
+                    <text wx:if="{{PayMethod == 2 }}">零钱</text>
+                    <text wx:if="{{PayMethod == 3 }}">银联</text>
+                    <text wx:if="{{PayMethod == 4 }}">其他</text>
+                    <text wx:if="{{PayMethod == 5 }}">小杯子优惠GO</text>
+                </view>
+                <view class="action" catchtap="closeShow">
+                    <!-- <text class="cuIcon-close text-red"></text> -->
+                </view>
+            </view>
+            <view class="padding">
+                <image src='/images/qr/zhifubao.jpg' class="cu-avatar radius xl  bg-gray margin-right-sm {{isMirror?'pg-mirror-vertical':''}} " mode="widthFix" style="width:60%;"></image>
+            </view>
+            <view class="padding bg-white">
+                <button class="cu-btn bg-gray lg radius  margin-right " catchtap="closeShowQR">取消订单</button>
+                <button class="cu-btn bg-yellow text-white lg radius "  wx:if="{{PayMethod == 1 }}" catchtap="confirmZFB">支付宝确认收款</button>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="pg-space-xxl"></view>
+    <view class="pg-space-xxl"></view>
+
+</view>
+
+
+
+
+
+<!-- <view class="padding margin-top" >
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-form-group" catchtap="selectStore">
+            <view class="action basis-sm">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">下单门店</text>      
+            </view>
+            <view class="action text-sm  ">			
+                <text class="text-bold ">{{store.Name}}</text>
+            </view>
+        </view>
+        <view class="cu-form-group  text-right text-sm text-gray">
+            <view class="action text-sm">订单备注(选填)</view>
+            <input placeholder="请输入口味等" name="OrderNote" placeholder-class="text-sm" class="text-sm " bindinput="inputOrderNote"></input>
+            <view class="pg-arrow"></view>
+        </view> 
+    </view> 
+</view> 
+<view class="padding-lr margin-top">
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="text-black text-sm">商品明细</text>      
+            </view>
+        </view>
+        <view class="cu-list menu ">
+            <view class="cu-item margin-tb-sm" wx:for="{{order}}" wx:for-item="item"  wx:for-index="key">
+                <view class="action"> 
+                    <image src='{{item.cover}}' 
+                        class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                        style="width:60px;height:60px"
+                        mode="aspectFill"
+                        ></image>
+                </view>
+                <view class="content">
+                    <view class="text-black   text">{{item.name}}</view>
+                    <view class="text-gray   text-sm">{{item.attDes}}</view>
+                    
+                    <view class=" flex justify-between">
+                        <view class="action">
+                            <view class=" text-sm">数量：{{item.Quantity}}</view>
+                        </view>
+                        <view class="action">
+                            <text class="text-price text-red"></text>
+                            <text class="text-red">{{item.total}}</text>									
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="cu-list menu ">            
+            <view class="cu-item " >
+                <view class="action">商品费用</view>
+                <view class="action text-red ">							
+                    <template wx:if="{{preOrder.order_discount > 0}}">
+                        <text class="text-gray  text-sm ">已优惠</text>						
+                        <text class="text-price text-sm text-red "></text>
+                        <text class="  text-sm text-red margin-right">{{preOrder.order_discount}}</text>
+                    </template>
+                    <text class="text-price"></text>
+                    <text class="text-red">{{preOrder.order_with_discount || ""}}</text>	
+                </view>
+            </view>
+            <view class="cu-item " wx:if="{{ShopTakeValue != SHOP_TAKE_TS}}">
+                <view class="action">包装费</view>
+                <view class="action text-red ">
+                    <text class="text-price"></text>
+                    <text class="text-red">{{preOrder.wm_cost}}</text>			
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar   ">
+            <view class="action"></view>
+            <view class="action">	           
+                
+                <text class="text-gray  text-sm margin-right-xs">合计</text>						
+                <text class=" text-xl text-red text-bold text-price"></text>
+                <text class=" text-xl text-red text-bold">{{preOrder.order_total || ""}}</text>
+            </view>
+        </view>					
+    </view>
+</view>
+
+<view class="pg-space-xxl"></view> -->
+
+
+<!-- <view class="bg-white cu-list menu padding-tb-sm solid-top" style="position: fixed; bottom:0; left: 0; right: 0;">
+    <view class="cu-item" >
+        <view class="content basis-df">
+            <view class="text-red text-bold text-xl">
+                订单总计：<text class="text-price text-red"></text>{{preOrder.order_total || ""}}
+            </view>
+            <view class="text-sm" catchtap="switchPayMethod">                
+                <text >支付方式：</text>
+                <text wx:if="{{PayMethod == 0 }}">微信支付</text>
+                <text wx:if="{{PayMethod == 1 }}">支付宝</text>
+                <text wx:if="{{PayMethod == 2 }}">零钱</text>
+                <text wx:if="{{PayMethod == 3 }}">银联</text>
+                <text wx:if="{{PayMethod == 4 }}">其他</text>
+                <text wx:if="{{PayMethod == 5 }}">小杯子优惠GO</text>
+                <text class="margin-left-xs">[切换]</text>
+            </view>                
+        </view>
+        <view class="action"  >
+            <button class='cu-btn round bg-yellow text-white shadow margin-right-sm' catchtap="getOrderGen"
+                disabled="{{noPowerPay}}">下单</button>	
+        </view>
+    </view>
+</view> -->

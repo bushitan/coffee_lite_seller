@@ -1,0 +1,229 @@
+<!--pages3/menu/menu.wxml-->
+
+<wxs module="check">
+function isEmpty(order){
+    
+    //var l = Object.keys(order)
+    //console.log(JSON.stringify(order) )
+    //return l
+    if(JSON.stringify(order) === "{}")
+        return true
+    else
+        return false
+
+   // for (var i = 0 ;i<order.length ; i++) 
+   //     console.log(i)
+
+    
+}
+module.exports = {
+  isEmpty : isEmpty,
+}
+</wxs>
+
+<page-meta 
+    background-color="#ffffff"
+    root-background-color="#ffffff"
+    background-color-top="#ffffff"
+    background-color-bottom="#ffffff"
+    root-font-size="20px"
+    page-orientation=""
+    
+></page-meta>
+<!-- scroll-top="{{mirroScroll}}" -->
+    <!-- scroll-duration="1000" -->
+
+
+
+
+<view class="pad page {{config.theme}}">
+<!-- <view class="pad page theme-red"> -->
+
+
+    <view class=" {{isMirror?'pg-mirror-vertical':''}} ">        
+        <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh)" 
+        scroll-top="{{productScrollTop}}" bindscroll="productMathTop" >
+    
+            <view style="margin-top:80px"></view>
+            <view class="padding" wx:for="{{list}}"   wx:for-item="category" wx:for-index='index' id="main-{{index}}">
+                <view class="cuIcon-titles theme-text  text-xxl"> {{category.category.cate_name}}</view> 
+                    
+                <view class="margin-top flex justify-start"  style=" flex-wrap:wrap;" >
+                    <view class="  padding-xs radius " style="flex-basis: 25%;"
+                    wx:for="{{category.products}}"  wx:for-item="item" wx:for-index="itemIndex" 
+                    catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}"  >
+
+                        <text class="text-df pg-ellipsis-1 text-center  text-gray  padding-tb-sm  {{isMirror?'pg-mirror-vertical':''}}">{{item.name}}</text>
+
+                        <view class=" shadow shadow-warp bg-white">
+                            <image src="{{item.imgs[0].src}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
+                            <view class="padding-sm ">            
+                                <view class="text-df name">{{item.name}}</view>
+                                <view class="flex justify-between align-center ">
+                                    <view>
+                                        <text class="text-price text-red text-bold text-xl"></text>
+                                        <text class="text-red text-bold text-xxl margin-right-xs">{{item.price}}</text>
+                                        <text class="cu-tag line-red sm radius" wx:if="{{product.priceDiscount}}">{{product.priceDiscount}}</text>
+                                    </view>
+                                    <view style="position:relative" >
+                                        <button class="cu-btn round theme-line  text-sm" >选规格</button>
+                                        <view class="cu-tag badge" wx:if="{{item.num>0}}">{{item.num}}</view>	
+                                    </view>
+                                </view>
+                                <view style="position:relative">
+                                    <text wx:for="{{product.markerList}}" wx:for-item="marker"  wx:key="*this"
+                                    class="cu-tag line-{{marker.color}} sm radius" wx:if="{{marker.text==''?false:true}}">{{marker.text}}</text>
+                                </view>                    
+                            </view>
+                        </view>                        
+                    </view>            
+                </view>
+            </view>
+            <view class="pg-space-xxl"></view>
+            <view class="pg-space-xxl"></view>
+        </scroll-view>
+    </view>
+
+
+    <!-- 菜单栏 wx:if="{{isMirror}}"   {{index==tabCur?'text-yellow cur text-xl text-bold':' text-gray text-df'}}-->
+    <view class="tab-customer " hidden="{{!isMirror || showChoice || showOrder}}"> 
+        <view class="flex justify-end pg-mirror-vertical  padding-xl"  >
+            <button class=" cu-btn lg radius theme-bg text-white margin-left" 
+                wx:for="{{list}}" wx:for-item="category" wx:for-index="index" wx:key  
+                catchtap="TabSelect" data-id="{{index}}">{{category.category.cate_name}}</button>            
+        </view> 
+    </view>
+
+
+    <view class="pg-space-xxl"></view>
+
+    <view class="padding " style="position: fixed; bottom:{{SpaceBottom}}px; left: 0; right: 0;background-color: rgba(255,255,255,0.8);" >
+        <view class="flex justify-between"  >
+            <view class="flex align-center">
+                <view class="cu-avatar round lg " catchtap="openBill" > 
+                    <image  src='{{config.icon.cart}}' class="cu-avatar  lg round " mode="aspectFill"></image>  
+                    <view class="cu-tag badge">{{total.totalQuantity || 0}}</view>                    
+                </view>
+                <view class="content">
+                    <view class="text-grey">
+                        <view class="text-bold text-xl text-red">
+                            <text class="text-price "></text>{{total.totalPrice || 0}}
+                        </view>
+                    </view>                
+                </view>
+            </view>
+            <view class="">
+                <navigator class='cu-btn margin-right-sm radius lg' open-type="navigateBack" >退出</navigator>
+                <button class='cu-btn margin-right-sm  lg' catchtap="switchMirror" >反转</button>	
+                <button class='cu-btn radius lg bg-red shadow-blur text-white shadow margin-right-sm' catchtap="toPay" disabled="{{check.isEmpty(order)}}">去结算</button>	
+                <button class='cu-btn radius lg bg-yellow shadow-blur text-white shadow margin-right-sm' catchtap="toList">订单列表</button>	
+            </view>
+        </view>
+
+        
+    </view>
+
+    <view wx:if="{{showReLoad}}" class="flex justify-center" style="position: fixed; width: 750rpx; top: 50%;">
+        <button catchtap="onInit"> 重新加载</button>
+    </view>
+
+
+    <!-- 产品详情 -->
+    <include src="wxml/dialog_choice.wxml"/>  
+    <!-- 购物车 -->
+    <include src="wxml/dialog_order.wxml"/>
+    
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <view class=" text-black" style="background-color:#000000; height:100px ;top:0;position:fixed;right:0;left:0;"> </view> -->
+
+    <!-- <view class=" text-black" style="background-color:#000000; height:100px ;position:fixed; bottom:0;right:0;left:0;"> 
+    
+    </view> -->
+
+ <!-- <swiper class="screen-swiper square-dot  bg-white" :indicator-dots="true" :circular="false" :autoplay="true" interval="5000"
+    duration="500">
+    <swiper-item class="swiper-height" wx:for="{{swiperList}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+</swiper>  -->
+
+
+<!-- 
+    <view class=" {{isMirror?'pg-mirror-vertical':''}} full"  wx:if="{{false}}">
+        
+        <view class="pg-space-xxl" wx:if="{{isMirror}}"></view>
+        <view class="pg-space-xl" wx:else></view>
+        
+            <view class=" text-center  text-xl   ">燕麦奶菜单</view>
+            <view class="margin-top-xs text-center text-sm  text-gray">{{store.Name}}</view>
+     
+        <scroll-view 
+            scroll-y 
+            style="height:calc(100vh - 100rpx)" 
+            scroll-with-animation 
+            scroll-into-view="main-{{MainCur}}" 
+            bindscroll="VerticalMain"            
+        >
+            <view class="padding" wx:for="{{list}}"   wx:for-item="category" wx:for-index='index' id="main-{{index}}">
+                <view class="cuIcon-titles"> {{category.category.cate_name}}</view> 
+                    
+                <view class="margin-top flex justify-start"  style=" flex-wrap:wrap;" >
+                    <view class="  padding-xs radius product" style="flex-basis: 25%;"
+                    wx:for="{{category.products}}"  wx:for-item="item" wx:for-index="itemIndex" 
+                    catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}"  >
+
+                        <view class="text-xs text-center  text-gray  padding-tb-sm  {{isMirror?'pg-mirror-vertical':''}}">{{item.name}}</view>
+
+                        <view class=" shadow shadow-warp bg-white">
+                            <image src="{{item.imgs[0].src}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
+                            <view class="padding-sm ">            
+                                <view class="text-df name">{{item.name}}</view>
+                                <view class="flex justify-between align-center ">
+                                    <view>
+                                        <text class="text-price text-red text-bold text-xl"></text>
+                                        <text class="text-red text-bold text-xxl margin-right-xs">{{item.price}}</text>
+                                        <text class="cu-tag line-red sm radius" wx:if="{{product.priceDiscount}}">{{product.priceDiscount}}</text>
+                                    </view>
+                                    <view style="position:relative" >
+                                        <button class="cu-btn round line-yellow  text-sm" >选规格</button>
+                                        <view class="cu-tag badge" wx:if="{{item.num>0}}">{{item.num}}</view>	
+                                    </view>
+                                </view>
+                                <view style="position:relative">
+                                    <text wx:for="{{product.markerList}}" wx:for-item="marker"  wx:key="*this"
+                                    class="cu-tag line-{{marker.color}} sm radius" wx:if="{{marker.text==''?false:true}}">{{marker.text}}</text>
+                                </view>                    
+                            </view>
+                        </view>                        
+                    </view>
+                
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+     -->

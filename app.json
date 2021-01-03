@@ -37,8 +37,12 @@
         "pages_my/my/my",
         "pages_my/score_geo/score_geo",
         "pages4/mall/index/index",
-        "pages3/bind/bind"
+        "pages3/bind/bind",
+        "pages_pad/pad/menu/menu",
+        "pages_pad/pad/order/order",
+        "pages_pad/pad/index/index"
     ],
+    "entryPagePath":"pages_pad/pad/index/index",
     "window": {
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",
@@ -69,6 +73,12 @@
                 "iconPath": "/images/icon/score_un.png",
                 "selectedIconPath": "/images/icon/score.png",
                 "text": "小程序接单"
+            },
+            {
+                "pagePath": "pages_pad/pad/index/index",
+                "iconPath": "/images/icon/score_un.png",
+                "selectedIconPath": "/images/icon/score.png",
+                "text": "点单"
             },
             {
                 "pagePath": "pages3/index/index",

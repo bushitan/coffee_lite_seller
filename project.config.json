@@ -4,15 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": false,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": false,
 		"scopeDataCheck": false,
@@ -20,16 +19,17 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"enableEngineNative": false,
 		"bundle": true,
+		"preloadBackgroundData": false,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"enableEngineNative": false,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
@@ -338,6 +338,20 @@
 					"name": "pages3/hi_order/hi_order",
 					"pathName": "pages3/hi_order/hi_order",
 					"query": "shopID=101",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_pad/pad/menu/menu",
+					"pathName": "pages_pad/pad/menu/menu",
+					"query": "shopID=15",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_pad/pad/index/index",
+					"pathName": "pages_pad/pad/index/index",
+					"query": "shopID=15",
 					"scene": null
 				}
 			]

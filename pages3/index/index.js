@@ -95,7 +95,11 @@ Page({
 
     /***************店员下单收银*************/
     // 点单
-    toMenu(e) { wx.navigateTo({ url: '/pages3/menu/menu?shopID=' + this.data.list[this.data.currentIndex].Id }) },
+    // toMenu(e) { wx.navigateTo({ url: '/pages3/menu/menu?shopID=' + this.data.list[this.data.currentIndex].Id }) },
+    toMenu(e) { 
+        wx.navigateTo({ 
+            url: '/pages_pad/pad/menu/menu?shopID=' + 15 // + this.data.list[this.data.currentIndex].Id 
+        }) },
     // 收银下单列表
     toCashList(e) { wx.navigateTo({ url: '/pages3/cash_list/cash_list?shopID=' + this.data.list[this.data.currentIndex].Id }) },
 

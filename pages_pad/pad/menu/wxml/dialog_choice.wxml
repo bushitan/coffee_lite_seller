@@ -1,0 +1,107 @@
+
+<!-- 详情选项 -->
+<view class="cu-modal {{showChoice?'show':''}} " >
+    <view class="menu-dialog {{isMirror?'pg-mirror-vertical':''}}" style="position: absolute;top:120rpx;bottom:120rpx;left: 0;right: 0;">
+        <scroll-view class="" scroll-y scroll-with-animation style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)"> 
+            <image src='{{currentItem.imgs[0].src}}' class="block " style="width:100%; height:150px" mode="widthFix"></image>
+            <view class="padding-lr margin-top">
+                <view class="flex flex-start">
+                    <text class="bg-gray radius  text-sm margin-right-sm padding-xs"
+                        wx:for="{{currentItem.tags}}"  wx:key="*this"  wx:for-item="tag" wx:for-index="tagIndex">{{tag}}</text>	
+                </view>
+                <view class="radius text-sm text-left margin-top-sm">{{currentItem.shortDescription || ""}}</view>			
+            </view>
+
+            <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}"  wx:key="*this" wx:for-item="att"  wx:for-index="attIndex">
+                <view class=" text-left margin-top-sm text-gray text-sm">{{att.productAttributeName}}</view>
+                <view class="flex flex-start flex-wrap margin-top-sm">	
+                    <view class="text-sm text-center margin-right-sm margin-bottom-sm" wx:for="{{ att.attributeValues }}" wx:key="*this"  wx:for-item="value" wx:for-index="valueIndex">
+                        <button class="cu-btn radius {{att.attributeValues[valueIndex].isSelect?'theme-bg text-white' :'line-gray'}}"                     
+                        catchtap="clickAtt"
+                        data-attindex="{{attIndex}}"
+                        data-valueindex="{{valueIndex}}"
+                        >{{value.name}}
+                        </button>		
+                    </view>
+                </view>
+            </view>
+            <view class="pg-space-xxl"></view>
+            <view class="pg-space-xxl"></view>
+            <view class="pg-space-xxl"></view>
+        </scroll-view>
+
+        <view class="" style="position: absolute ;bottom: 0; left: 0;right: 0; ">                                     
+            <view class="padding mask" >
+                <view class="flex justify-between align-center text-xxl">						
+                    <view class=" ">
+                        <text class="text-price text-red text-xxl text-bold"></text>
+                        <text class="text-red text-xxl text-bold">{{ currentItem.price}}</text>
+                        <text  hidden="{{order[key]?order[key].attDes == ''? true:false : true}}">
+                            <text class="text-gray text-sm margin-left" >已选规格：</text>
+                            <text class="text-sm">{{order[key]?  order[key].attDes:""}}	</text>	
+                        </text>
+                    </view>				
+                    <view class="flex justify-between align-center">                        
+                        <!-- <image src="{{config.icon.cut}}"  class="cu-avatar  bg-white" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></image>								
+                        <text class="padding-lr-sm">{{ order[key].Quantity || 0 }}</text>	
+                        <image src="{{config.icon.add}}"  class="cu-avatar  bg-white" catchtap="addItem"></image> -->
+                        
+                        <text class="cuIcon-roundleftfill-copy theme-text text-sl" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></text>
+                        <text class="padding-lr-sm">{{ order[key].Quantity || 0 }}</text>	
+                        <text class="cuIcon-roundrightfill theme-text text-sl"  catchtap="addItem"></text>
+                    </view>						
+                </view>
+            </view>
+        </view>            
+    </view>
+
+    
+    <view class=" text-center" style="position: absolute;{{ isMirror?'top:50rpx':'bottom:50rpx'}}; left: 0;right: 0;" >          
+        <button class="cu-btn lg text-bold radius {{ isMirror?'pg-mirror-vertical':''}}" catchtap="closeShow">继续选择</button>
+    </view>
+
+    
+    <view class=" text-center flex justify-between align-center padding" style="position: absolute;bottom: 0rpx; left: 0;right: 0;" wx:if="{{isMirror}}">          
+        <view class="flex flex-start">
+            <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}"  wx:key="*this" wx:for-item="att"  wx:for-index="attIndex">
+                <view class=" text-left margin-top-sm text-gray text-sm">{{att.productAttributeName}}</view>
+                <view class="flex flex-start flex-wrap margin-top-sm">	
+                    <view class="text-sm text-center margin-right-sm margin-bottom-sm" wx:for="{{ att.attributeValues }}" wx:key="*this"  wx:for-item="value" wx:for-index="valueIndex">
+                        <button class="cu-btn radius {{att.attributeValues[valueIndex].isSelect?'bg-yellow text-white' :'line-gray'}}"                     
+                        catchtap="clickAtt"
+                        data-attindex="{{attIndex}}"
+                        data-valueindex="{{valueIndex}}"
+                        >{{value.name}}
+                        </button>		
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- <view> -->
+            
+        <view class="flex justify-between align-center text-xxl">	
+            <view>
+                <button class="cu-btn  lg margin-right" catchtap="closeShow">继续选择</button>	
+            </view>				
+            <view class=" margin-right">
+                <text class="text-price text-xxl text-bold text-white"></text>
+                <text class="text-xxl text-bold text-white">{{ currentItem.price}}</text>
+            </view>				
+            <view class="flex justify-between align-center">                        
+                <!-- <image src="{{config.icon.cut}}"  class="cu-avatar  " catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></image>	 -->
+                <text class="cuIcon-roundleftfill-copy theme-text text-sl" catchtap="cutItem" 	hidden="{{order[key]? false : true}}"></text>
+                <text class="padding-lr-sm text-white">{{ order[key].Quantity || 0 }}</text>	
+                <text class="cuIcon-roundrightfill theme-text text-sl"  catchtap="addItem"></text>
+                <!-- <image src="{{config.icon.add}}"  class="cu-avatar  " catchtap="addItem"></image> -->
+            </view>	
+                                
+        </view>
+        <!-- </view> -->
+    </view>
+
+</view>
+
+
+
+

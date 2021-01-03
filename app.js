@@ -3,11 +3,20 @@ var db = require('db/db.js')
 var db3 = require('db3/db.js')
 var db4Share = require('db4_share/db.js')
 var db5Customer = require('db5_customer/db.js')
+
+var configBehaviors = require('behaviors/config.js')
+import { promisifyAll, promisify } from 'lib/miniprogram-api-promise/index.js'; // wx API化  promisify all wx's api
+const wxp = {}
+promisifyAll(wx, wxp)
+wx = wxp
+
 App({
     db: db,
     db3: db3,
     db4: db4Share,
     db5Customer: db5Customer,
+
+    configBehaviors: configBehaviors,
     async onLaunch (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
         this.globalData.scene = options.scene

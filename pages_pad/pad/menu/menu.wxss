@@ -1,0 +1,147 @@
+/* pages3/menu/menu.wxss */
+
+
+/* @import '/static/css/pad_color.wxss'; */
+
+
+
+.page{
+    background-color: #ffffff;
+}
+
+.col{
+  width: 200rpx;
+  height: 200rpx;
+  border: 1px solid #000000;
+  border-radius: 10rpx;
+}
+.ttt{
+    font-size: 2rem;
+    color:aqua;
+}
+
+.mask_bg{
+    background: rgba(255,255,255, 0.6);
+}
+
+.menu-dialog {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	width: 680rpx;
+	max-width: 100%;
+	/* background-color: #f8f8f8; */
+    background: rgba(255,255,255, 0.9);
+	/* border-radius: 10rpx; */
+	overflow: hidden;
+}
+
+.mask{
+    background-color: rgba(255,255,255,0.8);
+    transform:translateZ(10px); 
+}
+
+
+
+
+.tab-customer{
+    position: fixed; top:0px; left: 0; right: 0;
+    background-color: rgba(255,255,255,0.8);
+    transform:translateZ(5px); 
+}
+
+
+
+
+
+
+
+
+.nowrap{
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis;
+}
+
+
+.screen-swiper , .screen-swiper swiper-item,.screen-swiper image{
+		
+}
+.swiper-height{
+    height: 250rpx;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 99;
+}
+
+.VerticalNav.nav {
+    width: 200rpx;
+    white-space: initial;
+}
+
+.VerticalNav.nav .cu-item {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    border: none;
+    height: auto;
+    position: relative;
+    padding: 15rpx 15rpx;
+
+}
+
+.VerticalNav.nav .cu-item.cur {
+    background-color: #ffffff;
+}
+
+.VerticalNav.nav .cu-item.cur::after {
+    content: "";
+    width: 8rpx;
+    height: 30rpx;
+    border-radius: 10rpx 0 0 10rpx;
+    position: absolute;
+    background-color: currentColor;
+    top: 0;
+    right: 0rpx;
+    bottom: 0;
+    margin: auto;
+}
+
+.VerticalBox {
+    display: flex;
+}
+
+.VerticalMain {
+    /* background-color: #f1f1f1; */
+    /* background-color: --var(ghostWhite); */
+    /* flex: 1; */
+}
+
+.cu-item:after{border: none !important;}
+
+.swiper_image{
+    position: relative;
+}
+.swiper_mask{
+    position: absolute;
+    bottom:0;
+}
+
+
+
+.name{
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    display: -webkit-box;
+    display: box;
+
+    line-height:20rpx;
+    min-height:40rpx;
+}
