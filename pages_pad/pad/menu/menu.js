@@ -4,6 +4,7 @@ var ProductsBehaviors = require('../../../behaviors/sku/products.js')
 var OrderBehaviors = require('../../../behaviors/sku/order.js')
 var ItemBehaviors = require('../../../behaviors/sku/item.js')
 var MirrorBehaviors = require('../../../behaviors/mirror.js') // 镜像控制
+var EntryOrderBehaviors = require('behaviors/entry_order.js') // 镜像控制
 var app = getApp()
 console.log(ProductsBehaviors)
 Page({
@@ -36,7 +37,7 @@ Page({
 
     },
 
-    behaviors: [app.configBehaviors, ProductsBehaviors, OrderBehaviors, ItemBehaviors, MirrorBehaviors],
+    behaviors: [app.configBehaviors, ProductsBehaviors, OrderBehaviors, ItemBehaviors, MirrorBehaviors, EntryOrderBehaviors],
 
 
 
@@ -64,6 +65,10 @@ Page({
     },
     async onInit() {
         this.productInit()
+        this.setData({
+            order: wx.getStorageSync("order") || {}
+        })
+        this.orderTotalSet() // 计算总价
     },   
     // 获取门店信息
     async getStore() {

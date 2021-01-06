@@ -42,7 +42,7 @@
         "pages_pad/pad/order/order",
         "pages_pad/pad/index/index"
     ],
-    "entryPagePath":"pages_pad/pad/index/index",
+    "entryPagePath": "pages_pad/pad/index/index",
     "window": {
         "backgroundTextStyle": "light",
         "backgroundColor": "#ffffff",

@@ -14,7 +14,7 @@
             <text class="line-red text-bold">{{shopDiscount}}</text>
         </view>
         <view class="">
-            <view class="flex align-start  padding-lr margin-bottom"wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
+            <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
                 <view class="action">
                     <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
                 </view>

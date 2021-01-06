@@ -11,10 +11,6 @@ module.exports = Behavior({
     attached() {    },
     detached() {    },
     ready(){
-        this.setData({
-            order: wx.getStorageSync("order") || {}
-        })
-        this.orderTotalSet() // 计算总价
        
         // wx.setStorageSync("order", this.data.order)
     },

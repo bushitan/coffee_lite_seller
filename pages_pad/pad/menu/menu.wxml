@@ -114,6 +114,7 @@ module.exports = {
             </view>
             <view class="">
                 <navigator class='cu-btn margin-right-sm radius lg' open-type="navigateBack" >退出</navigator>
+                <button class='cu-btn margin-right-sm  lg' catchtap="entryOrderDialogOpen" >挂单</button>	
                 <button class='cu-btn margin-right-sm  lg' catchtap="switchMirror" >反转</button>	
                 <button class='cu-btn radius lg bg-red shadow-blur text-white shadow margin-right-sm' catchtap="toPay" disabled="{{check.isEmpty(order)}}">去结算</button>	
                 <button class='cu-btn radius lg bg-yellow shadow-blur text-white shadow margin-right-sm' catchtap="toList">订单列表</button>	
@@ -132,6 +133,8 @@ module.exports = {
     <include src="wxml/dialog_choice.wxml"/>  
     <!-- 购物车 -->
     <include src="wxml/dialog_order.wxml"/>
+    <!-- 挂单 -->
+    <include src="wxml/dialog_entry_order.wxml"/>
     
 </view>
 
