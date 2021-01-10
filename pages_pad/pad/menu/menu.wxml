@@ -53,9 +53,9 @@ module.exports = {
                     wx:for="{{category.products}}"  wx:for-item="item" wx:for-index="itemIndex" 
                     catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}"  >
 
-                        <text class="text-df pg-ellipsis-1 text-center  text-gray  padding-tb-sm  {{isMirror?'pg-mirror-vertical':''}}">{{item.name}}</text>
+                        <!-- <text class="text-df pg-ellipsis-1 text-center  text-gray  padding-tb-sm  {{isMirror?'pg-mirror-vertical':''}}">{{item.name}}</text> -->
 
-                        <view class=" shadow shadow-warp bg-white">
+                        <view class=" shadow shadow-warp bg-white margin-top">
                             <image src="{{item.imgs[0].src}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
                             <view class="padding-sm ">            
                                 <view class="text-df name">{{item.name}}</view>
@@ -135,6 +135,8 @@ module.exports = {
     <include src="wxml/dialog_order.wxml"/>
     <!-- 挂单 -->
     <include src="wxml/dialog_entry_order.wxml"/>
+    <!-- 冒泡提示框 -->
+    <!-- <include src="wxml/dialog_pop.wxml"/> -->
     
 </view>
 

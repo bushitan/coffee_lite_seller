@@ -4,6 +4,8 @@
 /* @import '/static/css/pad_color.wxss'; */
 
 
+@import 'wxss/pop.wxss';
+
 
 .page{
     background-color: #ffffff;

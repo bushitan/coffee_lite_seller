@@ -1,0 +1,62 @@
+
+
+
+<view class="head ">
+    <view class="bg padding-xl">
+        <!-- <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
+            <view class="action">
+                <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
+            </view>
+            <view class="" style="width:100%">
+                <view class="text-black text-left">{{item.name}}</view>
+                <view class="flex justify-between">
+                    <view class="text-gray ">
+                        <view class="text-gray  text-sm text-left" >
+                            <text decode="{{true}}"  space="{{true}}"> {{item.attDes}} &nbsp;</text>
+                        </view>
+                        <text class="text-price"></text>
+                        <text class="text-red">{{item.total}}</text>
+                    </view>
+                    <view class="text-black text-bold  flex justify-between align-center">
+                    <text class="padding-lr-xs text-xxl ">x{{ order[key].Quantity || 0 }}</text>							
+                                            
+                    </view>
+                </view>
+            </view>
+        </view>					 -->
+
+
+        <view class="theme-text" style="font-size:120rpx;">
+            
+        </view>
+    </view>
+</view>
+
+
+
+
+<view class="head ">
+    <view class="bg padding-xl pg-mirror-vertical mi">
+        <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
+            <view class="action">
+                <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
+            </view>
+            <view class="" style="width:100%">
+                <view class="text-black text-left">{{item.name}}</view>
+                <view class="flex justify-between">
+                    <view class="text-gray ">
+                        <view class="text-gray  text-sm text-left" >
+                            <text decode="{{true}}"  space="{{true}}"> {{item.attDes}} &nbsp;</text>
+                        </view>
+                        <text class="text-price"></text>
+                        <text class="text-red">{{item.total}}</text>
+                    </view>
+                    <view class="text-black text-bold  flex justify-between align-center">
+                    <text class="padding-lr-xs text-xxl ">x{{ order[key].Quantity || 0 }}</text>							
+                                            
+                    </view>
+                </view>
+            </view>
+        </view>					
+    </view>
+</view>

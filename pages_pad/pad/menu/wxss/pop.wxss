@@ -1,0 +1,45 @@
+
+
+
+
+.bg{
+	
+    position: absolute;
+    top: 60vh;
+    left: 100rpx;
+    right:100rpx;
+    /* bottom:100rpx; */
+
+
+
+
+    
+	/* 为了实现椭圆效果 */
+	/* width: 120%;
+	height: 132px; */
+	/* 只设置左下角和右下角的圆角 */
+	/* border-radius: 0 0 80% 80%; */
+	/* 设置高斯模糊 */
+	/* filter: blur(3px) opacity(90%);
+    background-color: goldenrod;
+	background-size: cover; */
+
+
+    backdrop-filter: blur(3px) ; 
+
+    /* 设置背景半透明黑色 */
+    background: rgba(255,255,255, 0.4); 
+    
+    /* transform:translateZ(100px);  */
+    z-index: 9999999;
+}
+
+.mi{
+    
+    transform:translateZ(100px); 
+    top: 20vh;
+}
+
+.text{
+    color: green;
+}
