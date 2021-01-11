@@ -5,9 +5,8 @@
 .bg{
 	
     position: absolute;
-    top: 60vh;
-    left: 100rpx;
-    right:100rpx;
+    left: 0rpx;
+    right:0rpx;
     /* bottom:100rpx; */
 
 
@@ -25,21 +24,94 @@
 	background-size: cover; */
 
 
-    backdrop-filter: blur(3px) ; 
+    /* backdrop-filter: blur(3px) ;  */
 
     /* 设置背景半透明黑色 */
-    background: rgba(255,255,255, 0.4); 
+    /* background: rgba(255,255,255, 0.4);  */
     
     /* transform:translateZ(100px);  */
     z-index: 9999999;
+      animation: animated-action 0.5s; 
 }
 
-.mi{
+
+.seller{
+    bottom:0rpx; 
+}
+
+.customer{
     
     transform:translateZ(100px); 
-    top: 20vh;
+    top: 0vh;
 }
+
+
+@keyframes animated-action{
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
+    opacity:0;
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255,255,255,0);
+    opacity:1;
+  }
+}
+
+
+
+
 
 .text{
     color: green;
+}
+
+.head-btn{
+    
+    position: absolute;
+    left: 200rpx;
+    right:200rpx;
+    z-index: 999999999;
+    /* transition: all 0.3s ease-in-out 0s; */
+    /* transition: opacity 0.3s ease-out 0.3s; */
+    /* animation-name: fadeIn; */
+    /* opacity:0.6; */
+
+
+  animation: animated-border 1.5s; 
+
+}
+
+.show-btn-seller{
+    top: 70vh;
+}
+.show-btn-customer{
+    bottom: 70vh;
+}
+
+
+@-webkit-keyframes fadeOut {
+    0% {
+    opacity: 1; /*初始状态 透明度为0*/
+    }
+    50% {
+    opacity: 0.5; /*中间状态 透明度为0*/
+    }
+    100% {
+    opacity: 0; /*结尾状态 透明度为1*/
+    }
+}
+
+
+
+@keyframes animated-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
+  }
+  30% {
+    box-shadow: 0 0 0 20px rgba(255,255,255,0);
+  }
+  100% {
+    /* box-shadow: 0 0 0 20px rgba(255,255,255,0); */
+    opacity:0;
+  }
 }

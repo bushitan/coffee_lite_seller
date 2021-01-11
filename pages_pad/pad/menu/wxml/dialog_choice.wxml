@@ -1,6 +1,6 @@
 
 <!-- 详情选项 -->
-<view class="cu-modal {{showChoice?'show':''}} " >
+<view class="cu-modal backdrop-sm  {{showChoice?'show':''}} " >
     <view class="menu-dialog {{isMirror?'pg-mirror-vertical':''}}" style="position: absolute;top:120rpx;bottom:120rpx;left: 0;right: 0;">
         <scroll-view class="" scroll-y scroll-with-animation style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)"> 
             <image src='{{currentItem.imgs[0].src}}' class="block " style="width:100%; height:150px" mode="widthFix"></image>

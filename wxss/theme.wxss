@@ -5,6 +5,7 @@
 .theme-red .theme-lines::after { border-color: var(--red); }
 .theme-red .theme-line,
 .theme-red .theme-lines { color: var(--red); }
+.theme-red  .backdrop-bg { background: rgba(229,77,66, 0.4); }
 
 
 .theme-yellow .theme-text{ color: var(--yellow); }
@@ -34,3 +35,16 @@
 .theme-olive .theme-lines::after { border-color: var(--olive); }
 .theme-olive .theme-line,
 .theme-olive .theme-lines { color: var(--olive); }
+
+
+
+
+
+
+.backdrop-orange {
+    background: rgba(243,123,29, 0.4); 
+}
+
+.backdrop-orange {
+    background: rgba(243,123,29, 0.4); 
+}

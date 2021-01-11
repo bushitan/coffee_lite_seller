@@ -7,6 +7,8 @@ var MirrorBehaviors = require('../../../behaviors/mirror.js') // 镜像控制
 var EntryOrderBehaviors = require('behaviors/entry_order.js') // 镜像控制
 var app = getApp()
 console.log(ProductsBehaviors)
+
+var timeout;
 Page({
 
     /**
@@ -132,11 +134,29 @@ Page({
 
     // 切换SKU
     clickAtt(e) {
-        this.itemSKUSet(e)
+        var clickSkuName = this.itemSKUSet(e)
         this.itemGetSKUPrice()
         this.orderKeySet()
 
+
+        // 点击后事件
+        if (timeout){
+            clearTimeout(timeout)
+            this.setData({ showTest: false  })
+        }
+        this.setData({ showTest: true, clickSkuName: clickSkuName})
+        timeout = setTimeout(() => {
+            this.setData({ showTest: false })
+            clearTimeout(timeout)
+        }, 1500)
+
     },
+
+    swtichShowOrderTestAction(){
+        this.setData({ showOrderTestAction: !this.data.showOrderTestAction})
+    },
+
+
 
     // 在sku增加数量
     addItem() {

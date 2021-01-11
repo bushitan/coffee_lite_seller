@@ -1,9 +1,14 @@
 
+<view class=" "  >
+    <view style="position: absolute;    bottom: 50rpx;   right:300rpx;     z-index: 99999999;" >
+        <button class="cu-btn" catchtap="swtichShowOrderTestAction" >显示购物车</button>
+    </view>
+</view>
 
 
-<view class="head ">
-    <view class="bg padding-xl">
-        <!-- <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
+<view class="head "  wx:if="{{showOrderTestAction}}">
+    <view class="bg padding-xl backdrop-df backdrop-black  radius shadow seller">
+        <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
             <view class="action">
                 <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
             </view>
@@ -23,10 +28,10 @@
                     </view>
                 </view>
             </view>
-        </view>					 -->
+        </view>					
 
 
-        <view class="theme-text" style="font-size:120rpx;">
+        <view class="theme-text" >
             
         </view>
     </view>
@@ -35,8 +40,8 @@
 
 
 
-<view class="head ">
-    <view class="bg padding-xl pg-mirror-vertical mi">
+<view class="head " wx:if="{{showOrderTestAction}}">
+    <view class="bg padding-xl pg-mirror-vertical backdrop-df backdrop-white shadow customer radius">
         <view class="flex align-start  padding-lr margin-bottom" wx:for="{{order}}" wx:key="*this" wx:for-item="item" wx:for-index="key">
             <view class="action">
                 <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
@@ -60,3 +65,19 @@
         </view>					
     </view>
 </view>
+
+
+<view class=" " wx:if="{{showTest}}">
+    <view class="head-btn show-btn-seller  text-white text-sl text-bold backdrop-xs backdrop-yellow padding-xl text-center round" >
+        {{clickSkuName}}
+    </view>
+</view>
+
+
+
+<view class=" " wx:if="{{showTest}}">
+    <view class="head-btn show-btn-customer pg-mirror-vertical text-white text-sl text-bold backdrop-xs backdrop-yellow padding-xl text-center round" >
+        {{clickSkuName}}
+    </view>
+</view>
+

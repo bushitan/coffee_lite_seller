@@ -6,6 +6,7 @@
 
 @import '/wxss/pad_color.wxss';
 @import '/wxss/theme.wxss';
+@import '/wxss/backdrop.wxss';
 
 /* .pg-space-10{height: spaw} */
 

@@ -136,7 +136,7 @@ module.exports = {
     <!-- 挂单 -->
     <include src="wxml/dialog_entry_order.wxml"/>
     <!-- 冒泡提示框 -->
-    <!-- <include src="wxml/dialog_pop.wxml"/> -->
+    <include src="wxml/dialog_pop.wxml"/>
     
 </view>
 

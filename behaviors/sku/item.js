@@ -87,7 +87,8 @@ module.exports = Behavior({
             //             currentItem.attributes[i].attributeValues[j].isSelect = false
             //     }
             // }
-            
+            // debugger
+            return currentItem.attributes[attIndex].attributeValues[valueIndex].name
         },
 
         /**
