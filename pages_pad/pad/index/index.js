@@ -24,6 +24,12 @@ Page({
 
         wx.navigateTo({ url: '/pages_pad/pad/menu/menu?shopID=99', })   // 品牌专栏
     },
+
+
+    toManager(){
+
+        wx.navigateTo({ url: '/pages_manager/seller/seller', })   // 品牌专栏
+    },
     /**
      * 用户点击右上角分享
      */

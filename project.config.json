@@ -353,6 +353,19 @@
 					"pathName": "pages_pad/pad/index/index",
 					"query": "shopID=15",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/test/test",
+					"pathName": "pages_manager/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/seller/seller 2021店家操作",
+					"pathName": "pages_manager/seller/seller",
+					"scene": null
 				}
 			]
 		}

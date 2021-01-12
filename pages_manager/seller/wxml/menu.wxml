@@ -1,0 +1,16 @@
+
+<view wx:for="{{menuList}}" wx:for-item="menu"  wx:for-index="i"  wx:key>
+    <view class="padding-lr  margin-top-sm">
+        <view class="text-bold text-{{menu.color}}">
+            <text class="cuIcon-titles "></text>
+            <text>{{menu.name}}</text>
+        </view>    
+        <view class=" grid col-4 ">
+            <view class="padding-tb-xs flex justify-center" wx:for="{{menu.list}}" wx:for-item="node"  wx:for-index="j"  wx:key > 
+                <view class="cu-avatar round xl bg-{{node.bg}} text-{{node.text}}"  catchtap="clickMenu" data-i="{{i}}" data-j="{{j}}">
+                    <text class="avatar-text text-bold">{{node.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

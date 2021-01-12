@@ -1,0 +1,5 @@
+<!--pages_manager/test/test.wxml-->
+
+<view class="">
+    <button class="cu-btn lg bg-blue margin"  wx:for="{{list}}" catchtap="toNav" data-index="{{index}}">{{item.name}}</button>
+</view>

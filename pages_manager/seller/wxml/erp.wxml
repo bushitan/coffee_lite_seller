@@ -1,0 +1,15 @@
+
+<view class="padding-lr  margin-top">
+    <view class="text-bold">
+        <text class="cuIcon-titles text-yellow"></text>
+        <text>进销存</text>
+    </view>
+    <view class=" grid col-4 ">
+        <view class="padding-tb-xs flex justify-center" wx:for="{{erpList}}" wx:key > 
+            <view class="cu-avatar round xl bg-red"  catchtap="clickERP" data-index="{{index}}">
+                <text class="avatar-text text-bold">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+

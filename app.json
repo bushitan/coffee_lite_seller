@@ -38,6 +38,28 @@
         "pages_my/score_geo/score_geo",
         "pages4/mall/index/index",
         "pages3/bind/bind",
+
+
+        "pages_manager/test/test",
+        "pages_manager/seller/seller",
+        "pages_manager/receive/receive",
+        "pages_manager/scan/scan",
+        "pages_manager/refund/refund",
+
+        "pages_erp/add/add",
+        "pages_erp/check/check",
+        "pages_erp/stock/stock",
+
+        "pages_product/adjust/adjust",
+
+        "pages_stat/collect/collect",
+        "pages_stat/member/member",
+        "pages_stat/order/order",
+        "pages_stat/store/store",
+
+        
+
+        
         "pages_pad/pad/menu/menu",
         "pages_pad/pad/order/order",
         "pages_pad/pad/index/index"

@@ -1,0 +1,15 @@
+
+<view class="padding-lr  margin-top">
+    <view class="text-bold">
+        <text class="cuIcon-titles text-yellow"></text>
+        <text>操作</text>
+    </view>
+    <view class=" grid col-4 ">
+        <view class="padding-tb-xs flex justify-center" wx:for="{{operationList}}" wx:key > 
+            <view class="cu-avatar round xl bg-red"  catchtap="clickOperation" data-index="{{index}}">
+                <text class="avatar-text text-bold">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
