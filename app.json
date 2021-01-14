@@ -111,6 +111,10 @@
         ]
     },
     "usingComponents": {
+        "bar": "components/bar/bar",
+        "tabbar": "components/tabbar/tabbar",
+        "search": "components/search/search",
+        "dialog": "components/dialog/dialog",
         "cu-custom": "components2/cu-custom/cu-custom",
         "cover": "components2/cover/cover",
         "employee": "components2/employee/employee",

@@ -1,2 +1,14 @@
 <!--pages_manager/seller/seller.wxml-->
-<text>pages_manager/seller/seller.wxml</text>
+
+<search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search>
+<bar></bar>
+<tabbar></tabbar>
+
+<view wx:for="{{list}}" wx:key>
+    <include src="/wxml/node/order.wxml"></include>
+</view>
+
+
+<dialog show="{{dialogShow}}"   textConfirm="查看订单" bindsuccess="dialogConfirm">
+    <include src="/wxml/node/order.wxml"></include>
+</dialog>

@@ -1,0 +1,15 @@
+<!--components/search/search.wxml-->
+
+<form bindsubmit="confirm">
+<view class="cu-bar search bg-white {{config.theme}}">
+    
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="{{placeholder}}" name="input" confirm-type="search"></input>
+        </view>
+        <view class="action">
+            <button class="cu-btn  theme-bg text-white shadow-blur round" form-type="submit">搜索</button>
+        </view>
+</view>
+
+</form>

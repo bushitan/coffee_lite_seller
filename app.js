@@ -5,6 +5,9 @@ var db4Share = require('db4_share/db.js')
 var db5Customer = require('db5_customer/db.js')
 
 var configBehaviors = require('behaviors/config.js')
+var listBehaviors = require('behaviors/list.js')
+var dialogBehaviors = require('behaviors/dialog.js')
+
 import { promisifyAll, promisify } from 'lib/miniprogram-api-promise/index.js'; // wx API化  promisify all wx's api
 const wxp = {}
 promisifyAll(wx, wxp)
@@ -17,6 +20,14 @@ App({
     db5Customer: db5Customer,
 
     configBehaviors: configBehaviors,
+
+    behaviors:{
+        configBehaviors:configBehaviors,
+        listBehaviors:listBehaviors,
+        dialogBehaviors:dialogBehaviors,
+
+    },
+
     async onLaunch (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
         this.globalData.scene = options.scene

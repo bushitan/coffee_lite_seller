@@ -6,16 +6,29 @@ Component({
     properties: { 
     },
     data: {
-        
+        dialogShow:!true,
     },
-    behaviors: [app.configBehaviors],
+    behaviors: [app.behaviors.configBehaviors,app.behaviors.listBehaviors ,app.behaviors.dialogBehaviors],
 
 
     observers:{
 
     },
     methods:{
+
+        // 点击搜索框
+        async search(e){
+            console.log(e.detail)
             
+            this.setData({dialogShow:true })
+
+        },
+        
+        // 点击confirm
+        dialogConfirm(e){
+            console.log(e.detail)
+            this.setData({dialogShow:false })
+        },
 
 
         // /**

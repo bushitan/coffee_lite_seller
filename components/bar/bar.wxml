@@ -1,0 +1,7 @@
+<!--components/bar/bar.wxml-->
+
+<scroll-view scroll-x class="bg-white nav text-center {{config.theme}}">
+    <view class="cu-item {{index==TabCur?'theme-text cur':''}}" wx:for="{{3}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        Tab{{index}}
+    </view>
+</scroll-view>

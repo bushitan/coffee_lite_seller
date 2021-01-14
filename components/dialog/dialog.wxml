@@ -1,0 +1,19 @@
+<!--components/bar/bar.wxml-->
+
+<view class="cu-modal {{show?'show':''}} backdrop-sm {{config.theme}}">
+    <view class="cu-dialog" >
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">{{title}}</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>            
+            <slot></slot>
+            <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn theme-line " bindtap="hideModal" wx:if="{{showCancel}}">{{textCancel}}</button>
+                <button class="cu-btn theme-bg text-white margin-left" bindtap="clickConfirm">{{textConfirm}}</button>
+            </view>
+        </view>
+    </view>
+</view>

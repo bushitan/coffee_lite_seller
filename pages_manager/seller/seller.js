@@ -29,6 +29,14 @@ Component({
                 ],
             },
             {
+                name: "数据分析 ", color: "green",
+                list: [
+                    { name: "营业额", url: "/pages_manager/order/order", text: "white", bg: "green" },
+                    { name: "产品", url: "/pages_manager/collect/collect", text: "green", bg: "gray" },
+                    { name: "用户画像", url: "/pages_manager/member/member", text: "green", bg: "gray" },
+                ],
+            },
+            {
                 name: "商品 ", color: "red",
                 list: [
                     { name: "上下架", url: "/pages_product/adjust/adjust", text: "white", bg: "red" },
@@ -40,7 +48,7 @@ Component({
                 name: "进销存 ", color: "black",
                 list: [
                     { name: "入库", url: "/pages_erp/add/add", text: "", bg: "gray" },
-                    { name: "库存", url: "/pages_erp/stock/stock", text: "", bg: "gray" },
+                    // { name: "库存", url: "/pages_erp/stock/stock", text: "", bg: "gray" },
                     { name: "盘点", url: "/pages_erp/check/check", text: "", bg: "gray" },
                 ],
             },
