@@ -7,6 +7,19 @@ Component({
     },
     data: {
         dialogShow:!true,
+
+        tabbarIndex:0,
+        tabIndex:0,
+        tabMatrix:[
+            {
+                name:"小商店", 
+                select:"/images/icon/mall.png",
+                unSelect:"/images/icon/mall_un.png",
+                list:[
+                    { name:"待处理" },{ name:"处理中" },{ name:"已完成" },{ name:"已取消" },
+                ]
+            }
+        ]
     },
     behaviors: [app.behaviors.configBehaviors,app.behaviors.listBehaviors ,app.behaviors.dialogBehaviors],
 
@@ -23,6 +36,11 @@ Component({
             this.setData({dialogShow:true })
 
         },
+
+        // 点击bar
+        clickBar(e){
+            console.log('clickBar',this.data.tabbarIndex,e.detail)
+        },
         
         // 点击confirm
         dialogConfirm(e){
@@ -30,6 +48,8 @@ Component({
             this.setData({dialogShow:false })
         },
 
+
+        
 
         // /**
         //  * 用户点击右上角分享

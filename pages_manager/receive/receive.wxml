@@ -1,8 +1,8 @@
 <!--pages_manager/seller/seller.wxml-->
 
 <search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search>
-<bar></bar>
-<tabbar></tabbar>
+<bar list="{{tabMatrix[tabbarIndex].list}}" bindclick="clickBar"></bar>
+<tabbar matrix="{{tabMatrix}}" ></tabbar>
 
 <view wx:for="{{list}}" wx:key>
     <include src="/wxml/node/order.wxml"></include>

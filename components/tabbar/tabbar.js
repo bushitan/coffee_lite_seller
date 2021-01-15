@@ -5,7 +5,10 @@ Component({
      * 组件的属性列表
      */
     properties: {
-
+      matrix:{
+        type:Array,
+        value:[],
+      }
     },
 
     behaviors: [app.configBehaviors],
