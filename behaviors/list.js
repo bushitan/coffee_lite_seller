@@ -43,7 +43,6 @@ module.exports = Behavior({
 
     //准备完成
     ready() {
-        console.log("listBehaviors")
     },
     methods: {
 

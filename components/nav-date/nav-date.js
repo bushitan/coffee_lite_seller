@@ -4,11 +4,11 @@ Component({
      * 组件的一些选项
      */
     options: {
-            styleIsolation: 'apply-shared',
-            addGlobalClass: true,
-            multipleSlots: true
-        },
-        behaviors: [app.configBehaviors],
+        styleIsolation: 'apply-shared',
+        addGlobalClass: true,
+        multipleSlots: true
+    },
+    behaviors: [app.configBehaviors],
     /**
      * 组件的对外属性
      */

@@ -1,26 +1,32 @@
 <!--components/bar/bar.wxml-->
-
-<scroll-view scroll-x class=" nav text-center {{ theme? theme: config.theme}}"  >
+<scroll-view scroll-x class=" nav text-center "  >
     <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':' light-white '}}" wx:for="{{list}}" wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
         {{item.name}}
     </view>
 </scroll-view>
 
- <view class="cu-bar  search text-white padding-lr text-sm">
-    <view class="flex justify-start"  >
-    
-        <picker mode="date" value="{{date}}"  bindchange="DateChange">
-            <text class="margin-right-sm">
-                <text>2021年1月</text><text class="cuIcon-unfold "></text>
-            </text>
-		</picker>       
-        <picker mode="date" fields="month" value="{{date}}"  bindchange="DateChange">
-            <text class="">
-                <text>2021年1月</text><text class="cuIcon-unfold "></text>
-            </text>
-		</picker>       
+<form bindsubmit="getQuery">
+    <view class="cu-bar  search text-white padding-lr text-sm">
+        <view class="flex justify-start"  >
+                <picker mode="date" value="{{starttoday}}" name="startDate" bindchange="startDateEvent" wx:if="{{TabCur!=1}}">
+                    <text class="margin-right-sm">
+                        <text>{{starttoday}}</text><text class="cuIcon-unfold "></text>
+                    </text>
+                </picker>       
+                <picker mode="date" fields="month" value="{{startMonth}}"  name="startMonth"  bindchange="startMonthEvent"  wx:if="{{TabCur==1}}">
+                    <text class="margin-right-sm">
+                        <text>{{startMonth}}</text><text class="cuIcon-unfold "></text>
+                    </text>
+                </picker>       
+                <picker mode="date"  value="{{endtoday}}" name="endDate"  bindchange="endDateEvent" wx:if="{{TabCur==2}}">
+                    <text class="">
+                        <text>{{endtoday}}</text><text class="cuIcon-unfold "></text>
+                    </text>
+                </picker>      
+        </view>
+        <view class=" text-right">
+            <!-- <text class="">Seeking Coffee【鲤湾店】</text><text class="cuIcon-unfold "></text> -->
+            <button class="cu-btn line-white sm round" form-type="submit">查询</button>
+        </view>
     </view>
-    <view class=" text-right">
-        <text class="">Seeking Coffee【鲤湾店】</text><text class="cuIcon-unfold "></text>
-    </view>
-</view>
+</form> 

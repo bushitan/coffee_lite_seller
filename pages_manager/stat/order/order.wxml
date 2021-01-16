@@ -4,9 +4,9 @@
 
 <bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar> -->
 
-<view class="{{config.theme}}">
+<view class="{{config.themeAdmin}}">
     <view class="theme-bg">
-        <bar-date class=""></bar-date>
+        <bar-date class="" bindconfirm="confirm"></bar-date>
     </view>
 
     <tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>

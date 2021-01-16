@@ -1,6 +1,6 @@
 
 
-<view  class="{{config.theme}}">
+<view  class="{{config.themeAdmin}}">
     <view class="cu-custom text-white " style="height:{{CustomBar}}px">
         <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
             <view class="action" bindtap="BackPage">
