@@ -14,42 +14,33 @@ Component({
             {
                 name:"操作 ", color:"yellow",
                 list: [
-                    { name: "接单", url: "/pages_manager/receive/receive", text: "black", bg: "yellow" },
-                    { name: "核销", url: "/pages_manager/scan/scan", text: "white", bg: "yellow" },
-                    { name: "退款", url: "/pages_manager/refund/refund", text: "", bg: "gray" },
+                    { name: "收款", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
+                    { name: "核销", url: "/pages_manager/action/scan/scan", text: "white", bg: "yellow" },
+                    { name: "接单", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
+                    { name: "退款", url: "/pages_manager/action/refund/refund", text: "red", bg: "gray" },
+                    { name: "会员", url: "/pages_manager/action/refund/refund", text: "yellow", bg: "gray" },
                 ],
             },
             {
                 name: "统计 ", color: "blue",
                 list: [
-                    { name: "订单", url: "/pages_manager/order/order", text: "white", bg: "blue" },
-                    { name: "对账单", url: "/pages_manager/collect/collect", text: "blue", bg: "gray" },
-                    { name: "会员", url: "/pages_manager/member/member", text: "blue", bg: "gray" },
-                    { name: "门店", url: "/pages_stat/store/store", text: "blue", bg: "gray" },
-                ],
-            },
-            {
-                name: "数据分析 ", color: "green",
-                list: [
-                    { name: "营业额", url: "/pages_manager/order/order", text: "white", bg: "green" },
-                    { name: "产品", url: "/pages_manager/collect/collect", text: "green", bg: "gray" },
-                    { name: "用户画像", url: "/pages_manager/member/member", text: "green", bg: "gray" },
+                    { name: "订单", url: "/pages_manager/stat/order/order", text: "white", bg: "blue" },
+                    { name: "会员", url: "/pages_manager/stat/member/member", text: "blue", bg: "gray" },
+                    { name: "门店", url: "/pages_manager/stat/store/store", text: "blue", bg: "gray" },
                 ],
             },
             {
                 name: "商品 ", color: "red",
                 list: [
-                    { name: "上下架", url: "/pages_product/adjust/adjust", text: "white", bg: "red" },
-                    // { name: "修改", url: "/pages_manager/seller/seller", text: "red", bg: "gray" },
+                    { name: "上下架", url: "/pages_manager/product/stock/stock", text: "white", bg: "red" },
                 ],
             },
 
             {
-                name: "进销存 ", color: "black",
+                name: "原材料进销存 ", color: "black",
                 list: [
-                    { name: "入库", url: "/pages_erp/add/add", text: "", bg: "gray" },
-                    // { name: "库存", url: "/pages_erp/stock/stock", text: "", bg: "gray" },
-                    { name: "盘点", url: "/pages_erp/check/check", text: "", bg: "gray" },
+                    { name: "入库", url: "/pages_manager/product/in/in", text: "", bg: "gray" },
+                    { name: "盘点", url: "/pages_manager/product/check/check", text: "", bg: "gray" },
                 ],
             },
         ]

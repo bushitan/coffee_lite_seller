@@ -1,0 +1,131 @@
+/**
+ * 获取查询列表具体的数据
+ */
+
+
+class Utils {
+    constructor(){}
+
+    // 菜单矩阵
+    matrix = [
+            {
+                name: "外卖",
+                select: "/images/icon/score.png",
+                unSelect: "/images/icon/score_un.png",
+                list: [
+                    { name: "申请退款", id: 11 },  { name: "已完成", id: 12 }, { name: "退款取消", id: 13 },
+                ]
+            },
+            {
+                name: "小商店",
+                select: "/images/icon/mall.png",
+                unSelect: "/images/icon/mall_un.png",
+                list: [
+                    { name: "申请退款", id: 21 },  { name: "已完成", id: 22}, { name: "退款取消", id: 23 },
+                ]
+            }
+        ]
+
+    // 查询列表的哈希索引
+    mapQueryList = {
+
+        /****外卖*****/
+        // 申请退款
+        11 : (page,range) =>{
+            return new Promise((resolve, reject) => {
+                var res = { 
+                    data:  {
+                        data: [
+                            {
+                                name: "订单1",
+                                summary: "描述1",
+                            },
+                            {
+                                name: "订单2",
+                                summary: "描述2",
+                            },
+                        ],
+                        page :page + 1,
+                        range : 10,
+                        count : 10
+                    }
+                }
+                resolve(res)
+            })
+        },
+        // 已完成
+        12: (page, range) => {
+            return new Promise((resolve, reject) => {
+                var res = {
+                    data: {
+                        data: [1, 2, 0,0],
+                        page: page + 2,
+                        range: 14,
+                        count: 10
+                    }
+                }
+                resolve(res)
+            })
+        },
+
+        // 退款取消
+        13: (page, range) => {
+            return new Promise((resolve, reject) => {
+                var res = { }
+                resolve(res)
+            })
+        },
+
+
+
+
+        /****小商店*****/
+        // 申请退款
+        21: (page, range) => {
+            return new Promise((resolve, reject) => {
+                var res = {}
+                resolve(res)
+            })
+        },
+        // 已完成
+        22: (page, range) => {
+            return new Promise((resolve, reject) => {
+                var res = {}
+                resolve(res)
+            })
+        },
+        // 退款取消
+        23: (page, range) => {
+            return new Promise((resolve, reject) => {
+                var res = {}
+                resolve(res)
+            })
+        },
+
+
+    }
+    
+    // 订单搜索的哈希索引
+    mapSearchNode = {
+        // 外卖
+        0:()=>{
+            return new Promise((resolve, reject) => {
+                var res = {
+                    data: {
+                       name:"订单",
+                       summary:"描述",
+                    }
+                }
+                resolve(res)
+            })
+        },
+
+        // 小商店
+        1: () => {
+
+        }
+    }
+
+}
+
+module.exports = new Utils()

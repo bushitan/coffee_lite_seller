@@ -7,7 +7,7 @@ page{
 .UCenter-bg {
   background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
   background-size: cover;
-  height: 300rpx;
+  height: 400rpx;
   display: flex;
   justify-content: center;
   /* padding-top: 40rpx; */

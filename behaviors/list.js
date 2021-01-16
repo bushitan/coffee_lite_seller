@@ -2,55 +2,80 @@
 var app = getApp()
 module.exports = Behavior({
     data: {
-       list:[1,2,3,4],
-       listPage:1,
-       listRange:10,
-       listCount:100,
+        list:[1,2,3,4],
+        listResData:{},
+        listPage:1,
+        listRange:20,
+        listCount:100,
+        isLoading:true,
     },
 
 
 
-    // // 监听器
-    // observers: {
-    //     // 全局生成config配置参数
-    //     'isMirror': function (isMirror) {
-    //         console.log(isMirror)
-    //         if(isMirror){
-    //             this.setData({mirrorScroll : 10000})
-    //         } else {
-    //             this.setData({ mirrorScroll: 0 })
-    //         }
-    //         // TODO 检查配置文件是否完整，不完整，在这里补充
-    //         // this.setData({
-    //         //     config: config
-    //         // })
+    // 监听器
+    observers: {
+        // 全局生成config配置参数
+        'listResData': function (listResData) {
+            console.log("listResData", listResData)
+            if (listResData.hasOwnProperty("data") == false)
+                return 
 
-    //     }
+            // 不存在数据
+            if (  listResData.data.length == 0){
+                this.setData({ isLoading: false, })
+                return
+            }
+            
+            var temp = this.data.list.concat(listResData.data)
+            this.setData({ 
+                list: temp,
+                listPage: listResData.page,
+            })
 
-    // },
+            if (this.data.listPage * this.data.listRange >= this.data.listCount) {
+                this.setData({ isLoading: false, })
+                return
+            }
+            
+        }
+
+    },
 
     //准备完成
     ready() {
-        
+        console.log("listBehaviors")
     },
     methods: {
 
         /**
          * @method list初始化
          */
-        listInit(){},
-
-        /**
-         * @method list刷新增加
-         */
-        listUpdate(){},
-
-        onReachBottom: function () {
-            // 页面触底时执行
-            console.log("onReachBottom ")
-
-            // TODO 设置
+        listInit(listRange){
+            
+            this.setData({
+                listPage:1,
+                listRange: listRange || 20,
+                listCount: 0,
+                list: [],
+                listResData: {},
+                isLoading:true,
+            })
         },
+
+        // /**
+        //  * @method list刷新增加
+        //  */
+        // listUpdate(){
+        //     if (this.data.listPage * this.data.listRange >= this.data.listCount) {
+        //         this.setData({ isLoading:false,})
+        //         return 
+        //     }
+        //     //TODO 请求
+        // },
+
+
+
+
 
         
 

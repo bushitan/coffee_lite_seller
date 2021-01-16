@@ -8,7 +8,6 @@ const d = date.getDate()
 const t = date.getDate() + 1
 var today = [year, month, d].join('-')
 var tomorrow = [year, month, t].join('-') 
-console.log(today)
 
 
 /**

@@ -1,0 +1,43 @@
+
+
+<view  class="{{config.theme}}">
+    <view class="cu-custom text-white " style="height:{{CustomBar}}px">
+        <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+            <view class="action" bindtap="BackPage">
+                <text class="cuIcon-back"></text>
+                <slot name="backText"></slot>
+            </view>
+            <view class="action" style="top:{{StatusBar}}px"  bindtap="clickDate">
+                <!-- <slot name="content" ></slot> -->
+                <text class="text-xs" >                    
+                    <text class=" ">2021年1月5日</text>至<text class=" ">2021年1月5日 </text><text class="cuIcon-unfold "></text>
+                </text>
+            </view>
+                <slot name="right"></slot>
+        </view>
+    </view>
+</view>
+
+
+<dialog show="{{showDialog}}"   textConfirm="查看订单" bindsuccess="dialogConfirm">
+    <template is="order" data="{{node:node}}"></template>
+</dialog>
+
+<!-- 
+<view class="cu-modal {{showDialog?'show':''}} backdrop-sm {{config.theme}}">
+    <view class="cu-dialog" >
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">{{title}}</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>            
+            <slot></slot>
+            <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn theme-line " bindtap="hideModal" wx:if="{{showCancel}}">{{textCancel}}</button>
+                <button class="cu-btn theme-bg text-white margin-left" bindtap="clickConfirm">{{textConfirm}}</button>
+            </view>
+        </view>
+    </view>
+</view> -->

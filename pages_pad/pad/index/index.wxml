@@ -7,4 +7,4 @@
     <button class="cu-btn lg padding-xl" catchtap="toPadMenuHi">嗨翻节点单</button>
 </view>
 
-<button class="cu-btn lg padding-xl" catchtap="toManager">管理</button>
+<!-- <button class="cu-btn lg padding-xl" catchtap="toManager">管理</button> -->

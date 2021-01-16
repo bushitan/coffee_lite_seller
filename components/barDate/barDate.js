@@ -11,7 +11,17 @@ Component({
         },
         list:{
             type:Array,
-            value:[],
+            value: [
+                {
+                    name: "按日"
+                },
+                {
+                    name: "按月"
+                },
+                {
+                    name: "自定义"
+                },
+            ],
         },
 
         index: {

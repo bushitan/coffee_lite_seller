@@ -1,0 +1,26 @@
+<!--components/bar/bar.wxml-->
+
+<scroll-view scroll-x class=" nav text-center {{ theme? theme: config.theme}}"  >
+    <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':' light-white '}}" wx:for="{{list}}" wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
+        {{item.name}}
+    </view>
+</scroll-view>
+
+ <view class="cu-bar  search text-white padding-lr text-sm">
+    <view class="flex justify-start"  >
+    
+        <picker mode="date" value="{{date}}"  bindchange="DateChange">
+            <text class="margin-right-sm">
+                <text>2021年1月</text><text class="cuIcon-unfold "></text>
+            </text>
+		</picker>       
+        <picker mode="date" fields="month" value="{{date}}"  bindchange="DateChange">
+            <text class="">
+                <text>2021年1月</text><text class="cuIcon-unfold "></text>
+            </text>
+		</picker>       
+    </view>
+    <view class=" text-right">
+        <text class="">Seeking Coffee【鲤湾店】</text><text class="cuIcon-unfold "></text>
+    </view>
+</view>

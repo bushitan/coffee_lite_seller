@@ -6,7 +6,6 @@ var ItemBehaviors = require('../../../behaviors/sku/item.js')
 var MirrorBehaviors = require('../../../behaviors/mirror.js') // 镜像控制
 var EntryOrderBehaviors = require('behaviors/entry_order.js') // 镜像控制
 var app = getApp()
-console.log(ProductsBehaviors)
 
 var timeout;
 Page({

@@ -1,0 +1,35 @@
+<!--pages_manager/seller/seller.wxml-->
+
+<nav-date bgColor="theme-bg" >
+	<!-- <view slot="content">
+        <text class="text-xs" bindtap="clickDate">                    
+            <text class=" ">2021年1月5日</text>至<text class=" ">2021年1月5日 </text><text class="cuIcon-unfold "></text>
+        </text>
+    </view> -->
+</nav-date>
+
+
+<search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search>
+
+<bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar>
+
+<tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
+
+
+
+<import src="/wxml/node/order.wxml"/>
+<view wx:for="{{list}}" wx:key>
+    <!-- <include src="/wxml/node/order.wxml"></include> -->
+    
+    <template is="order" data="{{node:item}}"></template>
+</view>
+
+
+
+    <!-- <template src="/wxml/node/order.wxml"></template> -->
+<dialog show="{{dialogShow}}"   textConfirm="查看订单" bindsuccess="dialogConfirm">
+    <template is="order" data="{{node:node}}"></template>
+</dialog>
+
+<include src="/wxml/base/loading.wxml"></include>
+

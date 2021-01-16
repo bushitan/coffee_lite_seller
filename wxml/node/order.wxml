@@ -1,1 +1,8 @@
-<view>这是一个订单</view>
+
+
+<template name="order">
+
+    <view>order的Node</view>
+    <view>{{node.name}}</view>
+    <view>{{node.summary}}</view>
+</template>

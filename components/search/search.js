@@ -30,7 +30,7 @@ Component({
 
             var input = e.detail.value.input
             if(!input)
-                wx.showToast({  title: '请输入搜索信息' })
+                wx.showToast({  title: '请输入搜索信息' ,icon:"loading" })
             else
                 this.triggerEvent('confirm', input)
         },

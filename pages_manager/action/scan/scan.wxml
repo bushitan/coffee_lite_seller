@@ -1,0 +1,26 @@
+<!--pages_manager/seller/seller.wxml-->
+
+<search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search>
+
+<bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar>
+
+<tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
+
+
+
+<import src="/wxml/node/order.wxml"/>
+<view wx:for="{{list}}" wx:key>
+    <!-- <include src="/wxml/node/order.wxml"></include> -->
+    
+    <template is="order" data="{{node:item}}"></template>
+</view>
+
+
+
+    <!-- <template src="/wxml/node/order.wxml"></template> -->
+<dialog show="{{dialogShow}}"   textConfirm="查看订单" bindsuccess="dialogConfirm">
+    <template is="order" data="{{node:node}}"></template>
+</dialog>
+
+<include src="/wxml/base/loading.wxml"></include>
+

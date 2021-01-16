@@ -1,11 +1,18 @@
 <!--components/tabbar/tabbar.wxml-->
-<view class="cu-bar tabbar bg-white shadow foot  {{config.theme}}">
-  <view class="action" bindtap="NavChange" data-cur="basics" wx:for="{{matrix}}" wx:key>
+
+<view class="cu-bar tabbar bg-white shadow foot  {{ theme? theme: config.theme}}">
+  <view class="action" bindtap="NavChange" data-cur="{{cur}}" wx:for="{{matrix}}" wx:for-index="cur" wx:key>
     <view class='cuIcon-cu-image'>
-      <image src="{{PageCur=='basics'?{{item.select}}:{{item.unSelect}}}"></image>
+      <image src="{{item.select}}" wx:if="{{ TabCur == cur }}"></image>
+      <image src="{{item.unSelect}}" wx:else></image>
     </view>
-    <view class="{{PageCur=='basics'?'theme-text ':'text-gray'}}">{{item.name}}</view>
+    <view class="{{  TabCur == cur ?'theme-text ':'text-gray'}}">{{item.name}}</view>
   </view>
+</view>
+
+
+
+
   <!-- <view class="action" bindtap="NavChange" data-cur="component">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/component{{PageCur=='component'?'_cur':''}}.png"></image>
@@ -24,4 +31,3 @@
     </view>
     <view class="{{PageCur=='about'?'text-green':'text-gray'}}">关于</view>
   </view> -->
-</view>
