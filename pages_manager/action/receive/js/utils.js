@@ -23,6 +23,14 @@ class Utils {
                 list: [
                     { name: "待处理", id: 21 }, { name: "已核销", id: 22 }, { name: "已取消", id: 23 },
                 ]
+            },
+            {
+                name: "优惠GO",
+                select: "/images/icon/mall.png",
+                unSelect: "/images/icon/mall_un.png",
+                list: [
+                    { name: "已首款", id: 21 }, ,
+                ]
             }
         ]
 

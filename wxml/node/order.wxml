@@ -2,7 +2,8 @@
 
 <template name="order">
 
+<!--
     <view>order的Node</view>
     <view>{{node.name}}</view>
-    <view>{{node.summary}}</view>
+    <view>{{node.summary}}</view>-->
 </template>

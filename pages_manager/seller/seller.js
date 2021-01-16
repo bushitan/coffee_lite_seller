@@ -14,11 +14,12 @@ Component({
             {
                 name:"操作 ", color:"yellow",
                 list: [
-                    { name: "收款", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
+                  //  { name: "收款", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
+                  
+                    { name: "订单", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
                     { name: "核销", url: "/pages_manager/action/scan/scan", text: "white", bg: "yellow" },
-                    { name: "接单", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
-                    { name: "退款", url: "/pages_manager/action/refund/refund", text: "red", bg: "gray" },
                     { name: "会员", url: "/pages_manager/action/refund/refund", text: "yellow", bg: "gray" },
+                    { name: "退款", url: "/pages_manager/action/refund/refund", text: "red", bg: "gray" },
                 ],
             },
             {

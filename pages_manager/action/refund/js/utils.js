@@ -9,7 +9,7 @@ class Utils {
     // 菜单矩阵
     matrix = [
             {
-                name: "外卖",
+                name: "顾客",
                 select: "/images/icon/score.png",
                 unSelect: "/images/icon/score_un.png",
                 list: [
@@ -17,7 +17,7 @@ class Utils {
                 ]
             },
             {
-                name: "小商店",
+                name: "门店",
                 select: "/images/icon/mall.png",
                 unSelect: "/images/icon/mall_un.png",
                 list: [
