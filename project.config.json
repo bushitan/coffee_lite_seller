@@ -383,6 +383,34 @@
 					"pathName": "pages_manager/stat/order/order",
 					"query": "tabbarIndex=0&tabIndex=0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/action/scan/scan",
+					"pathName": "pages_manager/action/scan/scan",
+					"query": "tabbarIndex=0&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/product/in/in",
+					"pathName": "pages_manager/product/in/in",
+					"query": "tabbarIndex=0&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/product/check/check",
+					"pathName": "pages_manager/product/check/check",
+					"query": "tabbarIndex=0&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/product/stock/stock",
+					"pathName": "pages_manager/product/stock/stock",
+					"query": "tabbarIndex=0&tabIndex=0",
+					"scene": null
 				}
 			]
 		}

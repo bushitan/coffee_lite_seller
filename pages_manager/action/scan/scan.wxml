@@ -1,5 +1,6 @@
 <!--pages_manager/seller/seller.wxml-->
 
+<nav-date bgColor="theme-bg" bindchoiseDate="choiseDate"></nav-date>
 <search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search>
 
 <bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar>

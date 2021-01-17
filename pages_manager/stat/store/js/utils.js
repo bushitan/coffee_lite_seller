@@ -8,22 +8,22 @@ class Utils {
 
     // 菜单矩阵
     matrix = [
-            // {
-            //     name: "外卖",
-            //     select: "/images/icon/score.png",
-            //     unSelect: "/images/icon/score_un.png",
-            //     list: [
-            //         { name: "待处理", id: 11 }, { name: "处理中", id: 12 }, { name: "已完成", id: 13 }, { name: "已取消", id: 14 },
-            //     ]
-            // },
             {
-                name: "小杯子便利店",
-                select: "/images/icon/mall.png",
-                unSelect: "/images/icon/mall_un.png",
+                name: "门店统计",
+                select: "/images/icon/address.png",
+                // unSelect: "/images/icon/score_un.png",
                 list: [
-                    { name: "待处理", id: 21 }, { name: "已备货", id: 22 },{ name: "已核销", id: 23 }, 
+                    { name: "待处理", id: 11 }, { name: "处理中", id: 12 }, { name: "已完成", id: 13 }, { name: "已取消", id: 14 },
                 ]
-            }
+            },
+            // {
+            //     name: "产品",
+            //     select: "/images/icon/mall.png",
+            //     unSelect: "/images/icon/mall_un.png",
+            //     list: [
+            //         { name: "待处理", id: 21 }, { name: "已核销", id: 22 }, { name: "已取消", id: 23 },
+            //     ]
+            // }
         ]
 
     // 查询列表的哈希索引

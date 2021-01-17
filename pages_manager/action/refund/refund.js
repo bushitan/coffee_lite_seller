@@ -1,22 +1,18 @@
 // pages_manager/seller/seller.js
 var app = getApp()
 var Utils = require("js/utils.js")
+var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
 Component({
 
     properties: { 
     },
     data: {
-        theme: {
-            type: String ,
-            value: '',
-        },
+        
         dialogShow:!true,
         node:{},
-        tabbarIndex:0,
-        tabIndex:0,
         tabMatrix: Utils.matrix,
     },
-    behaviors: [app.behaviors.configBehaviors,app.behaviors.listBehaviors ,app.behaviors.dialogBehaviors],
+    behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ActionBehaviors],
 
 
     observers:{
@@ -29,6 +25,7 @@ Component({
                 tabbarIndex: options.tabbarIndex || 0 ,
                 tabIndex: options.tabIndex || 0,
             })
+            console.log("refund")
             this.onInit()
         },
 
@@ -101,20 +98,6 @@ Component({
                 node:res.data
              })
 
-        },
-
-        // 点击bar
-        clickBar(e){
-            console.log('clickBar',this.data.tabbarIndex,e.detail)
-            this.setData({ tabIndex : e.detail})
-            this.onInit()
-        },
-
-        // 点击bar
-        clickTabbar(e) {
-            console.log('clickTabbar', e.detail, this.data.tabIndex)
-            this.setData({ tabbarIndex: e.detail , tabIndex:0 })
-            this.onInit()
         },
 
 

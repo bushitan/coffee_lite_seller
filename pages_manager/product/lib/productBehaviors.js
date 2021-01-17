@@ -1,86 +1,77 @@
 
+/**
+ * 为action目录下，共用的behaviors，为这几个类目提供公共服务
+ */
+
+
 var app = getApp()
+var util = require("../../../utils/util.js")
 module.exports = Behavior({
     data: {
-        list:[1,2,3,4],
-        listResData:{},
-        listPage:1,
-        listRange:20,
-        listCount:100,
-        isLoading:true,
+
+        // tabbar 和bar 的定位
+        tabbarIndex: 0,
+        tabIndex: 0,
+
+
+        startTime: util.getDayFirstTime(new Date()) ,//util.today,
+        endTime: util.getDayLastTime(new Date()),//util.today,
     },
 
 
 
-    // 监听器
-    observers: {
-        // 全局生成config配置参数
-        'listResData': function (listResData) {
-            // console.log("listResData", listResData)
-            if (listResData.hasOwnProperty("data") == false)
-                return 
+    // // 监听器
+    // observers: {
+    //     // 全局生成config配置参数
+    //     'isMirror': function (isMirror) {
+    //         console.log(isMirror)
+    //         if(isMirror){
+    //             this.setData({mirrorScroll : 10000})
+    //         } else {
+    //             this.setData({ mirrorScroll: 0 })
+    //         }
+    //         // TODO 检查配置文件是否完整，不完整，在这里补充
+    //         // this.setData({
+    //         //     config: config
+    //         // })
 
-            // 不存在数据
-            if (  listResData.data.length == 0){
-                this.setData({ isLoading: false, })
-                return
-            }
-            
-            var temp = this.data.list.concat(listResData.data)
-            this.setData({ 
-                list: temp,
-                listPage: listResData.page,
-            })
+    //     }
 
-            if (this.data.listPage * this.data.listRange >= this.data.listCount) {
-                this.setData({ isLoading: false, })
-                return
-            }
-            
-        }
-
-    },
+    // },
 
     //准备完成
-    ready() {
-    },
+    // ready() {
+        
+    // },
     methods: {
-
         /**
-         * @method list初始化
-         */
-        listInit(listRange){
-            
+        * @method 更改日期
+        * @from 插件nav-dat ，事件bindchoiseDate
+        */
+        choiseDate(e) {
+            // debugger
+            console.log(e)
             this.setData({
-                listPage:1,
-                listRange: listRange || 20,
-                listCount: 0,
-                list: [],
-                listResData: {},
-                isLoading:true,
+                startTime: e.detail.startTime,
+                endTime: e.detail.endTime
             })
+            this.onInit()
         },
 
-        // /**
-        //  * @method list刷新增加
-        //  */
-        // listUpdate(){
-        //     if (this.data.listPage * this.data.listRange >= this.data.listCount) {
-        //         this.setData({ isLoading:false,})
-        //         return 
-        //     }
-        //     //TODO 请求
+
+        // // 点击bar
+        // clickBar(e) {
+        //     console.log('clickBar', this.data.tabbarIndex, e.detail)
+        //     this.setData({ tabIndex: e.detail })
+        //     this.onInit()
         // },
 
-
-
-
-
-        
-
-
-
-
+        // // 点击bar
+        // clickTabbar(e) {
+        //     console.log('clickTabbar', e.detail, this.data.tabIndex)
+        //     this.setData({ tabbarIndex: e.detail, tabIndex: 0 })
+        //     this.onInit()
+        // },
 
 
 

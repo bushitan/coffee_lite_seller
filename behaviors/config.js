@@ -40,9 +40,9 @@ module.exports = Behavior({
         initConfig(){
             this.setConfig()
             // 设置标题
-            wx.setNavigationBarTitle({
-                title: this.data.config.window.navigationBarTitleText,
-            })
+            // wx.setNavigationBarTitle({
+            //     title: this.data.config.window.navigationBarTitleText,
+            // })
             wx.setNavigationBarColor({
                 frontColor: this.data.config.window.navigationBarTextStyle,
                 backgroundColor: this.data.config.window.navigationBarBackgroundColor,

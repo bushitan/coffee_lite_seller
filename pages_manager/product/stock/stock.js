@@ -1,7 +1,8 @@
 // pages_manager/seller/seller.js
 var app = getApp()
 var Utils = require("js/utils.js")
-var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
+var ProductBehaviors = require("../lib/productBehaviors.js") //本地的
+var StockList = require("../lib/data.js") //本地的
 Component({
 
     properties: { 
@@ -10,13 +11,10 @@ Component({
         dialogShow:!true,
         node:{},
         tabMatrix: Utils.matrix,
+        list: StockList
     },
-    behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ActionBehaviors],
+    behaviors: [app.behaviors.configBehaviors,  app.behaviors.dialogBehaviors, ProductBehaviors],
 
-
-    observers:{
-
-    },
     methods:{
 
         onLoad(options){
@@ -63,39 +61,28 @@ Component({
             this.setData({ listResData: res.data}) // 将数据反馈至列表
         },
 
-
-        // 操作事件
+        toAdd(){},
+        
+        toProductEditor(e){
+            var id = e.currentTarget.dataset.id
+            console.log(id)
+        },
 
         /**
-         * @method 点击搜索框 
-         * @from 插件search ，事件bindconfirm
+         * 
          */
-        async search(e){
+        checkBtn(e){
             console.log(e.detail)
-            var input = e.detail // 输入框的项目
-            try {
-                var res = await Utils.mapSearchNode[this.data.tabbarIndex](input) //获取相应的Node
-            }
-            catch (err) {
-                wx.showModal({ title: '当前mapNode不存在', showCancel: false })
-                return
-            }
-            //TODO 查询结果
-            
-            this.setData({ 
-                dialogShow: true,
-                node:res.data
-             })
-
         },
 
-        // 点击confirm
-        dialogConfirm(e){
-            console.log(e.detail)
-            this.setData({dialogShow:false })
-        },
 
-        
+
+        // 点击tabbar
+        clickTabbar(e) {
+            console.log('clickTabbar', e.detail, this.data.tabIndex)
+            this.setData({ tabbarIndex: e.detail })
+            // this.onInit()
+        },
 
         // /**
         //  * 用户点击右上角分享

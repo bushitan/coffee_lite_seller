@@ -8,22 +8,30 @@ class Utils {
 
     // 菜单矩阵
     matrix = [
+            {
+                name: "会员",
+                select: "/images/icon/my2.png",
+                // unSelect: "/images/icon/score_un.png",
+                list: [
+                    { name: "使用", id: 11 }, { name: "充值", id: 12 } 
+                ]
+            },
             // {
-            //     name: "外卖",
-            //     select: "/images/icon/score.png",
-            //     unSelect: "/images/icon/score_un.png",
+            //     name: "小商店",
+            //     select: "/images/icon/mall.png",
+            //     unSelect: "/images/icon/mall_un.png",
             //     list: [
-            //         { name: "待处理", id: 11 }, { name: "处理中", id: 12 }, { name: "已完成", id: 13 }, { name: "已取消", id: 14 },
+            //         { name: "待处理", id: 21 }, { name: "已核销", id: 22 }, { name: "已取消", id: 23 },
             //     ]
             // },
-            {
-                name: "小杯子便利店",
-                select: "/images/icon/mall.png",
-                unSelect: "/images/icon/mall_un.png",
-                list: [
-                    { name: "待处理", id: 21 }, { name: "已备货", id: 22 },{ name: "已核销", id: 23 }, 
-                ]
-            }
+            // {
+            //     name: "优惠GO",
+            //     select: "/images/icon/mall.png",
+            //     unSelect: "/images/icon/mall_un.png",
+            //     list: [
+            //         { name: "已付款", id: 31 },
+            //     ]
+            // }
         ]
 
     // 查询列表的哈希索引
@@ -31,7 +39,7 @@ class Utils {
 
         /****外卖*****/
         // 待处理
-        11 : (page,range) =>{
+        11 : (page,range,startTime,endTime) =>{
             return new Promise((resolve, reject) => {
                 var res = { 
                     data:  {
@@ -54,7 +62,7 @@ class Utils {
             })
         },
         // 处理中
-        12: (page, range) => {
+        12: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {
                     data: {
@@ -69,7 +77,7 @@ class Utils {
         },
 
         // 已完成
-        13: (page, range) => {
+        13: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = { }
                 resolve(res)
@@ -77,7 +85,7 @@ class Utils {
         },
 
         // 已取消
-        14: (page, range) => {
+        14: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
@@ -88,27 +96,34 @@ class Utils {
 
         /****小商店*****/
         // 待处理
-        21: (page, range) => {
+        21: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
         // 已核销
-        22: (page, range) => {
+        22: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
         // 已取消
-        23: (page, range) => {
+        23: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
 
+        // 优惠GO
+        31: (page, range, startTime, endTime) => {
+            return new Promise((resolve, reject) => {
+                var res = {}
+                resolve(res)
+            })
+        },
 
     }
     

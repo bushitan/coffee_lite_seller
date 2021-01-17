@@ -1,7 +1,7 @@
 <!--pages_manager/seller/seller.wxml-->
 
 
-<view class="UCenter-bg">
+<view class="UCenter-bg bg-yellow">
     <image class="cu-avatar xl round bg-white png margin-top" mode="widthFix" src="{{ userInfo.WxAvatarUrl || '/images/user-unlogin.png' }}" ></image>
     <view class="text-xl">Seeking【鲤湾店】<button class="cu-btn line-white sm">设置</button> </view>   
     <view class="margin-top-sm">

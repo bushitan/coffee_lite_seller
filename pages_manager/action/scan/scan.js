@@ -1,6 +1,7 @@
 // pages_manager/seller/seller.js
 var app = getApp()
 var Utils = require("js/utils.js")
+var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
 Component({
 
     properties: { 
@@ -8,11 +9,9 @@ Component({
     data: {
         dialogShow:!true,
         node:{},
-        tabbarIndex:0,
-        tabIndex:0,
         tabMatrix: Utils.matrix,
     },
-    behaviors: [app.behaviors.configBehaviors,app.behaviors.listBehaviors ,app.behaviors.dialogBehaviors],
+    behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ActionBehaviors],
 
 
     observers:{
@@ -54,26 +53,17 @@ Component({
 
 
             try {
-                var res = await Utils.mapQueryList[id](this.data.listPage, this.data.listRange) //获取相应的数组
+                var res = await Utils.mapQueryList[id](this.data.listPage, this.data.listRange, this.data.startTime, this.data.endTime) //获取相应的数组
             }
             catch (err) {
                 wx.showModal({ title: '当前mapList不存在', showCancel: false })
                 return
-            }
+            } 
 
-
-
-
-            console.log(res.data)
             this.setData({ listResData: res.data}) // 将数据反馈至列表
         },
 
-
-
-
-
-
-
+  
         // 操作事件
 
         /**
@@ -97,20 +87,6 @@ Component({
                 node:res.data
              })
 
-        },
-
-        // 点击bar
-        clickBar(e){
-            console.log('clickBar',this.data.tabbarIndex,e.detail)
-            this.setData({ tabIndex : e.detail})
-            this.onInit()
-        },
-
-        // 点击bar
-        clickTabbar(e) {
-            console.log('clickTabbar', e.detail, this.data.tabIndex)
-            this.setData({ tabbarIndex: e.detail , tabIndex:0 })
-            this.onInit()
         },
 
 

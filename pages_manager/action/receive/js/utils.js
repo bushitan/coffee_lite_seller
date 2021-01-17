@@ -29,7 +29,7 @@ class Utils {
                 select: "/images/icon/mall.png",
                 unSelect: "/images/icon/mall_un.png",
                 list: [
-                    { name: "已首款", id: 21 }, ,
+                    { name: "已付款", id: 31 },
                 ]
             }
         ]
@@ -39,7 +39,7 @@ class Utils {
 
         /****外卖*****/
         // 待处理
-        11 : (page,range) =>{
+        11 : (page,range,startTime,endTime) =>{
             return new Promise((resolve, reject) => {
                 var res = { 
                     data:  {
@@ -62,7 +62,7 @@ class Utils {
             })
         },
         // 处理中
-        12: (page, range) => {
+        12: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {
                     data: {
@@ -77,7 +77,7 @@ class Utils {
         },
 
         // 已完成
-        13: (page, range) => {
+        13: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = { }
                 resolve(res)
@@ -85,7 +85,7 @@ class Utils {
         },
 
         // 已取消
-        14: (page, range) => {
+        14: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
@@ -96,27 +96,34 @@ class Utils {
 
         /****小商店*****/
         // 待处理
-        21: (page, range) => {
+        21: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
         // 已核销
-        22: (page, range) => {
+        22: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
         // 已取消
-        23: (page, range) => {
+        23: (page, range, startTime, endTime) => {
             return new Promise((resolve, reject) => {
                 var res = {}
                 resolve(res)
             })
         },
 
+        // 优惠GO
+        31: (page, range, startTime, endTime) => {
+            return new Promise((resolve, reject) => {
+                var res = {}
+                resolve(res)
+            })
+        },
 
     }
     

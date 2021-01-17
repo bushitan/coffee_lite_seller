@@ -21,7 +21,7 @@ class Utils {
                 select: "/images/icon/mall.png",
                 unSelect: "/images/icon/mall_un.png",
                 list: [
-                    { name: "申请退款", id: 21 },  { name: "已完成", id: 22}, { name: "退款取消", id: 23 },
+                    { name: "未审批", id: 21 },  { name: "已审批", id: 22}, { name: "未通过", id: 23 },
                 ]
             }
         ]

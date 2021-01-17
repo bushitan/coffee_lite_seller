@@ -18,14 +18,14 @@ Component({
                   
                     { name: "订单", url: "/pages_manager/action/receive/receive", text: "white", bg: "yellow" },
                     { name: "核销", url: "/pages_manager/action/scan/scan", text: "white", bg: "yellow" },
-                    { name: "会员", url: "/pages_manager/action/refund/refund", text: "yellow", bg: "gray" },
+                    { name: "会员", url: "/pages_manager/action/member/member", text: "yellow", bg: "gray" },
                     { name: "退款", url: "/pages_manager/action/refund/refund", text: "red", bg: "gray" },
                 ],
             },
             {
                 name: "统计 ", color: "blue",
                 list: [
-                    { name: "订单", url: "/pages_manager/stat/order/order", text: "white", bg: "blue" },
+                    { name: "订单", url: "/pages_manager/stat/order/order", text: "blue", bg: "gray" },
                     { name: "会员", url: "/pages_manager/stat/member/member", text: "blue", bg: "gray" },
                     { name: "门店", url: "/pages_manager/stat/store/store", text: "blue", bg: "gray" },
                 ],

@@ -1,0 +1,34 @@
+<!--pages_manager/seller/seller.wxml-->
+
+<view class="{{config.themeAdmin}}">
+<nav-date bgColor="theme-bg" bindchoiseDate="choiseDate"></nav-date>
+<tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
+
+<!-- <search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search> -->
+
+<!-- <bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar>  -->
+
+<view class="cu-bar bg-white padding-lr ">
+    <view>
+        <text class="cuIcon-titles theme-text 入库记录"></text>
+        <text>入库记录</text>
+    </view>
+    <view>
+        <button class="cu-btn theme-bg text-white round shadow-blur " catchtap="toAdd">添加</button>
+    </view>
+</view>
+
+
+
+<!-- <import src="/wxml/node/order.wxml"/>
+<view wx:for="{{list}}" wx:key>
+    
+    <template is="order" data="{{node:item}}"></template>
+</view> -->
+
+
+
+<include src="/wxml/base/loading.wxml"></include>
+
+</view>
+

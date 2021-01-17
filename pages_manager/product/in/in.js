@@ -1,7 +1,7 @@
 // pages_manager/seller/seller.js
 var app = getApp()
 var Utils = require("js/utils.js")
-var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
+var ProductBehaviors = require("../lib/productBehaviors.js") //本地的
 Component({
 
     properties: { 
@@ -11,12 +11,8 @@ Component({
         node:{},
         tabMatrix: Utils.matrix,
     },
-    behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ActionBehaviors],
+    behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ProductBehaviors],
 
-
-    observers:{
-
-    },
     methods:{
 
         onLoad(options){
@@ -63,38 +59,7 @@ Component({
             this.setData({ listResData: res.data}) // 将数据反馈至列表
         },
 
-
-        // 操作事件
-
-        /**
-         * @method 点击搜索框 
-         * @from 插件search ，事件bindconfirm
-         */
-        async search(e){
-            console.log(e.detail)
-            var input = e.detail // 输入框的项目
-            try {
-                var res = await Utils.mapSearchNode[this.data.tabbarIndex](input) //获取相应的Node
-            }
-            catch (err) {
-                wx.showModal({ title: '当前mapNode不存在', showCancel: false })
-                return
-            }
-            //TODO 查询结果
-            
-            this.setData({ 
-                dialogShow: true,
-                node:res.data
-             })
-
-        },
-
-        // 点击confirm
-        dialogConfirm(e){
-            console.log(e.detail)
-            this.setData({dialogShow:false })
-        },
-
+        toAdd(){},
         
 
         // /**

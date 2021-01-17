@@ -44,10 +44,16 @@
         "pages_manager/seller/seller",
         "pages_manager/action/receive/receive",
         "pages_manager/action/scan/scan",
+        "pages_manager/action/member/member",
         "pages_manager/action/refund/refund",
-
+        
         "pages_manager/stat/order/order",
+        "pages_manager/stat/member/member",
+        "pages_manager/stat/store/store",
 
+        "pages_manager/product/in/in",
+        "pages_manager/product/check/check",
+        "pages_manager/product/stock/stock",
         
 
         
