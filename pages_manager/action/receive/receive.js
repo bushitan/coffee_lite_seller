@@ -2,9 +2,11 @@
 var app = getApp()
 var Utils = require("js/utils.js")
 var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
+var OrderList = require("../../../data/order.js")
 Component({
 
     properties: { 
+    
     },
     data: {
         dialogShow:!true,
@@ -31,6 +33,8 @@ Component({
         onInit() {
             this.listInit( 20 )            
             this.getList( )
+
+            this.setData({  list:OrderList })
         },
 
         // 底部刷新

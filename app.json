@@ -52,8 +52,10 @@
         "pages_manager/stat/store/store",
 
         "pages_manager/product/in/in",
+        "pages_manager/product/add/add",
         "pages_manager/product/check/check",
         "pages_manager/product/stock/stock",
+        "pages_manager/product/product/product",
         
 
         

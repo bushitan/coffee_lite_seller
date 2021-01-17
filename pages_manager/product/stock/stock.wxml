@@ -9,7 +9,7 @@
     <view class="cu-bar bg-white padding-lr " wx:if="{{tabbarIndex == 2}}">
         <view class="">
             <text class="cuIcon-titles theme-text "></text>
-            <text>盘点记录</text>
+            <text>原料盘点</text>
         </view>
         <view>
             <button class="cu-btn bg-blue text-white round shadow-blur " form-type="submit">盘点</button>
@@ -28,7 +28,7 @@
                     wx:for="{{category.products}}"  wx:for-item="item" wx:for-index="itemIndex" >
  
                         <view class=" shadow shadow-warp bg-white margin-top">
-                            <image src="{{item.imgs[0].src}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
+                            <image src="{{item.imgs[0].src||'/images/un_image.png'}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
                             <view class="padding-sm ">            
                                 <view class="text-xl name">{{item.name}}</view>
                                 <view class="flex justify-between align-center "  wx:if="{{tabbarIndex == 0}}" >
@@ -51,7 +51,7 @@
                                         <view>盒</view>
                                     </view>
                                     <view class="flex justify-center ">
-                                        <button class="cu-btn round theme-bg " catchtap="toProductEditor" data-id="{{item.id}}">入库</button>
+                                        <button class="cu-btn round theme-bg " catchtap="toProductEditor" data-id="{{item.id}}" catchtap="toAddOrgProduct">入库</button>
                                     </view>
                                 </view>
                                 

@@ -2,6 +2,7 @@
 var app = getApp()
 var Utils = require("js/utils.js")
 var ActionBehaviors = require("../lib/actionBehaviors.js") //本地的
+var MemberList = require("../../../data/member.js")
 Component({
 
     properties: { 
@@ -30,7 +31,9 @@ Component({
 
         onInit() {
             this.listInit( 20 )            
-            this.getList( )
+            this.getList()
+
+            this.setData({ list: MemberList })
         },
 
         // 底部刷新

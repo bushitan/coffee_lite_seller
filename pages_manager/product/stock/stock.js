@@ -2,7 +2,8 @@
 var app = getApp()
 var Utils = require("js/utils.js")
 var ProductBehaviors = require("../lib/productBehaviors.js") //本地的
-var StockList = require("../lib/data.js") //本地的
+var StockList = require("../../../data/product.js") //本地的
+var OrgProduct = require("../../../data/org_product.js") //本地的
 Component({
 
     properties: { 
@@ -11,7 +12,9 @@ Component({
         dialogShow:!true,
         node:{},
         tabMatrix: Utils.matrix,
-        list: StockList
+        list: StockList,
+        StockList: StockList,
+        OrgList: OrgProduct.orgList,
     },
     behaviors: [app.behaviors.configBehaviors,  app.behaviors.dialogBehaviors, ProductBehaviors],
 
@@ -27,60 +30,94 @@ Component({
 
 
         onInit() {
-            this.listInit( 20 )            
-            this.getList( )
+            this.changeTabbar()
+
+            // this.listInit( 20 )            
+            // this.getList( )
         },
 
-        // 底部刷新
-        onReachBottom: function () {
-            this.getList()
+        changeTabbar() {
+
+            var list // = this.data.StockList
+            if (this.data.tabbarIndex == 0)
+                list = this.data.StockList
+            else
+                list = this.data.OrgList
+            this.setData({ list: list })
         },
 
-        // 获取数组列表 
-        async getList(){
-            var id
-            try {
-                id = this.data.tabMatrix[this.data.tabbarIndex].list[this.data.tabIndex].id
-                if(!id)
-                    throw "id为空"
-            }
-            catch (err) {
-                wx.showModal({title: '当前栏目不存在', showCancel:false})
-                return 
-            }
+
+        // // 底部刷新
+        // onReachBottom: function () {
+        //     this.getList()
+        // },
+
+        // // 获取数组列表 
+        // async getList(){
+        //     var id
+        //     try {
+        //         id = this.data.tabMatrix[this.data.tabbarIndex].list[this.data.tabIndex].id
+        //         if(!id)
+        //             throw "id为空"
+        //     }
+        //     catch (err) {
+        //         wx.showModal({title: '当前栏目不存在', showCancel:false})
+        //         return 
+        //     }
 
 
-            try {
-                var res = await Utils.mapQueryList[id](this.data.listPage, this.data.listRange , this.data.startTime,this.data.endTime) //获取相应的数组
-            }
-            catch (err) {
-                wx.showModal({ title: '当前mapList不存在', showCancel: false })
-                return
-            }
+        //     try {
+        //         var res = await Utils.mapQueryList[id](this.data.listPage, this.data.listRange , this.data.startTime,this.data.endTime) //获取相应的数组
+        //     }
+        //     catch (err) {
+        //         wx.showModal({ title: '当前mapList不存在', showCancel: false })
+        //         return
+        //     }
 
-            this.setData({ listResData: res.data}) // 将数据反馈至列表
-        },
+        //     this.setData({ listResData: res.data}) // 将数据反馈至列表
+        // },
 
-        toAdd(){},
+        // toAdd(){},
         
         toProductEditor(e){
             var id = e.currentTarget.dataset.id
             console.log(id)
+            wx.navigateTo({
+                url: '/pages_manager/product/product/product',
+            })
         },
+
+
+
+        /**
+         * @method 新增原材料
+         */
+        toAddOrgProduct() { 
+            wx.navigateTo({
+                url: '/pages_manager/product/add/add',
+            })
+        },
+
 
         /**
          * 
          */
         checkBtn(e){
             console.log(e.detail)
+            wx.showModal({
+                title: '提交成功',
+                showCancel:false,
+            })
         },
 
 
 
         // 点击tabbar
         clickTabbar(e) {
-            console.log('clickTabbar', e.detail, this.data.tabIndex)
-            this.setData({ tabbarIndex: e.detail })
+            // console.log('clickTabbar', e.detail, this.data.tabIndex)
+            var tabbarIndex = e.detail  
+            this.setData({ tabbarIndex: tabbarIndex})
+            this.changeTabbar()
             // this.onInit()
         },
 

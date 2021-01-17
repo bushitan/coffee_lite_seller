@@ -2,6 +2,7 @@
 var app = getApp()
 var Utils = require("js/utils.js")
 var ProductBehaviors = require("../lib/productBehaviors.js") //本地的
+var OrgProduct = require("../../../data/org_product.js") //本地的
 Component({
 
     properties: { 
@@ -10,6 +11,8 @@ Component({
         dialogShow:!true,
         node:{},
         tabMatrix: Utils.matrix,
+        
+        InList: OrgProduct.inList,
     },
     behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, ProductBehaviors],
 
@@ -59,7 +62,11 @@ Component({
             this.setData({ listResData: res.data}) // 将数据反馈至列表
         },
 
-        toAdd(){},
+        toAdd(){
+            wx.navigateTo({
+                url: '/pages_manager/product/stock/stock?tabbarIndex=1',
+            })
+        },
         
 
         // /**

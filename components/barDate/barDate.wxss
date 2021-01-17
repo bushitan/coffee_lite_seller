@@ -1,7 +1,7 @@
 /* components/bar/bar.wxss */
 
 
-.light-white{
+.uncur{
 
     color: rgba(255, 255, 255, 0.6)
 }

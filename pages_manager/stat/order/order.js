@@ -3,16 +3,21 @@ var app = getApp()
 var Utils = require("js/utils.js")
 var StatBehaviors = require("../lib/statBehaviors.js") //本地的
 // var util = require("../../../utils/util.js")
+var Summery = require("../../../data/summary.js")
 Component({
 
     properties: { 
     },
     data: {
         dialogShow:!true,
+        isLoading:false,
         node:{},
-        // tabbarIndex:0,
+        tabbarIndex:1,
         // tabIndex:0,
         tabMatrix: Utils.matrix,
+
+        summary : Summery,
+        menuArrow:true,
     },
     behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, StatBehaviors],
 

@@ -54,6 +54,7 @@
 .pg-space-lg { height: 20px; }
 .pg-space-xl { height: 30px; }
 .pg-space-xxl { height: 60px; }
+.pg-space-sl { height: 120px; }
 .pg-arrow:after{
     /*position: ab solute;
     top: 0;

@@ -2,7 +2,7 @@
 var app = getApp()
 module.exports = Behavior({
     data: {
-        list:[1,2,3,4],
+        list: [],
         listResData:{},
         listPage:1,
         listRange:20,
@@ -15,7 +15,8 @@ module.exports = Behavior({
     // 监听器
     observers: {
         // 全局生成config配置参数
-        'listResData': function (listResData) {
+        'listResData': function (listResData) { 
+            
             // console.log("listResData", listResData)
             if (listResData.hasOwnProperty("data") == false)
                 return 
@@ -27,7 +28,7 @@ module.exports = Behavior({
             }
             
             var temp = this.data.list.concat(listResData.data)
-            this.setData({ 
+            this.setData({
                 list: temp,
                 listPage: listResData.page,
             })

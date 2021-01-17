@@ -3,6 +3,7 @@ var app = getApp()
 var Utils = require("js/utils.js")
 var StatBehaviors = require("../lib/statBehaviors.js") //本地的
 // var util = require("../../../utils/util.js")
+var Member = require("../../../data/member.js")
 Component({
 
     properties: { 
@@ -13,6 +14,10 @@ Component({
         // tabbarIndex:0,
         // tabIndex:0,
         tabMatrix: Utils.matrix,
+
+        memberList: Member.member,
+        scoreList: Member.scoreList,
+        menuArrow: true,
     },
     behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, StatBehaviors],
 

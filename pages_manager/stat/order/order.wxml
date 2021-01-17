@@ -6,7 +6,46 @@
 
     <tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
 
-    <view wx:if="{{tabbarIndex==0}}">1 </view>
-    <view wx:if="{{tabbarIndex==1}}">2 </view>
 
+
+    <view class="padding theme-bg text-white">
+        <view>共收款{{summary.OrderNum}}笔，合计</view>
+        <view class="text-sl"> <text class="text-price"></text> {{summary.CouponFee}}</view>
+    </view>
+    <view wx:if="{{tabbarIndex==0}}">
+        
+        <view class="cu-list menu sm-border  ">
+            <view class="cu-item {{menuArrow?'arrow':''}}"  wx:for="{{summary.payDayList}}">
+                <view class="content">
+                    <text class="text-gray margin-right">{{item.date}}</text>
+                    <text class="cuIcon-formfill text-olive"></text>
+                    <text class="text-grey">{{item.num}}笔</text>
+                </view>
+                <view class="">
+                    <text class="text-gray "><text class="text-price"></text>{{item.price}}</text>
+                </view>
+            </view>
+        </view>
+    
+    
+    </view>
+    <view wx:if="{{tabbarIndex==1}}">
+    
+        <view class="cu-list menu sm-border  ">
+            <view class="cu-item {{menuArrow?'arrow':''}}"  wx:for="{{summary.productList}}">
+                <view class="content">
+                    <text class="text-gray  ">{{index+1}}、{{item.name}}</text>
+                    <view class="cu-tag round bg-red light sm">{{item.sku}}</view>
+                </view>
+                <view class="">                
+                    <text class="text-gray margin-right">{{item.num}}份</text>
+                    <text class="text-gray "><text class="text-price"></text>{{item.price}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    
+    <include src="/wxml/base/loading.wxml"></include>
+
+    <view class="pg-space-sl"></view>
 </view>

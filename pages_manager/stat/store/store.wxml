@@ -6,7 +6,62 @@
 
     <tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
 
-    <view wx:if="{{tabbarIndex==0}}">1 </view>
-    <view wx:if="{{tabbarIndex==1}}">2 </view>
 
+
+
+
+    <view class="  margin-bottom"  wx:for="{{StoreList}}" >
+        <view class=" bg-white pg-radius ">
+            <view class="cu-bar  solid-bottom ">
+                <view class="action">
+                    <text class="cuIcon-title text-yellow "></text>                
+                    <text class="text-black text-sm">{{item.Name}}</text>      
+                </view>
+                <view class="action" >
+                    <text class="text-gray  text-sm">{{bill.StartTime + "至" + bill.EndTime}}</text>
+                    <!-- <view class="pg-arrow-sm"></view> -->
+                </view>
+            </view>        
+            <view class="cu-list menu ">      
+                <view class="cu-item " >
+                    <view class="action">账单金额</view>
+                    <view class="action ">{{bill.OrderTotal}}</view>
+                </view>    
+                <!-- <view class="cu-item " >
+                    <view class="action">实收金额</view>
+                    <view class="action ">{{bill.BillableAmount}}</view>
+                </view>   -->
+                <view class="cu-item " >
+                    <view class="action">代金券金额</view>
+                    <view class="action ">{{bill.CouponFee}}</view>
+                </view>
+                <view class="cu-item " >
+                    <view class="action">手续费</view>
+                    <view class="action ">{{bill.ServiceCharge}}</view>
+                </view>
+                <!-- <view class="cu-item  " >
+                    <view class="action">先享卡追回金额</view>
+                    <view class="action ">{{bill.WxDiscountCardRefund}}</view>
+                </view> -->
+            </view>
+            <view class="cu-bar  solid-top ">
+                <view class="action">微信支付实收金额</view>
+                <view class="action">					
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">{{bill.BillableAmount}}</text>
+                </view>
+            </view>	
+            <view class="cu-bar  solid-top ">
+                <view class="action">银行卡收款金额</view>
+                <view class="action">					
+                    <text class=" text-xl text-red text-bold text-price"></text>
+                    <text class=" text-xl text-red text-bold">{{bill.BankFee}}</text>
+                </view>
+            </view>					
+        </view>
+    </view>
+    <!-- <view wx:if="{{tabbarIndex==0}}">1 </view>
+    <view wx:if="{{tabbarIndex==1}}">2 </view> -->
+
+    <view class="pg-space-sl"></view>
 </view>

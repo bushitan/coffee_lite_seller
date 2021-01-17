@@ -2,18 +2,18 @@
 
 
 <view class="UCenter-bg bg-yellow">
-    <image class="cu-avatar xl round bg-white png margin-top" mode="widthFix" src="{{ userInfo.WxAvatarUrl || '/images/user-unlogin.png' }}" ></image>
-    <view class="text-xl">Seeking【鲤湾店】<button class="cu-btn line-white sm">设置</button> </view>   
+    <image class="cu-avatar xl round bg-white png margin-top" mode="widthFix" src="{{ userInfo.WxAvatarUrl || 'https://wm.51zfgx.com/images/thumbs/0000215_logo_lite.jpeg' }}" ></image>
+    <view class="text-xl flex jusity-center align-center margin-top">
+        <text>Seeking【鲤湾店】</text>
+        <button class="cu-btn line-white sm">设置</button> 
+    </view>   
     <view class="margin-top-sm">
         
         <text></text>
     </view>
     
-    <view class="flex justify-end">
-        <button class="cu-btn sm line-white">营业时间</button>
-        <button class="cu-btn sm line-white margin-lr">设备</button>
-        <button class="cu-btn sm line-white">二维码</button>
-    </view>
+    <!-- 
+     -->
     <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
 

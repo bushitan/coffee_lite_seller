@@ -1,0 +1,37 @@
+
+<template name="member">
+    <view  >   
+        <view class="padding-lr margin-top-sm text-xs text-gray flex algin-center">
+            <text class="cuIcon-title text-yellow "></text>
+            <text class="text-black margin-right ">订单ID：{{node.OrderId}}</text> {{node.PayTime}}                             
+        </view>
+        <view class="cu-card padding-lr " catchtap="toDetail" data-out_order_no="{{node.CardOutOrderNo}}">
+            <view class=" bg-white pg-radius  shadow shadow-warp">
+                <view class="cu-bar  solid-bottom ">
+                    <view class="action">
+                        <view class="cu-avatar round " style="background-image:url({{node.WxAvatarUrl || '/images/icon/my.png' }});margin:0" ></view>
+                        <view>
+                            <text class="text-black text-sm margin-left-xs">{{node.WxNickName || '用户未登录'}}</text>   
+                            <view>
+                                <view class="cu-capsule round ">
+                                    <view class="cu-tag bg-red sm">原价</view>
+                                    <view class="cu-tag line-red sm">{{node.TotalFee}}</view>
+                                </view>
+                                <view class="cu-capsule round "  wx:if="{{node.CardOutOrderNo}}">
+                                    <view class="cu-tag bg-green sm">先享优惠</view>
+                                    <view class="cu-tag line-green sm">{{node.DiscountFee}}</view>
+                                </view>
+                            </view>
+                        </view>    
+                    </view>
+                    <view class="action">
+                        <view> - {{node.RealFee || 1}}</view>
+                        
+                        <view class="pg-arrow-sm" wx:if="{{node.CardOutOrderNo}}"></view>
+                    </view>
+                </view>     
+            </view>
+        </view>
+    </view> 
+
+</template>

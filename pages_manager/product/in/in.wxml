@@ -19,6 +19,17 @@
 </view>
 
 
+        <view class="cu-list menu sm-border  ">
+            <view class="cu-item {{menuArrow?'arrow':''}}"  wx:for="{{InList}}">
+                <view class="content">
+                    <text class="text-gray margin-right">{{item.date}}</text>
+                    <text class="text-grey">{{item.name}}</text>
+                </view>
+                <view class="">
+                    <text class="text-gray ">数量：{{item.num}}</text>
+                </view>
+            </view>
+        </view>
 
 <!-- <import src="/wxml/node/order.wxml"/>
 <view wx:for="{{list}}" wx:key>

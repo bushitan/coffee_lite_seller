@@ -194,9 +194,9 @@ Component({
         // /**
         //  * 用户点击右上角分享
         //  */
-        // onShareAppMessage: function () {
-        //     debugger
-        // },
+        onShareAppMessage: function () {
+            
+        },
 
         // // onLoad: function (options) {
         // //     // 页面创建时执行

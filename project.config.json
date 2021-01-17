@@ -378,10 +378,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 44,
 					"name": "pages_manager/stat/order/order",
 					"pathName": "pages_manager/stat/order/order",
-					"query": "tabbarIndex=0&tabIndex=0",
+					"query": "tabbarIndex=1&tabIndex=0",
 					"scene": null
 				},
 				{
@@ -406,10 +406,38 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 48,
 					"name": "pages_manager/product/stock/stock",
 					"pathName": "pages_manager/product/stock/stock",
-					"query": "tabbarIndex=0&tabIndex=0",
+					"query": "tabbarIndex=1&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/stat/member/member",
+					"pathName": "pages_manager/stat/member/member",
+					"query": "tabbarIndex=1&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/stat/store/store",
+					"pathName": "pages_manager/stat/store/store",
+					"query": "tabbarIndex=1&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/product/add/add  入库",
+					"pathName": "pages_manager/product/add/add",
+					"query": "tabbarIndex=1&tabIndex=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages_manager/product/product/product",
+					"pathName": "pages_manager/product/product/product",
+					"query": "tabbarIndex=1&tabIndex=0",
 					"scene": null
 				}
 			]

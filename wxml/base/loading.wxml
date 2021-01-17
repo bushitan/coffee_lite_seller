@@ -1,5 +1,5 @@
 
-<view class="text-gray text-center text-sm padding" wx:if="{{isLoading }}">
+<view class="text-gray text-center text-sm padding" wx:if="{{!isLoading }}">
     <text class="cuIcon-icloading iconfont-spin"></text>加载中
 </view>
 <view class="text-gray text-center text-sm padding" wx:else>没有了</view>

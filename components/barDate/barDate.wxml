@@ -1,6 +1,7 @@
 <!--components/bar/bar.wxml-->
 <scroll-view scroll-x class=" nav text-center "  >
-    <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':' light-white '}}" wx:for="{{list}}" wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
+    <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':'uncur'}}" 
+    wx:for="{{list}}"   wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
         {{item.name}}
     </view>
 </scroll-view>

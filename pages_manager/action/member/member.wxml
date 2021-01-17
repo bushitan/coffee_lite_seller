@@ -10,18 +10,18 @@
 
 
 
-<import src="/wxml/node/order.wxml"/>
+<import src="/wxml/node/member.wxml"/>
 <view wx:for="{{list}}" wx:key>
     <!-- <include src="/wxml/node/order.wxml"></include> -->
     
-    <template is="order" data="{{node:item}}"></template>
+    <template is="member" data="{{node:item}}"></template>
 </view>
 
 
 
     <!-- <template src="/wxml/node/order.wxml"></template> -->
 <dialog show="{{dialogShow}}"   textConfirm="查看订单" bindsuccess="dialogConfirm">
-    <template is="order" data="{{node:node}}"></template>
+    <template is="member" data="{{node:node}}"></template>
 </dialog>
 
 <include src="/wxml/base/loading.wxml"></include>

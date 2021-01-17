@@ -3,6 +3,8 @@ var app = getApp()
 var Utils = require("js/utils.js")
 var StatBehaviors = require("../lib/statBehaviors.js") //本地的
 // var util = require("../../../utils/util.js")
+var StoreList = require("../../../data/store.js")
+var SummaryList = require("../../../data/summary.js")
 Component({
 
     properties: { 
@@ -13,6 +15,8 @@ Component({
         // tabbarIndex:0,
         // tabIndex:0,
         tabMatrix: Utils.matrix,
+        StoreList: StoreList,
+        bill: SummaryList,
     },
     behaviors: [app.behaviors.configBehaviors, app.behaviors.listBehaviors, app.behaviors.dialogBehaviors, StatBehaviors],
 

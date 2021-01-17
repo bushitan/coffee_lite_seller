@@ -1,0 +1,71 @@
+<!--pages_manager/seller/seller.wxml-->
+
+<view class="{{config.themeAdmin}}">
+<nav-date bgColor="theme-bg" bindchoiseDate="choiseDate"></nav-date>
+<!-- <tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar> -->
+
+<!-- <search placeholder="输入订单ID,搜索订单" bindconfirm="search" ></search> -->
+
+<!-- <bar list="{{tabMatrix[tabbarIndex].list}}" index="{{tabIndex}}" bindclick="clickBar"></bar>  -->
+<view>
+    <image src="{{product.imgs[0].src ||'/images/un_image.png' }}" class="block bg-black" style="width:100% " mode="aspectFit"></image>
+</view>
+
+<view class="cu-form-group margin-top">
+    <view class="title">名字</view>
+    <input placeholder="请输入数字" value="{{product.name}}" class="text-right"></input>
+</view>
+
+<view class="cu-form-group">
+    <view class="title">
+        状态
+        <text class="margin-right-sm text-red">({{product.is_work?"已上架":"已下架"}})</text>
+    </view>
+    <view>        
+        <checkbox class="round blue" checked="{{product.is_work}}"></checkbox>
+    </view>
+</view>
+<view class="cu-form-group ">
+    <view class="title">单位</view>
+    <input placeholder="请输入单位" value="{{product.unit}}" class="text-right"></input>
+</view>
+
+
+<view class="cu-form-group ">
+    <view class="title">库存</view>
+    <input placeholder="请输入库存" value="{{product.stock}}" class="text-right"></input>
+</view>
+
+
+<view class="cu-form-group ">
+    <view class="title">基础价格（元）</view>
+    <input placeholder="请输入价格" value="{{product.price}}" class="text-right"></input>
+</view>
+
+<view class="cu-form-group ">
+    <view class="title">图片上传<text class="text-red">*</text> </view>
+    <view class="title">{{imgList.length}}/4</view>
+</view>
+<view class="cu-bar bg-white padding-lr">
+    <view class="grid col-4 grid-square flex-sub bg-white">
+        <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+            <image src='{{imgList[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                <text class="cuIcon-close"></text>
+            </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+            <text class="cuIcon-cameraadd"></text>
+        </view>
+    </view>
+</view>
+<view class="padding">
+    <button class="cu-btn block bg-yellow text-white lg radius">修改</button>
+</view>
+
+
+<include src="/wxml/base/loading.wxml"></include>
+
+<view class="pg-space-sl"></view>
+</view>
+
