@@ -1,10 +1,10 @@
 <!--pages_pad/pad/index/index.wxml-->
 
-<image class="pg-mirror-vertical" src="/images/help/pad.jpg" mode="widthFix" style="width:100%;"></image>
+<image class="pg-mirror-vertical" src="https://wm.51zfgx.com/images/thumbs/0000193_8-oz.jpeg" mode="widthFix" style="width:100%;"></image>
 
 <view class="padding flex justify-around">
-    <button class="cu-btn lg padding-xl" catchtap="toPadMenuSeeking">Seeking点单</button>
-    <button class="cu-btn lg padding-xl" catchtap="toPadMenuHi">嗨翻节点单</button>
+    <button class="cu-btn lg padding-xl" catchtap="toPadMenuSeeking">点单体验</button>
+    <!-- <button class="cu-btn lg padding-xl" catchtap="toPadMenuHi">嗨翻节点单</button> -->
 </view>
 
 <!-- <button class="cu-btn lg padding-xl" catchtap="toManager">管理</button> -->
