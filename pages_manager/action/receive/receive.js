@@ -27,8 +27,50 @@ Component({
                 tabIndex: options.tabIndex || 0,
             })
             this.onInit()
+            this.test()
         },
 
+        test(){
+            // wx.request({
+            //     url:"https://admin.51zfgx.com/OpenOAuth/WxShopHttpHub/",
+
+            //     // data:{
+            //     //     url:"https://api.weixin.qq.com/product/spu/get_list?",
+            //     //     authorizerId :"wx7837f7a217ea0809",
+            //     //     data:{
+            //     //         "status": 5,
+            //     //         "page": 1,
+            //     //         "page_size": 10,
+            //     //         "need_edit_spu": 1      // 默认0:获取线上数据, 1:获取草稿数据
+            //     //     },
+            //     //     method:"POST",
+                   
+            //     // },
+            //     data:{
+            //         url:"https://api.weixin.qq.com/product/store/get_shopcat?",
+            //         authorizerId :"wx7837f7a217ea0809",
+            //         data:{
+            //             "status": 5,
+            //             "page": 1,
+            //             "page_size": 10,
+            //             "need_edit_spu": 1      // 默认0:获取线上数据, 1:获取草稿数据
+            //         },
+            //         method:"POST",
+                   
+            //     },
+
+            //     method:"POST",
+
+            // })
+
+            var token = "41_s6HuFoYYmHq6p-gQRQRsnZWyctvVBLFI_TxdaTDqJWirjx7ZuTk3HqqOzARs1wjmElA8osjAGIX0URwqfUukFYsRaE_PwNKIv3wBD2WBno6-9TrVMAACKCytGdtWH_MukcB6VPdvkjtYpFlIWLHdALDAPL"
+
+            wx.request({
+              url: 'https://api.weixin.qq.com/product/store/get_shopcat?access_token=' + token,
+              data:{},
+              method:"POST"
+            })
+        },
 
         onInit() {
             this.listInit( 20 )            
