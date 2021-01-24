@@ -3,6 +3,7 @@ var db = require('db/db.js')
 var db3 = require('db3/db.js')
 var db4Share = require('db4_share/db.js')
 var db5Customer = require('db5_customer/db.js')
+var dbManager = require('db_manager/db.js')
 
 var configBehaviors = require('behaviors/config.js')
 var listBehaviors = require('behaviors/list.js')
@@ -18,6 +19,7 @@ App({
     db3: db3,
     db4: db4Share,
     db5Customer: db5Customer,
+    dbManager: dbManager,
 
     configBehaviors: configBehaviors,
 
@@ -27,6 +29,8 @@ App({
         dialogBehaviors:dialogBehaviors,
 
     },
+
+    
 
     async onLaunch (options) {
         console.log("[onLaunch] 本次场景值:", options.scene)
@@ -88,7 +92,7 @@ App({
     },
 
     globalData: {
-        userInfo: null
+        userInfo: null,
     },
     
     // 基础的分享页面功能

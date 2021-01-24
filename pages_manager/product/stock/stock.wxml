@@ -4,91 +4,46 @@
 <tabbar matrix="{{tabMatrix}}" index="{{tabbarIndex}}" bindclick="clickTabbar"></tabbar>
 
 <view class=" {{config.themeAdmin}}">
-    <form bindsubmit="checkBtn">
-        
-    <view class="cu-bar bg-white padding-lr " wx:if="{{tabbarIndex == 2}}">
-        <view class="">
-            <text class="cuIcon-titles theme-text "></text>
-            <text>原料盘点</text>
-        </view>
-        <view>
-            <button class="cu-btn bg-blue text-white round shadow-blur " form-type="submit">盘点</button>
-        </view>
-    </view> 
-
-    <view class=" pad ">   
-        <scroll-view class="flex" scroll-y scroll-with-animation style="height:calc(100vh - 175rpx)" 
-        scroll-top="{{productScrollTop}}" bindscroll="productMathTop" >
-    
-            <view class="padding" wx:for="{{list}}"   wx:for-item="category" wx:for-index='index' id="main-{{index}}">
-                <view class="cuIcon-titles theme-text  text-xxl"> {{category.category.cate_name}}</view> 
-                    
-                <view class="margin-top flex justify-start"  style=" flex-wrap:wrap;" >
-                    <view class="  padding-xs radius " style="flex-basis: 25%;"
-                    wx:for="{{category.products}}"  wx:for-item="item" wx:for-index="itemIndex" >
- 
-                        <view class=" shadow shadow-warp bg-white margin-top">
-                            <image src="{{item.imgs[0].src||'/images/un_image.png'}}" mode="aspectFill" class="gif-black response block" style="height:150rpx"></image>            
-                            <view class="padding-sm ">            
-                                <view class="text-xl name">{{item.name}}</view>
-                                <view class="flex justify-between align-center "  wx:if="{{tabbarIndex == 0}}" >
-                                    <view>
-                                        <text class="text-price text-red text-bold text-xl"></text>
-                                        <text class="text-red text-bold text-xxl margin-right-xs">{{item.price}}</text>
-                                        <text class="cu-tag line-red sm radius" wx:if="{{product.priceDiscount}}">{{product.priceDiscount}}</text>
-                                    </view>
-                                    <view style="position:relative" >
-                                        <button class="cu-btn round theme-line lg" catchtap="toProductEditor" data-id="{{item.id}}">修改</button>
-                                    </view>
-                                </view>
-                                <view  wx:if="{{tabbarIndex == 1}}">
-                                    <view class="flex justify-between text-xl  text-center">
-                                        <view>库存</view>
-                                        <view class="text-red">{{item.stock}}</view>
-                                    </view>
-                                    <view class="flex justify-between text-xl  text-center">
-                                        <view>单位</view>
-                                        <view>盒</view>
-                                    </view>
-                                    <view class="flex justify-center ">
-                                        <button class="cu-btn round theme-bg " catchtap="toProductEditor" data-id="{{item.id}}" catchtap="toAddOrgProduct">入库</button>
-                                    </view>
-                                </view>
-                                
-                                <view  wx:if="{{tabbarIndex == 2}}">
-                                    <view class="flex justify-between text-xl  text-center">
-                                        <view>库存</view>
-                                        <view class="">{{item.stock}}</view>
-                                    </view>
-                                    <view class="flex justify-between text-xl  text-center">
-                                        <view>单位</view>
-                                        <view>盒</view>
-                                    </view>
-
-                                    <view class="text-xl text-yellow ">
-                                        <input placeholder="输入盘点数量" name="{{item.id}}"
-                                         class="text-red text-bold" placeholder-class="text-yellow"></input>
-                                    </view>
-                                    <!-- <view class="flex justify-center ">
-                                        <button class="cu-btn round theme-bg " catchtap="toProductEditor" data-id="{{item.id}}">入库</button>
-                                    </view> -->
-                                </view>
-                                                
-                            </view>
-                        </view>                        
-                    </view>            
-                </view>
-            </view>
-            <view class="pg-space-xxl"></view>
-            <view class="pg-space-xxl"></view>
-        </scroll-view>
+  
+    <view wx:if="{{tabbarIndex==0}}">
+        <spu-list></spu-list>
     </view>
-</form>
-
-
-    <include src="/wxml/base/loading.wxml"></include>
+    <view wx:if="{{tabbarIndex==1}}">
+        <spu-list-wx appId="{{wxShopAppId}}"></spu-list-wx>
+    </view>
 
 </view>
+
+
+
+  <!-- <form bindsubmit="checkBtn">
+        
+        <view class="cu-bar bg-white padding-lr " wx:if="{{tabbarIndex == 2}}">
+            <view class="">
+                <text class="cuIcon-titles theme-text "></text>
+                <text>原料盘点</text>
+            </view>
+            <view>
+                <button class="cu-btn bg-blue text-white round shadow-blur " form-type="submit">盘点</button>
+            </view>
+        </view> 
+
+    </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  <!-- catchtap="openDetail" data-categoryindex="{{index}}" data-itemindex="{{itemIndex}}"  -->

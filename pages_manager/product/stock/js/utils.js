@@ -16,13 +16,21 @@ class Utils {
                     { name: "记录", id: 11 }, 
                 ]
             },
+            {
+                name: "小商店",
+                select: "/images/icon/score.png",
+                unSelect: "/images/icon/score_un.png",
+                list: [
+                    { name: "记录", id: 12 }, 
+                ]
+            },
 
             {
                 name: "新增入库",
                 select: "/images/icon/score.png",
                 unSelect: "/images/icon/score_un.png",
                 list: [
-                    { name: "记录", id: 11 },
+                    { name: "记录", id: 13 },
                 ]
             },
 
@@ -31,7 +39,7 @@ class Utils {
                 select: "/images/icon/score.png",
                 unSelect: "/images/icon/score_un.png",
                 list: [
-                    { name: "记录", id: 11 },
+                    { name: "记录", id: 14 },
                 ]
             },
           

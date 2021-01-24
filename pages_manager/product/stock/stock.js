@@ -2,6 +2,8 @@
 var app = getApp()
 var Utils = require("js/utils.js")
 var ProductBehaviors = require("../lib/productBehaviors.js") //本地的
+
+// 临时数据项
 var StockList = require("../../../data/product.js") //本地的
 var OrgProduct = require("../../../data/org_product.js") //本地的
 Component({
@@ -15,6 +17,8 @@ Component({
         list: StockList,
         StockList: StockList,
         OrgList: OrgProduct.orgList,
+
+        wxShopAppId:"",
     },
     behaviors: [app.behaviors.configBehaviors,  app.behaviors.dialogBehaviors, ProductBehaviors],
 
@@ -26,8 +30,9 @@ Component({
                 tabIndex: options.tabIndex || 0,
             })
             this.onInit()
-        },
 
+           
+        },
 
         onInit() {
             this.changeTabbar()
@@ -41,6 +46,9 @@ Component({
             var list // = this.data.StockList
             if (this.data.tabbarIndex == 0)
                 list = this.data.StockList
+            else if(this.data.tabbarIndex == 1){
+                this.setData({ wxShopAppId: "wx7837f7a217ea0809" }) // 设置
+            }
             else
                 list = this.data.OrgList
             this.setData({ list: list })

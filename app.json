@@ -115,6 +115,9 @@
         "nav-date": "components/nav-date/nav-date",
         "search": "components/search/search",
         "dialog": "components/dialog/dialog",
+        "spu-list-wx": "components/spu_list_wx/spu_list_wx",
+        "spu-list": "components/spu_list/spu_list",
+
         "cu-custom": "components2/cu-custom/cu-custom",
         "cover": "components2/cover/cover",
         "employee": "components2/employee/employee",
