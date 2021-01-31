@@ -19,6 +19,7 @@ class dbBase {
                 // 资源方环境 ID
                 resourceEnv: this.resourceEnv,
             })
+            
             // console.log(c1)
 
             // 跨账号调用，必须等待 init 完成

@@ -19,7 +19,7 @@ App({
     db3: db3,
     db4: db4Share,
     db5Customer: db5Customer,
-    dbManager: dbManager,
+    dbm: dbManager,
 
     configBehaviors: configBehaviors,
 
@@ -30,6 +30,10 @@ App({
 
     },
 
+    KEY:{
+        APPID:"appId" , // appid的关键字段
+        SESSION_MANAGER:"session_manager",
+    },
     
 
     async onLaunch (options) {
@@ -55,6 +59,13 @@ App({
 
         // 加载 customer 云函数
         await db5Customer.init()
+
+        // 获取appid
+        var res = await wx.getAccountInfoSync()
+        wx.setStorageSync(this.KEY.APPID, res.miniProgram.appId)
+
+
+        // console.log( )
         // db5Customer.getGeoStoreList({
         //     store_uuid: 'e8eeb038-a2d0-11ea-97f8-e95aa2c51b5d', //&longitude=108.333693&latitude=22.805182// this.data.storeUUID,
         //     // isToday: this.data.TabCur == 0?true :false,
@@ -64,6 +75,8 @@ App({
         // })
 
     },
+
+
 
     // 判断用户选择
     showModal(msg, showCancel=true){

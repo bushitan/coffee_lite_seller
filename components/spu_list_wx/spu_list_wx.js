@@ -49,19 +49,19 @@ Component({
         async onInit(appId) { 
             console.log(appId)
 
-            app.dbManager.wxShopServer.setAppId("wx7837f7a217ea0809")
+            app.dbm.wxShop.setAppId("wx7837f7a217ea0809")
 
             // this.test()
-            // var res = await app.dbManager.wxShopServer.spuGetList({
+            // var res = await app.dbm.wxShop.spuGetList({
 
             // })
             // this.clickBar()
 
             
-            var res = await app.dbManager.wxShopServer.orderGet({
+            var res = await app.dbm.wxShop.orderGet({
                 "order_id":"1389747786857159"
             })
-            var res = await app.dbManager.wxShopServer.orderSearch({
+            var res = await app.dbm.wxShop.orderSearch({
                 // "start_pay_time": "2020-03-25 12:05:25",
                 // "end_pay_time": "2020-04-25 12:05:25",
                 // "start_create_time": "2020-01-1 12:05:25",
@@ -81,9 +81,9 @@ Component({
 
 
 
-            1389747786857159
+            // 1389747786857159
 
-            // var res = await app.dbManager.wxShopServer.orderGetList({
+            // var res = await app.dbm.wxShop.orderGetList({
             //     "start_create_time": "2020-01-1 12:05:25",
             //     "end_create_time": "2021-02-25 12:05:25",
             //     "status": 10,
@@ -92,16 +92,16 @@ Component({
             // })
 
 
-            // var res = await app.dbManager.wxShopServer.categoryGet({
+            // var res = await app.dbm.wxShop.categoryGet({
             //     "f_cat_id": 0
             // })
 
 
-            // var res = await app.dbManager.wxShopServer.brandGet({
+            // var res = await app.dbm.wxShop.brandGet({
             // })
 
             
-            // var res = await app.dbManager.wxShopServer.skuGetList({
+            // var res = await app.dbm.wxShop.skuGetList({
             //     "product_id": 1824002,
             //     "need_edit_sku": 0,     //	默认0:获取线上数据, 1:获取草稿数据
             //     "need_real_stock": 1    // 默认0:获取草稿库存, 1:获取线上真实库存
@@ -116,7 +116,7 @@ Component({
             if (index == 1) 
                 need_edit_spu = 1
         
-            var res = await app.dbManager.wxShopServer.spuGetList({
+            var res = await app.dbm.wxShop.spuGetList({
                 "status": 5,
                 "page": 1,
                 "page_size": 1000,
@@ -141,12 +141,12 @@ Component({
 
         async test(){
 
-            var res  = await app.dbManager.wxShopServer.componentAccessToken()
+            var res  = await app.dbm.wxShop.componentAccessToken()
 
 
 
 
-            var res = await app.dbManager.wxShopServer.spuGetList(
+            var res = await app.dbm.wxShop.spuGetList(
                 {
                     "status": 5,
                     "page": 1,
@@ -160,7 +160,7 @@ Component({
 
             console.log(this.data.list)
             // var res = await 
-            app.dbManager.wxShopServer.orderGetList(
+            app.dbm.wxShop.orderGetList(
                 {
                         "start_create_time": "2020-12-25 12:05:25",
                         "end_create_time": "2021-01-25 12:05:25",
@@ -172,7 +172,7 @@ Component({
                 console.log(res)
             })
 
-            // app.dbManager.wxShopServer.productBrandGet()
+            // app.dbm.wxShop.productBrandGet()
         },
     }
 })

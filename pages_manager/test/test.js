@@ -1,4 +1,5 @@
 // pages_manager/test/test.js
+var app = getApp()
 Page({
 
     /**
@@ -14,7 +15,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+       
+    },
+    onReady(){
+        this.onInit()
     },
 
     toNav(e){
@@ -24,6 +28,13 @@ Page({
         })
     },
 
+    async onInit(){
+        // var res = await wx.getAccountInfoSync()
+        // console.log(res.miniProgram.appId)
+
+        console.log( await  app.dbm.admin.org.login() )
+        
+    },
 
     /**
      * 用户点击右上角分享

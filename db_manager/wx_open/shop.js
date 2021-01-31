@@ -12,7 +12,7 @@ function pack(url){
 }
 
 
-class WxServer extends base{
+class WxShop extends base{
     constructor(){
         super()
     }
@@ -420,4 +420,4 @@ class WxServer extends base{
     -30000	能执行该操作，请检查审核状态后调用正确的接口
 */
 }
-module.exports = WxServer
+module.exports = WxShop
