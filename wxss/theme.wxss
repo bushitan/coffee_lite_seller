@@ -37,6 +37,13 @@
 .theme-olive .theme-lines { color: var(--olive); }
 
 
+.theme-black .theme-text{ color: var(--black); }
+.theme-black .theme-bg{ background-color: var(--black); }
+.theme-black .theme-line::after,
+.theme-black .theme-lines::after { border-color: var(--black); }
+.theme-black .theme-line,
+.theme-black .theme-lines { color: var(--black); }
+
 
 
 

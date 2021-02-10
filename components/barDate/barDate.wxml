@@ -1,7 +1,7 @@
 <!--components/bar/bar.wxml-->
 
 <scroll-view scroll-x class=" nav text-center {{ theme? theme: config.theme}}"  >
-    <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':' light-white '}}" wx:for="{{list}}" wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
+    <view class="cu-item {{ TabCur == cur ?'text-white cur text-bold':' light-white text-white '}}" wx:for="{{list}}" wx:for-index="cur" wx:key bindtap="tabSelect" data-cur="{{cur}}">
         {{item.name}}
     </view>
 </scroll-view>
@@ -21,6 +21,6 @@
 		</picker>       
     </view>
     <view class=" text-right">
-        <text class="">Seeking Coffee【鲤湾店】</text><text class="cuIcon-unfold "></text>
+        <text class="">新竹小区</text><text class="cuIcon-unfold "></text>
     </view>
 </view>

@@ -32,7 +32,12 @@ App({
 
     KEY:{
         APPID:"appId" , // appid的关键字段
-        SESSION_MANAGER:"session_manager",
+        USER_TOKEN:"userToken" , // appid的关键字段
+
+        UNION_ID:"unionId" , // appid的关键字段
+        UNION_KEY:"unionKey" , // appid的关键字段
+        SN:"sn",
+        GUID:"guid",
     },
     
 

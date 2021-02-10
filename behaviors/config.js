@@ -83,7 +83,7 @@ module.exports = Behavior({
                 },
                 // 主题色彩配置 -- 默认黄色
                 theme: this.data.shopID == 99 ? "theme-olive" : "theme-yellow",
-                themeAdmin:"theme-yellow", // 商户端的颜色
+                themeAdmin:"theme-black", // 商户端的颜色
                 // 窗口配置
                 window: {
                     "navigationBarBackgroundColor": "#efaf30",
